@@ -17,6 +17,8 @@ $db_host = "http://localhost:5984";
 //curl -X PUT -d "10" http://localhost:5984/epgservice/_revs_limit
 //curl -H "Content-Type: application/json" -X POST http://localhost:5984/epgservice/_compact
 
+test
+
 
 //XML Object Useragent
 $opts = array(
