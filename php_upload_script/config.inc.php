@@ -31,3 +31,4 @@ libxml_set_streams_context($context);
 # Additional site configuration settings. Allows to override global settings.
 if (file_exists('config.php')) {
 	include_once('config.php');
+}
