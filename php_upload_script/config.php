@@ -1,7 +1,6 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
 
-
 $senderliste = array ("zdf"	=> "29381224",
 					  "zdfneo"	=> "29381364",
 					  "zdfkultur"=> "29381288",
@@ -28,8 +27,6 @@ $opts = array(
 $context = stream_context_create($opts);
 libxml_set_streams_context($context);
 
-
 # Additional site configuration settings. Allows to override global settings.
 if (file_exists('config.php')) {
 	include_once('config.php');
-}
