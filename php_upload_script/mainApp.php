@@ -68,11 +68,6 @@ exit;
 
 
 
-
-
-
-
-
 function console($msg){
     global $cron;
     if ($cron) return;
