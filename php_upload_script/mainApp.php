@@ -75,7 +75,8 @@ exit;
 
 function console($msg){
     global $cron;
-    if $cron return;
+    if ($cron) return;
+    
     $col = exec('tput cols');
     $spaces = $col - strlen($msg);
 
