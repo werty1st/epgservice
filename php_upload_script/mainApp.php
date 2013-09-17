@@ -5,7 +5,7 @@
 // require_once 'xml2json/xml2json.php';
 
 //Settings
-include_once("config.php");
+include_once("config.inc.php");
 include_once("class/sender_class.php");
 include_once("class/sendung_class.php");
 include_once("class/couch_class.php");

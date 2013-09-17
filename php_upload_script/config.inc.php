@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
 
+
 $senderliste = array ("zdf"	=> "29381224",
 					  "zdfneo"	=> "29381364",
 					  "zdfkultur"=> "29381288",
@@ -16,8 +17,6 @@ $db_host = "http://localhost:5984";
 
 //curl -X PUT -d "10" http://localhost:5984/epgservice/_revs_limit
 //curl -H "Content-Type: application/json" -X POST http://localhost:5984/epgservice/_compact
-
-test
 
 
 //XML Object Useragent
