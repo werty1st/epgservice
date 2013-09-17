@@ -1,0 +1,9 @@
+.kansorc
+*~
+*.lock
+*.DS_Store
+.*.swp
+*.out
+
+
+!.gitignore
