@@ -50,7 +50,7 @@ exit;
 
 //ausgabe mit couchdb list funktion map reduce
 
-
+//update git commit -am "update `date`"
 
 //load xml
 
