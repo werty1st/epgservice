@@ -18,8 +18,10 @@ $couch = &Factory::getDB(array("host" => $db_host,
 //db_cleanup
 $couch->cleanup(false); //true=all
 
-//main loop
+//detect terminal or cron
+$cron = !isset($_ENV['TERM']);
 
+//main loop
 foreach ($senderliste as $station => $value) {
 	
 	//all
@@ -72,6 +74,8 @@ exit;
 
 
 function console($msg){
+    global $cron;
+    if $cron return;
     $col = exec('tput cols');
     $spaces = $col - strlen($msg);
 
