@@ -164,12 +164,16 @@ class mycouch {
 			$view = $this->db->get_view("epgservice", "getold_view");			
 		}
 
+		//var_dump($view); exit;
+
 		foreach ($view->rows as $row) {
 			$doc = $row->value;
 			console("Deleting old Doc: ".$doc->_id);
 			$this->db->delete($doc);
 		}
 		echo "\n\n";
+
+		
 	}
 
 }
