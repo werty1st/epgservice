@@ -77,6 +77,10 @@ exports.getNowByStation_list = function (head, req) {
 		}	
 
 		var filter = Object();
+			filter['"'] = "&quot;";
+			filter["'"] = "&apos;";
+			filter["<"] = "&lt;";
+			filter[">"] = "&gt;";
 			filter["&"] = "&amp;";
 		var myxml = require('lib/jstoxml');
 		var xmlout = myxml.toXML(out,{header: true, indent: '  ',"filter":filter });

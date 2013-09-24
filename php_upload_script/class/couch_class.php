@@ -155,6 +155,9 @@ class mycouch {
 
 	public function cleanup($all = false){
 		//alles mit endtime > 24h löschen
+
+		console("Start deleting old Doc"); echo "\n";
+
 		if ($all) {
 			$view = $this->db->get_view("epgservice", "getall_view");			
 		} else {

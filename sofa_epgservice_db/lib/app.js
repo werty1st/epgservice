@@ -4,17 +4,19 @@
  */
 
 module.exports = {
-    //types: require('./types'),
     shows: require('./shows'),
     lists: require('./lists'),
     views: require('./views'),
-    // updates: require('./updates'),
-    // filters: require('./filters'),
     rewrites: require('./rewrites'),
-    jstoxml: require('./jstoxml'),
-    globalize: require('./globalize')
-    // validate_doc_update: require('./validate')
+    jstoxml: require('./jstoxml')
 };
 
+
+/*
+// updates: require('./updates'),
+// filters: require('./filters'),
+// validate_doc_update: require('./validate')
+//types: require('./types'),
 // bind event handlers
 // require('./events');
+*/
