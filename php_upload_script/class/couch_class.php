@@ -173,7 +173,7 @@ class mycouch {
 		}
 		echo "\n\n";
 
-		
+		exit;
 	}
 
 }
