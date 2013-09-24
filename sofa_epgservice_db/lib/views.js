@@ -106,8 +106,18 @@ exports.getAllByStation_view = {
 
 
 
-
-
+//temp
+exports.getallwithage_view = {
+    map: function (doc) {
+            if (doc.station !== undefined) {
+                //2013-08-28T05:00:00+02:00
+                var now = new Date();
+                var old = new Date(doc.programdata.airtimeBegin);    
+                var diff = ((now - old)/3600000); //alter in stunden            
+                emit(doc.endTime,{"age":diff,"_rev":doc._rev, "station":doc.station.name});             
+            }
+        }
+    };
 
 
 

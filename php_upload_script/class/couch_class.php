@@ -171,9 +171,6 @@ class mycouch {
 			console("Deleting old Doc: ".$doc->_id);
 			$this->db->delete($doc);
 		}
-		echo "\n\n";
-
-		exit;
 	}
 
 }
