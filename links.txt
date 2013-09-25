@@ -4,7 +4,7 @@ local
 		http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge
 
 		view:
-		http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge?startkey=["ZDF",-50]&endkey=["ZDF",50]
+		http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge_view?startkey=["ZDF",-50]&endkey=["ZDF",50]
 
 		list:
 		http://localhost:5984/epgservice/_design/epgservice/_list/getNow_list/getAllWithAge_view?accept=xml&startkey=["ZDF",-50]&endkey=["ZDF",50]		
@@ -47,61 +47,61 @@ local
 
 
 intern
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/now/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/now/json
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdf/now/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdf/now/json
 	
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/now/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/now/json
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfneo/now/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfneo/now/json
 
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/now/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/now/json
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfinfo/now/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfinfo/now/json
 
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/now/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/now/json
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfkultur/now/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfkultur/now/json
 
 
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/today/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/today/json
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdf/today/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdf/today/json
 	
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/today/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/today/json
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfneo/today/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfneo/today/json
 
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/today/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/today/json
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfinfo/today/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfinfo/today/json
 
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/today/xml
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/today/json		
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfkultur/today/xml
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/zdfkultur/today/json		
 
 
-	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/_design/epgservice/_rewrite/getById/json/2a74b7736501f616fdc8c6cbc816011e
+	http://wmaiz-v-sofa01.dbc.zdf.de/epgservice/getById/json/1ad2ec264a84a0d77d15db48581665dc
 
 
 
 global
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/now/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/now/json
+	http://sofa01.zdf.de/epgservice/zdf/now/xml
+	http://sofa01.zdf.de/epgservice/zdf/now/json
 	
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/now/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/now/json
+	http://sofa01.zdf.de/epgservice/zdfneo/now/xml
+	http://sofa01.zdf.de/epgservice/zdfneo/now/json
 
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/now/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/now/json
+	http://sofa01.zdf.de/epgservice/zdfinfo/now/xml
+	http://sofa01.zdf.de/epgservice/zdfinfo/now/json
 
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/now/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/now/json
+	http://sofa01.zdf.de/epgservice/zdfkultur/now/xml
+	http://sofa01.zdf.de/epgservice/zdfkultur/now/json
 
 
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/today/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdf/today/json
+	http://sofa01.zdf.de/epgservice/zdf/today/xml
+	http://sofa01.zdf.de/epgservice/zdf/today/json
 	
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/today/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfneo/today/json
+	http://sofa01.zdf.de/epgservice/zdfneo/today/xml
+	http://sofa01.zdf.de/epgservice/zdfneo/today/json
 
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/today/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfinfo/today/json
+	http://sofa01.zdf.de/epgservice/zdfinfo/today/xml
+	http://sofa01.zdf.de/epgservice/zdfinfo/today/json
 
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/today/xml
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/zdfkultur/today/json		
+	http://sofa01.zdf.de/epgservice/zdfkultur/today/xml
+	http://sofa01.zdf.de/epgservice/zdfkultur/today/json		
 
 
-	http://sofa01.zdf.de/epgservice/_design/epgservice/_rewrite/getById/json/2a74b7736501f616fdc8c6cbc816011e
+	http://sofa01.zdf.de/epgservice/getById/json/2a74b7736501f616fdc8c6cbc816011e
