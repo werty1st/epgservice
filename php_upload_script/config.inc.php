@@ -13,7 +13,7 @@ $action = "action=getAllItems";
 $cache_dir ="cache";
 $db_name = "epgservice";
 $db_host = "http://localhost:5984";
-$db_host = "http://admin:s00fa1@wmaiz-v-sofa01.dbc.zdf.de:80";
+//$db_host = "http://admin:s00fa1@wmaiz-v-sofa01.dbc.zdf.de:80";
 
 
 //curl -X PUT -d "10" http://localhost:5984/epgservice/_revs_limit

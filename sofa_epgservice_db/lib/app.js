@@ -4,9 +4,9 @@
  */
 
 module.exports = {
-    shows: require('./shows'),
-    lists: require('./lists'),
-    views: require('./views'),
+    shows: require('./shows/index'),
+    lists: require('./lists/index'),
+    views: require('./views/index'),
     rewrites: require('./rewrites'),
     jstoxml: require('./jstoxml')
 };

@@ -18,6 +18,7 @@ $couch = &Factory::getDB(array("host" => $db_host,
 //db_cleanup
 $couch->cleanup(false); //true=all
 
+
 //main loop
 foreach ($senderliste as $station => $value) {
 	
