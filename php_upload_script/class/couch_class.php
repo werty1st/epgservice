@@ -33,14 +33,22 @@ class mycouch {
 			// set a new connector to the CouchDB server
 
 			$server = new SetteeServer($options["host"]);
-			$this->db = $server->get_db($options["name"]);
 
 			try {
-			  $server->create_db($options["name"]);
+				$this->db = $server->get_db($options["name"]);				
+				console("Database ".$options["name"]." connected.");
+				echo "\n";
 			} catch (Exception $e) {
-			  console("Database ".$options["name"]." connected.");
-			  echo "\n";
+				try {
+					$server->create_db($options["name"]);
+					$this->db = $server->get_db($options["name"]);				
+					console("Database ".$options["name"]." connected.");
+					echo "\n";				  
+				} catch (Exception $e) {
+					print_r($e); exit;
+				}				
 			}
+
 		} catch (Exception $e) {
 			print_r($e); exit;
 		}
