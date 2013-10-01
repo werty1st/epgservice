@@ -1,0 +1,64 @@
+	<script type="text/javascript" src="modules.js"></script>
+	<script type="text/javascript" src="html/syntaxhighlighter/scripts/shCore.js"></script>
+	<script type="text/javascript" src="html/syntaxhighlighter/scripts/shBrushXml.js"></script>
+	<link type="text/css" rel="stylesheet" href="html/syntaxhighlighter/styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+
+<h1>Hello, world!</h1>
+
+<script type="text/javascript">
+    var db = require('db').current();
+    var $ = require('jquery');
+
+    //epgservice/_design/epgservice/_list/getNowByStation_list/getNowByStation_view?descending=false&station=zdf
+    //epgservice/_design/epgservice/_view/getNowByStation_view%3Fdescending%3Dfalse
+    db.getList('epgservice', 'getNowByStation_list', 'getNowByStation_view', { descending:false, station:"zdf"}, function (err, data) {
+        if (err) {
+            // an error occurred
+            return console.log(err);
+        }
+        data = JSON.parse(data);
+        for (var i = 0; i < data.sendungen.length; i++) {
+            $('<li/>').text(data.sendungen[i].sendung.key).appendTo('#makes');
+        }
+    });  
+
+
+</script>
+
+<ul id="makes"></ul>
+
+<pre id="xml" class="brush: xml">
+	<?xml version="1.0" encoding="UTF-8"?>
+	<sendungen>
+	  <sendung>
+	    <id>422739249e5362c289aa15b2ac84e353</id>
+	    <key>1379941500000</key>
+	    <value>
+	      <station>
+	        <name>ZDF</name>
+	      </station>
+	      <titel>inka!</titel>
+	      <time>2013-09-23T15:05:00+02:00</time>
+	      <endTime>2013-09-23T16:00:00+02:00</endTime>
+	      <beschreibung>"inka!" ist die Personality-Show von und rund um Inka Bause. Aktuelles, Trends, Gesellschaftsthemen, Boulevard und Feuilleton, Musik, Mode und Kultur werden von Inka Bause vorgestellt und mit ihren Gästen besprochen.  Inkas Studiogäste haben spannende, ungewöhnliche und emotionale Geschichten im Gepäck. In Inkas Studio in Berlin erzählen Prominente aus ihrem ganz "normalen" Leben und ganz "normale" Menschen berichten Außergewöhnliches.  Gäste: Froonck Matthée, Hochzeitsplaner Zadiel Sasmaz, Tänzer Alexandra Polzin, frisch verheiratet Susi Müller, Moderatorin Palina Rojinski, Moderatorin  "inka!" - montags bis freitags 15:05 Uhr</beschreibung>
+	      <url>http://www.zdf.de/ZDF/zdfportal/programdata/32d88738-5e81-46f2-85d5-919efef8a35b/20206567</url>
+	    </value>
+	  </sendung>
+	  <sendung>
+	    <id>319efddde3d52246b062898a465c8d71</id>
+	    <key>1379944800000</key>
+	    <value>
+	      <station>
+	        <name>ZDF</name>
+	      </station>
+	      <titel>heute - in Europa</titel>
+	      <time>2013-09-23T16:00:00+02:00</time>
+	      <endTime>2013-09-23T16:10:00+02:00</endTime>
+	      <url>http://www.zdf.de/ZDF/zdfportal/programdata/b0dbf06a-3910-37bd-a385-77a1432411a1/20206568</url>
+	    </value>
+	  </sendung>
+	</sendungen> 	
+
+</pre>
+

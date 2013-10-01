@@ -34,9 +34,11 @@ module.exports = [
     {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF.kultur",-50], endkey: ["ZDF.kultur",50]}},
     {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF.kultur",-50], endkey: ["ZDF.kultur",50]}},
 
+    {from: '/crossdomain.xml', to: 'html/crossdomain.xml'},
 
-
-
+    {from: '/', to: 'index.html'},
+    {from: '/modules.js', to: '/modules.js'},
+    {from: '/html/*', to: 'html/*'}
 
     // list:
     // http://localhost:5984/epgservice/_design/epgservice/_list/getNow_list/getAllWithAge_view?accept=xml&startkey=["ZDF",-50]&endkey=["ZDF",50]      

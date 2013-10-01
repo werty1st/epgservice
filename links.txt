@@ -1,6 +1,5 @@
 local
 	ohne rewrite
-		http://localhost:5984/epgservice/_design/epgservice/_list/getAllByStation_list/getAllWithAge?descending=false&station=zdf&accept=json
 		http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge
 
 		view:
