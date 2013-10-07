@@ -2,7 +2,9 @@ exports.getNow = function (head, req) {
 
 	var format = req.query.accept || "";
 	var nowsendung = false;
-	var out = {"sendungen" : [] };
+	var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungen" : [] }};
+	var out = wrapper.response;
+
     var header = {};
     var c1 = 0;
 
@@ -50,11 +52,11 @@ exports.getNow = function (head, req) {
 
 
 	if (format == "json") {
-		provides_json(out, header);
+		provides_json(wrapper, header);
 	}else if(format == "xml") {
-		provides_xml(out, header);
+		provides_xml(wrapper, header);
 	} else{
-        provides_json(out, header);
+        provides_json(wrapper, header);
     }
 }	
 

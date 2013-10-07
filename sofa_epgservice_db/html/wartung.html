@@ -1,0 +1,71 @@
+	<link href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="modules.js"></script>
+	<script type="text/javascript">
+
+	</script>
+
+<h1>EPG Data Service - Maintance</h1>
+
+<script type="text/javascript">
+    var db = require('db').use("epgservice");//current();
+    var $ = require('jquery');
+    jQuery = $;
+
+    //http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge_view
+    db.getView('epgservice', 'getAllWithAge_view', null, function (err, data) {
+        if (err) {
+            // an error occurred
+            $('#getold').append("Empty Response");
+            return console.log(err);
+        }
+        console.log(data);
+        add2table(data, '#getall');
+
+        $('#getall').dataTable();
+    });  
+
+    db.getView('epgservice', 'getold_view', function (err, data) {
+        if (err) {
+            // an error occurred
+            $('#json1').append("Empty Response");
+            return console.log(err);
+        }
+        $('#json1').append(data);
+
+    });  
+
+
+    function add2table(data, tableid) {
+
+		for (var i=0;i<data.rows.length;i++) {
+			var d = data.rows[i];
+			var id= d.id;
+			var station = d.key[0];
+			var age = d.key[1];
+
+			$(tableid).append("<tr> <td>"+ i +"</td> <td>"+id+"</td> <td>"+station+"</td> <td>"+age+"</td> </tr>");
+		}
+
+    }
+
+
+</script>
+
+
+Alle Daten:
+<table id="getall">
+</table>
+
+
+Alte Daten:
+<div id="getold">
+</div>
+
+
+	
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src=""></script>
+
+
+
+

@@ -37,6 +37,7 @@ module.exports = [
     {from: '/crossdomain.xml', to: 'html/crossdomain.xml'},
 
     {from: '/', to: 'index.html'},
+    {from: '/wartung', to: 'html/wartung.html'},
     {from: '/modules.js', to: '/modules.js'},
     {from: '/html/*', to: 'html/*'}
 

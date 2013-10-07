@@ -1,6 +1,6 @@
 local
 	ohne rewrite
-		http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge
+		http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge_view
 
 		view:
 		http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge_view?startkey=["ZDF",-50]&endkey=["ZDF",50]

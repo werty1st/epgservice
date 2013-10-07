@@ -8,7 +8,7 @@ exports.getold_view = {
 
         		var diff = ((now - old)/3600000); /*alter in stunden*/
         		
-        		if (diff > 30){
+        		if (diff > 30.0){
         		 	emit(null,{"_id":doc._id,"_rev":doc._rev});
                 }
 

@@ -3,7 +3,8 @@ exports.getToday = function (head, req) {
 	var format = req.query.accept || "";
 	var firstsendung = {diff:-24}; //startwert, suche sendung mit dem kleinsten Minus 
 	var first = true;			   // oder sendung start=0 dann brauche nwir keine vorherige sendung zu speichern und zu vergleichen
-	var out = { "sendungen" : [] };
+	var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungen" : [] }};
+	var out = wrapper.response;
     var header = {};
 
 	while(row = getRow()){
@@ -34,12 +35,12 @@ exports.getToday = function (head, req) {
 	}	
 
 	if (format == "json") {
-		provides_json(out, header);
+		provides_json(wrapper, header);
 
 	}else if (format == "xml") {
-		provides_xml(out, header);
+		provides_xml(wrapper, header);
 	} else {
-		provides_json(out, header);
+		provides_json(wrapper, header);
 	}
 }
 

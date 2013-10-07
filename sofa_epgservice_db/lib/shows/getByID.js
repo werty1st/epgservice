@@ -33,11 +33,12 @@ function provides_json(doc, req) {
 		delete doc['_rev'];
 		delete doc['_revisions'];
 
-		var tempsendung = {};
-		tempsendung.sendungsdetails = doc;
+		
+		var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungsdetails" : [] }};
+		wrapper.response.sendungsdetails = doc;
 
 		return {
-			body : JSON.stringify(tempsendung),
+			body : JSON.stringify(wrapper),
 			headers : {
 				"Content-Type" : "application/json; charset=utf-8",
 				// "X-My-Own-Header": "you can set your own headers"
@@ -59,14 +60,14 @@ function provides_xml(doc, req) {
 			}
 	} else {
 		myxml = require('lib/jstoxml');
-		var obj = {};
 		
 		doc['id'] = doc['_id'];
 		delete doc['_id'];
 		delete doc['_rev'];
 		delete doc['_revisions'];
 
-		obj.sendungsdetails = doc;
+		var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungsdetails" : [] }};
+		wrapper.response.sendungsdetails = doc;
 
 		var filter = Object();
 			filter['"'] = "&quot;";
@@ -74,7 +75,7 @@ function provides_xml(doc, req) {
 			filter["<"] = "&lt;";
 			filter[">"] = "&gt;";
 			filter["&"] = "&amp;";			
-		xml2 = myxml.toXML(obj,{header: true, indent: '  ', "filter":filter });
+		xml2 = myxml.toXML(wrapper,{header: true, indent: '  ', "filter":filter });
 
 		return {
 			body : xml2,
