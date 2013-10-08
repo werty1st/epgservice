@@ -22,7 +22,8 @@ exports.getAllWithAge = {
                 if( today_int < 50300) //wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
                 {
                     //gestern
-                    startzeit = new Date(startzeit.getTime() - 24*3600*1000);
+                    //startzeit = new Date(startzeit.getTime() - 24*3600*1000);
+                    startzeit.setDate(startzeit.getDate() - 1); 
                     startzeit_ms = startzeit.valueOf();
                 } else                
                 {   //heute
@@ -30,6 +31,7 @@ exports.getAllWithAge = {
                 }
         		
                 var diff = (airtime_ms-startzeit_ms)/(3600*1000);
+                // var diff = (airtime_ms-startzeit_ms)/(60*1000);
                 // if (diff<0){
                 //     if(tempsendung.diff < diff){
                 //         tempsendung.diff = diff;

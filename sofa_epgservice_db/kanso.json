@@ -4,12 +4,17 @@
     "description": "EPG XML Interface",
     "modules": ["lib"],
     "load": "lib/app",
+    "handlebars": {
+        "all_partials": false,
+        "templates": "html"
+    },    
     "dependencies": {
         "modules": null,
         "properties": null,
         "attachments": null,
         "jquery": null,
-        "db"    :null
+        "db"    :null,
+        "handlebars": null
     },
     "attachments": ["index.html", "html"]
 }
