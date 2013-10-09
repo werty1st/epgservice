@@ -49,7 +49,7 @@ exports.getToday = function (head, req) {
         header['Content-Type'] = 'application/json; charset=utf-8';
 		start({code: 200, headers: header});
 		//TODO Fehlermeldung wenn leer
-		send(JSON.stringify(out.sendungen));
+		send(JSON.stringify(out));
 	}
 
 	function provides_xml (out,header) {

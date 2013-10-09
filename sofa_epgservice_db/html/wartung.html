@@ -1,110 +1,217 @@
-<script type="text/javascript" src="modules.js"></script>
-<script type="text/javascript">
-	$ = require('jquery');
-	jQuery = $;
-</script>
-<script src="http://handsontable.com/dist/jquery.handsontable.full.js"></script>
-<link rel="stylesheet" media="screen" href="http://handsontable.com/dist/jquery.handsontable.full.css">
+<!DOCTYPE html> 
+<html> 
+	<head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="html/jquery-mobile/jquery.mobile-1.3.2.min.css" />	
+		<link rel="stylesheet" href="html/main.css" />	
+		<script type="text/javascript" src="modules.js"></script>
+		<script type="text/javascript">
+			var $ = require('jquery');
+			
+			$(document).on('mobileinit', function() {
+				console.log("mobileinit");
+			});
 
 
-<h1>EPG Data Service - Maintance</h1>
+		</script>
+		<script src="html/jquery-mobile/jquery.mobile-1.3.2.min.js"></script>
+
+	</head> 
+	<body> 
+
+		<div data-role="page" id="page1">
+
+			<div data-role="header">
+				<h1>EPG Data Service - Maintance</h1>
+			</div><!-- /header -->
+
+			<div data-role="content">	
+
+				<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+		<!-- 		    <div data-role="collapsible">
+				        <h3>Section 1</h3>
+				        <p>I'm the collapsible content for section 1</p>
+				    </div>
+				    <div data-role="collapsible">
+				        <h3>Alte Daten</h3>
+						<table id="getold">
+						</table>
+				    </div> -->
+				    <div id="summary_sender" data-role="collapsible">
+				        <h3>Alle Daten nach Sender</h3>
+
+				        <div data-role="collapsible">
+					        <h3>Alle Daten ZDF</h3>
+							<table id="all_zdf">
+							</table>
+						</div>
+
+						<div data-role="collapsible">
+					        <h3>Alle Daten ZDFneo</h3>
+							<table id="all_zdfneo">
+							</table>
+						</div>
+
+						<div data-role="collapsible">
+					        <h3>Alle Daten ZDFinfo</h3>
+							<table id="all_zdfinfo">
+							</table>
+						</div>
+
+						<div data-role="collapsible">
+					        <h3>Alle Daten ZDFkultur</h3>
+							<table id="all_zdfkultur">
+							</table>
+						</div>
+				    </div>
+				</div>			
+			</div><!-- /content -->
+		</div><!-- /page -->
+
+		<div data-role="page" id="dialogPage">
+			<!-- dummy -->
+		</div>	
+			
+		<script type="text/javascript">
+		    var db = require('db').use("epgservice");//current();
+		    var handlebars = require('handlebars');
+			handlebars.registerHelper("prettifyTime", function(timestamp) {
+				options = {hour: "numeric", minute: "numeric"};				
+			    return new Intl.DateTimeFormat("de-DE", options).format(new Date(timestamp));
+			});
+
+
+		    var error_total = 0;
+
+		    function totalerror(x){
+		    	error_total = error_total + x;
+		    	if (error_total == 0)return;
+		    	$("#summary_sender > h3").find(".ui-btn-text").text("Alle Daten nach Sender ("+error_total+")");
+		    }
+    		 
+		    // _list/getToday_list/getAllWithAge_view
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDF",-24], endkey: ["ZDF",24]},
+		    		    function (err, data) {
+		    		    	data = JSON.parse(data).response.sendungen;
+							if (err || data.length == 0) {
+								// an error occurred
+								$('#all_zdf').append("keine Daten");
+								return console.log(err);
+							}
+							add2table(data, '#all_zdf');
+						});  
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDFneo",-24], endkey: ["ZDFneo",24]},
+		    		    function (err, data) {
+		    		    	data = JSON.parse(data).response.sendungen;
+							if (err || data.length == 0) {
+								// an error occurred
+								$('#all_zdfneo').append("keine Daten");
+								return console.log(err);
+							}
+							add2table(data, '#all_zdfneo');
+						});  
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDFinfo",-24], endkey: ["ZDFinfo",24]},
+		    		    function (err, data) {
+		    		    	data = JSON.parse(data).response.sendungen;
+							if (err || data.length == 0) {
+								// an error occurred
+								$('#all_zdfinfo').append("keine Daten");
+								return console.log(err);
+							}
+							add2table(data, '#all_zdfinfo');
+						});  
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDF.kultur",-24], endkey: ["ZDF.kultur",24]},
+		    		    function (err, data) {
+		    		    	data = JSON.parse(data).response.sendungen;
+							if (err || data.length == 0) {
+								// an error occurred
+								$('#all_zdfkultur').append("keine Daten");
+								return console.log(err);
+							}
+							add2table(data, '#all_zdfkultur');
+						});  								    
+		    
+
+
+		    db.getView('epgservice', 'getold_view', function (err, data) {
+		        if (err || data.rows.length == 0) {
+		            // an error occurred
+		            $('#getold').append("keine Daten");
+		            return console.log(err);
+		        }
+		        //add2table(data, '#getold');
+		    });  
+
+
+		    function getDetails(item) {
+		    	var id = $(item).find(".station").attr("id");
+		    	console.log(id);
 
 
 
-Alle Daten:
-<table id="getall">
-</table>
+			    //'_show/getByID_show/*', query: { accept: 'json'} }, 
+			    db.getShow('epgservice', "getByID_show", id,  { accept: 'json'}, function (err, data) {
+			        if (err) {
+			            // an error occurred
+			            $('#detail').append("keine Daten");
+			            return console.log(err);
+			        }
+			        var context = {};
+			        	context = JSON.parse(data).response.sendungsdetails;
+					var html = handlebars.templates['dialog.html'](context);
+					$("#dialogPage").replaceWith(html);
+					$.mobile.changePage("#dialogPage");
+			    });  
+			}
 
 
-Alte Daten:
-<div id="getold">
-</div>
+		    function add2table(data, tableid) {
+
+		    	var lastdata;
+				var errors = 0;
+				// 0: Object
+					// sendung: Object
+						// id: "2cd31ea84e29cce37e0b02552dd3cbce"
+						// value: Object
+							// endTime: "2013-10-09T05:45:00+02:00"
+							// station: Object
+							// time: "2013-10-09T05:00:00+02:00"
+							// titel: "Moderne Wunder: Das Pferd"
+							// url: "http://www
+
+				for (var i=0;i<data.length;i++) {
+					var d = data[i].sendung;
+					var context = {};
+						context.id= d.id;
+						context.titel = d.value.titel;
+						context.time = d.value.time;
+						context.endtime = d.value.endTime;
+
+					if (lastdata){
+						if (lastdata.value.endTime == d.value.time) { // ok
+							context.color = "green";		
+
+						} else {
+							context.color = "red";
+							errors +=1;
+						}
+					}
+					lastdata = d;
+
+					var html = handlebars.templates['table_line.html'](context);
+
+					$(tableid).append(html);
+				}
+				totalerror(errors);
+				if (errors > 0)
+					$(tableid).parent().parent().find(".ui-btn-text").append(" ("+errors+")");
+	    	}
+  
 
 
-	
-<script type="text/javascript">
-    var db = require('db').use("epgservice");//current();
-    var handlebars = require('handlebars');
-
-
-
-
-    //http://localhost:5984/epgservice/_design/epgservice/_view/getAllWithAge_view
-    db.getView('epgservice', 'getAllWithAge_view', function (err, data) {
-        if (err || data.rows.length == 0) {
-            // an error occurred
-            $('#getall').append("keine Daten");
-            return console.log(err);
-        }
-        console.log(data);
-        add2table(data, '#getall');       
-    });  
-
-    db.getView('epgservice', 'getold_view', function (err, data) {
-        if (err || data.rows.length == 0) {
-            // an error occurred
-            $('#getold').append("keine Daten");
-            return console.log(err);
-        }
-        $('#getold').append(data);
-
-    });  
-
-
-    function getDetails(docid) {
-	    //'_show/getByID_show/*', query: { accept: 'json'} }, 
-	    db.getShow('epgservice', "getByID_show", docid,  { accept: 'json'}, function (err, data) {
-	        if (err) {
-	            // an error occurred
-	            $('#detail').append("keine Daten");
-	            return console.log(err);
-	        }
-	        console.log(data);
-	        add2table(data, '#detail');       
-	    });  
-	}
-
-
-    function add2table(data, tableid) {
-
-    	var lastdata;
-
-		for (var i=0;i<data.rows.length;i++) {
-			var d = data.rows[i];
-			var context = {};
-				context.id= d.id;
-				context.station = d.key[0];
-				context.age = d.key[1];
-				context.titel = d.value.titel;
-				context.time = d.value.time;
-				context.endtime = d.value.endTime;
-
-			var html = handlebars.templates['table_line.html'](context);
-
-			$(tableid).append(html);
-		}
-
-		// var $container = $(tableid);
-		// $container.handsontable({
-		// 	data: data.rows,
-		// 	dataSchema: model,
-		// 	startRows: 3,
-		// 	startCols: 5,
-		// 	colHeaders: ['ID', 'Name', 'Address'],
-		// 	columns: [
-		// 		{data: property("id")},
-		// 		{data: property("name")},
-		// 		{data: property("address")}
-		// 	],	  
-		// 	minSpareRows: 1
-		// });		
-
-    }
-
-    
-
-
-</script>
+		</script>
 
 
 
+	</body>
+</html>

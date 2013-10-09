@@ -7,8 +7,8 @@ exports.getold_view = {
         		var old = new Date(doc.programdata.airtimeBegin);
 
         		var diff = ((now - old)/3600000); /*alter in stunden*/
-        		
-        		if (diff > 30.0){
+                diff = parseFloat(diff.toPrecision(6))
+                if (diff >= 30){        		
         		 	emit(null,{"_id":doc._id,"_rev":doc._rev});
                 }
 

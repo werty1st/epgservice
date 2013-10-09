@@ -9,30 +9,30 @@ module.exports = [
     {from: '/getById/json/*', to: '_show/getByID_show/*', query: { accept: 'json'} }, 
 
 
-    {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF",-50], endkey: ["ZDF",50]}},
-    {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF",-50], endkey: ["ZDF",50]}},
+    {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF",-24], endkey: ["ZDF",24]}},
+    {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF",-24], endkey: ["ZDF",24]}},
 
-    {from: '/zdfinfo/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFinfo",-50], endkey: ["ZDFinfo",50]}},
-    {from: '/zdfinfo/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFinfo",-50], endkey: ["ZDFinfo",50]}},
+    {from: '/zdfinfo/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFinfo",-24], endkey: ["ZDFinfo",24]}},
+    {from: '/zdfinfo/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFinfo",-24], endkey: ["ZDFinfo",24]}},
 
-    {from: '/zdfneo/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFneo",-50], endkey: ["ZDFneo",50]}},
-    {from: '/zdfneo/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFneo",-50], endkey: ["ZDFneo",50]}},
+    {from: '/zdfneo/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFneo",-24], endkey: ["ZDFneo",24]}},
+    {from: '/zdfneo/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFneo",-24], endkey: ["ZDFneo",24]}},
 
-    {from: '/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF.kultur",-50], endkey: ["ZDF.kultur",50]}},
-    {from: '/zdfkultur/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF.kultur",-50], endkey: ["ZDF.kultur",50]}},
+    {from: '/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF.kultur",-24], endkey: ["ZDF.kultur",24]}},
+    {from: '/zdfkultur/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF.kultur",-24], endkey: ["ZDF.kultur",24]}},
 
 
-    {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF",-50], endkey: ["ZDF",50]}},
-    {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF",-50], endkey: ["ZDF",50]}},
+    {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF",-24], endkey: ["ZDF",24]}},
+    {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF",-24], endkey: ["ZDF",24]}},
 
-    {from: '/zdfinfo/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFinfo",-50], endkey: ["ZDFinfo",50]}},
-    {from: '/zdfinfo/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFinfo",-50], endkey: ["ZDFinfo",50]}},
+    {from: '/zdfinfo/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFinfo",-24], endkey: ["ZDFinfo",24]}},
+    {from: '/zdfinfo/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFinfo",-24], endkey: ["ZDFinfo",24]}},
 
-    {from: '/zdfneo/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFneo",-50], endkey: ["ZDFneo",50]}},
-    {from: '/zdfneo/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFneo",-50], endkey: ["ZDFneo",50]}},
+    {from: '/zdfneo/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDFneo",-24], endkey: ["ZDFneo",24]}},
+    {from: '/zdfneo/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDFneo",-24], endkey: ["ZDFneo",24]}},
 
-    {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF.kultur",-50], endkey: ["ZDF.kultur",50]}},
-    {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF.kultur",-50], endkey: ["ZDF.kultur",50]}},
+    {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF.kultur",-24], endkey: ["ZDF.kultur",24]}},
+    {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF.kultur",-24], endkey: ["ZDF.kultur",24]}},
 
     {from: '/crossdomain.xml', to: 'html/crossdomain.xml'},
 
@@ -42,8 +42,8 @@ module.exports = [
     {from: '/html/*', to: 'html/*'}
 
     // list:
-    // http://localhost:5984/epgservice/_design/epgservice/_list/getNow_list/getAllWithAge_view?accept=xml&startkey=["ZDF",-50]&endkey=["ZDF",50]      
-    // http://localhost:5984/epgservice/_design/epgservice/_list/getToday_list/getAllWithAge_view?accept=xml&startkey=["ZDF",-50]&endkey=["ZDF",50]
+    // http://localhost:5984/epgservice/_design/epgservice/_list/getNow_list/getAllWithAge_view?accept=xml&startkey=["ZDF",-24]&endkey=["ZDF",24]      
+    // http://localhost:5984/epgservice/_design/epgservice/_list/getToday_list/getAllWithAge_view?accept=xml&startkey=["ZDF",-24]&endkey=["ZDF",24]
 
     // show:
     // http://localhost:5984/epgservice/_design/epgservice/_show/getByID/dbc2a00ab9ef7d59b252a8c166a17c19?accept=json

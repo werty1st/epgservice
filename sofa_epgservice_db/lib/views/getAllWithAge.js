@@ -31,6 +31,8 @@ exports.getAllWithAge = {
                 }
         		
                 var diff = (airtime_ms-startzeit_ms)/(3600*1000);
+                    diff = parseFloat(diff.toPrecision(6))
+                
                 // var diff = (airtime_ms-startzeit_ms)/(60*1000);
                 // if (diff<0){
                 //     if(tempsendung.diff < diff){

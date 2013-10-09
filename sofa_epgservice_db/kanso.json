@@ -6,7 +6,7 @@
     "load": "lib/app",
     "handlebars": {
         "all_partials": false,
-        "templates": "html"
+        "templates": "html/templates"
     },    
     "dependencies": {
         "modules": null,
