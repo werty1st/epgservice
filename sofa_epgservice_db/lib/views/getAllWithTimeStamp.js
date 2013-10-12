@@ -10,6 +10,7 @@ exports.getAllWithTimeStamp = {
 
                 out.station = { "name":doc.station.name};
                 out.titel   = doc.titel;
+                out.untertitel = doc.subtitle;
                 out.time    = doc.time;
                 out.endTime = doc.endTime;
                 out.beschreibung = doc.beschreibung;

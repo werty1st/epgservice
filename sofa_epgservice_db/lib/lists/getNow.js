@@ -21,15 +21,13 @@ exports.getNow = function (head, req) {
         //suche aktuelle sendung wenn gefunden, gib sie aus und springe zu nächsten
 		if ( (startzeit <= now) && (now <= endzeit) ){
 			nowsendung = true;
-			delete row.key;
-			delete row.value.diff;
+			delete row.value.rev;
 			out.sendungen.push({sendung:row});
 			continue;
 		}
         //folgesendung gefunden, gib sie aus und beende
 		if (nowsendung){
-			delete row.key;
-			delete row.value.diff;
+			delete row.value.rev;
 			out.sendungen.push({sendung:row});
 			break;
 		}

@@ -23,6 +23,9 @@ exports.getToday = function (head, req) {
 		var startzeit = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 5, 30, 0, 0);
 		var startzeit_ms = 0;
 
+		var endzeit = new Date(row.value.endTime);
+		var endzeit_ms = endzeit.valueOf();
+
 		if( today_int < 50300) //wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
 		{
 		    //gestern
@@ -34,7 +37,16 @@ exports.getToday = function (head, req) {
 		    startzeit_ms = startzeit.valueOf();
 		}
 
+			//5:35		> 5:30 			 4:00       < 5:30
+		if ((endzeit_ms > startzeit_ms) && (airtime_ms < startzeit_ms)){
+			delete row.value.rev;
+			out.sendungen.push({sendung:row});
+		}
+
+
+		//betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
 		if (airtime_ms >= startzeit){
+			delete row.value.rev;
 			out.sendungen.push({sendung:row});
 		}	
 	}
