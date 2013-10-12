@@ -172,7 +172,7 @@ class mycouch {
 			$view = $this->db->get_list("epgservice", "getOlderThen30h", "getAllWithTimeStamp");			
 		}
 
-		//var_dump($view); exit;
+		var_dump($view); exit;
 
 		foreach ($view->rows as $row) {
 			$doc = $row->value;

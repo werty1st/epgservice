@@ -22,7 +22,8 @@ exports.getOlderThen30h = function (head, req) {
             out.key = null;
             out.value = {};
 
-            out.value["_id"]            = row.id;        
+            // out.value["_id"]            = row.id;        
+            out.value["_rev"]           = row.value.rev;        
             out.value["station"]        = row.value.station;
             out.value["titel"]          = row.value.titel;
             out.value["beschreibung"]   = row.value.beschreibung;
