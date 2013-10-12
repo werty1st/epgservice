@@ -177,7 +177,7 @@ class mycouch {
 		foreach ($view->rows as $row) {
 			$doc = $row->value;
 			console("Deleting old Doc: ".$doc->_id);
-			//$this->db->delete($doc);
+			$this->db->delete($doc);
 		}
 	}
 

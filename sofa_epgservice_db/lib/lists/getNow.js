@@ -1,6 +1,7 @@
 exports.getNow = function (head, req) {
 
 	var format = req.query.accept || "";
+	var station = req.query.station || "";
 	var nowsendung = false;
 	var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungen" : [] }};
 	var out = wrapper.response;
@@ -9,6 +10,8 @@ exports.getNow = function (head, req) {
     var c1 = 0;
 
    	while(row = getRow()) {
+   		if (row.value.station.name != station) continue;
+   		
         c1 = c1+1;
 		var now   	  = new Date();
 		var startzeit = new Date(row.value.time);

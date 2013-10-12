@@ -1,3 +1,4 @@
+//php Abhängigkeit
 exports.getOlderThen30h = function (head, req) {
     var header = {};
 	var encoding = req.query.accept || "";
@@ -21,11 +22,15 @@ exports.getOlderThen30h = function (head, req) {
             out.key = null;
             out.value = {};
 
-            out.value["_id"] = row.id;        
-            out.value["stationname"] = row.value.station.name;
-            out.value["time"] = row.value.time;
-            out.value["now"] =  time_now;
-            out.value["diff"] = diff;
+            out.value["_id"]            = row.id;        
+            out.value["station"]        = row.value.station;
+            out.value["titel"]          = row.value.titel;
+            out.value["beschreibung"]   = row.value.beschreibung;
+            out.value["url"]            = row.value.url;
+            out.value["time"]           = row.value.time;
+            out.value["endTime"]        = row.value.endTime;
+            out.value["now"]            = time_now;
+            out.value["diff"]           = diff;        
 
             output.rows.push(out);
         }

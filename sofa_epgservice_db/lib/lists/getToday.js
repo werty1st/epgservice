@@ -1,38 +1,44 @@
 exports.getToday = function (head, req) {
 
 	var format = req.query.accept || "";
-	var firstsendung = {diff:-24}; //startwert, suche sendung mit dem kleinsten Minus 
-	var first = true;			   // oder sendung start=0 dann brauche nwir keine vorherige sendung zu speichern und zu vergleichen
+	var station = req.query.station || "";
 	var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungen" : [] }};
 	var out = wrapper.response;
     var header = {};
 
-	while(row = getRow()){
-		var diff = row.value.diff;
 
-		//if (row.value.station.name.toLowerCase() != station) continue;			
+	while(row = getRow()){	
+		// var time_old = new Date(row.value.time);
+		// var time_now = new Date();
+		// var diff = parseFloat((Math.abs(time_now - time_old)/3600000).toPrecision(4));
+		if (row.value.station.name != station) continue;
 
-		if (diff == 0) { first=false; } //wenn eine sendung um 5:30 anfängt brauchen wir keine vorherige sendung
-	    if (diff < 0) {
-	    	//verlgeichen und speichern order verwerfen
-	        if(firstsendung.diff < diff) {
-	            firstsendung.diff = diff;
-	            firstsendung.row = row;
-	        }
-	    } else {
-	    	//der ausgabe hinzufügen da größer oder gleich null
-	    	delete row.value.diff;
-	    	delete row.key;
-	    	out.sendungen.push({sendung:row});
-	    }			    
+		var today     = new Date();
+		var today_int = (today.getHours()) * 10000 + today.getMinutes() * 100 + today.getSeconds();
+
+		//2013-08-28T05:00:00+02:00
+		var airtime    = new Date(row.value.time);
+		var airtime_ms = airtime.valueOf();
+
+		var startzeit = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 5, 30, 0, 0);
+		var startzeit_ms = 0;
+
+		if( today_int < 50300) //wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
+		{
+		    //gestern
+		    //startzeit = new Date(startzeit.getTime() - 24*3600*1000);
+		    startzeit.setDate(startzeit.getDate() - 1); 
+		    startzeit_ms = startzeit.valueOf();
+		} else                
+		{   //heute
+		    startzeit_ms = startzeit.valueOf();
+		}
+
+		if (airtime_ms >= startzeit){
+			out.sendungen.push({sendung:row});
+		}	
 	}
 
-	if (first) //wurde einen sendung kleiner 0 gefunden entferne das diff feld und füge sie am anfang des arrays ein
-	{
-		delete firstsendung.row.value.diff;
-		delete firstsendung.row.key;
-		out.sendungen.unshift({sendung:firstsendung.row});
-	}	
 
 	if (format == "json") {
 		provides_json(wrapper, header);

@@ -89,8 +89,8 @@
 		    	$("#summary_sender > h3").find(".ui-btn-text").text("Alle Daten nach Sender ("+error_total+")");
 		    }
     		 
-		    // _list/getToday_list/getAllWithAge_view
-		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDF",-24], endkey: ["ZDF",24]},
+		    // '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "ZDF"},
 		    		    function (err, data) {
 		    		    	data = JSON.parse(data).response.sendungen;
 							if (err || data.length == 0) {
@@ -100,7 +100,7 @@
 							}
 							add2table(data, '#all_zdf');
 						});  
-		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDFneo",-24], endkey: ["ZDFneo",24]},
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "ZDFneo"},
 		    		    function (err, data) {
 		    		    	data = JSON.parse(data).response.sendungen;
 							if (err || data.length == 0) {
@@ -110,7 +110,7 @@
 							}
 							add2table(data, '#all_zdfneo');
 						});  
-		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDFinfo",-24], endkey: ["ZDFinfo",24]},
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "ZDFinfo"},
 		    		    function (err, data) {
 		    		    	data = JSON.parse(data).response.sendungen;
 							if (err || data.length == 0) {
@@ -120,7 +120,7 @@
 							}
 							add2table(data, '#all_zdfinfo');
 						});  
-		    db.getList( 'epgservice', 'getToday_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDF.kultur",-24], endkey: ["ZDF.kultur",24]},
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "ZDF.kultur"},
 		    		    function (err, data) {
 		    		    	data = JSON.parse(data).response.sendungen;
 							if (err || data.length == 0) {
@@ -133,15 +133,28 @@
 		    
 
 
-		    db.getList( 'epgservice', 'getOld_list', 'getAllWithAge_view', { accept: 'json'}, function (err, data) {
-		    	data = JSON.parse(data).response.sendungen;
+		    db.getList( 'epgservice', 'getOlderThen30h', 'getAllWithTimeStamp', { accept: 'json'}, function (err, data) {
+		    	data = JSON.parse(data).rows;
 		        if (err || data.length == 0) {
 		            // an error occurred
 		            $('#getold').append("keine Daten");
 		            return console.log(err);
 		        }
-		        console.log(data);
-		        add2table(data, '#getold');
+		        //console.log(data); return;
+				jQuery.each( data, function( i, val ) {
+					//console.log(val);
+					// $( "#getold").append( document.createTextNode( " - " + val ) );
+					var d = val.value;
+					var context = {};
+						context.id= d["_id"];
+						context.titel = d.titel;
+						context.time = d.time;
+						context.endtime = d.endTime;
+
+					var html = handlebars.templates['table_line.html'](context);
+
+					$("#getold").append(html);					
+				});
 		    });  
 
 
