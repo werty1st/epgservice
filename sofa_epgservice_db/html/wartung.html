@@ -31,12 +31,12 @@
 		<!-- 		    <div data-role="collapsible">
 				        <h3>Section 1</h3>
 				        <p>I'm the collapsible content for section 1</p>
-				    </div>
+				    </div>-->
 				    <div data-role="collapsible">
 				        <h3>Alte Daten</h3>
 						<table id="getold">
 						</table>
-				    </div> -->
+				    </div> 
 				    <div id="summary_sender" data-role="collapsible">
 				        <h3>Alle Daten nach Sender</h3>
 
@@ -133,13 +133,15 @@
 		    
 
 
-		    db.getView('epgservice', 'getold_view', function (err, data) {
-		        if (err || data.rows.length == 0) {
+		    db.getList( 'epgservice', 'getOld_list', 'getAllWithAge_view', { accept: 'json'}, function (err, data) {
+		    	data = JSON.parse(data).response.sendungen;
+		        if (err || data.length == 0) {
 		            // an error occurred
 		            $('#getold').append("keine Daten");
 		            return console.log(err);
 		        }
-		        //add2table(data, '#getold');
+		        console.log(data);
+		        add2table(data, '#getold');
 		    });  
 
 

@@ -238,6 +238,27 @@ class SetteeDatabase {
     return $this->save($obj, true);
   }
 
+
+  function get_list($design_doc, $list_name, $view_name, $request = null) {
+    $id = "_design/" . urlencode($design_doc);
+    $list_name = urlencode($list_name);
+    $view_name = urlencode($view_name);
+    $id .= "/_list/$list_name/$view_name";
+   
+    $data = http_build_query($request);
+    
+
+    if (empty($id)) {
+      throw new SetteeWrongInputException("Error: Can't retrieve a document without a uuid.");
+    }
+
+    $full_uri = $this->dbname . "/" . $this->safe_urlencode($id);
+
+    $ret = $this->rest_client->http_get($full_uri, $data);
+    return $ret['decoded'];
+    
+  }
+
   /**
    * Create a new view or update an existing one.
    *

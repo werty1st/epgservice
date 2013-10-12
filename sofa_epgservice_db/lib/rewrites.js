@@ -1,6 +1,8 @@
 /**
  * Rewrite settings to be exported from the design doc
  */
+    timestamp = new Date();
+    timestamp = new Date().valueOf();
 
 module.exports = [
 
@@ -8,6 +10,7 @@ module.exports = [
     {from: '/getById/xml/*',  to: '_show/getByID_show/*', query: { accept: 'xml'} }, 
     {from: '/getById/json/*', to: '_show/getByID_show/*', query: { accept: 'json'} }, 
 
+    {from: '/getOlderThen30h/json', to: '_list/getOlderThen30h/getAllWithTimeStamp', query: { accept: 'json'} }, 
 
     {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'xml', startkey: ["ZDF",-24], endkey: ["ZDF",24]}},
     {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithAge_view', query: { accept: 'json', startkey: ["ZDF",-24], endkey: ["ZDF",24]}},

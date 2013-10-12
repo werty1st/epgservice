@@ -1,2 +1,2 @@
-watch('.*') { system('kanso push') }
+watch('.*') { system('kanso push live') }
 

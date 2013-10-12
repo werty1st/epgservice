@@ -169,10 +169,10 @@ class mycouch {
 		if ($all) {
 			$view = $this->db->get_view("epgservice", "getall_view");			
 		} else {
-			$view = $this->db->get_view("epgservice", "getold_view");			
+			$view = $this->db->get_list("epgservice", "getOlderThen30h", "getAllWithTimeStamp");			
 		}
 
-		//var_dump($view); exit;
+		var_dump($view); exit;
 
 		foreach ($view->rows as $row) {
 			$doc = $row->value;
