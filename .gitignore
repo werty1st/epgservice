@@ -5,6 +5,7 @@ config.php
 *.DS_Store
 .*.swp
 *.out
+emailadressen
 
 
 !.gitignore
