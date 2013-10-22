@@ -22,8 +22,8 @@ class sendung{
 		//$preg_one = preg_match("/\,([^\,]*)$/", $sendungsID, $sendungsID);
 
 		$airtime 		= $sendung->getElementsByTagName('time')->item(0)->nodeValue;
-		$stationName 	= $sendungsID = $sendung->getElementsByTagName('station')->item(0);
-		$stationName 	= $stationName->getAttribute("name");
+		$stationName  	= $sendung->getElementsByTagName('station')->item(0)->getAttribute("name");
+		// $stationName 	= $stationName->getAttribute("name");
 
 		$prehash = $stationName."-".$airtime;
 		$hash 	 = md5($prehash);

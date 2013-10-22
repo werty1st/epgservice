@@ -285,7 +285,11 @@ class SetteeDatabase {
       }
       elseif (is_array($key)) {
         list($startkey, $endkey) = $key;
-        $data = "startkey=" . '"' . $startkey . '"&' . "endkey=" . '"' . $endkey . '"';
+        $data = "startkey=" . $startkey . '&' . "endkey=" . $endkey;
+        // $data = "startkey=" . '"' . $startkey . '"&' . "endkey=" . '"' . $endkey . '"';
+      }
+      elseif (is_object($key)) {
+        $data = json_encode($key);
       }
 
       if ($descending) {
@@ -294,12 +298,14 @@ class SetteeDatabase {
     }
 
 
-
     if (empty($id)) {
       throw new SetteeWrongInputException("Error: Can't retrieve a document without a uuid.");
     }
 
     $full_uri = $this->dbname . "/" . $this->safe_urlencode($id);
+
+    var_dump($full_uri);
+    var_dump($data);
 
     $ret = $this->rest_client->http_get($full_uri, $data);
     return $ret['decoded'];

@@ -1,0 +1,43 @@
+0530 neue daten
+0531 die selben daten
+0532 neue daten (da geänderte startzeiten)
+
+{
+   "_id": "02013281322ab582c95f2bda20b4ef09",
+
+
+cache benutzen
+
+lade neue
+lade cache
+
+vergleiche neue mit cache
+
+a 		=> a'
+b 		=> b'
+b_neu 	=> c'
+c 		=> d'
+d 		=> 
+
+
+WEG1
+erkenne zu viele updates
+lade tag aus DB und vergleiche mit den neu zu erzeugenden einträgen
+
+
+weg2
+verhindere upload von duplikaten
+
+weg3
+ausliefern von duplikaten verhindern
+
+
+weg4
+suche freien platz für sendung
+
+xml->sendung
+rufe mit sendungsStartZeit+EndZeit in datenbank
+db antwortet mit ids die die sendung überschneiden
+lösche die IDs
+lade neue sendung hoch
+

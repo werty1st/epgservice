@@ -57,33 +57,40 @@ class mycouch {
     //function __destruct() {}
 
 
-    private function store1doc($newdoc, $fortschritt) {
+	private function updateCounter($doc) {
+		//throw new Exception('Not implemented yet.');
+		//speichere zeit und sender für änderungsxml
+	}
 
-		$newdocid = $newdoc["_id"];
+    private function store1doc($doc, $fortschritt) {
 
-		// echo "docid: $newdocid\n";
+		$docid = $doc["_id"];
+
+		// echo "docid: $docid\n";
 		try {
-		    $olddoc = $this->db->get($newdocid,true);
+		    $olddoc = $this->db->get($docid,true);
 		    $olddocrev = $olddoc["_rev"];	
-		    //echo "Document $newdocid already exists!\n";
+		    //echo "Document $docid already exists!\n";
 	
 			//no error Doc schon vorhanden
-			if ($this->updateORskip($olddoc, $newdoc)){
+			if ($this->updateORskip($olddoc, $doc)){
 				//update
-				$newdoc["_rev"] = $olddoc["_rev"];				
-				echo "Updateing doc: ".$newdoc["_id"]." with revision: ".$newdoc["_rev"]."\n\n";				
+				$doc["_rev"] = $olddoc["_rev"];		
+				console("Updateing doc: ".$doc["_id"]." with revision: ".$doc["_rev"]);
+				echo "\n";
+				$this->updateCounter($doc);
 			} else {
-				//echo "Document $newdocid needs no update!\n\n";
+				//echo "Document $docid needs no update!\n\n";
 				return;
 			}
 		} catch ( Exception $e ) {
 			//error Doc nicht vorhanden
-			//echo "Document $newdocid not exists!\n\n";
+			//echo "Document $docid not exists!\n\n";
 
 			//irgend ein fehler filter für 404 wäre schön
 			
 		    // if ( $e->getCode() == 404 ) {
-		    // 	echo "Document $newdocid does not exist!\n";
+		    // 	echo "Document $docid does not exist!\n";
 		    // } else {
 		    // 	$error = json_decode($e->getMessage());
 		    // 	print_r($error);
@@ -92,15 +99,60 @@ class mycouch {
 		    // }
 		}	    
 	    
-    	$response = $this->db->save($newdoc);	    	// couchConflictException
+		/* NEU NEU NEU
+		** get Range
+			http://localhost:9999/epgservice/_design/epgservice/_
+			view/getRangeStartEndTime?startkey=["ZDF","2013-10-22T12:00:00+02:00"]&endkey=["ZDF","2013-10-22T15:00:00+02:00"]
+		*/
+		$this->machMirPlatz($doc);
+
+
+
+    	$response = $this->db->save($doc);	    	// couchConflictException
+
 		//neue revision:
 		//echo "updated revision: ".$response->_rev."\n";		
 
 	    if (microtime(true) - $this->counter > 0.2) {
 	    	$this->counter = microtime(true);
-	   		$out = $fortschritt."% verarbeite Document: ". $newdoc["titel"];
+	   		$out = $fortschritt."% verarbeite Document: ". $doc["titel"];
 	 		console($out);				
 		}
+    }
+
+    private function machMirPlatz($doc) {
+
+    	//Startkey
+    	$startkey = '["'.$doc["station"]["name"].'","'.$doc["time"].'"]';
+    	$endkey   = '["'.$doc["station"]["name"].'","'.$doc["endTime"].'"]';
+
+    	// $startkey = urlencode($startkey);
+    	// $endkey = urlencode($endkey);
+		
+		//startkey=["ZDF","2013-10-22T12:00:00+02:00"]&endkey=["ZDF","2013-10-22T15:00:01+02:00"]
+    	//$url = "startkey="
+
+
+    	$view = $this->db->get_view("epgservice", "getRangeStartEndTime", array($startkey, $endkey));
+
+    	if ($doc["time"] >= "2013-10-22T12:15:00+02:00" ){
+    	//anzeige mein start mein ende
+    	//db start und ende
+
+    		echo "doc start: ". $doc["time"]."\n";
+    		echo "doc ende : ". $doc["endTime"]."\n\n";
+
+			echo "db start: ". $view->rows[0]->key[1]."\n";
+    		echo "db ende : ". $view->rows[0]->value[0]."\n\n";
+    		
+			// var_dump($view);
+			// var_dump($doc);
+
+    		TODO: neue überschneidungen löschen und update beobachten
+
+    		exit;
+    	}
+
     }
 
 

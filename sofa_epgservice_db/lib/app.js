@@ -9,6 +9,11 @@ module.exports = {
     views: require('./views/index'),
     rewrites: require('./rewrites'),
     jstoxml: require('./jstoxml')
+
+    //updates: require('./updates'),
+    //filters: require('./filters'),
+    //validate_doc_update: require('./validate')
+
 };
 
 
