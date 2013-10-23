@@ -41,3 +41,23 @@ db antwortet mit ids die die sendung überschneiden
 lösche die IDs
 lade neue sendung hoch
 
+	#									#
+	#####################################
+	#									#
+
+#						#
+######################### ende größer als anfang und ende kleiner als ende
+#						#
+
+
+				#									#
+				##################################### anfang größer als anfang und anfang kleiner als ende
+				#									#
+
+			#				#
+			################# anfang größer als anfang und anfang kleiner als ende
+			#				#
+
+#													#
+##################################################### anfang kleiner als anfang und ende größer als ende
+#													#

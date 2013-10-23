@@ -207,6 +207,8 @@ class SetteeDatabase {
       $document = json_decode($document);
     }
 
+    // var_dump($document); exit;
+
     $full_uri = $this->dbname . "/" . $this->safe_urlencode($document->_id) . "?rev=" . $document->_rev;
     $this->rest_client->http_delete($full_uri);
   }
@@ -288,9 +290,6 @@ class SetteeDatabase {
         $data = "startkey=" . $startkey . '&' . "endkey=" . $endkey;
         // $data = "startkey=" . '"' . $startkey . '"&' . "endkey=" . '"' . $endkey . '"';
       }
-      elseif (is_object($key)) {
-        $data = json_encode($key);
-      }
 
       if ($descending) {
         $data .= "&descending=true";
@@ -304,8 +303,8 @@ class SetteeDatabase {
 
     $full_uri = $this->dbname . "/" . $this->safe_urlencode($id);
 
-    var_dump($full_uri);
-    var_dump($data);
+     // var_dump($full_uri);
+     // var_dump($data);
 
     $ret = $this->rest_client->http_get($full_uri, $data);
     return $ret['decoded'];

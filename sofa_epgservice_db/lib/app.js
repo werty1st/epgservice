@@ -8,9 +8,9 @@ module.exports = {
     lists: require('./lists/index'),
     views: require('./views/index'),
     rewrites: require('./rewrites'),
-    jstoxml: require('./jstoxml')
+    jstoxml: require('./jstoxml'),
 
-    //updates: require('./updates'),
+    updates: require('./updates/index')
     //filters: require('./filters'),
     //validate_doc_update: require('./validate')
 

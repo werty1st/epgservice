@@ -58,8 +58,29 @@ class mycouch {
 
 
 	private function updateCounter($doc) {
+
+        return;
+
 		//throw new Exception('Not implemented yet.');
 		//speichere zeit und sender für änderungsxml
+        echo "Update XXXXXXXXXXXXXXXX\n\n";
+
+        $timestampDoc = (object)null;
+
+        $timestampDoc->{"_id"}       = $doc["station"]["name"] ."_latest";
+        $timestampDoc->id            = $doc["station"]["name"] ."_latest";
+        $timestampDoc->type          = "lastmodified";
+        $timestampDoc->station->name = $doc["station"]["name"];
+        $timestampDoc->timestamp     = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
+        //$timestampDoc->{"_rev"} = $doc["_rev"];
+
+        var_dump(json_encode($timestampDoc)); exit;
+
+        //todo settee kann kein update wechsel to php on couch oder http://www.saggingcouch.com/
+
+        $olddoc = $this->db->get($docid,true);
+        $response = $this->db->save($doc);
+
 	}
 
     private function store1doc($doc, $fortschritt) {
@@ -104,9 +125,9 @@ class mycouch {
 			http://localhost:9999/epgservice/_design/epgservice/_
 			view/getRangeStartEndTime?startkey=["ZDF","2013-10-22T12:00:00+02:00"]&endkey=["ZDF","2013-10-22T15:00:00+02:00"]
 		*/
-		$this->machMirPlatz($doc);
-
-
+		if ($this->machMirPlatz($doc)){
+            $this->updateCounter($doc);
+        }
 
     	$response = $this->db->save($doc);	    	// couchConflictException
 
@@ -123,8 +144,8 @@ class mycouch {
     private function machMirPlatz($doc) {
 
     	//Startkey
-    	$startkey = '["'.$doc["station"]["name"].'","'.$doc["time"].'"]';
-    	$endkey   = '["'.$doc["station"]["name"].'","'.$doc["endTime"].'"]';
+    	// $startkey = '["'.$doc["station"]["name"].'","'.$doc["time"].'"]';
+    	// $endkey   = '["'.$doc["station"]["name"].'","'.$doc["endTime"].'"]';
 
     	// $startkey = urlencode($startkey);
     	// $endkey = urlencode($endkey);
@@ -132,30 +153,44 @@ class mycouch {
 		//startkey=["ZDF","2013-10-22T12:00:00+02:00"]&endkey=["ZDF","2013-10-22T15:00:01+02:00"]
     	//$url = "startkey="
 
+        $platzGeschaffen = false;
+        $na = $doc["time"];
+        $ne = $doc["endTime"];
 
-    	$view = $this->db->get_view("epgservice", "getRangeStartEndTime", array($startkey, $endkey));
 
-    	if ($doc["time"] >= "2013-10-22T12:15:00+02:00" ){
-    	//anzeige mein start mein ende
-    	//db start und ende
 
-    		echo "doc start: ". $doc["time"]."\n";
-    		echo "doc ende : ". $doc["endTime"]."\n\n";
+    	$view = $this->db->get_view("epgservice", "getRangeStartEndTime", $doc["station"]["name"]);
 
-			echo "db start: ". $view->rows[0]->key[1]."\n";
-    		echo "db ende : ". $view->rows[0]->value[0]."\n\n";
-    		
-			// var_dump($view);
-			// var_dump($doc);
+    	foreach ($view->rows as $row) {
+            $id = $row->id;
+            $startzeit = $aa = $row->value[0];
+            $endzeit   = $ae = $row->value[1];
+            $rev     = $row->value[2];
+    		$titel     = $row->value[3];
 
-    		TODO: neue überschneidungen löschen und update beobachten
+            if(( $ne > $aa && $ne < $ae) ||
+              ( $na > $aa && $na < $ae) ||
+              ( $na < $aa && $ne > $ae)) {                
+                //Überschneidung löschen
 
-    		exit;
-    	}
+                //neues doc
+                echo "\n";
+                echo "doc sendung: ". $doc["titel"]."\n";
+                echo "doc start: ". $doc["time"]."\n";
+                echo "doc ende : ". $doc["endTime"]."\n\n";
 
+                //altes doc
+                //$this->db->delete("{ \"_id\": \"$id\", \"_rev\": \"$rev\" }");
+                $platzGeschaffen = true;
+                echo "Lösche veraltetes Programm:\n";
+                echo "db sendung: $titel\n";
+                echo "db start: $startzeit\n";
+                echo "db ende : $endzeit\n\n";
+              }            
+        }
+
+        return $platzGeschaffen;
     }
-
-
 
     private function updateORskip($doc1,$doc2){
 
@@ -172,11 +207,10 @@ class mycouch {
 		return true;
     }
 
-
 	public function store2db($sender) {
 
 		$sendungen = $sender->getSendungen(); //nodelist
-		
+	
 		//sendung hochladen
 		$imax = $sendungen->length;
 		$i1 = 1;

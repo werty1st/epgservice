@@ -87,7 +87,6 @@ class sender_fromfile extends sender{
 	protected $myxml;
 
 	function __construct ($filename) {
-
 		$this->myxml = new DOMDocument();
 		$this->myxml->load($filename);
 	}	

@@ -18,8 +18,10 @@ exports.getRangeStartEndTime = {
                 out.rev     = doc["_rev"];
 
                 //if (diff >= -5)
-                emit([doc.station.name,doc.time],    [doc.endTime, doc.titel]);                
+                emit(doc.station.name,    [doc.time,doc.endTime, doc["_rev"], doc.titel]);                
         		// emit([doc.station.name,doc.endTime], ["B", doc.titel]);                
+                // emit([doc.station.name,doc.time],    ["A", doc.titel]);                
+                // emit([doc.station.name,doc.endTime], ["B", doc.titel]);
         	}
     	}
 };

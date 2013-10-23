@@ -26,16 +26,17 @@ foreach ($senderliste as $station => $value) {
 	//all
 	console("Lade Programmdaten von: ".$station);
     echo "\n";
-	// console("Filename: ".$cache_dir."/".$station.".xml"."\n";
 
-		/*
+        //einzelne sendungen durchlaufen    
+        $xml_allday = new Sender($senderliste[$station]);
+        file_put_contents($cache_dir."/".$station.".xml",$xml_allday->toString());
+        /*
         */
-		$xml_allday = new Sender($senderliste[$station]);
-		//einzelne sendungen durchlaufen	
-		file_put_contents($cache_dir."/".$station.".xml",$xml_allday->toString());
-		/**/
-	/// ODER
-		//$xml_allday = new sender_fromfile($cache_dir."/".$station.".xml");
+	    /// ODER
+        /*
+		$xml_allday = new sender_fromfile($cache_dir."/".$station.".xml");
+        */
+
 
 	$couch->store2db($xml_allday);
 	echo "\n";

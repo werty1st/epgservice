@@ -2,10 +2,10 @@
 error_reporting(E_ERROR | E_PARSE);
 
 
-$senderliste = array ("zdf"	=> "29381224",
-					  "zdfneo"	=> "29381364",
-					  "zdfkultur"=> "29381288",
-					  "zdfinfo"	=> "29381362");
+$senderliste = array ("ZDF"	=> "29381224",
+					  "ZDFneo"	=> "29381364",
+					  "ZDF.kultur"=> "29381288",
+					  "ZDFinfo"	=> "29381362");
 
 $url = "http://www.zdf.de/ZDF/zdfportal/xml/object/";
 $action = "action=getAllItems";
