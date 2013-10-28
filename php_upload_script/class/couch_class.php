@@ -87,6 +87,8 @@ class mycouch {
 
 		$docid = $doc["_id"];
 
+        $doc["item_created"] = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
+
 		// echo "docid: $docid\n";
 		try {
 		    $olddoc = $this->db->get($docid,true);

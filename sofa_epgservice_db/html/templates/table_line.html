@@ -1,7 +1,6 @@
-<tr onClick="getDetails(this);" style="color:{{color}}">
-	<td>{{i}}}</td>
-	<td><div  class='station' id='{{id}}}'></div>{{station}}</td>
-		<td>{{titel}}</td>
+<tr style="color:{{color}}">
+	<td class="i">{{i}}}</td>
+		<td><a style="color: inherit;" id='{{id}}}' href="void(0)" onclick="return getDetails(this.id);">{{titel}}</a></td>
 		<td>{{age}}</td>
 	<td>
 		<table>
@@ -12,7 +11,19 @@
 			<tr>
 				<td>Programmende</td>
 				<td class="time">{{endtime}}</td>
-			</tr>
+			</tr>		
 		</table>
 	</td>
+	<td>
+		<table>
+			<tr>
+				<td>Erstellt</td>
+				<td class="time">{{created}}</td>
+			</tr>
+			<tr>
+				<td>Letzte Änderung</td>
+				<td class="time">{{created}}</td>
+			</tr>		
+		</table>
+	</td>	
 </tr>

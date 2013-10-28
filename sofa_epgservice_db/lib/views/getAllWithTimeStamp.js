@@ -15,6 +15,7 @@ exports.getAllWithTimeStamp = {
                 out.endTime = doc.endTime;
                 out.beschreibung = doc.beschreibung;
                 out.url     = doc.url;
+                out.item_created     = doc.item_created;
                 out.rev     = doc["_rev"];
 
                 //if (diff >= -5)

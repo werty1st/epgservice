@@ -75,6 +75,7 @@
 		<script type="text/javascript">
 		    var db = require('db').use("epgservice");//current();
 		    var handlebars = require('handlebars');
+
 			handlebars.registerHelper("prettifyTime", function(timestamp) {
 				options = {hour: "numeric", minute: "numeric"};				
 			    return new Intl.DateTimeFormat("de-DE", options).format(new Date(timestamp));
@@ -91,15 +92,16 @@
     		 
 		    // '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
 		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "ZDF"},
-		    		    function (err, data) {
-		    		    	data = JSON.parse(data).response.sendungen;
-							if (err || data.length == 0) {
-								// an error occurred
-								$('#all_zdf').append("keine Daten");
-								return console.log(err);
-							}
-							add2table(data, '#all_zdf');
-						});  
+	    		    function (err, data) {
+	    		    	data = JSON.parse(data).response.sendungen;
+						if (err || data.length == 0) {
+							// an error occurred
+							$('#all_zdf').append("keine Daten");
+							return console.log(err);
+						}
+						add2table(data, '#all_zdf');
+					}); 
+
 		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "ZDFneo"},
 		    		    function (err, data) {
 		    		    	data = JSON.parse(data).response.sendungen;
@@ -158,8 +160,8 @@
 		    });  
 
 
-		    function getDetails(item) {
-		    	var id = $(item).find(".station").attr("id");
+		    function getDetails(id) {
+		    	//var id = $(item).find(".station").attr("id");
 		    	console.log(id);
 
 
@@ -177,6 +179,7 @@
 					$("#dialogPage").replaceWith(html);
 					$.mobile.changePage("#dialogPage");
 			    });  
+			    return false;
 			}
 
 
@@ -198,9 +201,12 @@
 					var d = data[i].sendung;
 					var context = {};
 						context.id= d.id;
+						context.i = i+1;
 						context.titel = d.value.titel;
 						context.time = d.value.time;
 						context.endtime = d.value.endTime;
+						context.created = d.value.item_created;
+
 
 					if (lastdata){
 						if (lastdata.value.endTime == d.value.time) { // ok
