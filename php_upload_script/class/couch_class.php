@@ -59,82 +59,91 @@ class mycouch {
 
 	private function updateCounter($doc) {
 
-        return;
+        $docid = "lastmodified";
+        $last_mod_do = "";
+
+        // echo "docid: $docid\n";
+        try {
+            $last_mod_doc = $this->db->get($docid,true);
+            // echo "Update $docid";
+
+        } catch ( Exception $e ) {
+            // echo "Doc nicht vorhanden";
+            $last_mod_doc = (object)null;
+            $last_mod_doc->_id = $docid;
+
+        }       
 
 		//throw new Exception('Not implemented yet.');
 		//speichere zeit und sender für änderungsxml
-        echo "Update XXXXXXXXXXXXXXXX\n\n";
 
-        $timestampDoc = (object)null;
 
-        $timestampDoc->{"_id"}       = $doc["station"]["name"] ."_latest";
-        $timestampDoc->id            = $doc["station"]["name"] ."_latest";
-        $timestampDoc->type          = "lastmodified";
-        $timestampDoc->station->name = $doc["station"]["name"];
-        $timestampDoc->timestamp     = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
+        //$last_mod_doc->type          = "lastmodified";        
+        $last_mod_doc["stations"][$doc["station"]["name"]]["timestamp"] = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
         //$timestampDoc->{"_rev"} = $doc["_rev"];
 
-        var_dump(json_encode($timestampDoc)); exit;
 
         //todo settee kann kein update wechsel to php on couch oder http://www.saggingcouch.com/
 
-        $olddoc = $this->db->get($docid,true);
-        $response = $this->db->save($doc);
+        $response = $this->db->save($last_mod_doc);
 
+        // var_dump($last_mod_doc );
+        // var_dump($doc["station"]["name"]); sleep(5);
 	}
 
     private function store1doc($doc, $fortschritt) {
 
 		$docid = $doc["_id"];
-
-        $doc["item_created"] = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
+        $now   = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
 
 		// echo "docid: $docid\n";
 		try {
 		    $olddoc = $this->db->get($docid,true);
-		    $olddocrev = $olddoc["_rev"];	
+            $olddocrev = $olddoc["_rev"];
+
+            //zeiten speichern und dann aus DB object löschen um sie mit xml erzeugtem verlgeichen zu können
+            $old_item_created  = $olddoc["item_created"];
+            $old_item_modified = $olddoc["item_modified"];
+
+            unset($olddoc["item_created"]);
+		    unset($olddoc["item_modified"]);
+
 		    //echo "Document $docid already exists!\n";
 	
 			//no error Doc schon vorhanden
 			if ($this->updateORskip($olddoc, $doc)){
 				//update
 				$doc["_rev"] = $olddoc["_rev"];		
-				console("Updateing doc: ".$doc["_id"]." with revision: ".$doc["_rev"]);
+				
 				echo "\n";
+                console("Updateing doc: ".$doc["_id"]." with revision: ".$doc["_rev"]);
+
+                $doc["item_created"] = $old_item_created;
+                $doc["item_modified"] = $now;
+
 				$this->updateCounter($doc);
-			} else {
-				//echo "Document $docid needs no update!\n\n";
+			} else {                
+                echo "\n\tDocument $docid needs no update!\t";
 				return;
 			}
 		} catch ( Exception $e ) {
-			//error Doc nicht vorhanden
-			//echo "Document $docid not exists!\n\n";
-
-			//irgend ein fehler filter für 404 wäre schön
-			
-		    // if ( $e->getCode() == 404 ) {
-		    // 	echo "Document $docid does not exist!\n";
-		    // } else {
-		    // 	$error = json_decode($e->getMessage());
-		    // 	print_r($error);
-		    // 	exit;
-		    // 	throw new Exception("DB Error: ". $e->getMessage());
-		    // }
-		}	    
+			//error Doc nicht vorhanden also neus speichern
+        }       
 	    
-		/* NEU NEU NEU
-		** get Range
-			http://localhost:9999/epgservice/_design/epgservice/_
-			view/getRangeStartEndTime?startkey=["ZDF","2013-10-22T12:00:00+02:00"]&endkey=["ZDF","2013-10-22T15:00:00+02:00"]
-		*/
-		if ($this->machMirPlatz($doc)){
-            $this->updateCounter($doc);
+
+		$this->machMirPlatz($doc);
+       
+
+        if (!array_key_exists("item_created", $doc)){
+            //echo"\n\tDocument ".$doc["_id"]." is new\t";
+            $doc["item_created"]  = $now;
+            $doc["item_modified"] = $now;
+
         }
+        $response = $this->db->save($doc);          // couchConflictException
 
-    	$response = $this->db->save($doc);	    	// couchConflictException
-
-		//neue revision:
-		//echo "updated revision: ".$response->_rev."\n";		
+        $this->updateCounter($doc);
+	
 
 	    if (microtime(true) - $this->counter > 0.2) {
 	    	$this->counter = microtime(true);
@@ -182,7 +191,7 @@ class mycouch {
                 echo "doc ende : ". $doc["endTime"]."\n\n";
 
                 //altes doc
-                //$this->db->delete("{ \"_id\": \"$id\", \"_rev\": \"$rev\" }");
+                $this->db->delete("{ \"_id\": \"$id\", \"_rev\": \"$rev\" }");
                 $platzGeschaffen = true;
                 echo "Lösche veraltetes Programm:\n";
                 echo "db sendung: $titel\n";
@@ -198,6 +207,7 @@ class mycouch {
 
     	$diff = arrayRecursiveDiff($doc1,$doc2);
     	// print_r($diff);
+        // exit;
 
     	if (count($diff) == 1){
     		if (array_key_exists("_rev", $diff)){
@@ -206,12 +216,17 @@ class mycouch {
     		}
     	}
 		//needs update
+
+        echo "Änderungen:\n";
+        print_r($diff);
+
 		return true;
     }
 
 	public function store2db($sender) {
 
 		$sendungen = $sender->getSendungen(); //nodelist
+        echo "\n";
 	
 		//sendung hochladen
 		$imax = $sendungen->length;
@@ -232,22 +247,9 @@ class mycouch {
 		    $array1 = $array1["sendung"];		    
 		    $this->store1doc($array1, $fortschritt);		      
 		}
-		console("Es wurden $imax Sendungen gespeichert");
+		console("Es wurden $imax Sendungen verarbeitet");
 		echo "\n";
 	}
-
-	// private function object2array($data) {
-	//     if (is_array($data) || is_object($data))
-	//     {
-	//         $result = array();
-	//         foreach ($data as $key => $value)
-	//         {
-	//             $result[$key] = $this->object2array($value);
-	//         }
-	//         return $result;
-	//     }
-	//     return $data;
-	// }
 
 	public function cleanup($all = false){
 		//alles mit endtime > 24h löschen

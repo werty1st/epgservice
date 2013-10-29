@@ -2,7 +2,7 @@ exports.getRangeStartEndTime = {
 	map: function (doc) {
             //var tempsendung = {}; //speichere letzte sendung vor 5:30
             var out = {};
-        	if (doc.station) {
+        	if (doc.station ) {
                
         		//2013-08-28T05:00:00+02:00
                 var airtime    = new Date(doc.time);
