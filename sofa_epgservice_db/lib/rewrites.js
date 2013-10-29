@@ -38,6 +38,9 @@ module.exports = [
     {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
 
     {from: '/status', to: '_list/status/getAllWithTimeStamp', query: { accept: 'json'}},
+    
+    {from: '/lastModified/xml',  to: '_show/lastModified/lastmodified', query: { accept: 'xml'} }, 
+    {from: '/lastModified/json', to: '_show/lastModified/lastmodified', query: { accept: 'json'} },     
 
     {from: '/crossdomain.xml', to: 'html/crossdomain.xml'},
 

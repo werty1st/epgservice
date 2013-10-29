@@ -14,7 +14,9 @@
     var db = require('db').use("epgservice");//current();
     var $ = require('jquery');
 
-    db.getList('epgservice', 'getNow_list', 'getAllWithAge_view', { accept: 'xml', startkey: ["ZDF",-50], endkey: ["ZDF",50]}, function (err, data) {
+    //getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
+
+    db.getList('epgservice', 'getNow_list', 'getAllWithTimeStamp', { accept: 'xml', station: "ZDF"}, function (err, data) {
         if (err) {
             // an error occurred
             return console.log(err);
@@ -25,7 +27,7 @@
         $('#xml1').append(ndata);
     });  
 
-    db.getList('epgservice', 'getNow_list', 'getAllWithAge_view', { accept: 'json', startkey: ["ZDF",-50], endkey: ["ZDF",50]}, function (err, data) {
+    db.getList('epgservice', 'getNow_list', 'getAllWithTimeStamp', { accept: 'json', station: "ZDF"}, function (err, data) {
         if (err) {
             // an error occurred
             return console.log(err);
@@ -76,6 +78,10 @@ http://sofa01.zdf.de/epgservice/zdf/now/json
 
 
 	http://sofa01.zdf.de/epgservice/getById/json/
+	
+
+	http://sofa01.zdf.de/epgservice/lastModified/json
+	http://sofa01.zdf.de/epgservice/lastModified/xml
 
 </pre>
 

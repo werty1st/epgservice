@@ -22,12 +22,16 @@ exports.getNow = function (head, req) {
 		if ( (startzeit <= now) && (now <= endzeit) ){
 			nowsendung = true;
 			delete row.value.rev;
+			delete row.value.item_created;
+			delete row.value.item_modified;
 			out.sendungen.push({sendung:row});
 			continue;
 		}
         //folgesendung gefunden, gib sie aus und beende
 		if (nowsendung){
 			delete row.value.rev;
+			delete row.value.item_created;
+			delete row.value.item_modified;
 			out.sendungen.push({sendung:row});
 			break;
 		}

@@ -40,6 +40,8 @@ exports.getToday = function (head, req) {
 			//5:35		> 5:30 			 4:00       < 5:30
 		if ((endzeit_ms > startzeit_ms) && (airtime_ms < startzeit_ms)){
 			delete row.value.rev;
+			delete row.value.item_created;
+			delete row.value.item_modified;			
 			out.sendungen.push({sendung:row});
 		}
 
@@ -47,6 +49,8 @@ exports.getToday = function (head, req) {
 		//betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
 		if (airtime_ms >= startzeit){
 			delete row.value.rev;
+			delete row.value.item_created;
+			delete row.value.item_modified;			
 			out.sendungen.push({sendung:row});
 		}	
 	}

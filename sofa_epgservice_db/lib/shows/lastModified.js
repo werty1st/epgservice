@@ -1,4 +1,4 @@
-exports.getByID = function(doc, req) {
+exports.lastModified = function(doc, req) {
 	//"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
 
 	// var headers_Accept = req.headers.Accept; 
@@ -28,12 +28,12 @@ function provides_json(doc, req) {
 				}
 			}
 	} else {		
-		doc['id'] = doc['_id'];
-		delete doc['_id'];
-		delete doc['_rev'];
+		// doc['id'] = doc['_id'];
+		// delete doc['_id'];
+		// delete doc['_rev'];
 		delete doc['_revisions'];
-		delete doc['item_created'];
-		delete doc['item_modified'];
+		// delete doc['item_created'];
+		// delete doc['item_modified'];
 
 
 		
@@ -64,12 +64,12 @@ function provides_xml(doc, req) {
 	} else {
 		myxml = require('lib/jstoxml');
 		
-		doc['id'] = doc['_id'];
-		delete doc['_id'];
-		delete doc['_rev'];
+		// doc['id'] = doc['_id'];
+		// delete doc['_id'];
+		// delete doc['_rev'];
 		delete doc['_revisions'];
-		delete doc['item_created'];
-		delete doc['item_modified'];
+		// delete doc['item_created'];
+		// delete doc['item_modified'];
 		
 
 		var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungsdetails" : [] }};
