@@ -69,24 +69,17 @@ class mycouch {
 
         } catch ( Exception $e ) {
             // echo "Doc nicht vorhanden";
-            $last_mod_doc = (array)null;
-            $last_mod_doc->_id = $docid;
-
+            $last_mod_doc = (Array)null;
+            $last_mod_doc["_id"] = $docid;
         }       
-
-		//throw new Exception('Not implemented yet.');
-		//speichere zeit und sender für änderungsxml
-
 
         //$last_mod_doc->type          = "lastmodified";        
         $last_mod_doc["stations"][$doc["station"]["name"]]["timestamp"] = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
         //$timestampDoc->{"_rev"} = $doc["_rev"];
 
-
         //todo settee kann kein update wechsel to php on couch oder http://www.saggingcouch.com/
 
         $response = $this->db->save($last_mod_doc);
-
         // var_dump($last_mod_doc );
         // var_dump($doc["station"]["name"]); sleep(5);
 	}
