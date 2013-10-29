@@ -64,12 +64,12 @@ class mycouch {
 
         // echo "docid: $docid\n";
         try {
-            $last_mod_doc = $this->db->get($docid,true);
+            $last_mod_doc = $this->db->get($docid,false);
             // echo "Update $docid";
 
         } catch ( Exception $e ) {
             // echo "Doc nicht vorhanden";
-            $last_mod_doc = (object)null;
+            $last_mod_doc = (array)null;
             $last_mod_doc->_id = $docid;
 
         }       
