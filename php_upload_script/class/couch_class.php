@@ -64,7 +64,7 @@ class mycouch {
 
         // echo "docid: $docid\n";
         try {
-            $last_mod_doc = $this->db->get($docid,false);
+            $last_mod_doc = $this->db->get($docid,true);
             // echo "Update $docid";
 
         } catch ( Exception $e ) {
