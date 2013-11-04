@@ -10,8 +10,6 @@ module.exports = [
     {from: '/getById/xml/*',  to: '_show/getByID_show/*', query: { accept: 'xml'} }, 
     {from: '/getById/json/*', to: '_show/getByID_show/*', query: { accept: 'json'} }, 
 
-    {from: '/getOlderThen30h/json', to: '_list/getOlderThen30h/getAllWithTimeStamp', query: { accept: 'json'} }, 
-
     {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
     {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
 
@@ -37,12 +35,17 @@ module.exports = [
     {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
     {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
 
-    {from: '/status', to: '_list/status/getAllWithTimeStamp', query: { accept: 'json'}},
     
     {from: '/lastModified/xml',  to: '_show/lastModified/lastmodified', query: { accept: 'xml'} }, 
     {from: '/lastModified/json', to: '_show/lastModified/lastmodified', query: { accept: 'json'} },     
 
     {from: '/crossdomain.xml', to: 'html/crossdomain.xml'},
+
+    //php
+    {from: '/getOlderThen30h/json', to: '_list/getOlderThen30h/getAllWithTimeStamp', query: { accept: 'json'} }, 
+    
+    //monitoring
+    {from: '/status', to: '_list/status/getAllWithTimeStamp', query: { accept: 'json'}},
 
     {from: '/', to: 'index.html'},
     {from: '/wartung', to: 'html/wartung.html'},

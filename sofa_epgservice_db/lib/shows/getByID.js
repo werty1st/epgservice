@@ -25,6 +25,8 @@ function provides_json(doc, req) {
 			body : '{ "Error": "Document not found"}',
 			headers : {
 				"Content-Type" : "application/json; charset=utf-8",
+				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Vary": "Accept-Encoding"
 				}
 			}
 	} else {		
@@ -44,6 +46,8 @@ function provides_json(doc, req) {
 			body : JSON.stringify(wrapper),
 			headers : {
 				"Content-Type" : "application/json; charset=utf-8",
+				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Vary": "Accept-Encoding"
 				// "X-My-Own-Header": "you can set your own headers"
 				}
 		}		
@@ -59,6 +63,8 @@ function provides_xml(doc, req) {
 			body : "<xml><Error>Document not found</Error></xml>",
 			headers : {
 				"Content-Type" : "application/xml; charset=utf-8",
+				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Vary": "Accept-Encoding"
 				}
 			}
 	} else {
@@ -87,6 +93,8 @@ function provides_xml(doc, req) {
 			body : xml2,
 			headers : {
 				"Content-Type" : "application/xml; charset=utf-8",
+				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Vary": "Accept-Encoding"
 				// "X-My-Own-Header": "you can set your own headers"
 				}
 		}		

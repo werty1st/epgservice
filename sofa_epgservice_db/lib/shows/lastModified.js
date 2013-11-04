@@ -5,11 +5,34 @@ exports.lastModified = function(doc, req) {
 
 	var format = req.query.accept;
 
+	var expires = new Date();
+	expires.setMinutes(expires.getMinutes()+5);
+
+	var lastModified = doc.stations["ZDF.kultur"].timestamp;
+	
+	if (lastModified < doc.stations.ZDFneo.timestamp)
+		lastModified = doc.stations.ZDFneo.timestamp;
+	if (lastModified < doc.stations.ZDF.timestamp)
+		lastModified = doc.stations.ZDF.timestamp;
+	if (lastModified < doc.stations.ZDFinfo.timestamp)
+		lastModified = doc.stations.ZDFinfo.timestamp;
+	if (lastModified < doc.stations.ZDF.timestamp)
+		lastModified = doc.stations.ZDF.timestamp;
+
+	var headers = {
+				"Content-Type" : "application/json; charset=utf-8",
+				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Edge-control": "max-age=60",
+				"Vary": "Accept-Encoding",
+				"Expires" : expires,
+				"Last-Modified" : lastModified
+				};
+
 	if (format == "json") {
-		return provides_json(doc, req);
+		return provides_json(doc, req, headers);
 
 	}else if (format == "xml") {
-		return provides_xml(doc, req);
+		return provides_xml(doc, req, headers);
 	} else {
 		//TODO accept fehlt oder demo seite
 	}
@@ -17,15 +40,13 @@ exports.lastModified = function(doc, req) {
 }
 
 
-function provides_json(doc, req) {
+function provides_json(doc, req, headers) {
 
 	if (doc == null){
 		return {
 			code: 404,
 			body : '{ "Error": "Document not found"}',
-			headers : {
-				"Content-Type" : "application/json; charset=utf-8",
-				}
+			headers : headers
 			}
 	} else {		
 		// doc['id'] = doc['_id'];
@@ -42,10 +63,7 @@ function provides_json(doc, req) {
 
 		return {
 			body : JSON.stringify(wrapper),
-			headers : {
-				"Content-Type" : "application/json; charset=utf-8",
-				// "X-My-Own-Header": "you can set your own headers"
-				}
+			headers : headers
 		}		
 	}
 }
@@ -57,9 +75,7 @@ function provides_xml(doc, req) {
 		return {
 			code: 404,
 			body : "<xml><Error>Document not found</Error></xml>",
-			headers : {
-				"Content-Type" : "application/xml; charset=utf-8",
-				}
+			headers : headers
 			}
 	} else {
 		myxml = require('lib/jstoxml');
@@ -85,10 +101,7 @@ function provides_xml(doc, req) {
 
 		return {
 			body : xml2,
-			headers : {
-				"Content-Type" : "application/xml; charset=utf-8",
-				// "X-My-Own-Header": "you can set your own headers"
-				}
+			headers : headers
 		}		
 	}
 }
