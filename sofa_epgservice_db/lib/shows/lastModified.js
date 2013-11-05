@@ -1,6 +1,5 @@
 exports.lastModified = function(doc, req) {
 	//"text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-
 	// var headers_Accept = req.headers.Accept; 
 
 	var format = req.query.accept;
