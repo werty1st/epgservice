@@ -151,11 +151,11 @@ class mycouch {
         $this->updateCounter($doc);
 	
 
-	 //    if (microtime(true) - $this->counter > 0.2) {
-	 //    	$this->counter = microtime(true);
-	 //   		$out = $fortschritt."% verarbeite Document: ". $doc["titel"];
-	 // 		//console($out);				
-		// }
+	    if (microtime(true) - $this->counter > 0.2) {
+	    	$this->counter = microtime(true);
+	   		$out = $fortschritt."% verarbeite Document: ". $doc["titel"];
+	 		console($out);				
+		}
     }
 
   //   private function machMirPlatz($doc) {
@@ -289,27 +289,28 @@ class mycouch {
 
 	}
 
-	///
-	/// deprecated
-	// public function cleanup($all = false){
-	// 	//alles mit endtime > 24h löschen
+	/
+	/ deprecated
+	public function cleanup($all = false){
+		//alles mit endtime > 24h löschen
 
-	// 	console("Start deleting old Docs"); echo "\n"; echo "\n";
+		$all = true;
+		console("Start deleting old Docs"); echo "\n"; echo "\n";
 
-	// 	if ($all) {
-	// 		$view = $this->db->get_view("epgservice", "getall_view");			
-	// 	} else {
-	// 		$view = $this->db->get_list("epgservice", "getOlderThen30h", "getAllWithTimeStamp");			
-	// 	}
+		if ($all) {
+			$view = $this->db->get_view("epgservice", "getall_view");			
+		} else {
+			$view = $this->db->get_list("epgservice", "getOlderThen30h", "getAllWithTimeStamp");			
+		}
 
-	// 	//var_dump($view); exit;
+		//var_dump($view); exit;
 
-	// 	foreach ($view->rows as $row) {
-	// 		$doc = $row->value;
-	// 		console("Deleting old Doc: ".$doc->_id);
-	// 		$this->db->delete($doc);
-	// 	}
-	// }
+		foreach ($view->rows as $row) {
+			$doc = $row->value;
+			console("Deleting old Doc: ".$doc->_id);
+			$this->db->delete($doc);
+		}
+	}
 
 }
 
