@@ -16,7 +16,7 @@ $couch = &Factory::getDB(array("host" => $db_host,
 							   "name" => $db_name));
 
 //db_cleanup
-$couch->cleanup(true); //true=all
+// $couch->cleanup(true); //true=all
 
 
 //main loop

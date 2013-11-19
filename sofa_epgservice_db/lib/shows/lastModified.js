@@ -68,7 +68,7 @@ function provides_json(doc, req, headers) {
 }
 
 
-function provides_xml(doc, req) {
+function provides_xml(doc, req, headers) {
 
 	if (doc == null){
 		return {

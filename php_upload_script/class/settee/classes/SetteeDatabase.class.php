@@ -207,7 +207,7 @@ class SetteeDatabase {
       $document = json_decode($document);
     }
 
-    // var_dump($document); exit;
+    // var_dump($document); 
 
     $full_uri = $this->dbname . "/" . $this->safe_urlencode($document->_id) . "?rev=" . $document->_rev;
     $this->rest_client->http_delete($full_uri);

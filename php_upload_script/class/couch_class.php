@@ -133,7 +133,7 @@ class mycouch {
 			}
 		} catch ( Exception $e ) {
 			//error Doc nicht vorhanden also neus speichern
-			console("Document is new: ".$doc["titel"]); 
+			//console("\tDocument is new: ".$doc["titel"]); echo "\n\n";; 
         }       
 	    
 
@@ -265,7 +265,7 @@ class mycouch {
 		    $array1 = $array1["sendung"];		    
 		    $this->store1doc($station, $pos++, $array1, $fortschritt);		      
 		}
-		console("\tEs wurden $imax Sendungen verarbeitet");
+		console("\n\tEs wurden $imax Sendungen verarbeitet");
 		echo "\n\n";
 
 
@@ -275,9 +275,15 @@ class mycouch {
 
 				//hole altes doc nicht mehr by ID sondern by Pos
 				$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$ix]","[\"$station\",$ix]")); //startkey=&endkey=["ZDF",50]
+
+
 				$idbyPos = $view->rows[0]->id;
-			    $olddoc = $this->db->get($idbyPos);
-			    $this->db->delete($olddoc);
+			    $olddoc = $this->db->get($idbyPos, true);
+			    //hier werden 2 verschiedene docs benötigt weil update nur arrays nimmt und delete nur object
+   				$deletedoc->{"_rev"} = $view->rows[0]->value;
+				$deletedoc->{"_id"}  = $view->rows[0]->id;
+
+			    $this->db->delete($deletedoc);
 			    $this->updateCounter($olddoc);
 			    console("Position: ". $olddoc->position ." deleted: ".$olddoc->titel);
 			    echo "\n";
@@ -294,7 +300,7 @@ class mycouch {
 		//alles mit endtime > 24h löschen
 
 		$all = true;
-		console("Start deleting old Docs"); echo "\n"; echo "\n";
+		console("Start deleting old Docs"); echo "\n";
 
 		if ($all) {
 			$view = $this->db->get_view("epgservice", "getall_view");			

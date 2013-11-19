@@ -20,7 +20,7 @@ exports.listByPosition_view = {
                 out.rev     = doc["_rev"];
 
                 //if (diff >= -5)
-                emit([doc.station.name,doc.position], null);                
+                emit([doc.station.name,doc.position], doc._rev);                
             }
         }
 };

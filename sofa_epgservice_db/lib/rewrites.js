@@ -10,6 +10,9 @@ module.exports = [
     {from: '/getById/xml/*',  to: '_show/getByID_show/*', query: { accept: 'xml'} }, 
     {from: '/getById/json/*', to: '_show/getByID_show/*', query: { accept: 'json'} }, 
 
+    {from: '/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml' }},
+    {from: '/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json' }},
+
     {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
     {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
 
@@ -22,6 +25,9 @@ module.exports = [
     {from: '/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
     {from: '/zdfkultur/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
 
+
+    {from: '/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml' }},
+    {from: '/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json' }},
 
     {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
     {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
