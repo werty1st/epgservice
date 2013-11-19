@@ -1,4 +1,4 @@
-//php Abhängigkeit
+//php Abhängigkeit deprecated
 exports.getOlderThen30h = function (head, req) {
     var header = {};
 	var encoding = req.query.accept || "";

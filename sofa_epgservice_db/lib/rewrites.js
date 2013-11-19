@@ -35,14 +35,18 @@ module.exports = [
     {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
     {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
 
-    
+    //deprecated
     {from: '/lastModified/xml',  to: '_show/lastModified/lastmodified', query: { accept: 'xml'} }, 
     {from: '/lastModified/json', to: '_show/lastModified/lastmodified', query: { accept: 'json'} },     
+
+    {from: '/lastmodified/xml',  to: '_show/lastModified/lastmodified', query: { accept: 'xml'} }, 
+    {from: '/lastmodified/json', to: '_show/lastModified/lastmodified', query: { accept: 'json'} },     
 
     {from: '/crossdomain.xml', to: 'html/crossdomain.xml'},
 
     //php
-    {from: '/getOlderThen30h/json', to: '_list/getOlderThen30h/getAllWithTimeStamp', query: { accept: 'json'} }, 
+    //{from: '/getOlderThen30h/json', to: '_list/getOlderThen30h/getAllWithTimeStamp', query: { accept: 'json'} }, 
+
     
     //monitoring
     {from: '/status', to: '_list/status/getAllWithTimeStamp', query: { accept: 'json'}},

@@ -16,8 +16,7 @@ $couch = &Factory::getDB(array("host" => $db_host,
 							   "name" => $db_name));
 
 //db_cleanup
-$couch->cleanup(false); //true=all
-//$couch->cleanup(true); //true=all
+//$couch->cleanup(false); //true=all
 
 
 //main loop
@@ -38,7 +37,7 @@ foreach ($senderliste as $station => $value) {
         */
 
 
-	$couch->store2db($xml_allday);
+	$couch->store2db($xml_allday,$station);
 	echo "\n";
 }
 
@@ -78,7 +77,7 @@ function console($msg){
     if ($spaces < 0) {
         $msg = substr($msg,0,$col); 
     }
-    echo "\r".$msg.str_repeat(" ", $spaces);        
+    echo "\r".$msg.str_repeat(" ", $spaces);flush();    
 }
 
 

@@ -5,7 +5,7 @@ class sendung{
 	private $mysendung;
 	private $timestamp = 0;
 
-	function __construct ( $sendung ) {
+	function __construct ( $sendung, $position ) {
 
 		$mysendung = new DOMDocument();
 		//$xml_sendung = $this->sendung->createElement("sendung");
@@ -25,9 +25,11 @@ class sendung{
 		$stationName  	= $sendung->getElementsByTagName('station')->item(0)->getAttribute("name");
 		// $stationName 	= $stationName->getAttribute("name");
 
-		$prehash = $stationName."-".$airtime;
+		$position = str_pad ( (int)$position, 3, "0", STR_PAD_LEFT );
+		$prehash = $stationName."_".$position;
 		$hash 	 = md5($prehash);
 		$ID 	 = $mysendung->createElement("_id", $hash);
+		$pos 	 = $mysendung->createElement("position", $position);
 		
 
 		//TODO reihenfolge stimmt nicht ID soll zuerst kommen
@@ -35,6 +37,7 @@ class sendung{
 		$firstChildB = $mysendung->getElementsByTagName('sendung')->item(0)->firstChild;
 		//var_dump($firstChild); exit;
 		$firstChildA->insertBefore($ID,$firstChildB);
+		$firstChildA->insertBefore($pos,$firstChildB);
 
 		// echo $mysendung->saveXML(); exit;
 
@@ -43,7 +46,7 @@ class sendung{
 
 	public function getComplete($i){
 
-		//be communicative
+		//be verbose
 	    if (microtime(true) - $this->timestamp > 0.5) {
 	    	$this->timestamp = microtime(true);
 		    $out = $i."% Lade Details zur Sendung: ".$this->mysendung->getElementsByTagName('titel')->item(0)->nodeValue;

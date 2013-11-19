@@ -84,14 +84,25 @@ class mycouch {
         // var_dump($doc["station"]["name"]); sleep(5);
 	}
 
-    private function store1doc($doc, $fortschritt) {
+    private function store1doc($station, $pos, $doc, $fortschritt) {
+
+
+    	//print_r($doc); exit;
 
 		$docid = $doc["_id"];
+
+		//speichere aktuelle zeit für lastModified
         $now   = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
 
 		// echo "docid: $docid\n";
 		try {
-		    $olddoc = $this->db->get($docid,true);
+
+			//hole altes doc nicht mehr by ID sondern by Pos
+			$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
+			$idbyPos = $view->rows[0]->id;
+		    $olddoc = $this->db->get($idbyPos ,true);
+
+
             $olddocrev = $olddoc["_rev"];
 
             //zeiten speichern und dann aus DB object löschen um sie mit xml erzeugtem verlgeichen zu können
@@ -115,16 +126,18 @@ class mycouch {
                 $doc["item_modified"] = $now;
 
 				$this->updateCounter($doc);
-			} else {                
-                echo "\n\tDocument $docid needs no update!\t";
+			} else {    
+				echo "\n";            
+                console("\tDocument $docid needs no update!");
 				return;
 			}
 		} catch ( Exception $e ) {
 			//error Doc nicht vorhanden also neus speichern
+			console("Document is new: ".$doc["titel"]); 
         }       
 	    
 
-		$this->machMirPlatz($doc);
+		//$this->machMirPlatz($doc);
        
 
         if (!array_key_exists("item_created", $doc)){
@@ -138,63 +151,63 @@ class mycouch {
         $this->updateCounter($doc);
 	
 
-	    if (microtime(true) - $this->counter > 0.2) {
-	    	$this->counter = microtime(true);
-	   		$out = $fortschritt."% verarbeite Document: ". $doc["titel"];
-	 		console($out);				
-		}
+	 //    if (microtime(true) - $this->counter > 0.2) {
+	 //    	$this->counter = microtime(true);
+	 //   		$out = $fortschritt."% verarbeite Document: ". $doc["titel"];
+	 // 		//console($out);				
+		// }
     }
 
-    private function machMirPlatz($doc) {
+  //   private function machMirPlatz($doc) {
 
-    	//Startkey
-    	// $startkey = '["'.$doc["station"]["name"].'","'.$doc["time"].'"]';
-    	// $endkey   = '["'.$doc["station"]["name"].'","'.$doc["endTime"].'"]';
+  //   	//Startkey
+  //   	// $startkey = '["'.$doc["station"]["name"].'","'.$doc["time"].'"]';
+  //   	// $endkey   = '["'.$doc["station"]["name"].'","'.$doc["endTime"].'"]';
 
-    	// $startkey = urlencode($startkey);
-    	// $endkey = urlencode($endkey);
+  //   	// $startkey = urlencode($startkey);
+  //   	// $endkey = urlencode($endkey);
 		
-		//startkey=["ZDF","2013-10-22T12:00:00+02:00"]&endkey=["ZDF","2013-10-22T15:00:01+02:00"]
-    	//$url = "startkey="
+		// //startkey=["ZDF","2013-10-22T12:00:00+02:00"]&endkey=["ZDF","2013-10-22T15:00:01+02:00"]
+  //   	//$url = "startkey="
 
-        $platzGeschaffen = false;
-        $na = $doc["time"];
-        $ne = $doc["endTime"];
+  //       $platzGeschaffen = false;
+  //       $na = $doc["time"];
+  //       $ne = $doc["endTime"];
 
 
 
-    	$view = $this->db->get_view("epgservice", "getRangeStartEndTime", $doc["station"]["name"]);
+  //   	$view = $this->db->get_view("epgservice", "getRangeStartEndTime", $doc["station"]["name"]);
 
-    	foreach ($view->rows as $row) {
-            $id = $row->id;
-            $startzeit = $aa = $row->value[0];
-            $endzeit   = $ae = $row->value[1];
-            $rev     = $row->value[2];
-    		$titel     = $row->value[3];
+  //   	foreach ($view->rows as $row) {
+  //           $id = $row->id;
+  //           $startzeit = $aa = $row->value[0];
+  //           $endzeit   = $ae = $row->value[1];
+  //           $rev     = $row->value[2];
+  //   		$titel     = $row->value[3];
 
-            if(( $ne > $aa && $ne < $ae) ||
-              ( $na > $aa && $na < $ae) ||
-              ( $na < $aa && $ne > $ae)) {                
-                //Überschneidung löschen
+  //           if(( $ne > $aa && $ne < $ae) ||
+  //             ( $na > $aa && $na < $ae) ||
+  //             ( $na < $aa && $ne > $ae)) {                
+  //               //Überschneidung löschen
 
-                //neues doc
-                echo "\n";
-                echo "doc sendung: ". $doc["titel"]."\n";
-                echo "doc start: ". $doc["time"]."\n";
-                echo "doc ende : ". $doc["endTime"]."\n\n";
+  //               //neues doc
+  //               echo "\n";
+  //               echo "doc sendung: ". $doc["titel"]."\n";
+  //               echo "doc start: ". $doc["time"]."\n";
+  //               echo "doc ende : ". $doc["endTime"]."\n\n";
 
-                //altes doc
-                $this->db->delete("{ \"_id\": \"$id\", \"_rev\": \"$rev\" }");
-                $platzGeschaffen = true;
-                echo "Lösche veraltetes Programm:\n";
-                echo "db sendung: $titel\n";
-                echo "db start: $startzeit\n";
-                echo "db ende : $endzeit\n\n";
-              }            
-        }
+  //               //altes doc
+  //               $this->db->delete("{ \"_id\": \"$id\", \"_rev\": \"$rev\" }");
+  //               $platzGeschaffen = true;
+  //               echo "Lösche veraltetes Programm:\n";
+  //               echo "db sendung: $titel\n";
+  //               echo "db start: $startzeit\n";
+  //               echo "db ende : $endzeit\n\n";
+  //             }            
+  //       }
 
-        return $platzGeschaffen;
-    }
+  //       return $platzGeschaffen;
+  //   }
 
     private function updateORskip($doc1,$doc2){
 
@@ -210,20 +223,32 @@ class mycouch {
     	}
 		//needs update
 
-        echo "Änderungen:\n";
-        print_r($diff);
+        // echo "Änderungen:\n";
+        // print_r($diff);
 
 		return true;
     }
 
-	public function store2db($sender) {
+	public function store2db($sender,$station) {
+
+		//todo anzahl der vorherigen sendungen pro sender  vergleich und wenn weniger überschuss löschen
+
+		$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",0]","[\"$station\",50]")); //startkey=&endkey=["ZDF",50]
+		$alteAnzahl = count($view->rows);
+
 
 		$sendungen = $sender->getSendungen(); //nodelist
-        echo "\n";
 	
 		//sendung hochladen
 		$imax = $sendungen->length;
+
+		//vergleich alt neu
+        echo "\n\n";
+		echo "Sender $station hat $alteAnzahl alte Einträge\n";
+		echo "Sender $station hat $imax neue Einträge\n";
+
 		$i1 = 1;
+		$pos = 1;
 		foreach ($sendungen as $sendung) {
 			$fortschritt = ($i1++)*100/$imax; $fortschritt = number_format($fortschritt, 2);
 		    
@@ -238,31 +263,53 @@ class mycouch {
 		    $array1 = xmlToArray($simpleXmlElementObject);
 		    //remove parentd node sendung
 		    $array1 = $array1["sendung"];		    
-		    $this->store1doc($array1, $fortschritt);		      
+		    $this->store1doc($station, $pos++, $array1, $fortschritt);		      
 		}
-		console("Es wurden $imax Sendungen verarbeitet");
-		echo "\n";
+		console("\tEs wurden $imax Sendungen verarbeitet");
+		echo "\n\n";
+
+
+		//lösche überschüssiges
+		for($ix=$alteAnzahl;$ix>$imax;$ix--) {
+			try {
+
+				//hole altes doc nicht mehr by ID sondern by Pos
+				$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$ix]","[\"$station\",$ix]")); //startkey=&endkey=["ZDF",50]
+				$idbyPos = $view->rows[0]->id;
+			    $olddoc = $this->db->get($idbyPos);
+			    $this->db->delete($olddoc);
+			    $this->updateCounter($olddoc);
+			    console("Position: ". $olddoc->position ." deleted: ".$olddoc->titel);
+			    echo "\n";
+			} catch ( Exception $e ) {
+				//error Doc nicht vorhanden also neus speichern
+				console("Position: ". $olddoc->position ."NOT deleted: ".$olddoc->titel);
+        	}
+		}
+
 	}
 
-	public function cleanup($all = false){
-		//alles mit endtime > 24h löschen
+	///
+	/// deprecated
+	// public function cleanup($all = false){
+	// 	//alles mit endtime > 24h löschen
 
-		console("Start deleting old Doc"); echo "\n";
+	// 	console("Start deleting old Docs"); echo "\n"; echo "\n";
 
-		if ($all) {
-			$view = $this->db->get_view("epgservice", "getall_view");			
-		} else {
-			$view = $this->db->get_list("epgservice", "getOlderThen30h", "getAllWithTimeStamp");			
-		}
+	// 	if ($all) {
+	// 		$view = $this->db->get_view("epgservice", "getall_view");			
+	// 	} else {
+	// 		$view = $this->db->get_list("epgservice", "getOlderThen30h", "getAllWithTimeStamp");			
+	// 	}
 
-		//var_dump($view); exit;
+	// 	//var_dump($view); exit;
 
-		foreach ($view->rows as $row) {
-			$doc = $row->value;
-			console("Deleting old Doc: ".$doc->_id);
-			$this->db->delete($doc);
-		}
-	}
+	// 	foreach ($view->rows as $row) {
+	// 		$doc = $row->value;
+	// 		console("Deleting old Doc: ".$doc->_id);
+	// 		$this->db->delete($doc);
+	// 	}
+	// }
 
 }
 

@@ -37,9 +37,10 @@ class sender{
 		//sendung verarbeiten
 		$imax = $sendungen->length;
 		$i1 = 1;
+		$pos = 1;
 		foreach ($sendungen as $sendung) {
 			$fortschritt = ($i1++)*100/$imax; $fortschritt = number_format($fortschritt, 2);
-		    $mysendung = new sendung($sendung);		    
+		    $mysendung = new sendung($sendung,$pos++);		    
 		    $mysendung->getComplete($fortschritt);
 		    $this->appendSendung($mysendung);
 		}		
