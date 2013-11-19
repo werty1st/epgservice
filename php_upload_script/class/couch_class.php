@@ -289,8 +289,7 @@ class mycouch {
 
 	}
 
-	/
-	/ deprecated
+
 	public function cleanup($all = false){
 		//alles mit endtime > 24h löschen
 
