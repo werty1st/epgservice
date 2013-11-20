@@ -16,6 +16,6 @@
         "db"    :null,
         "handlebars": null
     },
-    "attachments": ["index.html", "html"]
+    "attachments": ["html"]
 }
 

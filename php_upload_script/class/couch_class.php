@@ -112,7 +112,7 @@ class mycouch {
 	        	// $bildgroßStr  = file_get_contents($bildgroß);
 	        	$bildkleinStr = file_get_contents($bildklein);
 	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	$doc["images"]["image"][1]["data"] = base64_encode($bildkleinStr);
+	        	$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
 	        } else {
 				$bildgroß  = $doc["images"]["image"][1]["uri"];
 	        	$bildklein = $doc["images"]["image"][0]["uri"];
@@ -120,7 +120,9 @@ class mycouch {
 	        	// $bildgroßStr  = file_get_contents($bildgroß);
 	        	$bildkleinStr = file_get_contents($bildklein);
 	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	$doc["images"]["image"][1]["data"] = base64_encode($bildkleinStr);	        	        	
+	        	$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	
+
+
 	        }
 	        //($doc, $name, $file, $mime_type = null)
 	        $doc = $this->db->add_attachment($doc, "small", $bildkleinStr);

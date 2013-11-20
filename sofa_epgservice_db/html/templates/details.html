@@ -1,0 +1,19 @@
+  <div data-role="header">
+    <h2>{{titel}}</h2>
+    <h3>{{programdata.genre}}</h3>
+  </div>
+  <div data-role="content">
+  	<table>
+  		<tr>
+			<td> <a href="{{imgurll}}"><img src="{{imgurls}}"></img> </a></td>
+			<td>{{prettifyTime programdata.airtimeBegin}} - </td>
+			<td>{{prettifyTime endTime}}</td>
+  		</tr>
+  		<tr>
+			<td> <a href="{{url}}">Mehr Infos</a></td>
+			<td>  </td>
+			<td>  </td>
+  		</tr>	
+	</table>		
+	<p>{{beschreibung}}</p>
+  </div>

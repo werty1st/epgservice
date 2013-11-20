@@ -11,7 +11,7 @@ module.exports = [
     {from: '/getById/xml/:id/*',  to: '../../:id/*' }, 
 
 
-    {from: '/getById/xml/*',  to: '_show/getByID_show/*', query: { accept: 'xml'} }, 
+    {from: '/getById/xml/:id',  to: '_show/getByID_show/:id', query: { accept: 'xml'} }, 
     {from: '/getById/json/:id', to: '_show/getByID_show/:id', query: { accept: 'json'} }, 
 
     {from: '/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml' }},
@@ -63,7 +63,7 @@ module.exports = [
     //monitoring
     {from: '/status', to: '_list/status/getAllWithTimeStamp', query: { accept: 'json'}},
 
-    {from: '/', to: 'index.html'},
+    {from: '/', to: 'html/index.html'},
     {from: '/wartung', to: 'html/wartung.html'},
     {from: '/modules.js', to: '/modules.js'},
     {from: '/html/*', to: 'html/*'}
