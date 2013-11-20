@@ -67,6 +67,8 @@ class SetteeDatabase {
   *  @throws SetteeCreateDatabaseException
   */
   function save($document, $allowRevAutoDetection = false) {
+
+
     if (is_string($document)) {
       $document = json_decode($document);
     }
@@ -96,10 +98,10 @@ class SetteeDatabase {
         }
       }
     }
-    
+
     $full_uri = $this->dbname . "/" . $this->safe_urlencode($id);
     $document_json = json_encode($document, JSON_NUMERIC_CHECK);
-    
+
     $ret = $this->rest_client->http_put($full_uri, $document_json);
 
     $document->_id = $ret['decoded']->id;
@@ -118,18 +120,40 @@ class SetteeDatabase {
    *    Optional. Will be auto-detected if not provided
    * @return void
    */
-  public function add_attachment($doc, $name, $content, $mime_type = null) {
-    if (empty($doc->_attachments) || !is_object($doc->_attachments)) {
-      $doc->_attachments = new stdClass();
+  public function add_attachment(&$doc, $name, $content, $mime_type = null) {
+    
+    if (!is_object($doc)){
+
+      if (empty($doc["_attachments"]) || !is_array($doc["_attachments"])) {
+        $doc["_attachments"] = array();
+      }
+
+      if (empty($mime_type)) {
+        $mime_type = $this->rest_client->content_mime_type($content);
+      }
+
+      $doc["_attachments"][$name] = array();
+      $doc["_attachments"][$name]["content_type"] = $mime_type;
+      $doc["_attachments"][$name]["data"] = base64_encode($content);
+
+    } else {
+
+      if (empty($doc->_attachments) || !is_object($doc->_attachments)) {
+        $doc->_attachments = new stdClass();
+      }
+
+      if (empty($mime_type)) {
+        $mime_type = $this->rest_client->content_mime_type($content);
+      }
+
+      $doc->_attachments->$name = new stdClass();
+      $doc->_attachments->$name->content_type = $mime_type;
+      $doc->_attachments->$name->data = base64_encode($content);      
     }
 
-    if (empty($mime_type)) {
-      $mime_type = $this->rest_client->content_mime_type($content);
-    }
+    // var_dump($doc); exit;
+    return $doc;
 
-    $doc->_attachments->$name = new stdClass();
-    $doc->_attachments->$name->content_type = $mime_type;
-    $doc->_attachments->$name->data = base64_encode($content);
   }  
 
   /**
@@ -141,9 +165,9 @@ class SetteeDatabase {
    *    Optional. Will be auto-detected if not provided
    * @return void
    */
-  public function add_attachment_file($doc, $name, $file, $mime_type = null) {
+  public function add_attachment_file(&$doc, $name, $file, $mime_type = null) {
     $content = file_get_contents($file);
-    $this->add_attachment($doc, $name, $content, $mime_type);
+    return $this->add_attachment($doc, $name, $content, $mime_type);
   }
 
   /**

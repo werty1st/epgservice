@@ -73,9 +73,13 @@ class mycouch {
             $last_mod_doc["_id"] = $docid;
         }       
 
+
         //$last_mod_doc->type          = "lastmodified";        
         $last_mod_doc["stations"][$doc["station"]["name"]]["timestamp"] = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
         //$timestampDoc->{"_rev"} = $doc["_rev"];
+
+        // var_dump($last_mod_doc);
+        // exit;
 
         //todo settee kann kein update wechsel to php on couch oder http://www.saggingcouch.com/
 
@@ -96,6 +100,36 @@ class mycouch {
 
 		// echo "docid: $docid\n";
 		try {
+
+
+
+
+	        //bilder besorgen
+	        if ($doc["images"]["image"][0]["cuttingDimension"]["height"] == 378){
+	        	$bildgroß  = $doc["images"]["image"][0]["uri"];
+	        	$bildklein = $doc["images"]["image"][1]["uri"];
+
+	        	// $bildgroßStr  = file_get_contents($bildgroß);
+	        	$bildkleinStr = file_get_contents($bildklein);
+	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
+	        	$doc["images"]["image"][1]["data"] = base64_encode($bildkleinStr);
+	        } else {
+				$bildgroß  = $doc["images"]["image"][1]["uri"];
+	        	$bildklein = $doc["images"]["image"][0]["uri"];
+
+	        	// $bildgroßStr  = file_get_contents($bildgroß);
+	        	$bildkleinStr = file_get_contents($bildklein);
+	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
+	        	$doc["images"]["image"][1]["data"] = base64_encode($bildkleinStr);	        	        	
+	        }
+	        //($doc, $name, $file, $mime_type = null)
+	        $doc = $this->db->add_attachment($doc, "small", $bildkleinStr);
+	        // $doc = $this->db->add_attachment($doc, "large", $bildgroßStr);
+
+	        // $doc = $this->db->add_attachment_file($doc, "small", $bildklein);
+	        $doc = $this->db->add_attachment_file($doc, "large", $bildgroß);
+
+	        //print_r($doc); exit;
 
 			//hole altes doc nicht mehr by ID sondern by Pos
 			$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
@@ -121,6 +155,7 @@ class mycouch {
 				
 				echo "\n";
                 console("Updateing doc: ".$doc["_id"]." with revision: ".$doc["_rev"]);
+                echo "\n";
 
                 $doc["item_created"] = $old_item_created;
                 $doc["item_modified"] = $now;
@@ -146,8 +181,10 @@ class mycouch {
             $doc["item_modified"] = $now;
 
         }
-        $response = $this->db->save($doc);          // couchConflictException
 
+
+        //speichern wandelt doc in object -> updatecounter erwartet aber array
+        $doc2 = $response = $this->db->save($doc);          // couchConflictException
         $this->updateCounter($doc);
 	
 
@@ -209,11 +246,14 @@ class mycouch {
   //       return $platzGeschaffen;
   //   }
 
-    private function updateORskip($doc1,$doc2){
+    private function updateORskip(&$olddoc,&$newdoc){
 
-    	$diff = arrayRecursiveDiff($doc1,$doc2);
+    	$diff = arrayRecursiveDiff($newdoc,$olddoc);
+    	
+    	// print_r($olddoc);
     	// print_r($diff);
-        // exit;
+    	// print_r($newdoc);
+     //    exit;
 
     	if (count($diff) == 1){
     		if (array_key_exists("_rev", $diff)){

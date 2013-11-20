@@ -7,11 +7,16 @@
 module.exports = [
 
 
+    {from: '/getById/json/:id/*',  to: '../../:id/*' }, 
+    {from: '/getById/xml/:id/*',  to: '../../:id/*' }, 
+
+
     {from: '/getById/xml/*',  to: '_show/getByID_show/*', query: { accept: 'xml'} }, 
-    {from: '/getById/json/*', to: '_show/getByID_show/*', query: { accept: 'json'} }, 
+    {from: '/getById/json/:id', to: '_show/getByID_show/:id', query: { accept: 'json'} }, 
 
     {from: '/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml' }},
     {from: '/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json' }},
+
 
     {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
     {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
@@ -28,6 +33,7 @@ module.exports = [
 
     {from: '/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml' }},
     {from: '/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json' }},
+
 
     {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
     {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
