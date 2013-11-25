@@ -37,8 +37,14 @@
 			SyntaxHighlighter.all()
 
 			handlebars.registerHelper("prettifyTime", function(timestamp) {
-				options = {hour: "numeric", minute: "numeric"};				
-			    return new Intl.DateTimeFormat("de-DE", options).format(new Date(timestamp));
+				options = {hour: "numeric", minute: "numeric"};			
+				
+				if (typeof(Intl) != "undefined"){
+					return new Intl.DateTimeFormat("de-DE", options).format(new Date(timestamp));
+				}	else {					
+					return timestamp+" Intl.DateTimeFormat error";
+				}
+			    
 			});		    
 		    // var $ = require('jquery');
 

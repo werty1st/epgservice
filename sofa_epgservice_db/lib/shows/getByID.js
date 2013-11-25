@@ -37,7 +37,7 @@ function provides_json(doc, req) {
 		delete doc['item_created'];
 		delete doc['item_modified'];
 		delete doc['_attachments'];
-		delete doc['images']["image"][1]["data"];
+		//delete doc['images']["image"][1]["data"];
 
 
 
@@ -80,7 +80,7 @@ function provides_xml(doc, req) {
 		delete doc['item_created'];
 		delete doc['item_modified'];
 		delete doc['_attachments'];
-		delete doc['images']["image"][1]["data"];
+		//delete doc['images']["image"][1]["data"];
 		
 
 		var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungsdetails" : [] }};

@@ -8,12 +8,15 @@ exports.getAllWithTimeStamp = {
                 var airtime    = new Date(doc.time);
         		var airtime_ms = airtime.valueOf();
 
-                out.station = { "name":doc.station.name};
-                out.titel   = doc.titel;
-                out.untertitel = doc.subtitle;
                 out.time    = doc.time;
                 out.endTime = doc.endTime;
+                out.station = { "name":doc.station.name};
+                out.kicker  = doc.kicker;
+                out.titel   = doc.titel;
+                out.untertitel = doc.subtitle;
                 out.beschreibung = doc.beschreibung;
+                out.programdata = { "genre": doc.programdata.genre};
+
                 out.url     = doc.url;
                 out.item_created  = doc.item_created;
                 out.item_modified = doc.item_modified;
