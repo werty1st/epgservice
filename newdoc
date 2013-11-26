@@ -1,0 +1,142 @@
+Array
+(
+    [_id] => 9811cbb39d97b1726b86b5d07209f740
+    [position] => 028
+    [beschreibung] => Während sich Don zu Hause mit einer Erkältung quält, muss sein Team die Arbeit in der Werbeagentur alleine bewältigen.    Don Draper hat sich eine Erkältung eingefangen und bleibt zu Hause, um sich auszukurieren. Dabei wird er in seinem Fieberwahn von einer früheren Kollegin und Geliebten heimgesucht. Die Streiks der Flugzeugmechaniker kommen dem neuen Airline-Kunden von SCDP sehr gelegen, weshalb die Kampagne sofort starten soll. Roger Sterling kann aber noch keine Ergebnisse präsentieren und besticht Peggy, die Kampagne über Nacht alleine zu erstellen. Greg kommt nach erfülltem Kriegsdienst wieder nach Hause zurück. Doch das glückliche Wiedersehen mit Joan hält nicht lange, denn Greg hat keine sonderlich guten Nachrichten für seine Frau.
+    [endTime] => 2013-11-27T02:05:00+01:00
+    [images] => Array
+        (
+            [image] => Array
+                (
+                    [0] => Array
+                        (
+                            [cuttingDimension] => Array
+                                (
+                                    [contentId] => 142
+                                    [externalId] => 6c37c877-3450-3f0d-98b0-ded5be898ecd
+                                    [height] => 378
+                                    [name] => MMBuehne_Bild_Video_5-5_672x378
+                                    [width] => 672
+                                )
+
+                            [uri] => http://www.zdf.de/ZDF/zdfportal/blob/23525886/2/data.jpg
+                        )
+
+                    [1] => Array
+                        (
+                            [cuttingDimension] => Array
+                                (
+                                    [contentId] => 3410
+                                    [externalId] => 21416a69-a2ae-3011-8c00-79a2711f5ba0
+                                    [height] => 51
+                                    [name] => EPG-small_Zeitstrahl_90x51
+                                    [width] => 90
+                                )
+
+                            [data] => data:image/jpg;base64,
+                        )
+
+                )
+
+        )
+
+    [link] => http://www.zdf.de/ZDF/zdfportal/xml/epg/20237488,d720124f-0e66-4f25-9e2f-04337049d292
+    [livestream] => true
+    [station] => Array
+        (
+            [contentId] => 16
+            [externalId] => 
+            [name] => ZDFneo
+            [serviceId] => 2
+            [epgLogo] => Array
+                (
+                    [contentId] => 718
+                    [externalId] => 
+                    [altText] => Array
+                        (
+                        )
+
+                    [height] => 0
+                    [uri] => http://www.zdf.de/ZDF/zdfportal/blob/718/11/data.png
+                    [width] => 0
+                )
+
+            [detailLevel] => 4
+        )
+
+    [subtitle] => Fieber
+    [time] => 2013-11-27T01:15:00+01:00
+    [tvTipp] => false
+    [titel] => Mad Men
+    [url] => http://www.zdf.de/ZDF/zdfportal/programdata/d720124f-0e66-4f25-9e2f-04337049d292/20237488
+    [programdata] => Array
+        (
+            [actorDetails] => Array
+                (
+                )
+
+            [airtimeBegin] => 2013-11-27T01:15:00+01:00
+            [airtimeDate] => 2013-11-26T00:00:00+01:00
+            [audioComments] => false
+            [blackwhite] => false
+            [broadcastStation] => Array
+                (
+                    [contentId] => 16
+                    [externalId] => 
+                    [name] => ZDFneo
+                    [serviceId] => 2
+                    [epgLogo] => Array
+                        (
+                            [contentId] => 718
+                            [externalId] => 
+                            [altText] => Array
+                                (
+                                )
+
+                            [height] => 0
+                            [uri] => http://www.zdf.de/ZDF/zdfportal/blob/718/11/data.png
+                            [width] => 0
+                        )
+
+                    [detailLevel] => 4
+                )
+
+            [caption] => false
+            [country] => Vereinigte Staaten von Amerika
+            [crewFunctionDetails] => Array
+                (
+                )
+
+            [dolbyDigital51] => false
+            [dolbySurround] => false
+            [dualchannel] => false
+            [duration] => 50
+            [foreignLangWithCaption] => false
+            [genre] => Serie
+            [guests] => Array
+                (
+                )
+
+            [hd] => false
+            [livestream] => true
+            [vpsBegin] => 2013-11-27T01:15:00+01:00
+            [widescreen169] => false
+            [url] => http://www.zdf.de/ZDF/zdfportal/xml/epg/20237488,d720124f-0e66-4f25-9e2f-04337049d292
+            [year] => 2012
+        )
+
+    [_attachments] => Array
+        (
+            [small] => Array
+                (
+                    [digest] => md5-
+                )
+
+            [large] => Array
+                (
+                    [digest] => md5-R9MML/CoePyAPux7/xmV9A==
+                )
+
+        )
+
+)

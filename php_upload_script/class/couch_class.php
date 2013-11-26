@@ -112,7 +112,8 @@ class mycouch {
 	        	// $bildgroßStr  = file_get_contents($bildgroß);
 	        	$bildkleinStr = file_get_contents($bildklein);
 	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
+	        	if (strlen($bildkleinStr) >0)
+	        		$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
 	        } else {
 				$bildgroß  = $doc["images"]["image"][1]["uri"];
 	        	$bildklein = $doc["images"]["image"][0]["uri"];
@@ -120,16 +121,19 @@ class mycouch {
 	        	// $bildgroßStr  = file_get_contents($bildgroß);
 	        	$bildkleinStr = file_get_contents($bildklein);
 	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	
+	        	if (strlen($bildkleinStr) >0)
+	        		$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	
 
 
 	        }
 	        //($doc, $name, $file, $mime_type = null)
-	        $doc = $this->db->add_attachment($doc, "small", $bildkleinStr);
+	        if (strlen($bildkleinStr) >0)
+	        	$doc = $this->db->add_attachment($doc, "small", $bildkleinStr);
 	        // $doc = $this->db->add_attachment($doc, "large", $bildgroßStr);
 
 	        // $doc = $this->db->add_attachment_file($doc, "small", $bildklein);
-	        $doc = $this->db->add_attachment_file($doc, "large", $bildgroß);
+			if (strlen($bildgroß) >0)
+	        	$doc = $this->db->add_attachment_file($doc, "large", $bildgroß);
 
 	        //print_r($doc); exit;
 
@@ -154,6 +158,7 @@ class mycouch {
 			if ($this->updateORskip($olddoc, $doc)){
 				//update
 				$doc["_rev"] = $olddoc["_rev"];		
+				$doc["_id"] = $olddoc["_id"];		
 				
 				echo "\n";
                 console("Updateing doc: ".$doc["_id"]." with revision: ".$doc["_rev"]);
@@ -184,6 +189,11 @@ class mycouch {
 
         }
 
+    	// $diff1 = print_r($olddoc,true);
+    	// $diff2 = print_r($doc,true);
+    	// file_put_contents("olddoc", $diff1);
+    	// file_put_contents("newdoc", $diff2);
+    	// // exit;
 
         //speichern wandelt doc in object -> updatecounter erwartet aber array
         $doc2 = $response = $this->db->save($doc);          // couchConflictException
@@ -248,14 +258,60 @@ class mycouch {
   //       return $platzGeschaffen;
   //   }
 
-    private function updateORskip(&$olddoc,&$newdoc){
+    private function updateORskip($olddoc,$newdoc){
 
-    	$diff = arrayRecursiveDiff($newdoc,$olddoc);
+    	unset ($olddoc["_attachments"]["small"]["content_type"]);
+    	unset ($olddoc["_attachments"]["small"]["revpos"]);
+    	unset ($olddoc["_attachments"]["small"]["data"]);
+    	unset ($olddoc["_attachments"]["small"]["stub"]);
+    	unset ($olddoc["_attachments"]["small"]["length"]);
+
+    	unset ($olddoc["_attachments"]["large"]["content_type"]);
+    	unset ($olddoc["_attachments"]["large"]["revpos"]);
+    	unset ($olddoc["_attachments"]["large"]["data"]);
+    	unset ($olddoc["_attachments"]["large"]["stub"]);
+    	unset ($olddoc["_attachments"]["large"]["length"]);
+
+    	unset ($newdoc["_attachments"]["small"]["content_type"]);
+    	unset ($newdoc["_attachments"]["small"]["data"]);
+    	unset ($newdoc["_attachments"]["large"]["content_type"]);
+    	unset ($newdoc["_attachments"]["large"]["data"]);
+
+    	$newdoc["_attachments"]["small"]["digest"] = "md5-".base64_encode(md5_file($newdoc["images"]["image"][1]["uri"],true));
+    	$newdoc["_attachments"]["large"]["digest"] = "md5-".base64_encode(md5_file($newdoc["images"]["image"][0]["uri"],true));
     	
-    	// print_r($olddoc);
-    	// print_r($diff);
+    	// unset ($olddoc["_rev"]);
+    	// if ($olddoc["_id"] == "9811cbb39d97b1726b86b5d07209f740"){
+	    // 	$diff1 = print_r($olddoc,true);
+	    // 	$diff2 = print_r($newdoc,true);
+	    // 	file_put_contents("olddoc", $diff1);
+	    // 	file_put_contents("newdoc", $diff2);
+
+	    // 	print_r($olddoc);
+	    // 	print_r($newdoc);
+
+	    //     exit;
+
+    	// }
+
+
+    	// $diff1 = print_r($olddoc,true);
+    	// $diff2 = print_r($newdoc,true);
+
+
+    	// file_put_contents("olddoc", $diff1);
+    	// file_put_contents("newdoc", $diff2);
+
+    	//print_r($olddoc);
     	// print_r($newdoc);
-     //    exit;
+
+        // exit;
+
+    	//$diff = arrayRecursiveDiff($newdoc,$olddoc);
+  //   	print_r($diff); 
+
+    	$diff = arrayRecursiveDiff($olddoc,$newdoc);
+		// print_r($diff);    	exit;
 
     	if (count($diff) == 1){
     		if (array_key_exists("_rev", $diff)){
@@ -327,11 +383,11 @@ class mycouch {
 
 			    $this->db->delete($deletedoc);
 			    $this->updateCounter($olddoc);
-			    console("Position: ". $olddoc->position ." deleted: ".$olddoc->titel);
+			    console("Position: ". $olddoc["position"] ." deleted: ".$olddoc["titel"]);
 			    echo "\n";
 			} catch ( Exception $e ) {
 				//error Doc nicht vorhanden also neus speichern
-				console("Position: ". $olddoc->position ."NOT deleted: ".$olddoc->titel);
+				console("Position: ". $olddoc["position"] ."NOT deleted: ".$olddoc["titel"]);
         	}
 		}
 

@@ -25,7 +25,7 @@ class sendung{
 		$stationName  	= $sendung->getElementsByTagName('station')->item(0)->getAttribute("name");
 		// $stationName 	= $stationName->getAttribute("name");
 
-		$position = str_pad ( (int)$position, 3, "0", STR_PAD_LEFT );
+		// $position = str_pad ( (int)$position, 3, "0", STR_PAD_LEFT ); //führende null wird irgendwo gelöscht, darum nehme ich sie erstmal raus
 		$prehash = $stationName."_".$position;
 		$hash 	 = md5($prehash);
 		$ID 	 = $mysendung->createElement("_id", $hash);
