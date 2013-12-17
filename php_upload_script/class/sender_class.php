@@ -19,7 +19,9 @@ class sender{
 
 			$miniEPG 	 				= $xml_in->getElementsByTagName("miniEPG")->item(0);
 			$xml_miniEPG 				= $this->myxml->createElement("tinyEPG");
+if($miniEPG->hasAttribute("contendId")){
 			$xml_miniEPG->setAttribute("miniEPGcontentId", $miniEPG->getAttribute("contentId"));
+}
 
 				$xml_sendungen		 	= $this->myxml->createElement("sendungen");
 				$this->sendungen = $xml_sendungen;
