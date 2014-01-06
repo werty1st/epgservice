@@ -83,7 +83,14 @@ class mycouch {
 
         //todo settee kann kein update wechsel to php on couch oder http://www.saggingcouch.com/
 
-        $response = $this->db->save($last_mod_doc);
+        try {
+        	$response = $this->db->save($last_mod_doc);        	
+        } catch (Exception $e) {
+			//error Doc not saved
+			console("\tDocument could not be saved: ".$doc["titel"]);
+			console("\tError:".$e);
+			echo "\n\n";
+        }
         // var_dump($last_mod_doc );
         // var_dump($doc["station"]["name"]); sleep(5);
 	}
