@@ -346,8 +346,8 @@ class mycouch {
     	}
 		//needs update
 
-        echo "Änderungen:\n";
-        print_r($diff);
+        // echo "Änderungen:\n";
+        // print_r($diff);
 
 		return true;
     }
