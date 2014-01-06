@@ -63,7 +63,7 @@ class sendung{
 
 			$progdata = $xml_details->getElementsByTagName('programdata')->item(0);
 
-			if (!($progdata instanceof DOMNode)) return;
+			if (!($progdata instanceof DOMNode)) throw new Exception("No Document loaded");;
 			// Import the node, and all its children, to the document
 			$progdata = $this->mysendung->importNode($progdata, true);
 
