@@ -204,7 +204,13 @@ class mycouch {
     	// // exit;
 
         //speichern wandelt doc in object -> updatecounter erwartet aber array
-        $doc2 = $response = $this->db->save($doc);          // couchConflictException
+        try {
+        	$doc2 = $response = $this->db->save($doc);          // couchConflictException        	
+        } catch (Exception $e) {
+        	console("\tDocument could not be saved: ".$doc["titel"]);
+			console("\tError:".$e);
+			return;
+        }
 
      //    echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n";
      //    echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx\n";
