@@ -6,6 +6,6 @@ config.php
 .*.swp
 *.out
 emailadressen
-
+cache
 
 !.gitignore
