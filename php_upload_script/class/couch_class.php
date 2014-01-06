@@ -150,7 +150,7 @@ class mycouch {
 		//da sind ID aus position ableitet muss der aufwand nicht betrieben werden und ist stabiler
 
 		//$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
-		$view = $olddoc = $this->db->get($docid ,true);
+		$view = $this->db->get($docid ,true);
 
 		if (count($view->rows)==1)
 		{
