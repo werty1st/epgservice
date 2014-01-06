@@ -106,7 +106,7 @@ class mycouch {
         $now   = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
 
 		// echo "docid: $docid\n";
-		//try {
+		try {
 
 
 			try {
@@ -185,10 +185,10 @@ class mycouch {
                 console("\tDocument $docid needs no update!");
 				return;
 			}
-		// } catch ( Exception $e ) {
-		// 	//error Doc nicht vorhanden also neus speichern
-		// 	console("\tDocument maleformed: ".$doc["titel"]); echo "\n\n";; 
-  //       }       
+		} catch ( Exception $e ) {
+			//error Doc nicht vorhanden also neus speichern
+			//todo umwandeln in IF abfrage
+        }       
 	    
 
 		//$this->machMirPlatz($doc);
