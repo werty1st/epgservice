@@ -336,7 +336,7 @@ class mycouch {
   //   	print_r($diff); 
 
     	$diff = arrayRecursiveDiff($newdoc,$olddoc);
-		 // print_r($diff);    	exit;
+		print_r($diff);    	exit;
 
     	if (count($diff) == 1){
     		if (array_key_exists("_rev", $diff)){
