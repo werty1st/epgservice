@@ -98,7 +98,7 @@ class mycouch {
     private function store1doc($station, $pos, $doc, $fortschritt) {
 
 
-    	print_r($doc); exit;
+    	// print_r($doc); exit;
 
 		$docid = $doc["_id"];
 
@@ -147,12 +147,15 @@ class mycouch {
 
 
 		//hole altes doc nicht mehr by ID sondern by Pos
-		$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
+		//da sind ID aus position ableitet muss der aufwand nicht betrieben werden und ist stabiler
+
+		//$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
+		$view = $olddoc = $this->db->get($docid ,true);
 
 		if (count($view->rows)==1)
 		{
-			$idbyPos = $view->rows[0]->id;
-		    $olddoc = $this->db->get($idbyPos ,true);
+			// $idbyPos = $view->rows[0]->id;
+		 //    $olddoc = $this->db->get($idbyPos ,true);
 
 
             $olddocrev = $olddoc["_rev"];
