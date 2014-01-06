@@ -98,7 +98,7 @@ class mycouch {
     private function store1doc($station, $pos, $doc, $fortschritt) {
 
 
-    	// print_r($doc); exit;
+    	print_r($doc); exit;
 
 		$docid = $doc["_id"];
 
