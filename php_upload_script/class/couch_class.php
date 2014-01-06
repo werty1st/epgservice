@@ -150,13 +150,12 @@ class mycouch {
 		//da sind ID aus position ableitet muss der aufwand nicht betrieben werden und ist stabiler
 
 		//$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
-		$view = $this->db->get($docid ,true);
 
-		if (count($view->rows)==1)
-		{
+        try {
 			// $idbyPos = $view->rows[0]->id;
-		 //    $olddoc = $this->db->get($idbyPos ,true);
+		 	//  $olddoc = $this->db->get($idbyPos ,true);
 
+			$olddoc = $this->db->get($docid ,true);
 
             $olddocrev = $olddoc["_rev"];
 
@@ -187,7 +186,9 @@ class mycouch {
 				echo "\n";            
                 console("\tDocument $docid needs no update!");
 				return;
-			}				
+			}	        	
+        } catch (Exception $e) {
+        	//fehler bei olddoc			
 		}	    
 
 		//$this->machMirPlatz($doc);
