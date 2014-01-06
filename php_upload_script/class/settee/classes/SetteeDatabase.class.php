@@ -167,7 +167,7 @@ class SetteeDatabase {
    */
   public function add_attachment_file(&$doc, $name, $file, $mime_type = null) {
     $content = file_get_contents($file);
-    return $this->add_attachment($doc, $name, $content, $mime_type);
+    $this->add_attachment($doc, $name, $content, $mime_type);
   }
 
   /**

@@ -57,6 +57,7 @@ class sendung{
 
 		$xml_details = new DOMDocument();
 		$url = $this->mysendung->getElementsByTagName('link')->item(0)->nodeValue;
+<<<<<<< HEAD
 		try {
 		        $xml_details->load($url);
 
@@ -73,6 +74,25 @@ class sendung{
 		        echo "\n";        
 		        //todo fill with dummy data
 		}
+=======
+
+		try {
+			$xml_details->load($url);
+
+			$progdata = $xml_details->getElementsByTagName('programdata')->item(0);
+
+			if (!($progdata instanceof DOMNode)) throw new Exception("No Document loaded");;
+			// Import the node, and all its children, to the document
+			$progdata = $this->mysendung->importNode($progdata, true);
+
+			// And then append it to the "<root>" node
+			$this->mysendung->getElementsByTagName('sendung')->item(0)->appendChild($progdata);			
+		} catch (Exception $e) {
+			console("XML invalid ".$url);
+			echo "\n";	
+		}
+		
+>>>>>>> 9d68b1daf147d05b4c016eff9386ec510fcb49a7
 	}
 
 	public function getNode() {
