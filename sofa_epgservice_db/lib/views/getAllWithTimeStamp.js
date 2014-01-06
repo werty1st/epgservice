@@ -15,7 +15,7 @@ exports.getAllWithTimeStamp = {
                 out.titel   = doc.titel;
                 out.untertitel = doc.subtitle;
                 out.beschreibung = doc.beschreibung;
-                out.programdata = { "genre": doc.programdata.genre};
+                out.programdata = (doc.programdata)?{ "genre": doc.programdata.genre}:{};
 
                 out.url     = doc.url;
                 out.item_created  = doc.item_created;
