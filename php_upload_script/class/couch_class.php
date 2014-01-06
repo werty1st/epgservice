@@ -98,7 +98,7 @@ class mycouch {
     private function store1doc($station, $pos, $doc, $fortschritt) {
 
 
-    	//print_r($doc); exit;
+    	// print_r($doc); exit;
 
 		$docid = $doc["_id"];
 
@@ -106,44 +106,51 @@ class mycouch {
         $now   = date_format(new DateTime("now", new DateTimeZone ( "Europe/Berlin" )), DateTime::ATOM);
 
 		// echo "docid: $docid\n";
-		try {
-	        //bilder besorgen
-	        if ($doc["images"]["image"][0]["cuttingDimension"]["height"] == 378){
-	        	$bildgroß  = $doc["images"]["image"][0]["uri"];
-	        	$bildklein = $doc["images"]["image"][1]["uri"];
+        //bilder besorgen
+        if ($doc["images"]["image"][0]["cuttingDimension"]["height"] == 378){
+        	$bildgroß  = $doc["images"]["image"][0]["uri"];
+        	$bildklein = $doc["images"]["image"][1]["uri"];
 
-	        	// $bildgroßStr  = file_get_contents($bildgroß);
-	        	$bildkleinStr = file_get_contents($bildklein);
-	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	if (strlen($bildkleinStr) >0)
-	        		$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
-	        } else {
-				$bildgroß  = $doc["images"]["image"][1]["uri"];
-	        	$bildklein = $doc["images"]["image"][0]["uri"];
+        	// $bildgroßStr  = file_get_contents($bildgroß);
+        	$bildkleinStr = file_get_contents($bildklein);
+        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
+        	if (strlen($bildkleinStr) >0)
+        		$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
+        } else {
+			$bildgroß  = $doc["images"]["image"][1]["uri"];
+        	$bildklein = $doc["images"]["image"][0]["uri"];
 
-	        	// $bildgroßStr  = file_get_contents($bildgroß);
-	        	$bildkleinStr = file_get_contents($bildklein);
-	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	if (strlen($bildkleinStr) >0)
-	        		$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	
+        	// $bildgroßStr  = file_get_contents($bildgroß);
+        	$bildkleinStr = file_get_contents($bildklein);
+        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
+        	if (strlen($bildkleinStr) >0)
+        		$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	
+
+        }
+
+        //($doc, $name, $file, $mime_type = null)
+        // echo "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n";
+       	// print_r($doc);
+        // echo "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx\n";
+
+        if (strlen($bildkleinStr) >0)
+        	$this->db->add_attachment($doc, "small", $bildkleinStr);
+        // $doc = $this->db->add_attachment($doc, "large", $bildgroßStr);
+
+        // $doc = $this->db->add_attachment_file($doc, "small", $bildklein);
+		if (strlen($bildgroß) >0)
+        	$this->db->add_attachment_file($doc, "large", $bildgroß);				
+
+     //    echo "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n";
+    	// print_r($doc);
+     //    echo "\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx\n";
 
 
-	        }
-	        //($doc, $name, $file, $mime_type = null)
-	        if (strlen($bildkleinStr) >0)
-	        	$doc = $this->db->add_attachment($doc, "small", $bildkleinStr);
-	        // $doc = $this->db->add_attachment($doc, "large", $bildgroßStr);
+		//hole altes doc nicht mehr by ID sondern by Pos
+		$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
 
-	        // $doc = $this->db->add_attachment_file($doc, "small", $bildklein);
-			if (strlen($bildgroß) >0)
-	        	$doc = $this->db->add_attachment_file($doc, "large", $bildgroß);				
-
-
-
-	        //print_r($doc); exit;
-
-			//hole altes doc nicht mehr by ID sondern by Pos
-			$view = $this->db->get_view("epgservice", "listByPosition_view", array("[\"$station\",$pos]","[\"$station\",$pos]")); //startkey=&endkey=["ZDF",50]
+		if (count($view->rows)==1)
+		{
 			$idbyPos = $view->rows[0]->id;
 		    $olddoc = $this->db->get($idbyPos ,true);
 
@@ -177,12 +184,8 @@ class mycouch {
 				echo "\n";            
                 console("\tDocument $docid needs no update!");
 				return;
-			}
-		} catch ( Exception $e ) {
-			//error Doc nicht vorhanden also neus speichern
-			//todo umwandeln in IF abfrage
-        }       
-	    
+			}				
+		}	    
 
 		//$this->machMirPlatz($doc);
        
@@ -202,6 +205,13 @@ class mycouch {
 
         //speichern wandelt doc in object -> updatecounter erwartet aber array
         $doc2 = $response = $this->db->save($doc);          // couchConflictException
+
+     //    echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n";
+     //    echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx\n";
+    	// print_r($doc);
+    	// print_r($doc2);
+    	// exit;
+
         $this->updateCounter($doc);
 	
 
