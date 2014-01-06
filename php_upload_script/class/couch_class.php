@@ -336,18 +336,18 @@ class mycouch {
   //   	print_r($diff); 
 
     	$diff = arrayRecursiveDiff($newdoc,$olddoc);
-		print_r($diff);    	exit;
+		// print_r($diff);    	exit;
 
-    	if (count($diff) == 1){
-    		if (array_key_exists("_rev", $diff)){
-    			//can skip
+    	if (count($diff) <= 1){
+    		if (array_key_exists("_rev", $diff))
+    			return false;    		
+    		if (count($diff)==0)
     			return false;
-    		}
     	}
 		//needs update
 
-        // echo "Änderungen:\n";
-        // print_r($diff);
+        echo "Änderungen:\n";
+        print_r($diff);
 
 		return true;
     }
