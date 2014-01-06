@@ -335,7 +335,7 @@ class mycouch {
     	//$diff = arrayRecursiveDiff($newdoc,$olddoc);
   //   	print_r($diff); 
 
-    	$diff = arrayRecursiveDiff($olddoc,$newdoc);
+    	$diff = arrayRecursiveDiff($newdoc,$olddoc);
 		 print_r($diff);    	exit;
 
     	if (count($diff) == 1){
