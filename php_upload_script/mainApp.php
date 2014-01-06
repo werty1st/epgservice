@@ -75,8 +75,9 @@ function console($msg){
 
     $spaces = $col - strlen($msg);
 
-    if ($spaces < 0) {
-        $msg = substr($msg,0,$col); 
+    if ($spaces <= 0) {
+        $msg = substr($msg,0,$col);
+        $spaces = 0;
     }
     echo "\r".$msg.str_repeat(" ", $spaces);flush();    
 }

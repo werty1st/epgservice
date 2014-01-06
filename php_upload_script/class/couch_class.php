@@ -102,38 +102,43 @@ class mycouch {
 		try {
 
 
+			try {
+		        //bilder besorgen
+		        if ($doc["images"]["image"][0]["cuttingDimension"]["height"] == 378){
+		        	$bildgroß  = $doc["images"]["image"][0]["uri"];
+		        	$bildklein = $doc["images"]["image"][1]["uri"];
+
+		        	// $bildgroßStr  = file_get_contents($bildgroß);
+		        	$bildkleinStr = file_get_contents($bildklein);
+		        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
+		        	if (strlen($bildkleinStr) >0)
+		        		$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
+		        } else {
+					$bildgroß  = $doc["images"]["image"][1]["uri"];
+		        	$bildklein = $doc["images"]["image"][0]["uri"];
+
+		        	// $bildgroßStr  = file_get_contents($bildgroß);
+		        	$bildkleinStr = file_get_contents($bildklein);
+		        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
+		        	if (strlen($bildkleinStr) >0)
+		        		$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	
 
 
-	        //bilder besorgen
-	        if ($doc["images"]["image"][0]["cuttingDimension"]["height"] == 378){
-	        	$bildgroß  = $doc["images"]["image"][0]["uri"];
-	        	$bildklein = $doc["images"]["image"][1]["uri"];
+		        }
+		        //($doc, $name, $file, $mime_type = null)
+		        if (strlen($bildkleinStr) >0)
+		        	$doc = $this->db->add_attachment($doc, "small", $bildkleinStr);
+		        // $doc = $this->db->add_attachment($doc, "large", $bildgroßStr);
 
-	        	// $bildgroßStr  = file_get_contents($bildgroß);
-	        	$bildkleinStr = file_get_contents($bildklein);
-	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	if (strlen($bildkleinStr) >0)
-	        		$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
-	        } else {
-				$bildgroß  = $doc["images"]["image"][1]["uri"];
-	        	$bildklein = $doc["images"]["image"][0]["uri"];
-
-	        	// $bildgroßStr  = file_get_contents($bildgroß);
-	        	$bildkleinStr = file_get_contents($bildklein);
-	        	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
-	        	if (strlen($bildkleinStr) >0)
-	        		$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	
+		        // $doc = $this->db->add_attachment_file($doc, "small", $bildklein);
+				if (strlen($bildgroß) >0)
+		        	$doc = $this->db->add_attachment_file($doc, "large", $bildgroß);				
+			} catch (Exception $e) {
+				//error Image nicht vorhanden
+				console("\tDocument has no Images: ".$doc["titel"]); echo "\n\n";; 				
+			}
 
 
-	        }
-	        //($doc, $name, $file, $mime_type = null)
-	        if (strlen($bildkleinStr) >0)
-	        	$doc = $this->db->add_attachment($doc, "small", $bildkleinStr);
-	        // $doc = $this->db->add_attachment($doc, "large", $bildgroßStr);
-
-	        // $doc = $this->db->add_attachment_file($doc, "small", $bildklein);
-			if (strlen($bildgroß) >0)
-	        	$doc = $this->db->add_attachment_file($doc, "large", $bildgroß);
 
 	        //print_r($doc); exit;
 
@@ -175,7 +180,7 @@ class mycouch {
 			}
 		} catch ( Exception $e ) {
 			//error Doc nicht vorhanden also neus speichern
-			//console("\tDocument is new: ".$doc["titel"]); echo "\n\n";; 
+			console("\tDocument maleformed: ".$doc["titel"]); echo "\n\n";; 
         }       
 	    
 
