@@ -26,6 +26,7 @@ function provides_json(doc, req) {
 			headers : {
 				"Content-Type" : "application/json; charset=utf-8",
 				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Edge-Control" : "maxage=300",
 				"Vary": "Accept-Encoding"
 				}
 			}
@@ -50,6 +51,7 @@ function provides_json(doc, req) {
 			headers : {
 				"Content-Type" : "application/json; charset=utf-8",
 				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Edge-Control" : "maxage=300",
 				"Vary": "Accept-Encoding"
 				// "X-My-Own-Header": "you can set your own headers"
 				}
@@ -67,6 +69,7 @@ function provides_xml(doc, req) {
 			headers : {
 				"Content-Type" : "application/xml; charset=utf-8",
 				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Edge-Control" : "maxage=300",
 				"Vary": "Accept-Encoding"
 				}
 			}
@@ -99,6 +102,7 @@ function provides_xml(doc, req) {
 			headers : {
 				"Content-Type" : "application/xml; charset=utf-8",
 				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
+				"Edge-Control" : "maxage=300",
 				"Vary": "Accept-Encoding"
 				// "X-My-Own-Header": "you can set your own headers"
 				}
