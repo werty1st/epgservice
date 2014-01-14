@@ -130,7 +130,6 @@ exports.getToday = function (head, req) {
 		
         header['Content-Type'] = 'application/json; charset=utf-8';
         header['Cache-Control'] = 'no-transform,public,max-age=60,s-maxage=300';
-        header['Edge-Control'] = 'maxage=300';
         header['Vary'] = 'Accept-Encoding';
 
 
@@ -143,7 +142,6 @@ exports.getToday = function (head, req) {
 
         header['Content-Type'] = 'application/xml; charset=utf-8';
         header['Cache-Control'] = 'no-transform,public,max-age=60,s-maxage=300';
-        header['Edge-Control'] = 'maxage=300';
         header['Vary'] = 'Accept-Encoding';        
         start({code: 200, headers: header});
 				

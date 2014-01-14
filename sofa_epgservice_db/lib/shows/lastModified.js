@@ -21,7 +21,6 @@ exports.lastModified = function(doc, req) {
 	var headers = {
 				"Content-Type" : "application/json; charset=utf-8",
 				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
-				"Edge-control": "max-age=60",
 				"Vary": "Accept-Encoding",
 				"Expires" : expires,
 				"Last-Modified" : lastModified
