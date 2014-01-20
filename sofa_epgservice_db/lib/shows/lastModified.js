@@ -20,10 +20,7 @@ exports.lastModified = function(doc, req) {
 
 	var headers = {
 				"Content-Type" : "application/json; charset=utf-8",
-				"Cache-Control": "no-transform,public,max-age=60,s-maxage=300",
-				"Vary": "Accept-Encoding",
-				"Expires" : expires,
-				"Last-Modified" : lastModified
+				"Expires" : expires
 				};
 
 	if (format == "json") {
