@@ -6,7 +6,8 @@
 
 module.exports = [
 
-
+    {from: "/epgservice/*", to: "../../*" },
+    
     {from: '/getById/json/:id/*',  to: '../../:id/*' }, 
     {from: '/getById/xml/:id/*',  to: '../../:id/*' }, 
 
