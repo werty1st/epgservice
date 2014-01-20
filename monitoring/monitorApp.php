@@ -16,9 +16,11 @@ $response = curl_exec($ch);
 /* Check for 404 (file not found). */
 $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 if($httpCode != 200) {    
-
+	echo "sende Mail wegen Fehler $httpCode\n";
 	sende_mail($response);
 
+} else {
+ echo "Kein fehler\n";
 }
 
 function sende_mail($antwort) {
