@@ -39,3 +39,11 @@ entry
 
 hosts:
 127.0.0.1       localhost epg.sofa02
+
+
+I have my web site run out of a Couch DB instance, so I have my vhost configured to point to /dbname/_design/app/_rewrite.
+
+I want to be able to access the index page from a web browser, while still accessing the Couch DB API over Ajax, so I set up a pair of rewrite rules in my rewrites field:
+
+[ { "from": "/dbname/*", "to: ../../*" },
+  { "from": "/*", "to: *" } ]
