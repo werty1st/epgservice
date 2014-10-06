@@ -5,7 +5,9 @@ error_reporting(E_ERROR | E_PARSE);
 $senderliste = array ("ZDF"	=> "29381224",
 					  "ZDFneo"	=> "29381364",
 					  "ZDF.kultur"=> "29381288",
-					  "ZDFinfo"	=> "29381362");
+					  "ZDFinfo"	=> "29381362",
+					  "dreisat"	=> "35310648",
+					  "arte"	=> "35310650");
 
 $url = "http://www.zdf.de/ZDF/zdfportal/xml/object/";
 $action = "action=getAllItems";
@@ -32,3 +34,12 @@ libxml_set_streams_context($context);
 if (file_exists('config.php')) {
 	include_once('config.php');
 }
+
+
+
+
+/*http://cm2-prod-cae-1-01.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
+http://cm2-prod-cae-1-02.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
+http://cm2-prod-cae-1-03.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
+http://cm2-prod-cae-1-04.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
+*/
