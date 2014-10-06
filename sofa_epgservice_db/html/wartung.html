@@ -63,6 +63,18 @@
 							<table id="all_zdfkultur">
 							</table>
 						</div>
+						
+						<div data-role="collapsible">
+					        <h3>Alle Daten 3Sat</h3>
+							<table id="all_3sat">
+							</table>
+						</div>
+
+						<div data-role="collapsible">
+					        <h3>Alle Daten Arte</h3>
+							<table id="all_arte">
+							</table>
+						</div>
 				    </div>
 				</div>			
 			</div><!-- /content -->
@@ -133,7 +145,27 @@
 							add2table(data, '#all_zdfkultur');
 						});  								    
 		    
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "3sat"},
+		    		    function (err, data) {
+		    		    	data = JSON.parse(data).response.sendungen;
+							if (err || data.length == 0) {
+								// an error occurred
+								$('#all_3sat').append("keine Daten");
+								return console.log(err);
+							}
+							add2table(data, '#all_3sat');
+						}); 
 
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "arte"},
+		    		    function (err, data) {
+		    		    	data = JSON.parse(data).response.sendungen;
+							if (err || data.length == 0) {
+								// an error occurred
+								$('#all_arte').append("keine Daten");
+								return console.log(err);
+							}
+							add2table(data, '#all_arte');
+						}); 		    
 
 		    db.getList( 'epgservice', 'getOlderThen30h', 'getAllWithTimeStamp', { accept: 'json'}, function (err, data) {
 		    	data = JSON.parse(data).rows;
