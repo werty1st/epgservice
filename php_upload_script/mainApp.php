@@ -15,8 +15,6 @@ include_once("class/couch_class.php");
 $couch = &Factory::getDB(array("host" => $db_host,
 							   "name" => $db_name));
 
-//db_cleanup
-//$couch->cleanup(true); //true=all
 
 
 //main loop
@@ -41,6 +39,12 @@ foreach ($senderliste as $station => $value) {
 	$couch->store2db($xml_allday,$station);
 	echo "\n";
 }
+
+//db_cleanup
+console("cleanup run.");echo "\n";
+$couch->cleanup(false); //true=all
+
+
 
 exit;
 

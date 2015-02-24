@@ -178,7 +178,7 @@ class SetteeRestClient {
     $resp_code = curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
 
     if ($resp_code < 199 || $resp_code > 399 || !empty($response['decoded']->error)) {
-      $msg = "CouchDB returned: \"HTTP 1.1. $resp_code\". ERROR: " . $response['json'];
+      $msg = "CouchDB returned: \"HTTP 1.1. $resp_code\". ERROR: " . json_encode($response)."Code: ".$resp_code;
       throw new SetteeRestClientException($msg);
     }
   }

@@ -422,22 +422,31 @@ class mycouch {
 	public function cleanup($all = false){
 		//alles mit endtime > 24h löschen
 
-		$all = true;
+
 		console("Start deleting old Docs"); echo "\n";
 
 		if ($all) {
 			$view = $this->db->get_view("epgservice", "getall_view");			
 		} else {
-			$view = $this->db->get_list("epgservice", "getOlderThen30h", "getAllWithTimeStamp");			
+			$view = $this->db->get_view("epgservice", "getdefunct");
 		}
 
 		//var_dump($view); exit;
-
 		foreach ($view->rows as $row) {
 			$doc = $row->value;
+
+			if($doc->_id == "lastmodified") continue;
+
 			console("Deleting old Doc: ".$doc->_id);
-			$this->db->delete($doc);
+			try {
+				$this->db->delete($doc);				
+			} catch (Exception $e) {
+				console("Cant delete: ".json_encode($doc));
+				sleep(100);
+			}
 		}
+
+		console("Done deleting old Docs"); echo "\n";
 	}
 
 }
