@@ -2,6 +2,8 @@ exports.getNow = function (head, req) {
 
 	var format = req.query.accept || "";
 	var station = req.query.station || "all";
+	var version = req.query.version || "1";
+
 	var nowsendung = false;
 	var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungen" : [] }};
 	var out = wrapper.response;
@@ -21,10 +23,18 @@ exports.getNow = function (head, req) {
 	   		//wenn kein sendername vorhanden weiter zum nächsten
 	   		if (!(row.value.station && row.value.station.name)) continue;
 
+	   		var stationname = row.value.station.name;
+
+			if ( (version == "2") && (row.value.station.name == "3sat") ) {
+				stationname = "dreisat";
+			}
+
+
 	   		//wenn der sender noch nicht exisitert lege neuen array unter sendername an
-	   		if (!(row.value.station.name in outAll.sender)){
-	   			outAll.sender[row.value.station.name] = {};
-	   			outAll.sender[row.value.station.name].sendungen = [];	
+	   		if (!(stationname in outAll.sender)){
+
+				outAll.sender[stationname] = {};
+				outAll.sender[stationname].sendungen = [];	
 	   		} 
 
 
@@ -40,16 +50,22 @@ exports.getNow = function (head, req) {
 				delete row.value.rev;
 				delete row.value.item_created;
 				delete row.value.item_modified;
-				outAll.sender[row.value.station.name].sendungen.push({sendung:row});
+
+
+				outAll.sender[stationname].sendungen.push({sendung:row});
+
 				continue;
 			}
 	        //folgesendung gefunden, gib sie aus und beende
-			if (outAll.sender[row.value.station.name].sendungen.length == 1){
+
+
+			if (outAll.sender[stationname].sendungen.length == 1){
 				delete row.value.rev;
 				delete row.value.item_created;
 				delete row.value.item_modified;
-				outAll.sender[row.value.station.name].sendungen.push({sendung:row});
+				outAll.sender[stationname].sendungen.push({sendung:row});
 			}
+
 		}
 		wrapper = wrapperAll;
 
@@ -102,6 +118,8 @@ exports.getNow = function (head, req) {
     //         log("error");        
     // }
 
+	header['X-API-Version'] = version;
+	
 
 	if (format == "json") {
 		provides_json(wrapper, header);
@@ -120,7 +138,7 @@ exports.getNow = function (head, req) {
 	}
 
 	function provides_xml(out,header) {		
-        header['Content-Type'] = 'application/xml; charset=utf-8';
+        header['Content-Type'] = 'application/xml; charset=utf-8';        
         start({code: 200, headers: header});
 		var filter = Object();
 			filter['"'] = "&quot;";

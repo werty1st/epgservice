@@ -16,11 +16,18 @@ module.exports = [
     {from: '/getById/json/:id', to: '_show/getByID_show/:id', query: { accept: 'json'} }, 
 
 
+
     {from: '/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml' }},
     {from: '/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json' }},
 
     {from: '/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml' }},
     {from: '/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json' }},
+
+    {from: '/v2/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', version: '2'}},
+    {from: '/v2/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', version: '2' }},
+
+    {from: '/v2/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', version: '2' }},
+    {from: '/v2/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', version: '2' }},
 
 
 

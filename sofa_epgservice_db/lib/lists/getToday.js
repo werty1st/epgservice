@@ -2,6 +2,8 @@ exports.getToday = function (head, req) {
 
 	var format = req.query.accept || "";
 	var station = req.query.station || "all";
+	var version = req.query.version || "1";
+
 	var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungen" : [] }};
 	var out = wrapper.response;
 
@@ -19,9 +21,15 @@ exports.getToday = function (head, req) {
 			// var diff = parseFloat((Math.abs(time_now - time_old)/3600000).toPrecision(4));
 			if (!(row.value.station && row.value.station.name)) continue;
 
-	   		if (!(row.value.station.name in outAll.sender)){
-	   			outAll.sender[row.value.station.name] = {};
-	   			outAll.sender[row.value.station.name].sendungen = [];	
+	   		var stationname = row.value.station.name;
+
+			if ( (version == "2") && (row.value.station.name == "3sat") ) {
+				stationname = "dreisat";
+			}
+
+	   		if (!(stationname in outAll.sender)){
+	   			outAll.sender[stationname] = {};
+	   			outAll.sender[stationname].sendungen = [];	
 	   		} 
 			
 
@@ -55,12 +63,12 @@ exports.getToday = function (head, req) {
 
 				//5:35		> 5:30 			 4:00       < 5:30
 			if ((endzeit_ms > startzeit_ms) && (airtime_ms < startzeit_ms)){			
-				outAll.sender[row.value.station.name].sendungen.push({sendung:row});
+				outAll.sender[stationname].sendungen.push({sendung:row});
 			}
 
 			//betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
 			if (airtime_ms >= startzeit){
-				outAll.sender[row.value.station.name].sendungen.push({sendung:row});
+				outAll.sender[stationname].sendungen.push({sendung:row});
 			}	
 		} 
 		wrapper = wrapperAll;
