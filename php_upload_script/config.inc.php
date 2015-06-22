@@ -7,6 +7,7 @@ $senderliste = array ("ZDF"	=> "29381224",
 					  "ZDF.kultur"=> "29381288",
 					  "ZDFinfo"	=> "29381362",
 					  "dreisat"	=> "35310648",
+					  "KI.KA"	=> "38967066",
 					  "arte"	=> "35310650");
 
 $url = "http://www.zdf.de/ZDF/zdfportal/xml/object/";

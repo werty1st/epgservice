@@ -50,6 +50,29 @@ module.exports = [
     {from: '/arte/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
 
 
+    //Dummy V2 now
+
+    {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
+    {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
+
+    {from: '/zdfinfo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
+    {from: '/zdfinfo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
+
+    {from: '/zdfneo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
+    {from: '/zdfneo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
+
+    {from: '/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
+    {from: '/zdfkultur/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
+
+    {from: '/3sat/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
+    {from: '/3sat/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
+
+    {from: '/arte/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
+    {from: '/arte/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
+
+    //End Dummy V2 now
+
+
 
     {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
     {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
@@ -68,6 +91,40 @@ module.exports = [
 
     {from: '/arte/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
     {from: '/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
+
+
+    //Dummy V2 today
+
+    {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
+    {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
+
+    {from: '/zdfinfo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
+    {from: '/zdfinfo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
+
+    {from: '/zdfneo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
+    {from: '/zdfneo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
+
+    {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
+    {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
+
+    {from: '/3sat/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
+    {from: '/3sat/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
+
+    {from: '/arte/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
+    {from: '/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
+
+    //Dummy V2 today
+
+
+
+
+
+
+
+
+
+
+
 
 
     //deprecated warum?
