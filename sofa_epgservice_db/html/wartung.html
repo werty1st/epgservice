@@ -75,6 +75,12 @@
 							<table id="all_arte">
 							</table>
 						</div>
+
+						<div data-role="collapsible">
+					        <h3>Alle Daten KI.KA</h3>
+							<table id="all_kika">
+							</table>
+						</div>						
 				    </div>
 				</div>			
 			</div><!-- /content -->
@@ -167,29 +173,41 @@
 							add2table(data, '#all_arte');
 						}); 		    
 
-		    db.getList( 'epgservice', 'getOlderThen30h', 'getAllWithTimeStamp', { accept: 'json'}, function (err, data) {
-		    	data = JSON.parse(data).rows;
-		        if (err || data.length == 0) {
-		            // an error occurred
-		            $('#getold').append("keine Daten");
-		            return console.log(err);
-		        }
-		        //console.log(data); return;
-				jQuery.each( data, function( i, val ) {
-					//console.log(val);
-					// $( "#getold").append( document.createTextNode( " - " + val ) );
-					var d = val.value;
-					var context = {};
-						context.id= d["_id"];
-						context.titel = d.titel;
-						context.time = d.time;
-						context.endtime = d.endTime;
+		    db.getList( 'epgservice', 'getToday_list', 'getAllWithTimeStamp', { accept: 'json', station: "KI.KA"},
+		    		    function (err, data) {
+		    		    	data = JSON.parse(data).response.sendungen;
+							if (err || data.length == 0) {
+								// an error occurred
+								$('#all_kika').append("keine Daten");
+								return console.log(err);
+							}
+							add2table(data, '#all_kika');
+						}); 		    
 
-					var html = handlebars.templates['table_line.html'](context);
 
-					$("#getold").append(html);					
-				});
-		    });  
+		  //   db.getList( 'epgservice', 'getOlderThen30h', 'getAllWithTimeStamp', { accept: 'json'}, function (err, data) {
+		  //   	data = JSON.parse(data).rows;
+		  //       if (err || data.length == 0) {
+		  //           // an error occurred
+		  //           $('#getold').append("keine Daten");
+		  //           return console.log(err);
+		  //       }
+		  //       //console.log(data); return;
+				// jQuery.each( data, function( i, val ) {
+				// 	//console.log(val);
+				// 	// $( "#getold").append( document.createTextNode( " - " + val ) );
+				// 	var d = val.value;
+				// 	var context = {};
+				// 		context.id= d["_id"];
+				// 		context.titel = d.titel;
+				// 		context.time = d.time;
+				// 		context.endtime = d.endTime;
+
+				// 	var html = handlebars.templates['table_line.html'](context);
+
+				// 	$("#getold").append(html);					
+				// });
+		  //   });  
 
 
 		    function getDetails(id) {

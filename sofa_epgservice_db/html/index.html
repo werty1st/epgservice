@@ -2,6 +2,7 @@
 <html> 
 	<head> 	
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		
 		<script type="text/javascript" src="modules.js"></script>
 		<script type="text/javascript">
@@ -87,6 +88,13 @@
 							<div id="linklist" class="brushx: html">
 							</div>
 						</div>
+
+						<div data-role="collapsible" data-collapsed="true">
+							<h3>Service Endpoints V2</h3>
+							<div id="linklist_v2" class="brushx: html">
+								Bei V2 wurde der Namen 3sat in der all/now und all/today API in dreisat geändert um XML konform zu bleiben.
+							</div>
+						</div>						
 
 				        <div data-role="collapsible">
 							<h3>XML Preview</h3>
@@ -185,11 +193,15 @@
 			        	context.origin = $origin;
 			        	context.url = $designdoc;
 					var html = handlebars.templates['linklist.html'](context);
+					var html2 = handlebars.templates['linklist_v2.html'](context);
 
 			        var jsbrush = new SyntaxHighlighter.brushes.Xml();
-			        jsbrush.init()
+			        jsbrush.init();
 			        ndata = jsbrush.getHtml(html);
-			        $('#linklist').append(ndata);					
+			        ndata2 = jsbrush.getHtml(html2);
+
+			        $('#linklist').append(ndata);								        
+			        $('#linklist_v2').append(ndata2);					
 					//$.mobile.changePage("#dialogPage");
 			    });  
 			    return false;

@@ -100,26 +100,7 @@ exports.getNow = function (head, req) {
 		}
 	}
 
-    //vergleiche 
-    // try {
-    //     if (out.sendungen[0].sendung.value.endTime == out.sendungen[1].sendung.value.time)
-    //     {
-    //         header.debug1 = "endzeit==startzeit";
-    //         log("no error");
-    //     } else
-    //     {
-    //         header.debug1 = "das end und start datum weicht ab";        
-    //         log("error");
-    //     }        
-    // } catch( e) {
-    //         header.debug1 = "das end und start datum ist nicht feststellbar";        
-    //         header.debug1 = JSON.stringify(out);        
-    //         header.debug1_c1 = 0;
-    //         log("error");        
-    // }
-
 	header['X-API-Version'] = version;
-	
 
 	if (format == "json") {
 		provides_json(wrapper, header);

@@ -7,17 +7,6 @@ exports.lastModified = function(doc, req) {
 	var expires = new Date();
 	expires.setMinutes(expires.getMinutes()+5);
 
-	var lastModified = doc.stations["ZDF.kultur"].timestamp;
-	
-	if (lastModified < doc.stations.ZDFneo.timestamp)
-		lastModified = doc.stations.ZDFneo.timestamp;
-	if (lastModified < doc.stations.ZDF.timestamp)
-		lastModified = doc.stations.ZDF.timestamp;
-	if (lastModified < doc.stations.ZDFinfo.timestamp)
-		lastModified = doc.stations.ZDFinfo.timestamp;
-	if (lastModified < doc.stations.ZDF.timestamp)
-		lastModified = doc.stations.ZDF.timestamp;
-
 	var headers = {
 				"Content-Type" : "application/json; charset=utf-8",
 				"Expires" : expires
