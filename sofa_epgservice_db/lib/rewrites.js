@@ -16,115 +16,116 @@ module.exports = [
     {from: '/getById/json/:id', to: '_show/getByID_show/:id', query: { accept: 'json'} }, 
 
 
+    //ALL
+        {from: '/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml' }},
+        {from: '/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json' }},
 
-    {from: '/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml' }},
-    {from: '/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json' }},
+        {from: '/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml' }},
+        {from: '/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json' }},
+    //ALL END
 
-    {from: '/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml' }},
-    {from: '/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json' }},
+    //ALL v2
+        {from: '/v2/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', version: '2'}},
+        {from: '/v2/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', version: '2' }},
 
-    {from: '/v2/all/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', version: '2'}},
-    {from: '/v2/all/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', version: '2' }},
-
-    {from: '/v2/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', version: '2' }},
-    {from: '/v2/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', version: '2' }},
-
-
-
-    {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
-    {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
-
-    {from: '/zdfinfo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
-    {from: '/zdfinfo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
-
-    {from: '/zdfneo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
-    {from: '/zdfneo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
-
-    {from: '/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
-    {from: '/zdfkultur/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
-
-    {from: '/3sat/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
-    {from: '/3sat/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
-
-    {from: '/arte/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
-    {from: '/arte/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
+        {from: '/v2/all/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', version: '2' }},
+        {from: '/v2/all/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', version: '2' }},
+    //ALL v2 END
 
 
-    //Dummy V2 now
+    //NOW
+        {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
+        {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
 
-    {from: '/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
-    {from: '/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
+        {from: '/zdfinfo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
+        {from: '/zdfinfo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
 
-    {from: '/zdfinfo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
-    {from: '/zdfinfo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
+        {from: '/zdfneo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
+        {from: '/zdfneo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
 
-    {from: '/zdfneo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
-    {from: '/zdfneo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
+        {from: '/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
+        {from: '/zdfkultur/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
 
-    {from: '/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
-    {from: '/zdfkultur/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
+        {from: '/3sat/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
+        {from: '/3sat/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
 
-    {from: '/3sat/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
-    {from: '/3sat/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
+        {from: '/arte/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
+        {from: '/arte/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
 
-    {from: '/arte/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
-    {from: '/arte/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
+        {from: '/kika/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
+        {from: '/kika/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},
+    //NOW END
 
-    //End Dummy V2 now
+    //NOW V2 DUMMY
+        {from: '/v2/zdf/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
+        {from: '/v2/zdf/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
 
+        {from: '/v2/zdfinfo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
+        {from: '/v2/zdfinfo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
 
+        {from: '/v2/zdfneo/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
+        {from: '/v2/zdfneo/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
 
-    {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
-    {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
+        {from: '/v2/zdfkultur/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
+        {from: '/v2/zdfkultur/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
 
-    {from: '/zdfinfo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
-    {from: '/zdfinfo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
+        {from: '/v2/3sat/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
+        {from: '/v2/3sat/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
 
-    {from: '/zdfneo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
-    {from: '/zdfneo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
+        {from: '/v2/arte/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
+        {from: '/v2/arte/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
 
-    {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
-    {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
-
-    {from: '/3sat/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
-    {from: '/3sat/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
-
-    {from: '/arte/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
-    {from: '/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
-
-
-    //Dummy V2 today
-
-    {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
-    {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
-
-    {from: '/zdfinfo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
-    {from: '/zdfinfo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
-
-    {from: '/zdfneo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
-    {from: '/zdfneo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
-
-    {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
-    {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
-
-    {from: '/3sat/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
-    {from: '/3sat/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
-
-    {from: '/arte/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
-    {from: '/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
-
-    //Dummy V2 today
+        {from: '/v2/kika/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
+        {from: '/v2/kika/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},        
+    //NOW V2 END
 
 
+    //TODAY
+        {from: '/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
+        {from: '/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
+
+        {from: '/zdfinfo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
+        {from: '/zdfinfo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
+
+        {from: '/zdfneo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
+        {from: '/zdfneo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
+
+        {from: '/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
+        {from: '/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
+
+        {from: '/3sat/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
+        {from: '/3sat/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
+
+        {from: '/arte/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
+        {from: '/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
+        
+        {from: '/kika/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
+        {from: '/kika/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},        
+    //TODAY END
 
 
+    //TODAY V2 DUMMY
+        {from: '/v2/zdf/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF" }},
+        {from: '/v2/zdf/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF" }},
 
+        {from: '/v2/zdfinfo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFinfo" }},
+        {from: '/v2/zdfinfo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFinfo" }},
 
+        {from: '/v2/zdfneo/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDFneo" }},
+        {from: '/v2/zdfneo/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDFneo" }},
 
+        {from: '/v2/zdfkultur/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "ZDF.kultur" }},
+        {from: '/v2/zdfkultur/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "ZDF.kultur" }},
 
+        {from: '/v2/3sat/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "3sat" }},
+        {from: '/v2/3sat/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "3sat" }},
 
+        {from: '/v2/arte/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "arte" }},
+        {from: '/v2/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
 
-
+        {from: '/v2/kika/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
+        {from: '/v2/kika/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},                
+    //TODAY V2 END
 
 
     //deprecated warum?
