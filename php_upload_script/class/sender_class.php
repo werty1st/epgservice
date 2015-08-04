@@ -1,4 +1,5 @@
 <?php
+libxml_use_internal_errors(true);
 
 class sender{
 
@@ -13,10 +14,18 @@ class sender{
 		$xml_in = new DOMDocument();
 		$xml_in->load($url."/".$mysender."?".$action);
 		
+		if (strpos($http_response_header[0], '503')) {
+			throw new Exception('P12 antwortet mit 503 Fehler.');
+		}		
 
 		$this->myxml = new DOMDocument('1.0', 'UTF-8');
 		$xml_objectResponse 			= $this->myxml->createElement("objectResponse");
 
+		
+			if ($xml_in->getElementsByTagName("miniEPG")->length == 0){
+				throw new Exception('XML Fehler.');
+			}
+			
 			$miniEPG 	 				= $xml_in->getElementsByTagName("miniEPG")->item(0);
 			$xml_miniEPG 				= $this->myxml->createElement("tinyEPG");
 			if($miniEPG->hasAttribute("contentId")){

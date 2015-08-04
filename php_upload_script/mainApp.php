@@ -1,9 +1,6 @@
 #!/usr/bin/php
 <?php
 
-//http://***@s.wrty.eu:5984/epgservice
-// require_once 'xml2json/xml2json.php';
-
 //Settings
 include_once("config.inc.php");
 include_once("class/sender_class.php");
@@ -20,24 +17,29 @@ $couch = &Factory::getDB(array("host" => $db_host,
 //main loop
 foreach ($senderliste as $station => $value) {
 	
-	//all
-	console("Lade Programmdaten von: ".$station);
-    echo "\n";
+	try {
+		//all
+		console("Lade Programmdaten von: ".$station);
+		echo "\n";
 
-        //einzelne sendungen durchlaufen    
-        $xml_allday = new Sender($senderliste[$station]);
-        
-        file_put_contents($cache_dir."/".$station.".xml",$xml_allday->toString());
-        /*
-        */
-	    /// ODER
-        /*
+		//einzelne sendungen durchlaufen    
+		$xml_allday = new Sender($senderliste[$station]);
+
+		file_put_contents($cache_dir."/".$station.".xml",$xml_allday->toString());
+		/*
+		*/
+		/// ODER
+		/*
 		$xml_allday = new sender_fromfile($cache_dir."/".$station.".xml");
-        */
+		*/
 
 
-	$couch->store2db($xml_allday,$station);
-	echo "\n";
+		$couch->store2db($xml_allday,$station);
+		echo "\n";
+	} catch (Exception $e) {
+		//echo "\tXML fuer Sender $station kann nicht abgerufen werden: ".$e->getMessage()."\n";
+		file_put_contents( 'php://stderr', "\tXML fuer Sender $station kann nicht abgerufen werden: ".$e->getMessage()."\n" );
+	}
 }
 
 //db_cleanup

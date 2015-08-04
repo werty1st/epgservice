@@ -70,7 +70,7 @@ class sendung{
 		        // And then append it to the "<root>" node
 		        $this->mysendung->getElementsByTagName('sendung')->item(0)->appendChild($progdata);                        
 		} catch (Exception $e) {
-		        console("URL invalid ".$this->mysendung->getElementsByTagName('titel')->item(0)->nodeValue);
+		        console("sendung_class.php: URL invalid ".$this->mysendung->getElementsByTagName('titel')->item(0)->nodeValue);
 		        echo "\n";        
 		        //todo fill with dummy data
 		}
