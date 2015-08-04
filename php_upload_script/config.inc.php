@@ -2,16 +2,16 @@
 error_reporting(E_ERROR | E_PARSE);
 
 
-$senderliste = array ("ZDF"	=> "29381224",
-					  "ZDFneo"	=> "29381364",
-					  "ZDF.kultur"=> "29381288",
-					  "ZDFinfo"	=> "29381362",
-					  "dreisat"	=> "35310648",
-					  "KI.KA"	=> "38967066",
-					  "arte"	=> "35310650");
+$senderliste = array ("ZDF"	=> "zdf",
+					  "ZDFneo"	=> "zdfneo",
+					  "ZDF.kultur"=> "zdf.kultur",
+					  "ZDFinfo"	=> "zdfinfo",
+					  "dreisat"	=> "dreisat",
+					  "KI.KA"	=> "ki.ka",
+					  "arte"	=> "arte");
 
-$url = "http://www.zdf.de/ZDF/zdfportal/xml/object/";
-$action = "action=getAllItems";
+define("URL", "http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=%s&startDate=%s&endDate=%s");
+
 
 $cache_dir ="cache";
 $db_name = "epgservice";
@@ -25,7 +25,7 @@ $db_host = "http://localhost:5984";
 //XML Object Useragent
 $opts = array(
     'http' => array(
-        'user_agent' => 'PHP libxml, ZDF Webmaster (dev)',
+        'user_agent' => 'PHP libxml, ZDF TTP (api v2)',
     )
 );
 $context = stream_context_create($opts);
@@ -35,12 +35,3 @@ libxml_set_streams_context($context);
 if (file_exists('config.php')) {
 	include_once('config.php');
 }
-
-
-
-
-/*http://cm2-prod-cae-1-01.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
-http://cm2-prod-cae-1-02.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
-http://cm2-prod-cae-1-03.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
-http://cm2-prod-cae-1-04.dbc.zdf.de/ZDF/zdfportal/xml/object/29381224
-*/

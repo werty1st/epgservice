@@ -13,6 +13,20 @@ $couch = &Factory::getDB(array("host" => $db_host,
 							   "name" => $db_name));
 
 
+//set Date
+//if time >= 00:00 and < 5:30 
+
+if ( ( time() >= strtotime("00:00:00") ) && ( time() < strtotime("05:30:00")) ) {
+    //Sendetag = heute-1
+    $date_start = date('Y-m-d', strtotime('-1 day', time() ));
+    $date_end   = date('Y-m-d');
+
+} else {
+    //Sendetag = heute
+    $date_start = date('Y-m-d');
+    $date_end   = date('Y-m-d', strtotime('+1 day', time() ));
+}
+
 
 //main loop
 foreach ($senderliste as $station => $value) {
@@ -23,7 +37,7 @@ foreach ($senderliste as $station => $value) {
 		echo "\n";
 
 		//einzelne sendungen durchlaufen    
-		$xml_allday = new Sender($senderliste[$station]);
+		$xml_allday = new Sender($senderliste[$station], $date_start, $date_end);
 
 		file_put_contents($cache_dir."/".$station.".xml",$xml_allday->toString());
 		/*
