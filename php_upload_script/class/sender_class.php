@@ -12,57 +12,57 @@ class sender{
 		$url = sprintf(URL, $mysender, $date_start, $date_end);
 
 		$xml_in = new DOMDocument();
-		$xml_in->load($url."/".$mysender."?".$action);
+		$xml_in->load($url);
 		
 		if (strpos($http_response_header[0], '503')) {
 			throw new Exception('P12 antwortet mit 503 Fehler.');
 		}		
 
-		$myxml 				= new DOMDocument('1.0', 'UTF-8');
-		$xml_objectResponse = $myxml->createElement("objectResponse");
-		$f 					= $myxml->createDocumentFragment();
+		$xml_out 				= new DOMDocument('1.0', 'UTF-8');
+		$xml_objectResponse = $xml_out->createElement("objectResponse");
+		$f 					= $xml_out->createDocumentFragment();
 		$f->appendXML(' <status><statuscode>ok</statuscode></status>');
 		$xml_objectResponse->appendChild($f);
 		
-		if ($xml_in->getElementsByTagName("treffer")->length == 0){
+		if ($xml_in->getElementsByTagName("Sendetermin")->length == 0){
 			throw new Exception('XML Fehler.');
 		}
 		
-		$miniEPG 	 				= $xml_in->getElementsByTagName("treffer")->item(0);
-		$xml_miniEPG 				= $myxml->createElement("tinyEPG"); //ausgabe xml
-
-			// if($miniEPG->hasAttribute("contentId")){
-			// 	$xml_miniEPG->setAttribute("miniEPGcontentId", $miniEPG->getAttribute("contentId"));
-			// }
+		$xml_miniEPG = $xml_out->createElement("tinyEPG"); //ausgabe xml
 
 		//erstelle knoten sendungen um alle sendungen eines tages an zu hängen
-		$xml_sendungen = $myxml->createElement("sendungen");
+		$xml_sendungen = $xml_out->createElement("sendungen");
 		$xml_miniEPG->appendChild( $xml_sendungen );
 
 		$xml_objectResponse->appendChild( $xml_miniEPG );
-		$myxml->appendChild( $xml_objectResponse );
+		$xml_out->appendChild( $xml_objectResponse );
 
-
-		$this->myxml 	 = $myxml;
-		$this->sendungen = $xml_sendungen;
 
 		//sendungen durchparsen
-		$sendungen = $xml_in->getElementsByTagName('Sendetermin');
+		$xml_sendungen = $xml_in->getElementsByTagName('Sendetermin');
 
 
-		echo $this->toString(true);
 
-		exit;
+		$this->myxml 	 = $xml_out;
+		$this->sendungen = $xml_sendungen;
+
+	
+	}
+
+	public function collectSendungen(){
+
+		echo "collectSendungen\n";
 		//sendung verarbeiten
-		// $imax = $sendungen->length;
-		// $i1 = 1;
-		// $pos = 1;
-		// foreach ($sendungen as $sendung) {
-		// 	$fortschritt = ($i1++)*100/$imax; $fortschritt = number_format($fortschritt, 2);
-		//     $mysendung = new sendung($sendung,$pos++);		    
-		//     $mysendung->getComplete($fortschritt);
-		//     $this->appendSendung($mysendung);
-		// }		
+		$imax = $this->sendungen->length;
+		$i1 = 1;
+		$pos = 1;
+		foreach ($this->sendungen as $sendung) {
+			$fortschritt = ($i1++)*100/$imax; $fortschritt = number_format($fortschritt, 2);
+		    $mysendung = new sendung($sendung,$pos++);		    
+		    $mysendung->getComplete($fortschritt);
+		    $this->appendSendung($mysendung);
+		}	
+		exit;
 	}
 
 
@@ -71,7 +71,7 @@ class sender{
 
 		if( $human){
 		  	//Format XML to save indented tree rather than one line
-			$this->myxml->preserveWhiteSpace = false;
+			$this->myxml->preserveWhiteSpace = true;
 			$this->myxml->formatOutput = true;		   
 		}
 

@@ -8,22 +8,20 @@ class sendung{
 	function __construct ( $sendung, $position ) {
 
 		$mysendung = new DOMDocument();
-		//$xml_sendung = $this->sendung->createElement("sendung");
-		
+
 		// Import the node, and all its children, to the document
 		$mySendungNode = $mysendung->importNode($sendung, true);
 
 		// And then append it to the "<root>" node
 		$mysendung->appendChild($mySendungNode);
 
-		//manipulate sendung
-		//$sendungsID = $sendung->getElementsByTagName('link')->item(0)->nodeValue;
-		//$content = "http://www.zdf.de/ZDF/zdfportal/xml/epg/20196106,014c0432-e900-31b2-9763-cd0a1f6c9cc3";	
-		//$preg_one = preg_match("/\,([^\,]*)$/", $sendungsID, $sendungsID);
 
-		$airtime 		= $sendung->getElementsByTagName('time')->item(0)->nodeValue;
-		$stationName  	= $sendung->getElementsByTagName('station')->item(0)->getAttribute("name");
-		// $stationName 	= $stationName->getAttribute("name");
+		//add NS for xpath
+		$xpath = new DOMXPath($mysendung);
+		$xpath->registerNameSpace('zdf', 'http://www.zdf.de/api/contentservice/v2');
+		$matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
+
+		$stationName = $matches->item(0)->nodeValue;
 
 		// $position = str_pad ( (int)$position, 3, "0", STR_PAD_LEFT ); //führende null wird irgendwo gelöscht, darum nehme ich sie erstmal raus
 		$prehash = $stationName."_".$position;
@@ -32,13 +30,14 @@ class sendung{
 		$pos 	 = $mysendung->createElement("position", $position);
 		
 
-		//TODO reihenfolge stimmt nicht ID soll zuerst kommen
+
+		/*
 		$firstChildA = $mysendung->getElementsByTagName('sendung')->item(0);
 		$firstChildB = $mysendung->getElementsByTagName('sendung')->item(0)->firstChild;
 		//var_dump($firstChild); exit;
 		$firstChildA->insertBefore($ID,$firstChildB);
 		$firstChildA->insertBefore($pos,$firstChildB);
-
+		*/
 		// echo $mysendung->saveXML(); exit;
 
 		$this->mysendung = $mysendung;

@@ -38,6 +38,7 @@ foreach ($senderliste as $station => $value) {
 
 		//einzelne sendungen durchlaufen    
 		$xml_allday = new Sender($senderliste[$station], $date_start, $date_end);
+        $xml_allday->collectSendungen();
 
 		file_put_contents($cache_dir."/".$station.".xml",$xml_allday->toString());
 		/*
