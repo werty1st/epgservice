@@ -56,11 +56,13 @@ class sender{
 		$imax = $this->sendungen->length;
 		$i1 = 1;
 		$pos = 1;
-		foreach ($this->sendungen as $sendung) {
+		foreach ($this->sendungen as $sendetermin) { //sendung = DomElemet => Sendetermin
 			$fortschritt = ($i1++)*100/$imax; $fortschritt = number_format($fortschritt, 2);
-		    $mysendung = new sendung($sendung,$pos++);		    
+		    $mysendung = new sendung($sendetermin,$pos++);
 		    $mysendung->getComplete($fortschritt);
+
 		    $this->appendSendung($mysendung);
+		    return;
 		}	
 		exit;
 	}
