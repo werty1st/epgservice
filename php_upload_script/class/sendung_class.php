@@ -54,6 +54,12 @@ class sendung{
 		}
 		 
 
+		 exit;
+
+		//
+
+
+
 		$xml_details = new DOMDocument();
 		$url = $this->mysendung->getElementsByTagName('link')->item(0)->nodeValue;
 
