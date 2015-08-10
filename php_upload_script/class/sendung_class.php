@@ -103,10 +103,13 @@ class sendung{
 				$sendung->appendChild( $element );
 				
 				//<images>
-				// <image></image>
-				$f = $xml->createDocumentFragment();
-				$f->appendXML('<images><image>TODO</image></images>');
-				$sendung->appendChild($f);
+				$element = $xml->createElement("images");
+				//images holen
+				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:bildfamilie/zdf:VisualFamily_Reference/@ref');
+				$value = $matches->item(0)->nodeValue;	//url der bilder		
+				$this->getImages($element,$value);
+				//images einfügen
+				$sendung->appendChild($element);
 
 
 				//link <= <epgBeitrag> <Beitrag_Reference
@@ -173,9 +176,136 @@ class sendung{
 				$sendung->appendChild( $element );				
 
 				//programdata
-				$f = $xml->createDocumentFragment();
-				$f->appendXML('<programdata>TODO</programdata>');
-				$sendung->appendChild($f);
+				$programdata = $xml->createElement("programdata");
+					$element 	= $xml->createElement("actorDetails");
+					$programdata->appendChild( $element );
+
+
+					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:beginnDatum/text()');
+					$value = $matches->item(0)->nodeValue;
+					$element 	= $xml->createElement("airtimeBegin", $value);
+					$programdata->appendChild( $element );
+
+
+					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:sendeTag/text()');
+					$value = $matches->item(0)->nodeValue;
+					$element  	= $xml->createElement("airtimeDate", (new DateTime($value))->format('c') );
+					$programdata->appendChild( $element );
+
+
+					$element 	= $xml->createElement("audioComments", "false");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("blackwhite", "false");
+					$programdata->appendChild( $element );
+
+					$stationElement 	= $xml->createElement("broadcastStation");
+						$stationElement = $xml->createElement("station");
+						$stationElement->setAttribute("contentId", "0");
+						$stationElement->setAttribute("externalId");
+						$stationElement->setAttribute("name", $value);
+						$stationElement->setAttribute("serviceId", "0");			
+
+						//epgLogo				
+						$epgElement = $xml->createElement("epgLogo");
+						$epgElement->setAttribute("contentId", "0");
+						$epgElement->setAttribute("externalId", "0");
+
+						$element = $xml->createElement("altText");
+						$epgElement->appendChild( $element );
+
+						//sender logo url
+						$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:logo/zdf:Link/zdf:url/text()');
+						$value = $matches->item(0)->nodeValue;
+
+						$element = $xml->createElement("uri", $value);
+						$epgElement->appendChild( $element );
+						$element = $xml->createElement("width", 0);
+						$epgElement->appendChild( $element );
+						$element = $xml->createElement("height", 0);
+						$epgElement->appendChild( $element );
+						$stationElement->appendChild( $epgElement );				
+
+					$programdata->appendChild( $stationElement );
+
+
+
+
+					$element 	= $xml->createElement("caption", "true");
+					$programdata->appendChild( $element );
+
+					$category 	= $xml->createElement("category");
+					//name )= ZDF_NachrichtenAktuelles
+					$matches = $xpath->query('/zdf:Beitrag/zdf:zusatzinformation/zdf:Zusatzinformationen/zdf:elemente/zdf:Sendungsinformation/zdf:kategorien/zdf:Kategorie/zdf:name/text()');
+					$value = $matches->item(0)->nodeValue;
+					$category->setAttribute("name", $value);
+					//id = 111
+					$matches = $xpath->query('/zdf:Beitrag/zdf:zusatzinformation/zdf:Zusatzinformationen/zdf:elemente/zdf:Sendungsinformation/zdf:kategorien/zdf:Kategorie/zdf:id/text()');
+					$value = $matches->item(0)->nodeValue;
+					$element = $xml->createElement("id", $value);
+
+					$category->appendChild( $element );
+					$programdata->appendChild( $category );
+
+
+
+
+
+					$element 	= $xml->createElement("country", "Deutschland");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("crewFunctionDetails");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("dolbyDigital51", "false");
+					$programdata->appendChild( $element );
+					$element 	= $xml->createElement("dolbySurround", "false");
+					$programdata->appendChild( $element );
+					$element 	= $xml->createElement("dualchannel", "false");
+					$programdata->appendChild( $element );
+					$element 	= $xml->createElement("foreignLangWithCaption", "false");
+					$programdata->appendChild( $element );
+				
+					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:dauer/text()');
+					$value = $matches->item(0)->nodeValue;
+					$element 	= $xml->createElement("duration", $value);
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("guests");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("hd", "true");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("images");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("livestream", "true");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("moderators");
+					$programdata->appendChild( $element );
+
+					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:vpsZeit/text()');
+					$value = $matches->item(0)->nodeValue;					
+					$element 	= $xml->createElement("vpsBegin", $value);
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("widescreen169", "false");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("url", $this->detailsUrl);
+					$programdata->appendChild( $element );
+					
+
+					$matches = $xpath->query('/zdf:Beitrag/zdf:redaktionellesDatum/text()');
+					$value = $matches->item(0)->nodeValue;						
+					$element 	= $xml->createElement("year", (new DateTime($value))->format('Y'));
+					$programdata->appendChild( $element );
+
+
+
+				$sendung->appendChild( $programdata );
 
 		
 
@@ -194,6 +324,66 @@ class sendung{
 		        echo "\n";        
 		        //todo fill with dummy data
 		}
+	}
+
+
+
+	private function getImages($element, $url){
+
+		$zuschnitte = new DOMDocument('1.0', 'UTF-8');	
+
+		try {
+		        $zuschnitte->load($url);
+
+		        $xpath = new DOMXPath($zuschnitte);
+				$xpath->registerNameSpace('zdf', 'http://www.zdf.de/api/contentservice/v2');
+
+
+				//bild1
+				$matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '672' and zdf:hoehe = '378']/zdf:image/zdf:Link/zdf:url/text()");
+				$value = $matches->item(0)->nodeValue;
+
+				$image 			  = $element->ownerDocument->createElement("image");
+				$cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
+				$uri 		      = $element->ownerDocument->createElement("uri", $value);
+
+				$cuttingDimension->setAttribute("contentId", "0");
+				$cuttingDimension->setAttribute("externalId", "0");
+				$cuttingDimension->setAttribute("height", "378");
+				$cuttingDimension->setAttribute("width", "672");
+				$cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_672x378");
+				
+				$image->appendChild( $cuttingDimension );
+				$image->appendChild( $uri );
+				$element->appendChild( $image );
+
+
+				//bild2
+				$matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '90' and zdf:hoehe = '51']/zdf:image/zdf:Link/zdf:url/text()");
+				$value = $matches->item(0)->nodeValue;
+
+				$image 			  = $element->ownerDocument->createElement("image");
+				$cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
+				$uri 		      = $element->ownerDocument->createElement("uri", $value);
+
+				$cuttingDimension->setAttribute("contentId", "0");
+				$cuttingDimension->setAttribute("externalId", "0");
+				$cuttingDimension->setAttribute("height", "51");
+				$cuttingDimension->setAttribute("width", "90");
+				$cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_90x51");
+				
+				$image->appendChild( $cuttingDimension );
+				$image->appendChild( $uri );
+				$element->appendChild( $image );
+
+
+
+		} catch (Exception $e){
+			throw new Exception("Error Processing Images", 1);
+		}
+
+
+
 	}
 
 	public function getNode() {

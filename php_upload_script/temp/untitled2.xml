@@ -1,0 +1,2297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Beitrag xmlns="http://www.zdf.de/api/contentservice/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<visibleFrom xsi:nil="true"/>
+	<visibleTo xsi:nil="true"/>
+	<meta>
+		<Meta>
+			<contentVersion xsi:nil="true"/>
+			<domain>zdf.de</domain>
+			<metriken>
+				<IVW>
+					<co>EPGBeitrag/ZDF-Morgenmagazin/Bf832c678-6eea-4e77-ae2a-5ab4b904a9df</co>
+					<cp>ZD/zdfde_ZDF-Morgenmagazin</cp>
+					<st>zdfsup</st>
+					<sv>ke</sv>
+				</IVW>
+				<ETracker>
+					<et/>
+					<et_areas>ZD/EPGBeitrag/</et_areas>
+					<et_cust>0</et_cust>
+					<et_ilevel>0</et_ilevel>
+					<et_pagename>nullBf832c678-6eea-4e77-ae2a-5ab4b904a9df_ZDF-Morgenmagazin</et_pagename>
+					<et_target/>
+					<et_tonr/>
+					<et_tsale>0</et_tsale>
+					<et_tval/>
+					<et_url>http://www.zdf.de/programdata/736e54f4-4fe8-3403-b124-f0cbddd8a75d/f832c678-6eea-4e77-ae2a-5ab4b904a9df</et_url>
+				</ETracker>
+			</metriken>
+			<publikationsDatum xsi:nil="true"/>
+			<seitenrahmen>
+				<Seitenrahmen_Reference ref="http://www.zdf.de/api/v2/content/p12:6049666?cc=p12%3A6019756" type="Seitenrahmen"/>
+			</seitenrahmen>
+			<tags/>
+			<topic>
+				<Topic_Reference ref="http://www.zdf.de/api/v2/content/p12:2942656" type="Topic"/>
+			</topic>
+			<webUrl>
+				<Link>
+					<url>http://www.zdf.de/programdata/736e54f4-4fe8-3403-b124-f0cbddd8a75d/f832c678-6eea-4e77-ae2a-5ab4b904a9df</url>
+				</Link>
+			</webUrl>
+		</Meta>
+	</meta>
+	<teaserBild>
+		<VisualFamily_Reference ref="http://www.zdf.de/api/v2/content/p12:6021110" type="VisualFamily"/>
+	</teaserBild>
+	<teaserText/>
+	<teaserTitel/>
+	<titel>ZDF-Morgenmagazin</titel>
+	<dachzeile>ZDF-Morgenmagazin</dachzeile>
+	<secondarySubdomain/>
+	<subdomain/>
+	<untertitel/>
+	<anzeigeDatum>2015-08-05T00:00:00+02:00</anzeigeDatum>
+	<autor/>
+	<countdown/>
+	<istHauptbeitrag xsi:nil="true"/>
+	<kommentar/>
+	<kurzmeldungsBox/>
+	<langtext>
+		<Langtext>
+			<boxen/>
+			<text>
+				<richtext:div xmlns:richtext="http://www.zdf.de/api/contentservice/richtext/1" xmlns:xlink="http://www.w3.org/1999/xlink">
+					<richtext:b>Ranges Kritik an Maas</richtext:b>
+					<richtext:br/>Nach Ermittlungen gegen Blogger
+					<richtext:br/>
+					<richtext:br/>
+					<richtext:b>Prozess um Ausschreitungen</richtext:b>
+					<richtext:br/>
+					Hogesa-Randalierer vor Gericht
+					<richtext:br/>
+					<richtext:br/>
+					<richtext:b>Waldbrände in Kalifornien</richtext:b>
+					<richtext:br/>
+					Flucht vor dem Feuer
+					<richtext:br/>
+					<richtext:br/>
+					<richtext:b>Filmtipp mit Peter Twiehaus</richtext:b>
+					<richtext:br/>
+					Tom Cruises neue &quot;Mission Impossible&quot;
+					<richtext:br/>
+					<richtext:br/>
+					<richtext:b>Gast: Matteo Capreoli, Sänger</richtext:b>
+					<richtext:br/>
+					Im Moma-café</richtext:div>
+			</text>
+		</Langtext>
+	</langtext>
+	<mmbuehne>
+		<MultimediaElement>
+			<visibleFrom xsi:nil="true"/>
+			<visibleTo xsi:nil="true"/>
+			<meta/>
+			<teaserBild/>
+			<teaserText/>
+			<teaserTitel/>
+			<titel/>
+			<countdown/>
+			<embedVideoCode/>
+			<inhalt>
+				<Video contentId="39571826" externalId="vcms:2462552" ref="http://www.zdf.de/api/v2/content/p12:39571826">
+					<visibleFrom>2015-08-05T06:06:51+02:00</visibleFrom>
+					<visibleTo xsi:nil="true"/>
+					<meta>
+						<Meta>
+							<contentVersion>1</contentVersion>
+							<domain/>
+							<metriken/>
+							<publikationsDatum>2015-08-05T06:06:51+02:00</publikationsDatum>
+							<seitenrahmen/>
+							<tags/>
+							<topic/>
+							<webUrl/>
+						</Meta>
+					</meta>
+					<teaserBild>
+						<AutoVisualFamily>
+							<visibleFrom xsi:nil="true"/>
+							<visibleTo xsi:nil="true"/>
+							<meta/>
+							<teaserBild/>
+							<teaserText/>
+							<teaserTitel/>
+							<titel/>
+							<feinbilder/>
+							<zuschnitte>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>130</breite>
+									<format>Suchergebnis_gross_130x73</format>
+									<hoehe>73</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg144x81blob/11838108</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>404</breite>
+									<format>Bild_Video_3-3_404x227</format>
+									<hoehe>227</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg476x268blob/11838103</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>151</breite>
+									<format>KMC_Teaserbild_klein_151x85</format>
+									<hoehe>85</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg144x81blob/11838108</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>69</breite>
+									<format>Suchergebnis_klein_69x39</format>
+									<hoehe>39</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg298x168blob/11838104</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>294</breite>
+									<format>Suchergebnis_Vorschau_294x165</format>
+									<hoehe>165</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg298x168blob/11838104</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>640</breite>
+									<format>Bild_Video_Faktenbox_gross_640x360</format>
+									<hoehe>360</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg644x363blob/11838106</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>388</breite>
+									<format>Bild_Faktenbox_klein_388x218</format>
+									<hoehe>218</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg485x273blob/11838096</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>946</breite>
+									<format>Overlay_Bildserie_946x532</format>
+									<hoehe>532</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg946x532blob/11838110</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>382</breite>
+									<format>Bild_Rechte_Spalte_382x215</format>
+									<hoehe>215</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg485x273blob/11838096</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>268</breite>
+									<format>Bild_Video_2-2_268x151</format>
+									<hoehe>151</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg298x168blob/11838104</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>540</breite>
+									<format>Bild_Video_4-4_540x304</format>
+									<hoehe>304</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg644x363blob/11838106</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>90</breite>
+									<format>EPG-small_Zeitstrahl_90x51</format>
+									<hoehe>51</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg94x65blob/11838094</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>206</breite>
+									<format>KMC_Teaserbild_gross_206x116</format>
+									<hoehe>116</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg298x168blob/11838104</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>672</breite>
+									<format>MMBuehne_Bild_Video_5-5_672x378</format>
+									<hoehe>378</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg672x378blob/11838107</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>364</breite>
+									<format>Bild_Video_Faktenbox_klein_Rechte_Spalte_364x205</format>
+									<hoehe>205</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg485x273blob/11838096</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+								<Zuschnitt>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<altText>Degenfechterin Britta Heidemann</altText>
+									<breite>345</breite>
+									<format>Kachel_Bild_Video_345x194</format>
+									<hoehe>194</hoehe>
+									<image>
+										<Link>
+											<url>http://www.zdf.de/ZDFmediathek/contentblob/2462552/timg485x273blob/11838096</url>
+										</Link>
+									</image>
+									<quelle/>
+								</Zuschnitt>
+							</zuschnitte>
+						</AutoVisualFamily>
+					</teaserBild>
+					<teaserText>
+						<richtext:div xmlns:richtext="http://www.zdf.de/api/contentservice/richtext/1" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<richtext:p>…Pilotin geworden. Könnte sie einen Tag den Sport mit einem Flugzeug tauschen, sie würde die ganze Welt anschauen. Ob sie das schaffen würde? Denn Ihr Motto ist: „Gehe langsam, wenn Du es eilig hast“.</richtext:p>
+						</richtext:div>
+					</teaserText>
+					<teaserTitel>Britta Heidemann wäre auch gern...</teaserTitel>
+					<titel>Britta Heidemann wäre auch gern...</titel>
+					<contextLink/>
+					<copyright/>
+					<typ>Video</typ>
+					<vcmsLinkWeb>
+						<Link>
+							<url>http://www.zdf.de/ZDFmediathek/beitrag/video/2462552/Britta-Heidemann-waere-auch-gern...</url>
+						</Link>
+					</vcmsLinkWeb>
+					<vcmsLinkXML>
+						<Link>
+							<url>http://www.zdf.de/ZDFmediathek/xmlservice/web/beitragsDetails?id=2462552</url>
+						</Link>
+					</vcmsLinkXML>
+					<hauptverortung>morgenmagazin</hauptverortung>
+					<text>VIDEO</text>
+				</Video>
+			</inhalt>
+			<istOverlay>false</istOverlay>
+			<istOverlayIframe xsi:nil="true"/>
+			<istUnterdrueckt>false</istUnterdrueckt>
+			<medienart>Video</medienart>
+			<overlayBreite>0</overlayBreite>
+			<overlayHoehe>0</overlayHoehe>
+			<overlayUrl/>
+			<redaktionellesDatum>2015-08-05T05:30:25+02:00</redaktionellesDatum>
+			<sprungmarke>0</sprungmarke>
+		</MultimediaElement>
+	</mmbuehne>
+	<quelle/>
+	<redaktionellesDatum>2015-08-05T00:00:00+02:00</redaktionellesDatum>
+	<sendetermin>
+		<Sendetermin externalId="f832c678-6eea-4e77-ae2a-5ab4b904a9df">
+			<titel>ZDF-Morgenmagazin</titel>
+			<untertitel/>
+			<dachzeile/>
+			<beginnDatum>2015-08-05T05:30:00+02:00</beginnDatum>
+			<endeDatum>2015-08-05T09:00:00+02:00</endeDatum>
+			<sendeTag>2015-08-05</sendeTag>
+			<vpsZeit>2015-08-05T05:30:00+02:00</vpsZeit>
+			<dauer>210</dauer>
+			<text>Ranges Kritik an Maas Nach Ermittlungen gegen Blogger  Prozess um Ausschreitungen Hogesa-Randalierer vor Gericht  Waldbrände in Kalifornien Flucht vor dem Feuer  Filmtipp mit Peter Twiehaus Tom Cruises neue &quot;Mission Impossible&quot;  Gast: Matteo Capreoli, Sänger Im Moma-café</text>
+			<textHtml>&lt;b&gt;Ranges Kritik an Maas&lt;/b&gt;&lt;br/&gt;Nach Ermittlungen gegen Blogger&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Prozess um Ausschreitungen&lt;/b&gt;&lt;br/&gt;Hogesa-Randalierer vor Gericht&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Waldbrände in Kalifornien&lt;/b&gt;&lt;br/&gt;Flucht vor dem Feuer&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Filmtipp mit Peter Twiehaus&lt;/b&gt;&lt;br/&gt;Tom Cruises neue &quot;Mission Impossible&quot;&lt;br/&gt;&lt;br/&gt;&lt;b&gt;Gast: Matteo Capreoli, Sänger&lt;/b&gt;&lt;br/&gt;Im Moma-café</textHtml>
+			<sender>
+				<Sender>
+					<id>1</id>
+					<logo>
+						<Link>
+							<url>http://www.zdf.de/blob/1566/16/data.png</url>
+						</Link>
+					</logo>
+					<titel>zdf</titel>
+				</Sender>
+			</sender>
+			<bildfamilie>
+				<VisualFamily_Reference ref="http://www.zdf.de/api/v2/content/p12:6021110" type="VisualFamily"/>
+			</bildfamilie>
+			<epgBeitrag>
+				<Beitrag_Reference ref="http://www.zdf.de/api/v2/content/programm:f832c678-6eea-4e77-ae2a-5ab4b904a9df" type="Beitrag"/>
+			</epgBeitrag>
+			<attribute>
+				<SendeterminMerkmal>Stereo</SendeterminMerkmal>
+				<SendeterminMerkmal>HD</SendeterminMerkmal>
+				<SendeterminMerkmal>LiveStream</SendeterminMerkmal>
+				<SendeterminMerkmal>Untertitel</SendeterminMerkmal>
+			</attribute>
+			<sendungsinformation>
+				<Sendungsinformation>
+					<crewDetails>
+						<CrewDetail>
+							<funktion>moderation</funktion>
+							<name>Jana Pareigis</name>
+						</CrewDetail>
+					</crewDetails>
+					<gaeste/>
+					<jahr>2015</jahr>
+					<kategorien/>
+					<land>Deutschland </land>
+					<schauspieler/>
+				</Sendungsinformation>
+			</sendungsinformation>
+		</Sendetermin>
+	</sendetermin>
+	<showRedaktionellesDatum xsi:nil="true"/>
+	<vorspann/>
+	<zusatzinformation>
+		<Zusatzinformationen>
+			<visibleFrom xsi:nil="true"/>
+			<visibleTo xsi:nil="true"/>
+			<elemente>
+				<Sendungsinformation>
+					<crewDetails>
+						<CrewDetail>
+							<funktion>moderation</funktion>
+							<name>Jana Pareigis</name>
+						</CrewDetail>
+					</crewDetails>
+					<gaeste/>
+					<jahr>2015</jahr>
+					<kategorien>
+						<Kategorie>
+							<id>111</id>
+							<name>ZDF_NachrichtenAktuelles</name>
+						</Kategorie>
+					</kategorien>
+					<land>Deutschland </land>
+					<schauspieler/>
+				</Sendungsinformation>
+				<Linkliste contentId="6022382" externalId="b2f9dda3-bc8b-4218-ac69-046af59fac59" ref="http://www.zdf.de/api/v2/content/p12:6022382?cc=p12%3A6019756">
+					<visibleFrom>2012-11-02T05:14:07+01:00</visibleFrom>
+					<visibleTo xsi:nil="true"/>
+					<meta>
+						<Meta>
+							<contentVersion>4</contentVersion>
+							<domain/>
+							<metriken/>
+							<publikationsDatum>2012-11-02T05:14:07+01:00</publikationsDatum>
+							<seitenrahmen/>
+							<tags/>
+							<topic/>
+							<webUrl/>
+						</Meta>
+					</meta>
+					<teaserBild/>
+					<teaserText/>
+					<teaserTitel/>
+					<titel/>
+					<dachzeile>ZDFmediathek: ZDF-Morgenmagazin</dachzeile>
+					<kanal>
+						<VCMSKanal_Reference ref="http://www.zdf.de/api/v2/content/p12:8658696" type="VCMSKanal"/>
+					</kanal>
+					<treffer>
+						<Teaser>
+							<anzahlTreffer xsi:nil="true"/>
+							<autor/>
+							<dachzeile>morgenmagazin</dachzeile>
+							<datum>2015-08-05T08:05:00+02:00</datum>
+							<labels>
+								<Label>
+									<name>VIDEO</name>
+								</Label>
+							</labels>
+							<linkziel>
+								<Link>
+									<url>http://www.zdf.de/ZDFmediathek/xmlservice/web/beitragsDetails?id=2462670</url>
+								</Link>
+							</linkziel>
+							<mmbuehne/>
+							<nebentitel/>
+							<portal>mediathek</portal>
+							<quelle/>
+							<sender/>
+							<sendezeit>2015-08-05T08:05:00+02:00</sendezeit>
+							<sendung/>
+							<teaserBild>
+								<AutoVisualFamily>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<feinbilder/>
+									<zuschnitte>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>130</breite>
+											<format>Suchergebnis_gross_130x73</format>
+											<hoehe>73</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg144x81blob/11838862</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>404</breite>
+											<format>Bild_Video_3-3_404x227</format>
+											<hoehe>227</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg476x268blob/11838857</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>151</breite>
+											<format>KMC_Teaserbild_klein_151x85</format>
+											<hoehe>85</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg144x81blob/11838862</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>69</breite>
+											<format>Suchergebnis_klein_69x39</format>
+											<hoehe>39</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg298x168blob/11838858</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>294</breite>
+											<format>Suchergebnis_Vorschau_294x165</format>
+											<hoehe>165</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg298x168blob/11838858</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>640</breite>
+											<format>Bild_Video_Faktenbox_gross_640x360</format>
+											<hoehe>360</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg644x363blob/11838860</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>388</breite>
+											<format>Bild_Faktenbox_klein_388x218</format>
+											<hoehe>218</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg485x273blob/11838850</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>946</breite>
+											<format>Overlay_Bildserie_946x532</format>
+											<hoehe>532</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg946x532blob/11838864</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>382</breite>
+											<format>Bild_Rechte_Spalte_382x215</format>
+											<hoehe>215</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg485x273blob/11838850</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>268</breite>
+											<format>Bild_Video_2-2_268x151</format>
+											<hoehe>151</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg298x168blob/11838858</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>540</breite>
+											<format>Bild_Video_4-4_540x304</format>
+											<hoehe>304</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg644x363blob/11838860</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>90</breite>
+											<format>EPG-small_Zeitstrahl_90x51</format>
+											<hoehe>51</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg94x65blob/11838848</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>206</breite>
+											<format>KMC_Teaserbild_gross_206x116</format>
+											<hoehe>116</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg298x168blob/11838858</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>672</breite>
+											<format>MMBuehne_Bild_Video_5-5_672x378</format>
+											<hoehe>378</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg672x378blob/11838861</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>364</breite>
+											<format>Bild_Video_Faktenbox_klein_Rechte_Spalte_364x205</format>
+											<hoehe>205</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg485x273blob/11838850</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>ZDF-Hauptstadtkorrespondent Wulf Schmiese</altText>
+											<breite>345</breite>
+											<format>Kachel_Bild_Video_345x194</format>
+											<hoehe>194</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462670/timg485x273blob/11838850</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+									</zuschnitte>
+								</AutoVisualFamily>
+							</teaserBild>
+							<teaserText>&quot;Ranges Ansprache war politischer Selbstmord. Herr Range war klar, als er sein Statement machte, dass er den Tag politisch nicht überleben würde&quot;, so ZDF-Hauptstadtkorrespondent Wulf Schmiese.</teaserText>
+							<teaserTitel>&quot;Bundesregierung steht hinter Maas&quot;</teaserTitel>
+						</Teaser>
+						<Teaser>
+							<anzahlTreffer xsi:nil="true"/>
+							<autor/>
+							<dachzeile>morgenmagazin</dachzeile>
+							<datum>2015-08-05T05:56:00+02:00</datum>
+							<labels>
+								<Label>
+									<name>VIDEO</name>
+								</Label>
+							</labels>
+							<linkziel>
+								<Link>
+									<url>http://www.zdf.de/ZDFmediathek/xmlservice/web/beitragsDetails?id=2462564</url>
+								</Link>
+							</linkziel>
+							<mmbuehne/>
+							<nebentitel/>
+							<portal>mediathek</portal>
+							<quelle/>
+							<sender/>
+							<sendezeit>2015-08-05T05:56:00+02:00</sendezeit>
+							<sendung/>
+							<teaserBild>
+								<AutoVisualFamily>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<feinbilder/>
+									<zuschnitte>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>130</breite>
+											<format>Suchergebnis_gross_130x73</format>
+											<hoehe>73</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg144x81blob/11846640</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>404</breite>
+											<format>Bild_Video_3-3_404x227</format>
+											<hoehe>227</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg476x268blob/11846635</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>151</breite>
+											<format>KMC_Teaserbild_klein_151x85</format>
+											<hoehe>85</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg144x81blob/11846640</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>69</breite>
+											<format>Suchergebnis_klein_69x39</format>
+											<hoehe>39</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg298x168blob/11846636</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>294</breite>
+											<format>Suchergebnis_Vorschau_294x165</format>
+											<hoehe>165</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg298x168blob/11846636</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>640</breite>
+											<format>Bild_Video_Faktenbox_gross_640x360</format>
+											<hoehe>360</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg644x363blob/11846638</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>388</breite>
+											<format>Bild_Faktenbox_klein_388x218</format>
+											<hoehe>218</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg485x273blob/11846628</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>946</breite>
+											<format>Overlay_Bildserie_946x532</format>
+											<hoehe>532</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg946x532blob/11846642</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>382</breite>
+											<format>Bild_Rechte_Spalte_382x215</format>
+											<hoehe>215</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg485x273blob/11846628</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>268</breite>
+											<format>Bild_Video_2-2_268x151</format>
+											<hoehe>151</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg298x168blob/11846636</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>540</breite>
+											<format>Bild_Video_4-4_540x304</format>
+											<hoehe>304</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg644x363blob/11846638</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>90</breite>
+											<format>EPG-small_Zeitstrahl_90x51</format>
+											<hoehe>51</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg94x65blob/11846626</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>206</breite>
+											<format>KMC_Teaserbild_gross_206x116</format>
+											<hoehe>116</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg298x168blob/11846636</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>672</breite>
+											<format>MMBuehne_Bild_Video_5-5_672x378</format>
+											<hoehe>378</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg672x378blob/11846639</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>364</breite>
+											<format>Bild_Video_Faktenbox_klein_Rechte_Spalte_364x205</format>
+											<hoehe>205</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg485x273blob/11846628</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an.</altText>
+											<breite>345</breite>
+											<format>Kachel_Bild_Video_345x194</format>
+											<hoehe>194</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462564/timg485x273blob/11846628</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+									</zuschnitte>
+								</AutoVisualFamily>
+							</teaserBild>
+							<teaserText>Generalbundesanwalt Range geht in die Offensive und greift seinen Dienstherren Maas frontal an. Ein überraschender Schritt und ein Gegenschlag des Vielgescholtenen. Der ihn am Ende sein Amt kostete.</teaserText>
+							<teaserTitel>Maas oder Range: Einer der beiden lügt</teaserTitel>
+						</Teaser>
+						<Teaser>
+							<anzahlTreffer xsi:nil="true"/>
+							<autor/>
+							<dachzeile>morgenmagazin</dachzeile>
+							<datum>2015-08-05T08:15:00+02:00</datum>
+							<labels>
+								<Label>
+									<name>VIDEO</name>
+								</Label>
+							</labels>
+							<linkziel>
+								<Link>
+									<url>http://www.zdf.de/ZDFmediathek/xmlservice/web/beitragsDetails?id=2462664</url>
+								</Link>
+							</linkziel>
+							<mmbuehne/>
+							<nebentitel/>
+							<portal>mediathek</portal>
+							<quelle/>
+							<sender/>
+							<sendezeit>2015-08-05T08:15:00+02:00</sendezeit>
+							<sendung/>
+							<teaserBild>
+								<AutoVisualFamily>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<feinbilder/>
+									<zuschnitte>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>130</breite>
+											<format>Suchergebnis_gross_130x73</format>
+											<hoehe>73</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg144x81blob/11838879</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>404</breite>
+											<format>Bild_Video_3-3_404x227</format>
+											<hoehe>227</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg476x268blob/11838874</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>151</breite>
+											<format>KMC_Teaserbild_klein_151x85</format>
+											<hoehe>85</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg144x81blob/11838879</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>69</breite>
+											<format>Suchergebnis_klein_69x39</format>
+											<hoehe>39</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg298x168blob/11838875</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>294</breite>
+											<format>Suchergebnis_Vorschau_294x165</format>
+											<hoehe>165</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg298x168blob/11838875</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>640</breite>
+											<format>Bild_Video_Faktenbox_gross_640x360</format>
+											<hoehe>360</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg644x363blob/11838877</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>388</breite>
+											<format>Bild_Faktenbox_klein_388x218</format>
+											<hoehe>218</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg485x273blob/11838867</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>946</breite>
+											<format>Overlay_Bildserie_946x532</format>
+											<hoehe>532</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg946x532blob/11838881</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>382</breite>
+											<format>Bild_Rechte_Spalte_382x215</format>
+											<hoehe>215</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg485x273blob/11838867</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>268</breite>
+											<format>Bild_Video_2-2_268x151</format>
+											<hoehe>151</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg298x168blob/11838875</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>540</breite>
+											<format>Bild_Video_4-4_540x304</format>
+											<hoehe>304</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg644x363blob/11838877</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>90</breite>
+											<format>EPG-small_Zeitstrahl_90x51</format>
+											<hoehe>51</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg94x65blob/11838865</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>206</breite>
+											<format>KMC_Teaserbild_gross_206x116</format>
+											<hoehe>116</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg298x168blob/11838875</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>672</breite>
+											<format>MMBuehne_Bild_Video_5-5_672x378</format>
+											<hoehe>378</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg672x378blob/11838878</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>364</breite>
+											<format>Bild_Video_Faktenbox_klein_Rechte_Spalte_364x205</format>
+											<hoehe>205</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg485x273blob/11838867</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Der ehemalige FDP-Bundesinnenminister Gerhart Baum</altText>
+											<breite>345</breite>
+											<format>Kachel_Bild_Video_345x194</format>
+											<hoehe>194</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462664/timg485x273blob/11838867</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+									</zuschnitte>
+								</AutoVisualFamily>
+							</teaserBild>
+							<teaserText>&quot;Der eigentliche Brandstifter ist der Chef des Bundesamtes für Verfassungsschutz, der mit einem lächerlichen Gutachten operiert hat&quot;, sagt der ehemalige FDP-Bundesinnenminister Gerhart Baum.</teaserText>
+							<teaserTitel>Baum: &quot;Es geht nicht um Landesverrat&quot;</teaserTitel>
+						</Teaser>
+						<Teaser>
+							<anzahlTreffer xsi:nil="true"/>
+							<autor/>
+							<dachzeile>morgenmagazin</dachzeile>
+							<datum>2015-08-05T08:55:00+02:00</datum>
+							<labels>
+								<Label>
+									<name>VIDEO</name>
+								</Label>
+							</labels>
+							<linkziel>
+								<Link>
+									<url>http://www.zdf.de/ZDFmediathek/xmlservice/web/beitragsDetails?id=2462682</url>
+								</Link>
+							</linkziel>
+							<mmbuehne/>
+							<nebentitel/>
+							<portal>mediathek</portal>
+							<quelle/>
+							<sender/>
+							<sendezeit>2015-08-05T08:55:00+02:00</sendezeit>
+							<sendung/>
+							<teaserBild>
+								<AutoVisualFamily>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<feinbilder/>
+									<zuschnitte>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>130</breite>
+											<format>Suchergebnis_gross_130x73</format>
+											<hoehe>73</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg144x81blob/11847247</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>404</breite>
+											<format>Bild_Video_3-3_404x227</format>
+											<hoehe>227</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg476x268blob/11847242</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>151</breite>
+											<format>KMC_Teaserbild_klein_151x85</format>
+											<hoehe>85</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg144x81blob/11847247</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>69</breite>
+											<format>Suchergebnis_klein_69x39</format>
+											<hoehe>39</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg298x168blob/11847243</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>294</breite>
+											<format>Suchergebnis_Vorschau_294x165</format>
+											<hoehe>165</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg298x168blob/11847243</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>640</breite>
+											<format>Bild_Video_Faktenbox_gross_640x360</format>
+											<hoehe>360</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg644x363blob/11847245</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>388</breite>
+											<format>Bild_Faktenbox_klein_388x218</format>
+											<hoehe>218</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg485x273blob/11847235</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>946</breite>
+											<format>Overlay_Bildserie_946x532</format>
+											<hoehe>532</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg946x532blob/11847249</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>382</breite>
+											<format>Bild_Rechte_Spalte_382x215</format>
+											<hoehe>215</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg485x273blob/11847235</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>268</breite>
+											<format>Bild_Video_2-2_268x151</format>
+											<hoehe>151</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg298x168blob/11847243</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>540</breite>
+											<format>Bild_Video_4-4_540x304</format>
+											<hoehe>304</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg644x363blob/11847245</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>90</breite>
+											<format>EPG-small_Zeitstrahl_90x51</format>
+											<hoehe>51</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg94x65blob/11847233</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>206</breite>
+											<format>KMC_Teaserbild_gross_206x116</format>
+											<hoehe>116</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg298x168blob/11847243</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>672</breite>
+											<format>MMBuehne_Bild_Video_5-5_672x378</format>
+											<hoehe>378</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg672x378blob/11847246</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>364</breite>
+											<format>Bild_Video_Faktenbox_klein_Rechte_Spalte_364x205</format>
+											<hoehe>205</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg485x273blob/11847235</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Matteo Capreoli im moma-Café</altText>
+											<breite>345</breite>
+											<format>Kachel_Bild_Video_345x194</format>
+											<hoehe>194</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462682/timg485x273blob/11847235</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+									</zuschnitte>
+								</AutoVisualFamily>
+							</teaserBild>
+							<teaserText>Matteo Capreoli ist für sechs Wochen im VW-Bus von Hamburg nach Italien gefahren. Unterwegs gab er Spontan-Konzerte, um seine neuen Lieder, wie &quot;Das Beste&quot;, vor seinen Fans zu testen.</teaserText>
+							<teaserTitel>Matteo Capreoli im moma-Café</teaserTitel>
+						</Teaser>
+						<Teaser>
+							<anzahlTreffer xsi:nil="true"/>
+							<autor/>
+							<dachzeile>morgenmagazin</dachzeile>
+							<datum>2015-08-05T07:28:00+02:00</datum>
+							<labels>
+								<Label>
+									<name>VIDEO</name>
+								</Label>
+							</labels>
+							<linkziel>
+								<Link>
+									<url>http://www.zdf.de/ZDFmediathek/xmlservice/web/beitragsDetails?id=2462624</url>
+								</Link>
+							</linkziel>
+							<mmbuehne/>
+							<nebentitel/>
+							<portal>mediathek</portal>
+							<quelle/>
+							<sender/>
+							<sendezeit>2015-08-05T07:28:00+02:00</sendezeit>
+							<sendung/>
+							<teaserBild>
+								<AutoVisualFamily>
+									<visibleFrom xsi:nil="true"/>
+									<visibleTo xsi:nil="true"/>
+									<meta/>
+									<teaserBild/>
+									<teaserText/>
+									<teaserTitel/>
+									<titel/>
+									<feinbilder/>
+									<zuschnitte>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>130</breite>
+											<format>Suchergebnis_gross_130x73</format>
+											<hoehe>73</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg144x81blob/11838625</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>404</breite>
+											<format>Bild_Video_3-3_404x227</format>
+											<hoehe>227</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg476x268blob/11838620</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>151</breite>
+											<format>KMC_Teaserbild_klein_151x85</format>
+											<hoehe>85</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg144x81blob/11838625</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>69</breite>
+											<format>Suchergebnis_klein_69x39</format>
+											<hoehe>39</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg298x168blob/11838621</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>294</breite>
+											<format>Suchergebnis_Vorschau_294x165</format>
+											<hoehe>165</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg298x168blob/11838621</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>640</breite>
+											<format>Bild_Video_Faktenbox_gross_640x360</format>
+											<hoehe>360</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg644x363blob/11838623</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>388</breite>
+											<format>Bild_Faktenbox_klein_388x218</format>
+											<hoehe>218</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg485x273blob/11838613</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>946</breite>
+											<format>Overlay_Bildserie_946x532</format>
+											<hoehe>532</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg946x532blob/11838627</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>382</breite>
+											<format>Bild_Rechte_Spalte_382x215</format>
+											<hoehe>215</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg485x273blob/11838613</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>268</breite>
+											<format>Bild_Video_2-2_268x151</format>
+											<hoehe>151</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg298x168blob/11838621</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>540</breite>
+											<format>Bild_Video_4-4_540x304</format>
+											<hoehe>304</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg644x363blob/11838623</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>90</breite>
+											<format>EPG-small_Zeitstrahl_90x51</format>
+											<hoehe>51</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg94x65blob/11838611</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>206</breite>
+											<format>KMC_Teaserbild_gross_206x116</format>
+											<hoehe>116</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg298x168blob/11838621</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>672</breite>
+											<format>MMBuehne_Bild_Video_5-5_672x378</format>
+											<hoehe>378</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg672x378blob/11838624</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>364</breite>
+											<format>Bild_Video_Faktenbox_klein_Rechte_Spalte_364x205</format>
+											<hoehe>205</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg485x273blob/11838613</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+										<Zuschnitt>
+											<visibleFrom xsi:nil="true"/>
+											<visibleTo xsi:nil="true"/>
+											<meta/>
+											<teaserBild/>
+											<teaserText/>
+											<teaserTitel/>
+											<titel/>
+											<altText>Cristiano Ronaldo hat sich als Obdachloser verkleidet</altText>
+											<breite>345</breite>
+											<format>Kachel_Bild_Video_345x194</format>
+											<hoehe>194</hoehe>
+											<image>
+												<Link>
+													<url>http://www.zdf.de/ZDFmediathek/contentblob/2462624/timg485x273blob/11838613</url>
+												</Link>
+											</image>
+											<quelle/>
+										</Zuschnitt>
+									</zuschnitte>
+								</AutoVisualFamily>
+							</teaserBild>
+							<teaserText>Cristiano Ronaldo hat sich einen Scherz erlaubt. Der Superstar von Real Madrid hatte sich in Madrid als Obdachloser verkleidet – Vollbart, lange, ungepflegte Mähne und Jogginghose inklusive.      </teaserText>
+							<teaserTitel>Obdachloser Ronaldo</teaserTitel>
+						</Teaser>
+					</treffer>
+					<viewType>schmal</viewType>
+					<x xsi:nil="true"/>
+					<y xsi:nil="true"/>
+				</Linkliste>
+			</elemente>
+			<vererbung xsi:nil="true"/>
+		</Zusatzinformationen>
+	</zusatzinformation>
+</Beitrag>
