@@ -51,15 +51,6 @@ class sendung{
 		$sendung->appendChild( $pos );
 
 
-		/*
-		$firstChildA = $xml->getElementsByTagName('xml')->item(0);
-		$firstChildB = $xml->getElementsByTagName('xml')->item(0)->firstChild;
-		//var_dump($firstChild); exit;
-		$firstChildA->insertBefore($ID,$firstChildB);
-		$firstChildA->insertBefore($pos,$firstChildB);
-		*/
-		// echo $xml->saveXML(); exit;
-
 		$this->xml = $xml;
 	}
 
@@ -306,23 +297,10 @@ class sendung{
 
 
 				$sendung->appendChild( $programdata );
-
-		
-
-
-
-		        return;
-
-		        if (!($progdata instanceof DOMNode)) throw new Exception("No Document loaded");
-		        // Import the node, and all its children, to the document
-		        $progdata = $this->mysendung->importNode($progdata, true);
-
-		        // And then append it to the "<root>" node
-		        $this->mysendung->getElementsByTagName('sendung')->item(0)->appendChild($progdata);                        
+                     
 		} catch (Exception $e) {
-		        console("sendung_class.php: URL invalid ".$this->mysendung->getElementsByTagName('titel')->item(0)->nodeValue);
-		        echo "\n";        
-		        //todo fill with dummy data
+		        console("sendung_class.php: Sendung konnte nicht geladen werden ".$this->titel);
+		        echo "\n";
 		}
 	}
 
@@ -387,8 +365,7 @@ class sendung{
 	}
 
 	public function getNode() {
-		echo( $this->xml->saveXML() ); exit;
-		return $this->mysendung->getElementsByTagName('sendung')->item(0);		
+		return $this->xml->getElementsByTagName('sendung')->item(0);
 	}
 
 }

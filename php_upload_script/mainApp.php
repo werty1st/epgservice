@@ -19,12 +19,12 @@ $couch = &Factory::getDB(array("host" => $db_host,
 if ( ( time() >= strtotime("00:00:00") ) && ( time() < strtotime("05:30:00")) ) {
     //Sendetag = heute-1
     $date_start = date('Y-m-d', strtotime('-1 day', time() ));
-    $date_end   = date('Y-m-d');
+    $date_end   = $date_start; //date('Y-m-d'); es wird eh immer mind 1 sendetag zurückgegeben.
 
 } else {
     //Sendetag = heute
     $date_start = date('Y-m-d');
-    $date_end   = date('Y-m-d', strtotime('+1 day', time() ));
+    $date_end   = $date_start; //date('Y-m-d', strtotime('+1 day', time() )); 
 }
 
 

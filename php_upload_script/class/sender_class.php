@@ -13,6 +13,11 @@ class sender{
 
 		$xml_in = new DOMDocument();
 		$xml_in->load($url);
+
+
+
+		//todo currentPage, maxPage usw auswerten, alles sendetermine in ein xml dann weiter
+
 		
 		if (strpos($http_response_header[0], '503')) {
 			throw new Exception('P12 antwortet mit 503 Fehler.');
@@ -51,7 +56,6 @@ class sender{
 
 	public function collectSendungen(){
 
-		echo "collectSendungen\n";
 		//sendung verarbeiten
 		$imax = $this->sendungen->length;
 		$i1 = 1;
@@ -62,9 +66,8 @@ class sender{
 		    $mysendung->getComplete($fortschritt);
 
 		    $this->appendSendung($mysendung);
-		    return;
-		}	
-		exit;
+		}
+
 	}
 
 
@@ -80,10 +83,10 @@ class sender{
 		return $this->myxml->saveXML();
 	}
 
-	private function appendSendung($sendung) {
-		
+	private function appendSendung($sendung) {		
 		$mySendungNode = $this->myxml->importNode($sendung->getNode(), true);
-		$this->sendungen->appendChild( $mySendungNode );
+		$targetNode = $this->myxml->getElementsByTagName("sendungen")->item(0);
+		$targetNode->appendChild( $mySendungNode );
 	}
 
 	public function getSendungen(){

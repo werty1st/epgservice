@@ -32,22 +32,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sender_class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="sender_class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/class/sender_class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.416666">
-              <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.38172922">
+              <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sendung_class.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="sendung_class.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/class/sendung_class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8042414">
-              <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-11.25">
+              <caret line="367" column="0" selection-start-line="367" selection-start-column="0" selection-end-line="367" selection-end-column="0" />
+              <folding>
+                <element signature="n#__construct#0;n#sendung#0;n#!!top" expanded="false" />
+                <element signature="n#getComplete#0;n#sendung#0;n#!!top" expanded="false" />
+                <element signature="e#1956#10964#0#PHP" expanded="false" />
+                <element signature="n#getImages#0;n#sendung#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,8 +62,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/class/sender_class.php" />
         <option value="$PROJECT_DIR$/class/sendung_class.php" />
+        <option value="$PROJECT_DIR$/class/sender_class.php" />
       </list>
     </option>
   </component>
@@ -241,11 +246,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/class/sendung_class.php</url>
-          <line>230</line>
+          <line>355</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/class/sender_class.php</url>
+          <line>83</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="27" />
+      <option name="time" value="29" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -270,7 +280,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="183" column="0" selection-start-line="183" selection-start-column="0" selection-end-line="183" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#__construct#0;n#sendung#0;n#!!top" expanded="false" />
+            <element signature="n#getComplete#0;n#sendung#0;n#!!top" expanded="false" />
+            <element signature="e#1956#10964#0#PHP" expanded="false" />
+            <element signature="n#getImages#0;n#sendung#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -294,7 +309,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#__construct#0;n#sendung#0;n#!!top" expanded="false" />
+            <element signature="n#getComplete#0;n#sendung#0;n#!!top" expanded="false" />
+            <element signature="e#1956#10964#0#PHP" expanded="false" />
+            <element signature="n#getImages#0;n#sendung#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -314,11 +334,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/class/sender_class.php">
+    <entry file="file://$PROJECT_DIR$/class/sendung_class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.416666">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="-11.25">
+          <caret line="367" column="0" selection-start-line="367" selection-start-column="0" selection-end-line="367" selection-end-column="0" />
+          <folding>
+            <element signature="n#__construct#0;n#sendung#0;n#!!top" expanded="false" />
+            <element signature="n#getComplete#0;n#sendung#0;n#!!top" expanded="false" />
+            <element signature="e#1956#10964#0#PHP" expanded="false" />
+            <element signature="n#getImages#0;n#sendung#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -330,10 +355,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/class/sendung_class.php">
+    <entry file="file://$PROJECT_DIR$/class/sender_class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8042414">
-          <caret line="252" column="0" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.38172922">
+          <caret line="86" column="13" selection-start-line="86" selection-start-column="13" selection-end-line="86" selection-end-column="13" />
           <folding />
         </state>
       </provider>
