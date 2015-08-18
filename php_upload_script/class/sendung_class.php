@@ -6,6 +6,7 @@ class sendung{
 	private $timestamp = 0;
 	private $detailsUrl;
 	private $titel;
+	private $stationName;
 
 	function __construct ( $sendetermin, $position ) {
 
@@ -24,6 +25,7 @@ class sendung{
 		//Sendername 
 		$matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
 		$stationName = $matches->item(0)->nodeValue;
+		$this->stationName = $stationName;
 
 		//url um die restlichen daten abzurufen
 		$matches = $xpath->query('/zdf:Sendetermin/zdf:epgBeitrag/zdf:Beitrag_Reference/@ref');
@@ -34,12 +36,9 @@ class sendung{
 		$matches = $xpath->query('/zdf:Sendetermin/zdf:titel/text()');
 		$this->titel = $matches->item(0)->nodeValue;
 
-
-		//sendetermin wieder entfernen da <xml> neu aufgebaut wird
-		$xml->removeChild($mySendungNode);
-		
 		$sendung = $xml->createElement("sendung");
 		$xml->appendChild( $sendung );
+		
 
 		// $position = str_pad ( (int)$position, 3, "0", STR_PAD_LEFT ); //führende null wird irgendwo gelöscht, darum nehme ich sie erstmal raus
 		$prehash = $stationName."_".$position;
@@ -50,6 +49,197 @@ class sendung{
 		$sendung->appendChild( $ID );
 		$sendung->appendChild( $pos );
 
+
+				//beschreibung <= text
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:text/text()');
+				$value = $matches->item(0)->nodeValue;
+				$element = $xml->createElement("beschreibung");
+				$sendung->appendChild( $element );		
+				$element->appendChild($xml->createTextNode($value));
+
+				//echo $value."\n\n";
+
+				//station
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
+				$value = $matches->item(0)->nodeValue;			
+				$stationElement = $xml->createElement("station");
+				$stationElement->setAttribute("contentId", "0");
+				$stationElement->setAttribute("externalId");
+				$stationElement->setAttribute("name", $value);
+				$stationElement->setAttribute("serviceId", "0");			
+
+				//epgLogo				
+				$epgElement = $xml->createElement("epgLogo");
+				$epgElement->setAttribute("contentId", "0");
+				$epgElement->setAttribute("externalId", "0");
+
+				$element = $xml->createElement("altText");
+				$epgElement->appendChild( $element );
+
+				//sender logo url
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:logo/zdf:Link/zdf:url/text()');
+				$value = $matches->item(0)->nodeValue;
+
+				$element = $xml->createElement("uri", $value);
+				$epgElement->appendChild( $element );
+				$element = $xml->createElement("width", 0);
+				$epgElement->appendChild( $element );
+				$element = $xml->createElement("height", 0);
+				$epgElement->appendChild( $element );
+
+				$stationElement->appendChild( $epgElement );				
+				$sendung->appendChild( $stationElement );
+
+
+				//endeDatum
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:endeDatum/text()');
+				$value = $matches->item(0)->nodeValue;
+				$element = $xml->createElement("endTime", $value);
+				$sendung->appendChild( $element );
+				
+				//<images>
+				$element = $xml->createElement("images");
+				//images holen
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:bildfamilie/zdf:VisualFamily_Reference/@ref');
+				$value = $matches->item(0)->nodeValue;	//url der bilder		
+				$this->getImages($element,$value);
+				//images einfügen
+				$sendung->appendChild($element);
+
+
+				//link <= <epgBeitrag> <Beitrag_Reference
+				$element = $xml->createElement("link", $this->detailsUrl);
+				$sendung->appendChild( $element );
+
+				//livestream
+				$f = $xml->createDocumentFragment();
+				$f->appendXML('<livestream>true</livestream>');
+				$sendung->appendChild($f);	
+
+
+
+				//time
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:beginnDatum/text()');
+				$value = $matches->item(0)->nodeValue;
+				$element = $xml->createElement("time", $value);
+				$sendung->appendChild( $element );
+
+			
+
+				//programdata
+				$programdata = $xml->createElement("programdata");
+					$element 	= $xml->createElement("actorDetails");
+					$programdata->appendChild( $element );
+
+
+					$matches = $xpath->query('/zdf:Sendetermin/zdf:beginnDatum/text()');
+					$value = $matches->item(0)->nodeValue;
+					$element 	= $xml->createElement("airtimeBegin", $value);
+					$programdata->appendChild( $element );
+
+
+					$matches = $xpath->query('/zdf:Sendetermin/zdf:sendeTag/text()');
+					$value = $matches->item(0)->nodeValue;
+					$element  	= $xml->createElement("airtimeDate", (new DateTime($value))->format('c') );
+					$programdata->appendChild( $element );
+
+
+					$element 	= $xml->createElement("audioComments", "false");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("blackwhite", "false");
+					$programdata->appendChild( $element );
+
+					$stationElement 	= $xml->createElement("broadcastStation");
+						$stationElement = $xml->createElement("station");
+						$stationElement->setAttribute("contentId", "0");
+						$stationElement->setAttribute("externalId");
+						$stationElement->setAttribute("name", $this->stationName);
+						$stationElement->setAttribute("serviceId", "0");			
+
+						//epgLogo				
+						$epgElement = $xml->createElement("epgLogo");
+						$epgElement->setAttribute("contentId", "0");
+						$epgElement->setAttribute("externalId", "0");
+
+						$element = $xml->createElement("altText");
+						$epgElement->appendChild( $element );
+
+						//sender logo url
+						$matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:logo/zdf:Link/zdf:url/text()');
+						$value = $matches->item(0)->nodeValue;
+
+						$element = $xml->createElement("uri", $value);
+						$epgElement->appendChild( $element );
+						$element = $xml->createElement("width", 0);
+						$epgElement->appendChild( $element );
+						$element = $xml->createElement("height", 0);
+						$epgElement->appendChild( $element );
+						$stationElement->appendChild( $epgElement );				
+
+					$programdata->appendChild( $stationElement );
+
+			
+
+
+
+					$element 	= $xml->createElement("country", "Deutschland");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("crewFunctionDetails");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("dolbyDigital51", "false");
+					$programdata->appendChild( $element );
+					$element 	= $xml->createElement("dolbySurround", "false");
+					$programdata->appendChild( $element );
+					$element 	= $xml->createElement("dualchannel", "false");
+					$programdata->appendChild( $element );
+					$element 	= $xml->createElement("foreignLangWithCaption", "false");
+					$programdata->appendChild( $element );
+				
+					$matches = $xpath->query('/zdf:Sendetermin/zdf:dauer/text()');
+					$value = $matches->item(0)->nodeValue;
+					$element 	= $xml->createElement("duration", $value);
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("guests");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("hd", "true");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("images");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("livestream", "true");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("moderators");
+					$programdata->appendChild( $element );
+
+					$matches = $xpath->query('/zdf:Sendetermin/zdf:vpsZeit/text()');
+					$value = $matches->item(0)->nodeValue;					
+					$element 	= $xml->createElement("vpsBegin", $value);
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("widescreen169", "false");
+					$programdata->appendChild( $element );
+
+					$element 	= $xml->createElement("url", $this->detailsUrl);
+					$programdata->appendChild( $element );
+					
+
+
+
+
+
+				$sendung->appendChild( $programdata );
+
+
+
+		//sendetermin wieder entfernen da <xml> neu aufgebaut wird
+		$xml->removeChild($mySendungNode);
 
 		$this->xml = $xml;
 	}
@@ -75,152 +265,22 @@ class sendung{
 				$xpath->registerNameSpace('zdf', 'http://www.zdf.de/api/contentservice/v2');
 
 
-				//beschreibung <= text
-				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:text/text()');
-				$value = $matches->item(0)->nodeValue;
-				$element = $xml->createElement("beschreibung", $value);
-				$sendung->appendChild( $element );
+
 
 				//beschreibungHtml <= textHtml
-				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:textHtml/text()');
-				$value = $matches->item(0)->nodeValue;
-				$element = $xml->createElement("beschreibungHtml", $value);
-				$sendung->appendChild( $element );
+				// $matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:textHtml/text()');
+				// $value = $matches->item(0)->nodeValue;
+				// $element = $xml->createElement("beschreibungHtml", $value);
+				// $sendung->appendChild( $element );
 				
-				//endeDatum
-				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:endeDatum/text()');
-				$value = $matches->item(0)->nodeValue;
-				$element = $xml->createElement("endTime", $value);
-				$sendung->appendChild( $element );
-				
-				//<images>
-				$element = $xml->createElement("images");
-				//images holen
-				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:bildfamilie/zdf:VisualFamily_Reference/@ref');
-				$value = $matches->item(0)->nodeValue;	//url der bilder		
-				$this->getImages($element,$value);
-				//images einfügen
-				$sendung->appendChild($element);
 
-
-				//link <= <epgBeitrag> <Beitrag_Reference
-				$element = $xml->createElement("link", $this->detailsUrl);
-				$sendung->appendChild( $element );
-
-				//livestream
-				$f = $xml->createDocumentFragment();
-				$f->appendXML('<livestream>true</livestream>');
-				$sendung->appendChild($f);					
-
-				//station
-				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
-				$value = $matches->item(0)->nodeValue;			
-				$stationElement = $xml->createElement("station");
-				$stationElement->setAttribute("contentId", "0");
-				$stationElement->setAttribute("externalId");
-				$stationElement->setAttribute("name", $value);
-				$stationElement->setAttribute("serviceId", "0");			
-
-				//epgLogo				
-				$epgElement = $xml->createElement("epgLogo");
-				$epgElement->setAttribute("contentId", "0");
-				$epgElement->setAttribute("externalId", "0");
-
-				$element = $xml->createElement("altText");
-				$epgElement->appendChild( $element );
-
-				//sender logo url
-				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:logo/zdf:Link/zdf:url/text()');
-				$value = $matches->item(0)->nodeValue;
-
-				$element = $xml->createElement("uri", $value);
-				$epgElement->appendChild( $element );
-				$element = $xml->createElement("width", 0);
-				$epgElement->appendChild( $element );
-				$element = $xml->createElement("height", 0);
-				$epgElement->appendChild( $element );
-
-				$stationElement->appendChild( $epgElement );				
-				$sendung->appendChild( $stationElement );
-
-
-				//time
-				$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:beginnDatum/text()');
-				$value = $matches->item(0)->nodeValue;
-				$element = $xml->createElement("time", $value);
-				$sendung->appendChild( $element );
-
-				//tvTipp
-				$f = $xml->createDocumentFragment();
-				$f->appendXML('<tvTipp>false</tvTipp>');
-				$sendung->appendChild($f);				
-
-				//titel
-				$element = $xml->createElement("titel", $this->titel);
-				$sendung->appendChild( $element );
-
-
-				//url <= <meta><Meta><webUrl><Link><url>
-				$matches = $xpath->query('/zdf:Beitrag/zdf:meta/zdf:Meta/zdf:webUrl/zdf:Link/zdf:url/text()');
-				$value = $matches->item(0)->nodeValue;
-				$element = $xml->createElement("url", $value);
-				$sendung->appendChild( $element );				
-
-				//programdata
-				$programdata = $xml->createElement("programdata");
-					$element 	= $xml->createElement("actorDetails");
-					$programdata->appendChild( $element );
-
-
-					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:beginnDatum/text()');
+					//url <= <meta><Meta><webUrl><Link><url>
+					$matches = $xpath->query('/zdf:Beitrag/zdf:meta/zdf:Meta/zdf:webUrl/zdf:Link/zdf:url/text()');
 					$value = $matches->item(0)->nodeValue;
-					$element 	= $xml->createElement("airtimeBegin", $value);
-					$programdata->appendChild( $element );
+					$element = $xml->createElement("url", $value);
+					$sendung->appendChild( $element );					
 
-
-					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:sendeTag/text()');
-					$value = $matches->item(0)->nodeValue;
-					$element  	= $xml->createElement("airtimeDate", (new DateTime($value))->format('c') );
-					$programdata->appendChild( $element );
-
-
-					$element 	= $xml->createElement("audioComments", "false");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("blackwhite", "false");
-					$programdata->appendChild( $element );
-
-					$stationElement 	= $xml->createElement("broadcastStation");
-						$stationElement = $xml->createElement("station");
-						$stationElement->setAttribute("contentId", "0");
-						$stationElement->setAttribute("externalId");
-						$stationElement->setAttribute("name", $value);
-						$stationElement->setAttribute("serviceId", "0");			
-
-						//epgLogo				
-						$epgElement = $xml->createElement("epgLogo");
-						$epgElement->setAttribute("contentId", "0");
-						$epgElement->setAttribute("externalId", "0");
-
-						$element = $xml->createElement("altText");
-						$epgElement->appendChild( $element );
-
-						//sender logo url
-						$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:logo/zdf:Link/zdf:url/text()');
-						$value = $matches->item(0)->nodeValue;
-
-						$element = $xml->createElement("uri", $value);
-						$epgElement->appendChild( $element );
-						$element = $xml->createElement("width", 0);
-						$epgElement->appendChild( $element );
-						$element = $xml->createElement("height", 0);
-						$epgElement->appendChild( $element );
-						$stationElement->appendChild( $epgElement );				
-
-					$programdata->appendChild( $stationElement );
-
-
-
+					$programdata = $xml->getElementsByTagName('programdata')->item(0);						
 
 					$element 	= $xml->createElement("caption", "true");
 					$programdata->appendChild( $element );
@@ -238,57 +298,6 @@ class sendung{
 					$category->appendChild( $element );
 					$programdata->appendChild( $category );
 
-
-
-
-
-					$element 	= $xml->createElement("country", "Deutschland");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("crewFunctionDetails");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("dolbyDigital51", "false");
-					$programdata->appendChild( $element );
-					$element 	= $xml->createElement("dolbySurround", "false");
-					$programdata->appendChild( $element );
-					$element 	= $xml->createElement("dualchannel", "false");
-					$programdata->appendChild( $element );
-					$element 	= $xml->createElement("foreignLangWithCaption", "false");
-					$programdata->appendChild( $element );
-				
-					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:dauer/text()');
-					$value = $matches->item(0)->nodeValue;
-					$element 	= $xml->createElement("duration", $value);
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("guests");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("hd", "true");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("images");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("livestream", "true");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("moderators");
-					$programdata->appendChild( $element );
-
-					$matches = $xpath->query('/zdf:Beitrag/zdf:sendetermin/zdf:Sendetermin/zdf:vpsZeit/text()');
-					$value = $matches->item(0)->nodeValue;					
-					$element 	= $xml->createElement("vpsBegin", $value);
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("widescreen169", "false");
-					$programdata->appendChild( $element );
-
-					$element 	= $xml->createElement("url", $this->detailsUrl);
-					$programdata->appendChild( $element );
-					
-
 					$matches = $xpath->query('/zdf:Beitrag/zdf:redaktionellesDatum/text()');
 					$value = $matches->item(0)->nodeValue;						
 					$element 	= $xml->createElement("year", (new DateTime($value))->format('Y'));
@@ -296,7 +305,21 @@ class sendung{
 
 
 
-				$sendung->appendChild( $programdata );
+
+				//tvTipp
+				$f = $xml->createDocumentFragment();
+				$f->appendXML('<tvTipp>false</tvTipp>');
+				$sendung->appendChild($f);				
+
+				//titel
+				$element = $xml->createElement("titel", $this->titel);
+				$sendung->appendChild( $element );
+
+
+
+
+
+
                      
 		} catch (Exception $e) {
 		        console("sendung_class.php: Sendung konnte nicht geladen werden ".$this->titel);

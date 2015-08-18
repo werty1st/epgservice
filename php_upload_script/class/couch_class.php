@@ -384,6 +384,7 @@ class mycouch {
 
 			$simpleXmlElementObject = simplexml_load_string($sender->getSendungXML($sendung));	
 		    $array1 = xmlToArray($simpleXmlElementObject);
+
 		    //remove parentd node sendung
 		    $array1 = $array1["sendung"];		    
 		    $this->store1doc($station, $pos++, $array1, $fortschritt);		      

@@ -40,7 +40,7 @@ foreach ($senderliste as $station => $value) {
 		$xml_allday = new Sender($senderliste[$station], $date_start, $date_end);
         $xml_allday->collectSendungen();
 
-        
+        //echo $xml_allday->toString(); exit;
 
 		file_put_contents($cache_dir."/".$station.".xml",$xml_allday->toString());
 		/*
@@ -119,6 +119,8 @@ function xmlToArray($xml, $options = array()) {
         'keyReplace' => false       //replace values for above search values (as passed to str_replace())
     );
     $options = array_merge($defaults, $options);
+    if ( get_class($xml) != "SimpleXMLElement") return; 
+
     $namespaces = $xml->getDocNamespaces();
     $namespaces[''] = null; //add base (empty) namespace
  

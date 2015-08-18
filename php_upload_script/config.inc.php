@@ -6,11 +6,14 @@ $senderliste = array ("ZDF"	=> "zdf",
 					  "ZDFneo"	=> "zdfneo",
 					  "ZDF.kultur"=> "zdf.kultur",
 					  "ZDFinfo"	=> "zdfinfo",
-					  "dreisat"	=> "dreisat",
+					  "dreisat"	=> "3sat",
 					  "KI.KA"	=> "ki.ka",
 					  "arte"	=> "arte");
 
-define("URL", "http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=%s&startDate=%s&endDate=%s");
+// $senderliste = array ( "ZDF.kultur"=> "zdf.kultur" );
+// $senderliste = array ( "ZDF"=> "zdf" );
+
+define("URL", "http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=%s&startDate=%s&endDate=%s&currentIndex=%s");
 
 
 $cache_dir ="cache";
