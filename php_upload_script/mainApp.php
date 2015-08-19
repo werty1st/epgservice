@@ -17,14 +17,19 @@ $couch = &Factory::getDB(array("host" => $db_host,
 //if time >= 00:00 and < 5:30 
 
 if ( ( time() >= strtotime("00:00:00") ) && ( time() < strtotime("05:30:00")) ) {
-    //Sendetag = heute-1
-    $date_start = date('Y-m-d', strtotime('-1 day', time() ));
-    $date_end   = $date_start; //date('Y-m-d'); es wird eh immer mind 1 sendetag zurückgegeben.
+    //Sendetag = heute-1 => starte vorgestern
+    $date_start = date('Y-m-d', strtotime('-2 day', time() ));
+    //$date_end   = $date_start; //date('Y-m-d'); es wird eh immer mind 1 sendetag zurückgegeben.
+    $date_end   = date('Y-m-d', strtotime('-1 day', time() )); //zb: am 20. um 1 uhr hole 18-19
+
+    $filter_date = date('Y-m-d', strtotime('-1 day', strtotime("05:30:00") ));
 
 } else {
-    //Sendetag = heute
-    $date_start = date('Y-m-d');
-    $date_end   = $date_start; //date('Y-m-d', strtotime('+1 day', time() )); 
+    //Sendetag = heute => starte gestern
+    $date_start = date('Y-m-d', strtotime('-1 day', time() ));
+    $date_end   = date('Y-m-d'); //zb: am 20. um 6 uhr hole 19-20
+
+    $filter_date = date( strtotime("05:30:00") );
 }
 
 
@@ -37,7 +42,7 @@ foreach ($senderliste as $station => $value) {
 		echo "\n";
 
 		//einzelne sendungen durchlaufen    
-		$xml_allday = new Sender($senderliste[$station], $date_start, $date_end);
+		$xml_allday = new Sender($senderliste[$station], $date_start, $date_end, $station, $filter_date);
         $xml_allday->collectSendungen();
 
         //echo $xml_allday->toString(); exit;

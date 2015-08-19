@@ -6,7 +6,7 @@ $senderliste = array ("ZDF"	=> "zdf",
 					  "ZDFneo"	=> "zdfneo",
 					  "ZDF.kultur"=> "zdf.kultur",
 					  "ZDFinfo"	=> "zdfinfo",
-					  "dreisat"	=> "3sat",
+					  "3sat"	=> "3sat",
 					  "KI.KA"	=> "ki.ka",
 					  "arte"	=> "arte");
 

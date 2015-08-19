@@ -11,10 +11,25 @@ exports.getAllWithTimeStamp = {
                 out.time    = doc.time;
                 out.endTime = doc.endTime;
                 out.station = { "name":doc.station.name};
-                out.kicker  = doc.kicker;
-                out.titel   = doc.titel;
-                out.untertitel = doc.subtitle;
-                out.beschreibung = doc.beschreibung;
+                //out.position  = doc.position;
+                
+                if (doc.kicker != "" ){
+                    out.kicker = doc.kicker;
+                }
+                if (doc.titel != "" ){
+                    out.titel = doc.titel;
+                }
+                if (doc.subtitle != "" ){
+                    out.untertitel = doc.subtitle;
+                }                
+                if (doc.beschreibung != "" ){
+                    out.beschreibung = doc.beschreibung;
+                }                
+                if (doc.subtitle != "" ){
+                    out.untertitel = doc.subtitle;
+                }                
+            
+
                 out.programdata = (doc.programdata)?{ "genre": doc.programdata.genre}:{};
 
                 out.url     = doc.url;

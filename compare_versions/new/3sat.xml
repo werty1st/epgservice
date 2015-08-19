@@ -1,0 +1,671 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <status>
+    <statuscode>ok</statuscode>
+  </status>
+  <sendungen>
+    <sendung>
+      <id>7c5ad43fa1c7de8e2ee1a8fe2cb32176</id>
+      <key>2015-08-19T05:26:00+02:00</key>
+      <value>
+        <time>2015-08-19T05:26:00+02:00</time>
+        <endTime>2015-08-19T06:20:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Schwärme - Die Intelligenz der Massen</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/12fe27a8-e27e-4976-9309-671eb729a291</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>c24971acd57e932b5fdaff3515b29f45</id>
+      <key>2015-08-19T06:21:00+02:00</key>
+      <value>
+        <time>2015-08-19T06:21:00+02:00</time>
+        <endTime>2015-08-19T06:30:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Kulturzeit kompakt</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/677b69d9-6f12-42d3-af19-09bba4e2af3f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>54f6ba1c684812f614b309ca5a73acdd</id>
+      <key>2015-08-19T06:30:00+02:00</key>
+      <value>
+        <time>2015-08-19T06:30:00+02:00</time>
+        <endTime>2015-08-19T07:00:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Mein London</titel>
+        <beschreibung>Korrespondentin Bettina Prendergast beleuchtet in ihrem London-Porträt, wie man in Europas größter Stadt lebt und überlebt. So trifft sie junge Leute, die in alten Lagerhäusern wohnen.  Bettina Prendergast kämpft sich mit einer Komödiantin durch den U-Bahn-Dschungel, wirft einen Blick hinter die Kulissen des britischen Parlaments und spricht mit Österreichern, die hier eine neue Heimat gefunden haben.  Der Film präsentiert die britische Metropole als Summe der sehr persönlichen und über viele Jahre gewachsenen Eindrücke von Bettina Predergast.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/c486cb28-6459-4947-8e10-5bf2e554a662</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>737b5b172adde8135632d6eac67c3946</id>
+      <key>2015-08-19T07:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T07:00:00+02:00</time>
+        <endTime>2015-08-19T07:30:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Durch Asien mit Peter Kunz</titel>
+        <beschreibung>Asien ist im Umbruch: Hinter glitzernden Skylines und boomender Wirtschaft leben Menschen, die sich zwischen traditionellen Werten und rasanter Modernisierung nicht mehr zurechtfinden.  In Indien steht das traditionelle Frauenbild ebenso auf dem Prüfstand wie im muslimisch geprägten Indonesien. Es gab Großdemonstrationen gegen die &quot;Miss World Wahl&quot;, gefördert dagegen wurde die &quot;Miss Muslim World&quot;. Dabei geht es um innere Schönheit.  Der Hauptgewinn ist eine Reise nach Mekka. In Pakistan kämpft eine Zeichentrick-Heldin für ihr Recht auf Bildung. Armut und Mittellosigkeit in den Schwellenländern der Region stehen in krassem Gegensatz zum Reichtum einer kleinen Oberschicht. Charismatische Politiker wie der Gouverneur von Djakarta versuchen dagegen vorzugehen und setzen sich mit ungewöhnlichen Methoden gegen Korruption ein.   Die Reportage gewährt Einblicke in eine sich wandelnde Welt von Pakistan bis Indonesien.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/9480cb5d-a13c-48c4-ac90-5bc584d86187</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>2603d25873feb7ddc4c51fe692e3fb6e</id>
+      <key>2015-08-19T07:30:00+02:00</key>
+      <value>
+        <time>2015-08-19T07:30:00+02:00</time>
+        <endTime>2015-08-19T09:00:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Alpenpanorama</titel>
+        <beschreibung>&quot;Alpenpanorama&quot; zeigt über zahlreiche Web- und Panoramakameras täglich Livebilder aus ausgewählten Urlaubsorten.  Die Sendung informiert auch über Temperatur- und Wetterbedingungen vor Ort.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/752b0b15-690e-4199-ba95-bd5d346c1473</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>a6e011c98f3329a974a8e06a80d3d68f</id>
+      <key>2015-08-19T09:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T09:00:00+02:00</time>
+        <endTime>2015-08-19T09:05:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>ZIB</titel>
+        <beschreibung>Die Kurzausgaben der österreichischen Nachrichtensendung &quot;Zeit im Bild&quot; (ZIB) liefern neben klassischen Nachrichten Informationen über Entwicklungen auf den Finanzmärkten und Expertenanalysen.  Ein Laufband informiert über die aktuellen Börsenkurse.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/8699d73f-f743-4501-8697-9239e1fa06c7</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>aa37f8a0f519cc8108278911d6943aca</id>
+      <key>2015-08-19T09:05:00+02:00</key>
+      <value>
+        <time>2015-08-19T09:05:00+02:00</time>
+        <endTime>2015-08-19T09:14:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Kulturzeit kompakt</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/4dee243a-87ac-465e-872d-914a1444bd01</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>c8f6e6b24c67f36c556719fb168737c8</id>
+      <key>2015-08-19T09:14:00+02:00</key>
+      <value>
+        <time>2015-08-19T09:14:00+02:00</time>
+        <endTime>2015-08-19T09:14:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Mein London</titel>
+        <beschreibung>Korrespondentin Bettina Prendergast beleuchtet in ihrem London-Porträt, wie man in Europas größter Stadt lebt und überlebt. So trifft sie junge Leute, die in alten Lagerhäusern wohnen.  Bettina Prendergast kämpft sich mit einer Komödiantin durch den U-Bahn-Dschungel, wirft einen Blick hinter die Kulissen des britischen Parlaments und spricht mit Österreichern, die hier eine neue Heimat gefunden haben.  Der Film präsentiert die britische Metropole als Summe der sehr persönlichen und über viele Jahre gewachsenen Eindrücke von Bettina Predergast.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/90095612-58eb-4020-bfe3-c19471d830cc</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>35931deb199488231c7e06adeda9aaa2</id>
+      <key>2015-08-19T09:46:00+02:00</key>
+      <value>
+        <time>2015-08-19T09:46:00+02:00</time>
+        <endTime>2015-08-19T10:15:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Durch Asien mit Peter Kunz</titel>
+        <beschreibung>Asien ist im Umbruch: Hinter glitzernden Skylines und boomender Wirtschaft leben Menschen, die sich zwischen traditionellen Werten und rasanter Modernisierung nicht mehr zurechtfinden.  In Indien steht das traditionelle Frauenbild ebenso auf dem Prüfstand wie im muslimisch geprägten Indonesien. Es gab Großdemonstrationen gegen die &quot;Miss World Wahl&quot;, gefördert dagegen wurde die &quot;Miss Muslim World&quot;. Dabei geht es um innere Schönheit.  Der Hauptgewinn ist eine Reise nach Mekka. In Pakistan kämpft eine Zeichentrick-Heldin für ihr Recht auf Bildung. Armut und Mittellosigkeit in den Schwellenländern der Region stehen in krassem Gegensatz zum Reichtum einer kleinen Oberschicht. Charismatische Politiker wie der Gouverneur von Djakarta versuchen dagegen vorzugehen und setzen sich mit ungewöhnlichen Methoden gegen Korruption ein.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/d4ede41f-90a8-4389-b19f-bd9c47b12478</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>ff364293bb6b82c1c7c29d4b239aa792</id>
+      <key>2015-08-19T10:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T10:15:00+02:00</time>
+        <endTime>2015-08-19T11:30:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Markus Lanz</titel>
+        <beschreibung>Horst Lichter 2014 erhielt der Entertainer die Goldene Kamera als bester Fernsehkoch. Im selben Jahr stirbt seine geliebte Mutter. Horst Lichter erzählt, wie er mit seiner Trauer als Unterhalter auf der Bühne umgeht.  Susie Wolff Die Formel-1-Testpilotin berichtet, wie es dazu kam, dass das Williams-Team sie 2012 als Testfahrerin verpflichtet hat und wie ihre Zukunft als erste offizielle Formel-1-Pilotin aussehen könnte.  Gisela Friedrichsen Am Landgericht Oldenburg wurde der ehemalige Krankenpfleger Niels H. zu lebenslanger Haft verurteilt. Gerichtsreporterin Gisela Friedrichsen gibt eine Einschätzung des Gerichtsverfahrens.  Christian Marbach Niels H. spritzte Marbachs Großvater 2003 ein Herzmittel in Überdosis, um den Mann dann reanimieren zu können. Marbach erklärt, warum die Angehörigen zwei Mal zu Opfern gemacht worden sind.  Peter Nemela Der Gentleman Host erzählt, wie es ist, sich amüsierfreudigen Damen als Tänzer, Kavalier und treuer Gastgeber zur Verfügung zu stellen und weshalb Kabinen-Besuche auf dem Kreuzfahrtschiff für ihn ein Tabu sind.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/e6945324-1cb6-3c02-8b90-3874ee0f4b2d/36e1d285-c673-4268-addf-cc080d74873f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>8904f32561ad19167dcabf92f82b302c</id>
+      <key>2015-08-19T11:32:00+02:00</key>
+      <value>
+        <time>2015-08-19T11:32:00+02:00</time>
+        <endTime>2015-08-19T12:03:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Rasta Tom erhält Besuch</titel>
+        <beschreibung>Tom ist nervös: Familienbesuch hat sich angekündet. Der 50-Jährige hat sich nämlich für ein Leben als Rasta entschieden und lebt in einem unwegsamen Gebiet mitten im Busch von Jamaika.  Er isst nur, was in unmittelbarer Nähe seines bescheidenen Zuhauses wächst. Vor allem seine Schwester Barbara hat Mühe, seine Lebensart zu akzeptieren. Sie vermutet, dass ihr Bruder unter dem Einfluss einer Sekte steht und strengen Vorschriften unterworfen ist.  Tatsächlich lebt ganz in seiner Nähe ein Rasta-Naturarzt, der Toms Leben stark beeinflusst. Ein Besuch beim Rasta-Doktor soll Klarheit schaffen. Doch es kommt anders als erwünscht. Spannungen prägen das Wiedersehen zwischen Tom und seinen Angehörigen. Reporter Hanspeter Bäni hat den Familienbesuch bei Tom dokumentiert. Dabei geht er unter anderem der Frage nach, ob ein Leben frei von Zwängen sein kann, wenn der Wunsch, gesund zu leben, oberste Maxime ist.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/dba4052c-05a4-4390-8bd8-4ba7392fcb4c</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>6e5f5a562c53c72c047e766251bc9ea4</id>
+      <key>2015-08-19T12:03:00+02:00</key>
+      <value>
+        <time>2015-08-19T12:03:00+02:00</time>
+        <endTime>2015-08-19T12:25:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Newton</titel>
+        <untertitel>Erde, Insekten, High-Tech &amp; Fertigkost - Wie die</untertitel>
+        <beschreibung>Kochen ist populär wie nie zuvor. Von Steinzeitküche über Koch-Apps bis zu Koch-Sessions an außergewöhnlichen Örtlichkeiten: Der Kreativität sind keine Grenzen gesetzt.  Auf der Speisekarte der Zukunft stehen auch Insektengerichte. Doch wie gesund sind die für uns meist ekeligen Kriech- und Krabbeltiere wirklich? Wie reagiert der menschliche Körper auf diese Art von Nahrung? Das untersuchen gerade Forscher der Universität Innsbruck.  Inzwischen rühren Haubenköche mit ihren Kochlöffeln durch Töpfe mit Moos, Wurzeln oder Insekten. Sogar die Welternährungsorganisation WHO empfiehlt in Industrieländern Insekten statt Fleisch zu konsumieren. Der neueste Trend stammt aus Japan: Dort wird jetzt mit Erde gekocht.   Auch im Geschmackslabor an der Universität Graz ist Erde bereits fixer Bestandteil der wissenschaftlichen Küche. Damit Erde genießbar ist, muss sie frei von Mikroorganismen und Keimen sein. Mit Erde aus dem eigenen Garten könnte der Genuss von Schweinebraten in Erdkruste oder eines Käferbohnen-Erd-Tiramisu unerwünschte Nachwirkungen haben.  Tiefkühlpizza, Fertiglasagne und Suppen aus der Dose - das Angebot an Fertiggerichten ist vielfältig. Nach einem langen anstrengenden Arbeitstag ist ein solches Menü schnell zubereitet und schmeckt meist auch recht gut. Allerdings enthalten Fertiggerichte viel Fett, Zucker, Geschmacksverstärker und vor allem Unmengen an Salz. Eine einzige Fertigpizza deckt bereits den Tagesbedarf an Salz. Maximal etwa einen Teelöffel davon sollte man täglich zu sich nehmen. An der Universität im französischen Nantes wollen die Forscher beliebte Fertiggerichte gesünder machen.   Kochen mit Apps oder High-Tech-Geräten - in vielen Küchen wird bereits damit experimentiert. Für Newton testet Moderator Matthias Euba mit einigen Hobbyköchen einen digitalen Dampfgarer. Dieser ist mit einem Temperatursensor ausgestattet, der sich per Bluetooth mit einer App auf dem Tablet koppeln lässt.  Ob das funktioniert und wie die digitale Küche schmeckt, erfahren Sie in Newton.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/02f26407-0f2a-4d46-8e5c-dff2ddbd9371</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>5468a454b41c41a68a808d0f306c36f0</id>
+      <key>2015-08-19T12:25:00+02:00</key>
+      <value>
+        <time>2015-08-19T12:25:00+02:00</time>
+        <endTime>2015-08-19T12:51:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Wohndesign und Hüttenzauber - Wohnen im Neusiedler See</titel>
+        <beschreibung>Der Neusiedler See ist nicht nur Lebensraum seltener Tier- und Vogelarten, er ist seit jeher auch ein Wohnparadies für Menschen mit unterschiedlichen Bedürfnissen.  Manchen ist ihr Segelboot ein zweites Zuhause, anderen eine mehr oder weniger komfortable Holzhütte im Schilf. Geradezu luxuriös muten hingegen jene Häuser an, die in den letzten Jahren im Bereich des Seebades von Neusiedl am See entstanden sind.  Die traditionellen Streckhöfen nachempfundenen Pfahlbauten verfügen über Terrasse, Swimming Pool, Bootsanlegeplatz und Parkplatz. Tatjana Berlakovich und Koloman Watzek zeigen Menschen mit Wohnsitz am oder im Wasser und liefern ein kontrastreiches Bild von aktuellen Lebens- und Wohnformen am Neusiedler See.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/f9b7608c-e52f-41d3-8813-b2a50a40d00e</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>aae9feb5c4d2bc23e44a56e952487dd8</id>
+      <key>2015-08-19T12:51:00+02:00</key>
+      <value>
+        <time>2015-08-19T12:51:00+02:00</time>
+        <endTime>2015-08-19T13:00:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Streifzug durch das Tessin: Lugano und Locarno</titel>
+        <beschreibung>Irgendwo scheint immer Frühling zu sein im Tessin: Der Süden grüßt mit mildem Klima, malerischen Städtchen, blauen Seen, subtropischen Parks und natürlich mit der temperamentvollen Bevölkerung.  Es fällt vor allem der Kontrast zwischen alpiner und mediterraner Landschaft ins Auge. Zwar prägt das italienische &quot;dolce vita&quot; das Lebensgefühl, aber dennoch fahren die Busse auf die Minute pünktlich - man ist ja schließlich in der Schweiz.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/d4c3a02c-a67c-4d42-b8b8-394fbde4f00f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>85fbebc2bd7c614e515179ec890ed1c3</id>
+      <key>2015-08-19T13:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T13:00:00+02:00</time>
+        <endTime>2015-08-19T13:15:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>ZIB</titel>
+        <beschreibung>Die Kurzausgaben der österreichischen Nachrichtensendung &quot;Zeit im Bild&quot; (ZIB) liefern neben klassischen Nachrichten Informationen über Entwicklungen auf den Finanzmärkten und Expertenanalysen.  Ein Laufband informiert über die aktuellen Börsenkurse.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/477f37c8-7a23-4696-b8b4-ad370a3a9cb2</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>5124e96b2522ade9b5e0e7879940b630</id>
+      <key>2015-08-19T13:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T13:15:00+02:00</time>
+        <endTime>2015-08-19T13:24:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Traumziel Mallorca</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/782e3ac0-a525-4d2c-b025-a35930558f45</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>a42595c56329bc25ba94d0042a0d9ac0</id>
+      <key>2015-08-19T13:24:00+02:00</key>
+      <value>
+        <time>2015-08-19T13:24:00+02:00</time>
+        <endTime>2015-08-19T14:08:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Traumorte - Capri</titel>
+        <beschreibung>Auf der Insel Capri im Golf von Neapel erlebt man Italien wie aus dem Bilderbuch. Sie ist nur 10 Quadratkilometer groß, aber für ihre zahlreichen Grotten und das liebliche Klima berühmt.  Ein Muss für alle Touristen ist die Besichtigung der &quot;Blauen Grotte&quot;. Die Insel lockt aber auch viele bildende Künstler, Schriftsteller und Intellektuelle an, die sich von ihrer Schönheit inspirieren und verzaubern lassen.  Vor 2.000 Jahren dirigierte Tiberius von Rom aus ein gewaltiges Imperium. Auf Capri ließ er eines seiner schönsten Häuser bauen. Der öffentlichkeitsscheue Diktator hatte sich in den Ort verliebt und wählte die Insel schließlich sogar zum Hauptwohnsitz.   Die Dokumentation präsentiert Reiseerlebnisse von der Mittelmeer-Insel, die mit märchenhaften Eindrücken lockt.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/1327647b-0143-4893-bc0e-3ec52620907d</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>400fbd9407c578050a05fd81352c111d</id>
+      <key>2015-08-19T14:08:00+02:00</key>
+      <value>
+        <time>2015-08-19T14:08:00+02:00</time>
+        <endTime>2015-08-19T14:53:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Traumorte - Santorin</titel>
+        <beschreibung>Die griechische Kykladen-Insel Santorin ist ein Anziehungspunkt für Touristen.  Doch nicht nur Touristen, sondern auch Köche, Künstler und Winzer Santorins lieben ihre Insel.  Santorin hat viel zu bieten: Auf der einen Seite die steile Kraterwand mit spektakulären Ausblicken auf die Caldera, auf der anderen Seite flaches Land mit Stränden aus schwarzem und rotem Sand.  Die Insel selbst bildet einen Kraterrand, der steil und leuchtend aus dem Meer ragt. Rot, weiß und schwarz ist das Vulkangestein, das in Form einer Sichel - der Caldera - das tiefblaue Binnenmeer umfasst, in dessen Mitte zwei kleine Inseln noch immer von vulkanischer Tätigkeit zeugen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/a08e1bd4-81e3-41c7-ba71-47aaa18bee35</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>e8e8ac520369fff3fcc562b160a4ce2d</id>
+      <key>2015-08-19T14:53:00+02:00</key>
+      <value>
+        <time>2015-08-19T14:53:00+02:00</time>
+        <endTime>2015-08-19T15:36:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (1/5)</titel>
+        <untertitel>Ein Märchental in den Karpaten</untertitel>
+        <beschreibung>Die Reihe stellt Bergregionen Europas vor und porträtiert den Alltag der Menschen, die dort leben. Im Mittelpunkt des ersten Teils steht das Schradental in den rumänischen Waldkarpaten.  Am höchsten Punkt des Schradentals in den Waldkarpaten lebt das Ehepaar Andrejka. Ihr Alltag wird bestimmt von den Jahreszeiten, den Bedürfnissen der Tiere, vom Festkalender der orthodoxen Kirche und den Geistern, die angeblich in den umliegenden Wäldern leben.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/27fa701b-f958-44be-b47d-724ff375a1f3</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>3c0081552b934c9b7c6c29fec65830e7</id>
+      <key>2015-08-19T15:36:00+02:00</key>
+      <value>
+        <time>2015-08-19T15:36:00+02:00</time>
+        <endTime>2015-08-19T16:19:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (2/5)</titel>
+        <untertitel>Ein Kloster in den Pyrenäen</untertitel>
+        <beschreibung>Die Reihe stellt Bergregionen Europas vor und porträtiert den Alltag der Menschen, die dort leben. Im Mittelpunkt des zweiten Teils steht ein Kloster in den katalanischen Pyrenäen.  Hunderte Klöster wurden in den Pyrenäen errichtet, die lange Zeit spirituelle Hochburgen waren. Von den meisten blieben Ruinen. Das Kloster Santa Maria de Lord hat dem Verfall getrotzt. Die Eremiten, die heute dort leben, wollen das Kloster für die Außenwelt öffnen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/6fcecc03-5d79-4c61-ac76-2bfa10da10f6</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>8b582ab0a07939066e7c4aae0fd112be</id>
+      <key>2015-08-19T16:19:00+02:00</key>
+      <value>
+        <time>2015-08-19T16:19:00+02:00</time>
+        <endTime>2015-08-19T17:03:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (3/5)</titel>
+        <untertitel>Bergbauern in Südtirol</untertitel>
+        <beschreibung>Die Reihe stellt Bergregionen Europas vor und porträtiert den Alltag der Menschen, die dort leben. Im Mittelpunkt des dritten Teils stehen Bergbauern im italienischen Südtirol.  Auf einem 1.700 Meter hoch gelegenen Bauernhof in Südtirol bewirtschaftet Familie Gufler den Oberprischhof auf steilstem Gelände. Ihr Hof ist nur mit einer Seilbahn zu erreichen. Menschen, Tiere, Einkäufe - alles muss mit dieser Bahn transportiert werden.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/b1f07bf9-9a29-4a78-8626-373ccb12a422</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>436dd50dcbb89289961fd593b66aaaa2</id>
+      <key>2015-08-19T17:02:00+02:00</key>
+      <value>
+        <time>2015-08-19T17:02:00+02:00</time>
+        <endTime>2015-08-19T17:46:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (4/5)</titel>
+        <untertitel>In den weißen Bergen Kretas</untertitel>
+        <beschreibung>Die Reihe stellt Bergregionen Europas vor und porträtiert den Alltag der Menschen, die dort leben. Im Mittelpunkt des vierten Teils stehen die weißen Berge auf Kreta.  Die Naturgewalten haben die Landschaft der griechischen Insel Kreta und ihre Bewohner geprägt. Nirgendwo ist die Spannung so offensichtlich wie in ihren Gebirgen. Über Tausende von Jahren waren Hirten die einzigen Menschen, die dort auf 2.200 Metern leben konnten.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/3b3f680d-c50f-46e4-8677-4860d5a1fe3f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>5978853ff4dc715ffa54463046dd3a63</id>
+      <key>2015-08-19T17:46:00+02:00</key>
+      <value>
+        <time>2015-08-19T17:46:00+02:00</time>
+        <endTime>2015-08-19T18:30:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (5/5)</titel>
+        <untertitel>An den Steilhängen der Fjorde</untertitel>
+        <beschreibung>Die Reihe stellt Bergregionen Europas vor und porträtiert den Alltag der Menschen, die dort leben. Der letzte Teil führt in den hohen Norden nach Norwegen.  An den steilen Hängen des norwegischen Hardangerfjords liegen unweit voneinander zwei alte Bergbauernhöfe, deren Ursprünge noch in die Wikingerzeit zurückreichen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/e43e72f0-da24-4ac1-be41-0f8a9e20b51d</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>305fc46122a6ce9e25db38cf14a154bc</id>
+      <key>2015-08-19T18:30:00+02:00</key>
+      <value>
+        <time>2015-08-19T18:30:00+02:00</time>
+        <endTime>2015-08-19T19:00:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Nordseepiloten (1/2)</titel>
+        <untertitel>Sonne, Wind und Seehundbabys</untertitel>
+        <beschreibung>Wenn morgens über dem Wattenmeer die Sonne aufgeht, beginnt der Arbeitstag des Nordseepiloten Claas Müller: &quot;Wir arbeiten dort, wo andere Urlaub machen.&quot;  Seit knapp zehn Jahren fliegt er mit seiner Maschine fast täglich die unterschiedlichsten Passagiere. Von Harle-siel aus geht es auf die ostfriesischen Inseln, meistens per Linienflug nach Wangerooge.  Die Inselflieger transportieren hauptsächlich Touristen, aber auch Handwerker, den Tierarzt, den Pfarrer und Schornsteinfeger. Und auch kleine Seehundbabys, die von ihrer Mutter getrennt worden sind und nun in einer Auffangstation wieder aufgepäppelt werden: &quot;Wir transportieren Seehundbabys und kleine Kegelrobben. Kaum jemand weiß, dass sie die größten frei lebenden Raubtiere hier in Deutschland sind.&quot; Nach ein paar Wochen werden die exklusiven Passagiere dann wieder ausgewildert.   Etwas weiter westlich ist es stark zugezogen, Niederschlag hat eingesetzt, und der Pilot Rainer Luff kämpft mit der Angst vor Eisregen. Er hat einen tierischen Auftrag: Ein Hund muss von Juist nach Norderney in die Tierpension geflogen werden, denn sein Frauchen muss für einige Tage aufs Festland und kann ihn nicht mitnehmen. Die Zeit drängt, denn bald wird es dunkel, und irgendwann schließen die Flughäfen. Es ist der erste Flug für den Hund, und niemand weiß, wie er reagieren wird. Der Wind frischt auf, und der Nordseepilot muss immer spontan reagieren: &quot;Bei uns ist noch alles handgemacht. Geflogen wird auf Sicht, ein Radar- beziehungsweise Computersystem gibt es nicht an Bord.&quot; Und genau das ist die tägliche Herausforderung für die Küstenpiloten, vor allem, weil das unbeständige Wetter an der Nordsee seine Tücken hat. Besonders im Winter und im Frühjahr folgen auf Wind und Sturm plötzlich heftiger Nebel, aber auch klare Sonnentage.   Die Reportagereihe &quot;Nordseepiloten&quot; begleitet zwei Inselpiloten bei ihren Flügen von Norderney über Juist bis hin nach Wangerooge. Was unterscheidet ihren Job von dem der Piloten großer Airlines? Mit welchen Problemen und Herausforderungen haben sie zu kämpfen? Eine Reportage mit spektakulären Flugaufnahmen der Inseln, die zu Recht zu Deutschlands beliebtesten Urlaubszielen zählen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/aeac78f8-33de-4046-9451-5af4e23bf224</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>5608a2917e807d14fd105dd3baaee980</id>
+      <key>2015-08-19T19:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T19:00:00+02:00</time>
+        <endTime>2015-08-19T19:21:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>heute</titel>
+        <beschreibung>Die Nachrichtensendung des ZDF.  Aktuelle, informative Beiträge und Live-Schaltgespräche zu den Topthemen des Tages aus Politik, Wirtschaft, Justiz, Wissenschaft und Sport liefert die ZDF-Nachrichtensendung.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/0ed1d1ac-d497-4b3e-adad-df9c08c408d4</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>3a5b5647112b53c90fd20099c555e341</id>
+      <key>2015-08-19T19:21:00+02:00</key>
+      <value>
+        <time>2015-08-19T19:21:00+02:00</time>
+        <endTime>2015-08-19T19:30:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Kulturzeit kompakt</titel>
+        <beschreibung>Die Kurzversion der &quot;Kulturzeit&quot; informiert zur gewohnten Sendezeit mit Nachrichten und Reporterstücken über aktuelle Kulturereignisse.  Die unmoderierte Kurzversion des Magazins wird ergänzt durch Tipps, einen Blick auf den Kultursommer sowie Hinweisen zu Events, Festivals und Lesungen.  In der Sommerpause des Kulturmagazins &quot;Kulturzeit&quot; von Montag, 27. Juli, bis einschließlich Freitag, 28. August, sendet 3sat um 19.20 Uhr die zehnminütige unmoderierte Kurzversion des Kulturmagazins &quot;Kulturzeit kompakt&quot;.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/3400fde6-ec82-4472-b859-25e78aedcd29</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>e8dff14cfa68c72701067618c5008ca6</id>
+      <key>2015-08-19T19:30:00+02:00</key>
+      <value>
+        <time>2015-08-19T19:30:00+02:00</time>
+        <endTime>2015-08-19T20:00:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Mein Brüssel</titel>
+        <beschreibung>Brüssel hat deutlich mehr zu bieten, als die unpersönlichen Tintenburgen der EU-Bürokratie. Schon das widersprüchliche Stadtbild Brüssels macht das deutlich.  Architektonische Juwelen behaupten sich neben modernen Betonklötzen, ein typisches Brüsseler Phänomen, das als &quot;Brüsselisierung&quot; in den internationalen Architektenjargon Eingang gefunden hat. Struktur und Ordnung scheinen der gesamten Stadt zu fehlen.  Die Brüsseler nehmen das jedoch gutmütig hin und gehen humorvoll und kreativ damit um. Immerhin ist gerade dieser Anflug von Chaos Nährboden für Kunst, wie der Surrealismus belegt, der mit René Magritte in Brüssel besonders erfolgreich war. Eben solche Menschen, die sich von Brüssel inspirieren lassen, hat Cornelia Primosch, die seit vielen Jahren als EU-Korrespondentin in der Stadt lebt,  getroffen. Zu ihnen zählt Kurt Ryslavy, ein österreichischer Maler, der Brüssel nach mehr als 20 Jahren nicht mehr verlassen will.  Die Widersprüche finden sich auch in der Brüsseler Kulinarik. Die Stadt ist berühmt für ihre exquisiten Schokoladenkreationen, wie jene von Chocolatier Pierre Marcolini, der sich als Modeschöpfer in der Welt der Pralinen versteht. Wahren Weltruhm hat hingegen eine weitaus simplere Speise erlangt, die angeblich in Belgien erfunden wurde: Die &quot;pommes frites&quot;, die nirgends so gut schmecken wie in der Hauptstadt Europas.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/f87febe4-b6c7-4f99-a6b1-0edb54355135</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>a456eca9d86d01e81f7d2cfcbf2910da</id>
+      <key>2015-08-19T20:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T20:00:00+02:00</time>
+        <endTime>2015-08-19T20:15:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Tagesschau</titel>
+        <beschreibung>ARD-Nachrichten aus dem In- und Ausland auf den Punkt gebracht.  Die &quot;Tagesschau&quot; bietet die wichtigsten Nachrichten des Tages und zusätzliche Informationen in Text, Bild, Audio und Video sowie umfassende Berichte und Hintergründe zu aktuellen Themen und Entwicklungen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/8113647b-879b-4563-9d36-93a8ff8add13</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>a7a59f6cf531cac31056595dd6106f1a</id>
+      <key>2015-08-19T20:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T20:15:00+02:00</time>
+        <endTime>2015-08-19T21:45:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <kicker>Iris Berben</kicker>
+        <titel>Gott schützt die Liebenden</titel>
+        <beschreibung>Die Geschichte erzählt die abenteuerliche Suche eines Mannes nach seiner verschwundenen Geliebten. Die Suche steht für etwas, woran er glauben kann: die wahre, bedingungslose Liebe.  Doch je mehr er auf die Spur der Gesuchten kommt, desto tiefer werden seine Zweifel: Ist Sybille nur auf der Flucht vor der eigenen kriminellen Vergangenheit? Und wenn ja, soll er sie verraten?  Der kriegsversehrte Journalist Paul Holland glaubt an gar nichts - außer, dass seine Freundin Sybille die Frau seines Lebens ist.Sie betet für ihn, als er beruflich ins Ausland fliegt. Doch als Paul zurückkehrt, ist Sybille verschwunden. Die Polizei teilt ihm mit, alles deute auf eine Entführung hin, aber ohne Motiv. Paul bekommt zunehmend das Gefühl, dass man ihm etwas verheimlicht. Zudem gilt er selbst als Verdächtiger. Während der Verhöre wird Paul klar, wie wenig er eigentlich über Sybille weiß. Seine einzige Spur, ein Anruf eines gewissen Emilio Trenti, führt ihn nach Salzburg: Hier findet er Trenti ermordet vor. Und er trifft Petra Wendt, die Sybille von früher kennt - allerdings unter anderem Namen. Nach und nach geht Paul auf, dass Sybille auf der Flucht vor ihrer kriminellen Vergangenheit ist. Als er sie endlich findet, hat sie bereits zwei Menschen getötet und wird überall polizeilich gesucht. Paul bringt sie in einer alten Seilbahnstation in Sicherheit. Sybille ist ihm fremd geworden, und er muss sich entscheiden, ob er sie verrät oder ihr hilft. Als Petra sie an die Polizei verrät, schießt Sybille auf Paul und nimmt sich selbst das Leben. Paul überlebt, schreibt seine Erlebnisse auf und will woanders neu anfangen, stirbt aber bei einem Flugzeugabsturz.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/3bd025a7-06cc-4769-bb3c-5632637e6a29</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>d5f7c60994cd5d2e14f931fe5ed47f0d</id>
+      <key>2015-08-19T21:45:00+02:00</key>
+      <value>
+        <time>2015-08-19T21:45:00+02:00</time>
+        <endTime>2015-08-19T23:12:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <kicker>Krimisommer</kicker>
+        <titel>Sherlock - Im Zeichen der Drei</titel>
+        <beschreibung>Ein Leibgardist der Königin wähnt sich von einem mysteriösen Stalker verfolgt und bittet Sherlock Holmes um Hilfe, was diesem sehr gelegen kommt: So muss er nicht Watsons Trauzeuge sein.  Trotz seiner Genialität kann der Detektiv weder den Mordanschlag auf den Wachmann verhindern noch Tatwaffe, Tat-hergang und Täter ausfindig machen. Ebenso rätselhaft ist der Fall des &quot;Eintagsfliegen-Mannes&quot;. Ist es derselbe Unbekannte?  Der Eintagsfliegen-Mann verabredet sich in den Wohnungen kürzlich Verstorbener mit Frauen zu einem romantischen Rendezvous und verschwindet danach spurlos. Die Auserwählten glauben hinterher, mit einem Geist zusammen gewesen zu sein.   Während Sherlock den Hochzeitsgästen Geschichten erzählt, wird ihm plötzlich bewusst, welche Indizien er übersah. Das Phantom wird wieder zuschlagen - hier und jetzt auf der Hochzeitsfeier. Sherlock bleibt nicht viel Zeit, um herauszufinden, wer das Opfer ist und auf welche Art es sterben soll.  In &quot;Sherlock - Im Zeichen der Drei&quot; steht der berühmte Detektiv vor einer ungeahnten Herausforderung: Während ihn zwei unaufgeklärte Fälle auf die Spur eines weiteren Verbrechens führen, muss er seinen treuen Freund Watson in den Hafen der Ehe verabschieden. Die geschickt modernisierte Kriminalgeschichte nach Motiven von Sir Arthur Conan Doyle überzeugt durch ihren typisch britischen Humor. Neben Benedict Cumberbatch als obsessivem Schnelldenker spielt wieder &quot;Hobbit&quot;-Star Martin Freeman, dessen Lebenspartnerin Amanda Abbington auch seine Filmbraut Mary verkörpert.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/d2893e76-9c38-4df3-8d51-4011e9a53d38</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>1933118fbb21caec02d8cb6ea5274d3e</id>
+      <key>2015-08-19T23:12:00+02:00</key>
+      <value>
+        <time>2015-08-19T23:12:00+02:00</time>
+        <endTime>2015-08-19T23:38:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <kicker>Live zeitversetzt</kicker>
+        <titel>ZIB 2</titel>
+        <beschreibung>Das tägliche Nachrichtenmagazin des ORF-Fernsehens.  Von Montag bis Freitag liefert &quot;ZIB 2&quot; einen Überblick über die Ereignisse des Tages und bietet dabei vor allem vertiefende Hintergrundinformationen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/f8aea418-aa87-4be5-bcfc-eee841b9865f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>f07dd96b2d7727f23de6a74ac2133005</id>
+      <key>2015-08-19T23:38:00+02:00</key>
+      <value>
+        <time>2015-08-19T23:38:00+02:00</time>
+        <endTime>2015-08-20T00:06:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <kicker>Krimisommer</kicker>
+        <titel>Der Tatortreiniger (2/3)</titel>
+        <untertitel>Über den Wolken</untertitel>
+        <beschreibung>Heiko &quot;Schotty&quot; Schotte kommt immer dann, wenn die Polizei die Ermittlungsarbeit abgeschlossen hat - der Tatort-reiniger räumt auf, was andere lieber nicht wegputzen möchten.  Eine Frau wurde von ihrem Ehemann mit einer Axt erschlagen. Viel Arbeit für den Tatortreiniger, der gerade mit seinem Nikotinentzug kämpft. Doch damit nicht genug der Widrigkeiten: Der Mörder kommt zurück - und trifft auf einen schlecht gelaunten Schotty.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/9647382f-9334-48a3-b6b7-106bcb30048c</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>bc3a00f5cd6967ffa26fbcf36a6a9b7a</id>
+      <key>2015-08-20T00:06:00+02:00</key>
+      <value>
+        <time>2015-08-20T00:06:00+02:00</time>
+        <endTime>2015-08-20T00:35:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <kicker>Nachrichtenmagazin von Schweizer Radio und Fernsehen:</kicker>
+        <titel>10 vor 10</titel>
+        <beschreibung>&quot;10vor10&quot; ist eine Informationssendung von Schweizer Radio und Fernsehen (SRF).  Vertiefende Berichte, Reportagen, Porträts und Live-Gespräche informieren über die wichtigsten Themen des Tages aus der Schweiz und der Welt.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/8a818177-6a96-46a8-9209-341b0ed0c252</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>644872235522d7662675efbd50f267df</id>
+      <key>2015-08-20T00:35:00+02:00</key>
+      <value>
+        <time>2015-08-20T00:35:00+02:00</time>
+        <endTime>2015-08-20T01:03:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Ein Mann der Leidenschaften</titel>
+        <beschreibung>Charles Perrin hat drei Leidenschaften: Musik, Whisky und Zigarren. Mit seinem Hut und einer Zigarre zwischen den Lippen ist er eine unübersehbare Gestalt im kleinen Waadtländer Dörfchen Mathod.  Nach einem herben beruflichen Schlag wollte der Radio- und TV-Techniker Perrin einen Ort erschaffen, der ihm entspricht: Verrückt und gesellig. Im &quot;Grammophil&quot; nimmt er sich Zeit, teilt Gegenstände und Leidenschaften und erlebt schöne Begegnungen.  Im idyllischen Waadtländer Dorf Mathod erschallt plötzlich laut die Stimme von Louis Armstrong oder Ella Fitzgerald. Die jazzigen Töne dringen aus einer alten Scheune im Dorfzentrum. In der Scheune stößt man auf hundertjährige Grammophone, Radios aus Großmutters Zeit, vielfarbige Schalltrichter ebenso wie auf eine Menge von 1978er Schallplatten und Vinyl-Platten. &quot;Grammophil&quot; ist der einzigartige und magische Bereich des Tonliebhabers Charles Perrin. Hier präsentiert sich die ganze Geschichte der Entwicklung der Tontechnologie von Edison bis heute.  Charles Perrin, der Herr des Hauses, ist die meiste Zeit damit beschäftigt, an alten Apparaten herumzubasteln. Dem Trend der heutigen Wegwerfgesellschaft entgegenwirkend, pflegt Charles eine Besessenheit: Das Flicken und Erhalten von Tonapparaten aus alter Zeit. Aber Charles ist auch Tangotänzer, Erfinder von Nonsense-Plattenspielern und der beste Freund aller Dorf-Omas. Er lacht aus vollem Herz und meint: &quot;Ein einziges Leben reicht nicht, um all das zu tun, worauf ich Lust habe.&quot;</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/1746ca92-1f56-4514-90eb-96137dda9247</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>25226726bcc54bb3fa9c04f38e3e2ad0</id>
+      <key>2015-08-20T01:03:00+02:00</key>
+      <value>
+        <time>2015-08-20T01:03:00+02:00</time>
+        <endTime>2015-08-20T01:48:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Traumorte - Capri</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/8849058f-fe34-4bb5-b20b-71f1abb3e718</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>a69595ee63aebf987f9ffa72c694bf0e</id>
+      <key>2015-08-20T01:45:00+02:00</key>
+      <value>
+        <time>2015-08-20T01:45:00+02:00</time>
+        <endTime>2015-08-20T02:30:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Traumorte - Santorin</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/0293d37a-5210-4cea-8427-82c58957784f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>19b08ade6aee160c025455b033606e19</id>
+      <key>2015-08-20T02:30:00+02:00</key>
+      <value>
+        <time>2015-08-20T02:30:00+02:00</time>
+        <endTime>2015-08-20T03:15:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (1/5)</titel>
+        <untertitel>Ein Märchental in den Karpaten</untertitel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/64f31309-1ac9-45db-9c48-0a7153af7149</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>bbaf135e0d86b6fa4c205d98c8faa420</id>
+      <key>2015-08-20T03:15:00+02:00</key>
+      <value>
+        <time>2015-08-20T03:15:00+02:00</time>
+        <endTime>2015-08-20T03:55:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (2/5)</titel>
+        <untertitel>Ein Kloster in den Pyrenäen</untertitel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/1afef33e-9e77-4237-88e5-31c2e772ab1e</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>0183f4c9708d34b7baab121ca643e403</id>
+      <key>2015-08-20T03:55:00+02:00</key>
+      <value>
+        <time>2015-08-20T03:55:00+02:00</time>
+        <endTime>2015-08-20T04:40:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (3/5)</titel>
+        <untertitel>Bergbauern in Südtirol</untertitel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/403fa6ec-4cc4-4527-a8c1-e0ca14698350</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>a081aaee7a1f912d2731e360b5bae86b</id>
+      <key>2015-08-20T04:40:00+02:00</key>
+      <value>
+        <time>2015-08-20T04:40:00+02:00</time>
+        <endTime>2015-08-20T05:25:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (4/5)</titel>
+        <untertitel>In den weißen Bergen Kretas</untertitel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/d925a967-9810-4176-9c6e-5c022057a2fb</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>3e8b486af3425fe51577fc10104ef9a6</id>
+      <key>2015-08-20T05:25:00+02:00</key>
+      <value>
+        <time>2015-08-20T05:25:00+02:00</time>
+        <endTime>2015-08-20T06:20:00+02:00</endTime>
+        <station>
+          <name>3sat</name>
+        </station>
+        <titel>Leben über den Wolken (5/5)</titel>
+        <untertitel>An den Steilhängen der Fjorde</untertitel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/dcb09010-2729-4c96-8520-565a475f3e4c/26547df6-3ba8-49c5-93ce-0b1f5e41594a</url>
+      </value>
+    </sendung>
+  </sendungen>
+</response>

@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <status>
+    <statuscode>ok</statuscode>
+  </status>
+  <sendungen>
+    <sendung>
+      <id>ed4d72bdc6ab0c5aed6dd9d647aa2fcb</id>
+      <key>2015-08-19T05:30:00+02:00</key>
+      <value>
+        <time>2015-08-19T05:30:00+02:00</time>
+        <endTime>2015-08-19T09:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>ZDF-Morgenmagazin</titel>
+        <beschreibung>Abstimmung über drittes Hilfspaket Folgen die Abgeordneten Merkel?  Ein Jahr Ice Bucket Challenge Was hat die Spendenaktion gebracht?  Außen hui, innen...? Der Touristikkonzern TUI  Champions-League-Qualifikation Hinspiel Bayer Leverkusen - Lazio Rom  IAAF unter Druck Präsidentenwahl Leichtathletikverband  Gast: Vianney, französischer Musiker live im Morgenmagazin-Café  Gast: Carsten Schneider (SPD) Zu Abstimmung über drittes Hilfspaket  Gast: Gregor Gysi (Die Linke) Zu Abstimmung über drittes Hilfspaket  Gast: Katrin Göring-Eckardt (Grüne) Zu Abstimmung über drittes Hilfspaket</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/736e54f4-4fe8-3403-b124-f0cbddd8a75d/c1ebd7a7-a2c6-46ea-b4d8-cae8aa8da6f6</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>be628619894d54f4240ee009280e1870</id>
+      <key>2015-08-19T09:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T09:00:00+02:00</time>
+        <endTime>2015-08-19T09:05:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute Xpress</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/c78223ab-14bd-3950-adeb-e5b0c7b0f049/e50d90db-7949-4110-9215-12cf995e2380</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>2cdee72a1d572c512db0200ebc057f77</id>
+      <key>2015-08-19T09:05:00+02:00</key>
+      <value>
+        <time>2015-08-19T09:05:00+02:00</time>
+        <endTime>2015-08-19T10:30:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Volle Kanne - Service täglich</titel>
+        <beschreibung>Nach Anschlägen in Bangkok Rechtliches für Thailand-Reisende  Dry Aged Meat Genuss pur mit Metzgermeister Inhoven  Urlaub für die Füße Barfußpfade in Deutschland  Kalte Joghurt-Gurkensuppe Kochen mit Armin Roßmeier  Aus Google wird Alphabet Der Konzernumbau und der Datenschutz  Von Bonn an den Balaton Reise in einem Trabi, Teil 3  Gast: Die Amigos Schlagerduo  Im November 2006 traten Die Amigos erstmals bei &quot;Achims Hitparade&quot; im MDR auf und holten sich überraschend den Sieg. Der Durchbruch gelang dann nur einen Monat später: Mit dem Titel &quot;Dann kam ein Engel&quot; wurden sie zum &quot;Musikantenkaiser&quot; gekürt.   Die Bandmitglieder Karl-Heinz und Bernd Ulrich machen schon seit Kindheitstagen gemeinsam Musik und wurden dabei stets von ihren Eltern unterstützt, obwohl diese aus eher bescheidenen Verhältnissen stammten: Karl-Heinz spielt Gitarre und Keyboard, sein jüngerer Bruder Bernd Schlagzeug. 1970 standen sie dann erstmals als Amigos auf der Bühne. Anfangs hatten es die Brüder aus Mittelhessen nicht leicht. In einer Zeit, in der größtenteils englische Musik angesagt war, blieben sie dem deutschen Schlager treu und machten sich in ihrer Heimat mit zahlreichen Auftritten nach und nach einen Namen.   Zunächst war die Musik ein Hobby, das Karl-Heinz und Bernd pflegten. Mittlerweile gehören sie mit über 40 Platin- und Gold-Auszeichnungen zu den festen Größen in der Schlagerszene. Im Juni erschien ihr neues Album &quot;Santiago Blue&quot;, mit dem sie im kommenden Jahr auch auf Tour gehen werden.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/d9fd24c2-f618-3ffd-911f-865093c93fc1/90670bbe-7440-4c5d-bd26-52df7895e184</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>6f351c69c71bb9c60fba5c977ce40114</id>
+      <key>2015-08-19T10:30:00+02:00</key>
+      <value>
+        <time>2015-08-19T10:30:00+02:00</time>
+        <endTime>2015-08-19T11:15:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Die Rosenheim-Cops</titel>
+        <untertitel>Der Fall Verena M.</untertitel>
+        <beschreibung>Dr. Wolf, der Inhaber einer mondänen Wellness-Farm, wird ermordet. Schnell ist den Cops klar, dass der Urheber wohl in den Reihen des Personals zu suchen ist.  Da ist zum einen die Gymnastiklehrerin und junge Geliebte, Natalie Hochmayr, die an Wolfs Vermögen großes Interesse zeigt. Ihr Kollege Alfons Hofmann steht kurz vor der Kündigung, die ihn finanziell ruinieren würde. Oder gibt es eine Verbindung zu Wolfs Vergangenheit?  Denn alles deutet darauf hin, dass der geschäftstüchtige Arzt einen Teil seines Wohlstands einem illegalen Schlankheitsmittel verdankt.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/d8406afe-1884-412e-bf54-6be601997b45</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>b45fab3352c0e3de917dcf15e01456d3</id>
+      <key>2015-08-19T11:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T11:15:00+02:00</time>
+        <endTime>2015-08-19T12:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>SOKO Wismar</titel>
+        <untertitel>Beste Freunde</untertitel>
+        <beschreibung>Auf einer Lichtung liegt ein erschlagener Mann. Der Tote, Tommy Reichard, ist Reuter nicht ganz unbekannt: Vor Jahren stand er unter Verdacht, einen Geldtransporter überfallen zu haben.  Dank der Aussage seiner Frau Jenny wurde er damals freigesprochen. Sein Freund Eddi hingegen musste ins Gefängnis. Das Interessante ist: Jenny war damals nicht mit Tommy, sondern mit Eddi zusammen. Und eben dieser wurde am Vortag aus dem Gefängnis entlassen.  Ein paar Meter von der Leiche entfernt finden die Ermittler einen halbgerauchten Joint und mehrere Hanfpflanzen. Was ist mit dem verschwundenen Geld passiert? Hat Eddi seinen alten Freund aus Rache umgebracht? Und was hat es mit den Hanfpflanzen im Wald auf sich? Leena geht auf Undercover-Mission.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/12c78bf4-84ff-36f5-92be-9838be2eb3f8/c4c64931-b4d6-4611-a7a5-a70be48e29e0</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>4ee9f404e8483e1e72d19bfdbe68c99c</id>
+      <key>2015-08-19T12:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T12:00:00+02:00</time>
+        <endTime>2015-08-19T12:10:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/6041ce56-277a-42c7-840c-c2043da46ba9</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>230acdfad657dab18414f9cf650c10cc</id>
+      <key>2015-08-19T12:10:00+02:00</key>
+      <value>
+        <time>2015-08-19T12:10:00+02:00</time>
+        <endTime>2015-08-19T13:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>drehscheibe</titel>
+        <beschreibung>Hubschraubereinsatz im Hochgebirge Unterwegs mit Sanitätern  Expedition Deutschland: Kroppenstedt Warme Felle für kalte Tage  Neues Zuhause für Wildkatze Tigerin Cara zieht um  Moderation: Babette von Kienlin</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/7b45c7be-9018-31b1-9d67-4d1a58c63f27/f9c2d077-2447-4910-8a64-631d8f4eb9a3</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>d30c2c57cffcccf6303e235728f1ab4d</id>
+      <key>2015-08-19T13:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T13:00:00+02:00</time>
+        <endTime>2015-08-19T14:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>ZDF-Mittagsmagazin</titel>
+        <beschreibung>Abstimmung im Bundestag Entscheidung zu Griechenland-Hilfen  Die Macht von TUI auf Mallorca Und wie der Konzern sie nutzt  Der Nutzen der Ice-Bucket-Challenge Kalte Dusche für den guten Zweck  Wellenreiten in den Waliser Bergen Zu Gast in der Inland-Surf-Lagune  Moderation: Christina von Ungern-Sternberg</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/fb4c3a49-47ce-3644-947e-70d862c3f5a6/5cb16de8-c8ac-4bac-98ba-230e2960caca</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>7dde9e03fa21bda13f7762d484814a65</id>
+      <key>2015-08-19T14:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T14:00:00+02:00</time>
+        <endTime>2015-08-19T14:15:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute - in Deutschland</titel>
+        <beschreibung>Hitzige Debatte um Geld für Griechen Bundestag stimmt über Hilfspaket ab  Terminmangel bei Berliner Ämtern Genervte Bürger und findige Händler  Sexistische Werbung im Schwarzwald Aufregung um Busen und Berge  Moderation: Ralph Szepanski</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/4fec3d4d-b9ff-34d2-ba90-9e9a9c6bd5fd/10ad2ba2-0f97-4bf5-996d-b71004a80d5d</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>4771a31c1c7853c761d085e494a74be5</id>
+      <key>2015-08-19T14:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T14:15:00+02:00</time>
+        <endTime>2015-08-19T15:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Die Küchenschlacht</titel>
+        <beschreibung>Jede Woche treten sechs Hobbyköche gegeneinander an. Von diesen bleiben zwei übrig, die sich am Freitag im Finale ein Kochduell liefern. Ein prominenter Kochprofi steht ihnen zur Seite.  Der Weg führt über den Wochensieg in eine Qualifikationswoche und dann in die große Finalwoche. Wer wird Hobbykoch des Jahres und gewinnt 25 000 Euro?</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3a8ed293-4c65-3124-9f6c-77b1cdc6ade6/80bd343a-57ec-4ff8-bd53-03e0a75d7833</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>376713612ebc90574cd990bd722f939f</id>
+      <key>2015-08-19T15:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T15:00:00+02:00</time>
+        <endTime>2015-08-19T15:05:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute Xpress</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/7690f267-6f28-47ed-98e7-7838a52954c1</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>147f8ab3733e716984a9a30a7c7e9ebf</id>
+      <key>2015-08-19T15:05:00+02:00</key>
+      <value>
+        <time>2015-08-19T15:05:00+02:00</time>
+        <endTime>2015-08-19T16:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Bares für Rares</titel>
+        <beschreibung>Wertvoll oder wertlos? Ob alter Krimskrams oder edle Rarität: In Horst Lichters Trödel-Show kann jeder seltene Fundstücke aus Keller oder Garage schätzen lassen.  Die Geschichte der Kuriositäten, viele Schätze und noch mehr Fälschungen, hammerhartes Verhandeln mit Lachen, Tränen und manchen Überraschungen - das alles bietet Horst Lichter in &quot;Bares für Rares&quot;.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/dc6ba4c5-0fe9-495e-8040-ba4d7930e4c0</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>495bafd642381376dfa139fa13716bd7</id>
+      <key>2015-08-19T16:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T16:00:00+02:00</time>
+        <endTime>2015-08-19T16:10:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute - in Europa</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/b0dbf06a-3910-37bd-a385-77a1432411a1/95cb04e6-8ca6-4b47-b2ec-40bbb6810c18</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>f3f47c38e2aa1a9072a61000ea17aca0</id>
+      <key>2015-08-19T16:10:00+02:00</key>
+      <value>
+        <time>2015-08-19T16:10:00+02:00</time>
+        <endTime>2015-08-19T17:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>SOKO Kitzbühel</titel>
+        <untertitel>Roter Wein</untertitel>
+        <beschreibung>Beim Finale der internationalen &quot;Trophee du Cabernet&quot; in Kitzbühel wird auf den renommierten Winzer aus Bordeaux, Jacques Bellbleu, ein Gift-Anschlag verübt.  Als kurz darauf ein zweiter Finalist Ziel eines Anschlags wird, sieht sich die SOKO mit einem höchst komplexen Fall unter den Verfechtern der traditionellen und der industriellen Methoden der Weinerzeugung konfrontiert.  Es geht um das Verschneiden von Billigstweinen, um die Zulassung von fraktionierten Weinen, die &quot;feindliche Übernahme&quot; bedrohter Weingüter in aller Welt - und um Mord.  Verdächtig sind die weiteren Anwesenden: Frank Kempen, Besitzer eines australischen Wein-Imperiums, Christoph Hohenfels, ein österreichischer Weinbauer, Klaus Friedrich, der deutsche &quot;Weinpapst&quot;, der Inhaber der Tiroler Weinhandlung Magreid und die Weinbau-Ingenieurin Annemarie Winter, die auf dem Gut von Frank Kempen ihr Wissen über Weinerzeugung und Vermarktungsstrategien vervollständigen wollte.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/fcbd63bd-e723-3a7f-9b38-92fbc83bb6a3/7a40a17d-9bde-4cc0-9086-550da321fcc5</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>8e4dd7a80637416e0945abda0f4cc9ef</id>
+      <key>2015-08-19T17:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T17:00:00+02:00</time>
+        <endTime>2015-08-19T17:10:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/832286e0-b79c-4d7c-9ae4-d31d3d4e99f4</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>92c0e0ce34f907051278dd1cde8ba34b</id>
+      <key>2015-08-19T17:10:00+02:00</key>
+      <value>
+        <time>2015-08-19T17:10:00+02:00</time>
+        <endTime>2015-08-19T17:45:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>hallo deutschland</titel>
+        <beschreibung>Zunahme von Gewalt im Nahverkehr Die Polizei im Einsatz gegen Gewalt  War es Ärztepfusch? Darmverletzung bei Kaiserschnitt  35 Jahre deutscher Pop Neue Deutsche Welle hat Geburtstag  Moderation: Sandra Maria Gronewald</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/9c4e1912-ec14-35ec-b869-fdf6d697a91f/e67e163f-3d23-42f9-b284-64cc3f48e2b3</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>ec39c70990564520ae1ff368a7be9743</id>
+      <key>2015-08-19T17:45:00+02:00</key>
+      <value>
+        <time>2015-08-19T17:45:00+02:00</time>
+        <endTime>2015-08-19T18:05:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Leute heute</titel>
+        <beschreibung>Mette-Marit hat Geburtstag Norwegische Prinzessin wird 42  Prominente Adoptionen Stars und ihre Kinder  Bildbearbeitung statt natürlich schön Stars helfen nach  Moderation: Florian Weiss</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/2659dafe-6bf5-354c-bd6d-d8f6db1396ce/cf0b25a6-924a-40af-9b53-1cb57387bcba</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>66143f4417b52c2931c1fb72da75561b</id>
+      <key>2015-08-19T18:05:00+02:00</key>
+      <value>
+        <time>2015-08-19T18:05:00+02:00</time>
+        <endTime>2015-08-19T18:54:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>SOKO Wismar</titel>
+        <untertitel>Der letzte Aufguss</untertitel>
+        <beschreibung>Als die Professorin Charlotte Hartmann ihren Saunagang beenden will, ist die Tür verriegelt. Alle Versuche sie zu öffnen, sind erfolglos. Charlotte stirbt. Wer wollte ihren Tod?  Der Saunameister und Freund des Opfers Marcel hatte einen Hilferuf über den Saunanotknopf erhalten. Anstatt ihr zu helfen, verfolgte er einen Voyeur, den er beim Filmen der nackten Charlotte ertappte. Fiel den beiden nicht auf, dass sie um ihr Leben kämpfte?  Und das ist nicht die einzige Frage, auf die die Ermittler stoßen. Charlotte hatte vor ihrem Saunagang einen romantischen Abend für zwei im Hamam-Bad gebucht - jedoch nicht mit Marcel. Wer war ihr unbekannter Begleiter, und war Eifersucht das Motiv für den Anschlag?</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/12c78bf4-84ff-36f5-92be-9838be2eb3f8/e01447ba-3248-49c0-a26b-a0b91ca3ceb4</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>f2947d5d69477311e4659ebc4374e7b9</id>
+      <key>2015-08-19T18:54:00+02:00</key>
+      <value>
+        <time>2015-08-19T18:54:00+02:00</time>
+        <endTime>2015-08-19T19:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Lotto am Mittwoch - Die Gewinnzahlen</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/2ed5040c-6b13-4d90-856e-cc0f19a404d7</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>1288064974f0f4bbeb08ab67fc980c16</id>
+      <key>2015-08-19T19:00:00+02:00</key>
+      <value>
+        <time>2015-08-19T19:00:00+02:00</time>
+        <endTime>2015-08-19T19:20:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute</titel>
+        <beschreibung>Abstimmung über Griechenland-Hilfe Mehr Nein-Stimmen als erwartet  Behörden besser als ihr Ruf Zufriedene Bürger  Antidepressivum soll Libido fördern Rosa Pille für Frauen  Moderation: Petra Gerster</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/c78223ab-14bd-3950-adeb-e5b0c7b0f049/b784869a-9bbb-4725-8820-f5f5ccaef55e</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>914141ce7e71e44f63bf916fe330865a</id>
+      <key>2015-08-19T19:20:00+02:00</key>
+      <value>
+        <time>2015-08-19T19:20:00+02:00</time>
+        <endTime>2015-08-19T19:25:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Wetter</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/aee7cb3b-2bf3-4d9c-9a91-54d3d40782c0</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>d5e70c586c35f7acbf436d620099bd13</id>
+      <key>2015-08-19T19:25:00+02:00</key>
+      <value>
+        <time>2015-08-19T19:25:00+02:00</time>
+        <endTime>2015-08-19T20:15:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Heldt</titel>
+        <untertitel>Letzte Runde</untertitel>
+        <beschreibung>Kommissar Heldt gerät auf der Suche nach einer vermissten Frau hinter die Kulissen des Kickboxkampfs des Jahres in Bochum: Peter Dräger, Lokalmatador, gegen den &quot;afrikanischen Blitz&quot; Bekele.  Die Verfolgung eines Kleinkriminellen führt Heldt in die Boxerkneipe &quot;Vollkontakt&quot;. In der Menschenmenge, die den Show-Off feiert, verliert er zwar den Dieb, lernt dafür aber eine charmante Frau kennen. Doch nach einem Bier kehrt sie nicht von der Toilette zurück.  Heldt ist der festen Überzeugung, dass der Unbekannten etwas zugestoßen sein muss. Ellen Bannenberg kann es nicht fassen: Ein nächtlicher Flirt lässt ihn sitzen, und gleich ist Alarmstimmung? Auch als Hauptkommissar Grün erklärt, dass zwei Frauen im Bochumer Nachtleben verschwunden und als vermisst gemeldet sind, ist die Staatsanwältin noch nicht restlos überzeugt, dass auch Heldts Eroberung ein weiteres Opfer ist.   Heldt kehrt zum Ort des Geschehens zurück und befragt die Wirtin der Boxerkneipe, Heike Kemper, und deren Tochter Lara. Beide sind zunächst wenig auskunftsfreudig. Doch so leicht lässt sich Heldt nicht abwimmeln. Zusammen mit seinem Kollegen Mario Korthals macht er es sich im &quot;Vollkontakt&quot; gemütlich: Polizeisprechstunde.   Heikes Widerspenstigkeit schmilzt. Die Spuren führen ins Kickbox-Milieu: Boxstallbesitzer Torben König promotet den wichtigsten Kampf des Jahres, und eine der vermissten Frauen ist seine Geliebte. Geht es um Doping oder manipulierte Wetteinsätze? Als Heldt endlich die Identität der verschwundenen Frau aus der Bar herausfindet, wird klar, dass ihn sein Bauchgefühl nicht getrogen hat. Dr. Annika Rosen ist Ringärztin. Wer hat Annika entführt, und wo ist sie? Heldt beginnt einen Wettlauf gegen die Zeit.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/c6eaccc6-1691-44f4-9219-b6b010a8ece7/c7836b38-5d65-470e-926c-37893922e387</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>df55597403ab19848a301e845c975046</id>
+      <key>2015-08-19T20:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T20:15:00+02:00</time>
+        <endTime>2015-08-19T21:45:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Stubbe - Von Fall zu Fall</titel>
+        <untertitel>Mordfall Maria</untertitel>
+        <beschreibung>Mitten im Training bricht die junge Rollstuhlbasketballerin Maria tot zusammen. Die zunächst unklare Todesursache erweist sich am nächsten Tag als besonders perfider Giftmord.  Irgendjemand hat der Toten eine Giftspritze in die gelähmten und somit schmerzunempfindlichen Beine injiziert. Stubbe vermutet eine Beziehungstat, denn - so ergibt die Obduktion - die Tote war schwanger.  Die Ermittlungen im privaten Umfeld des Opfers konfrontieren Stubbe mit einer ihm völlig fremden Lebenswelt. Was Stubbe aus dem Blog der lebensfrohen und mutigen Maria erfährt, verlangt ihm großen Respekt ab. Umso mehr beunruhigt es ihn, als sich herausstellt, dass der Mörder mit hoher Wahrscheinlichkeit unter den Rollstuhlsportlern zu finden ist.   Privat steht bei Stubbe alles auf Umbruch. Als der Möbelwagen vor seinem Haus abfährt und er seiner Tochter und ihrer kleinen Familie nachwinkt, wird Stubbe endgültig klar, wie sehr sich sein Leben verändern wird. Seine Pensionierung steht unmittelbar bevor, und seine Freundin Marlene bricht schon in wenigen Tagen zu ihrer neuen Anstellung in Dresden auf - ohne ihn. Denn Stubbe hat beschlossen, in Hamburg zu bleiben - der Familie wegen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/5ab7d3eb-ce9c-374b-93e2-1b40602b5475/857c530b-5f2b-4039-b1c3-dc4c7ee5efea</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>48118712ef1964747500e603e45d1a87</id>
+      <key>2015-08-19T21:45:00+02:00</key>
+      <value>
+        <time>2015-08-19T21:45:00+02:00</time>
+        <endTime>2015-08-19T22:15:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute-journal</titel>
+        <beschreibung>Themen liegen noch nicht vor</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/c78223ab-14bd-3950-adeb-e5b0c7b0f049/e774411e-ab95-449f-9940-dc3901014818</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>7f4747f9be38f355bf98757c6767ce1f</id>
+      <key>2015-08-19T22:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T22:15:00+02:00</time>
+        <endTime>2015-08-19T22:45:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>auslandsjournal</titel>
+        <beschreibung>Das &quot;auslandsjournal&quot; - Reportagen, Hintergründe, außergewöhnliche Menschen und bunte Geschichten. Die ZDF-Korrespondenten erklären die Welt.  Pointierte Analyse, persönliche Erzählweise, anspruchsvolle Geschichten und die Vielfalt der Beitragsformen prägen das &quot;auslandsjournal&quot;. In der Rubrik &quot;außendienst&quot; testen Reporter, was das Leben in fremden Ländern mit sich bringen kann.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/f0f0cb05-34cc-399f-9afe-459d94074e18/38970018-a7af-4b98-9860-300994b97c6f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>426f6fbf34fb4e0ea8ba3279da3fea0c</id>
+      <key>2015-08-19T22:45:00+02:00</key>
+      <value>
+        <time>2015-08-19T22:45:00+02:00</time>
+        <endTime>2015-08-19T23:15:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <kicker>ZDFzoom</kicker>
+        <titel>Außen hui und innen ...?</titel>
+        <untertitel>Die Geschäfte von TUI</untertitel>
+        <beschreibung>In Hannover sitzt einer der größten Tourismuskonzerne der Welt: TUI. &quot;ZDFzoom&quot; über einen globalen Player der Branche und die Folgen seines Geschäftsgebarens.  Die Recherche beginnt auf Deutschlands liebster Insel: Mallorca. Die &quot;ZDFzoom&quot;-Reporterinnen fragen nach Auswirkungen von Teilzeitverträgen und beleuchten Folgen des All-Inclusive-Modells für die lokale Wirtschaft.  Dem TUI-Konzern gehören Kreuzfahrtschiffe, Flugzeuge, auch einige Hotels. Mehr als 70 000 Mitarbeiter arbeiten unter der TUI-Flagge. Die Prognose der TUI AG für das Geschäftsjahr 2014/15 lässt Aktionärsherzen höher schlagen: 10 bis 15 Prozent angepeiltes Wachstum.   In Cancun, Mexiko, gehen die Autoren zudem auf Spurensuche beim Partnerkonzern RIU Hotels, an dem TUI 49 Prozent besitzt. Kritiker sagen, der geschäftliche Erfolg von TUI setze auf einen knallharten Sparkurs zu Lasten aller, die auf gute Geschäfte mit dem Tourismusanbieter gehofft hatten.  Mehr unter www.zoom.zdf.de</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/befc0476-9f54-36cb-bcb9-43012ec8ac62/d49cb3a5-ba76-441d-9a1f-f3591bb42ca7</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>22ce28900c1d034185787e68772c5874</id>
+      <key>2015-08-19T23:15:00+02:00</key>
+      <value>
+        <time>2015-08-19T23:15:00+02:00</time>
+        <endTime>2015-08-20T00:30:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Markus Lanz</titel>
+        <beschreibung>Bernhard Hoëcker, Comedian Bernhard Hoëcker ist leidenschaftlicher Internetnutzer. In der Sendung spricht er über seine Aktivitäten im Internet und erzählt von seinem aktuellen Programm &quot;So liegen Sie richtig falsch&quot;.  &quot;LeFloid&quot; alias Florian Mundt Mit knapp 3 Millionen Abonnenten zählt er zu den erfolgreichsten deutschsprachigen Youtubern. Kürzlich führte &quot;LeFloid&quot; ein Interview mit Angela Merkel. In der Sendung berichtet er davon.  Dirk Steffens, Tier- und Naturfilmer Der Tod des Löwen Cecil in Simbabwe sorgte weltweit für Empörung. Dirk Steffens ist Gegner des Jagdtourismus. Er erklärt, warum es nicht heldenhaft ist, auf Tiere zu schießen.  Hans-Joachim Schick, Jäger Schick ist Präsident des Interessen-Verband der Auslandjäger. Seit über 40 Jahren ist der 75-Jährige als Jäger im Ausland aktiv. In der Sendung spricht Schick über seine Jagdleidenschaft.  Justin Orvel Schmidt, Entomologe Der Insektenforscher lehrt an der Universität von Arizona. Schwerpunkt seiner Arbeit ist die chemische Erforschung des Giftes, das Wespen bei ihren Stichen einsetzen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/e6945324-1cb6-3c02-8b90-3874ee0f4b2d/607687dd-9322-4485-ac80-910ce6c42ef0</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>b888fa34aad9f587a5af0be78aea7374</id>
+      <key>2015-08-20T00:30:00+02:00</key>
+      <value>
+        <time>2015-08-20T00:30:00+02:00</time>
+        <endTime>2015-08-20T00:45:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>heute+</titel>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/3c6207e5-5373-4524-870d-7e7c80b6e84f/4a57f876-b760-4cc0-b9b7-9ba0719ba562</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>c871b351ed3aa740a64a7687c71aad24</id>
+      <key>2015-08-20T00:45:00+02:00</key>
+      <value>
+        <time>2015-08-20T00:45:00+02:00</time>
+        <endTime>2015-08-20T01:15:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Die Elbphilharmonie</titel>
+        <untertitel>Hamburgs teuerste Baustelle</untertitel>
+        <beschreibung>Hamburgs neuer &quot;Leuchtturm&quot;? Eine zu optimistische Kalkulation, überforderte Behörden - die Hamburger Elbphilharmonie liefert den Beweis für die Unfähigkeit der Politik bei Großprojekten.  Dennoch ist sie schon jetzt einsame Spitze und soll einen der modernsten Konzertsäle der Welt, ein Nobelhotel und Luxuswohnungen beherbergen. Der Film zeigt Menschen, die der &quot;Elbphi&quot; verbunden sind und eine Chronologie richtiger und falscher Entscheidungen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/08f09dee-c131-3898-beea-3efa0cea90b0/c4b2f41b-d577-46b6-81e9-f129e9720e0f</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>38b27e2f6b658afab67c91fc42ac4ba8</id>
+      <key>2015-08-20T01:15:00+02:00</key>
+      <value>
+        <time>2015-08-20T01:15:00+02:00</time>
+        <endTime>2015-08-20T02:45:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Stubbe - Von Fall zu Fall</titel>
+        <untertitel>Mordfall Maria</untertitel>
+        <beschreibung>Mitten im Training bricht die junge Rollstuhlbasketballerin Maria tot zusammen. Die zunächst unklare Todesursache erweist sich am nächsten Tag als besonders perfider Giftmord.  Irgendjemand hat der Toten eine Giftspritze in die gelähmten und somit schmerzunempfindlichen Beine injiziert. Stubbe vermutet eine Beziehungstat, denn - so ergibt die Obduktion - die Tote war schwanger.  Die Ermittlungen im privaten Umfeld des Opfers konfrontieren Stubbe mit einer ihm völlig fremden Lebenswelt. Was Stubbe aus dem Blog der lebensfrohen und mutigen Maria erfährt, verlangt ihm großen Respekt ab. Umso mehr beunruhigt es ihn, als sich herausstellt, dass der Mörder mit hoher Wahrscheinlichkeit unter den Rollstuhlsportlern zu finden ist.   Privat steht bei Stubbe alles auf Umbruch. Als der Möbelwagen vor seinem Haus abfährt und er seiner Tochter und ihrer kleinen Familie nachwinkt, wird Stubbe endgültig klar, wie sehr sich sein Leben verändern wird. Seine Pensionierung steht unmittelbar bevor, und seine Freundin Marlene bricht schon in wenigen Tagen zu ihrer neuen Anstellung in Dresden auf - ohne ihn. Denn Stubbe hat beschlossen, in Hamburg zu bleiben - der Familie wegen.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/5ab7d3eb-ce9c-374b-93e2-1b40602b5475/3ffcb2c1-ab64-4ccf-967b-6232d829d5b9</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>12f70a19c3ce0b40b2919ca73ae0de97</id>
+      <key>2015-08-20T02:45:00+02:00</key>
+      <value>
+        <time>2015-08-20T02:45:00+02:00</time>
+        <endTime>2015-08-20T03:30:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>SOKO Wismar</titel>
+        <untertitel>Der letzte Aufguss</untertitel>
+        <beschreibung>Als die Professorin Charlotte Hartmann ihren Saunagang beenden will, ist die Tür verriegelt. Alle Versuche sie zu öffnen, sind erfolglos. Charlotte stirbt. Wer wollte ihren Tod?  Der Saunameister und Freund des Opfers Marcel hatte einen Hilferuf über den Saunanotknopf erhalten. Anstatt ihr zu helfen, verfolgte er einen Voyeur, den er beim Filmen der nackten Charlotte ertappte. Fiel den beiden nicht auf, dass sie um ihr Leben kämpfte?  Und das ist nicht die einzige Frage, auf die die Ermittler stoßen. Charlotte hatte vor ihrem Saunagang einen romantischen Abend für zwei im Hamam-Bad gebucht - jedoch nicht mit Marcel. Wer war ihr unbekannter Begleiter, und war Eifersucht das Motiv für den Anschlag?</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/12c78bf4-84ff-36f5-92be-9838be2eb3f8/6960ae42-d10b-494d-8252-4b2f613f7f35</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>f93877ed04a312d764137de354d186ec</id>
+      <key>2015-08-20T03:30:00+02:00</key>
+      <value>
+        <time>2015-08-20T03:30:00+02:00</time>
+        <endTime>2015-08-20T04:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>auslandsjournal</titel>
+        <beschreibung>Das &quot;auslandsjournal&quot; - Reportagen, Hintergründe, außergewöhnliche Menschen und bunte Geschichten. Die ZDF-Korrespondenten erklären die Welt.  Pointierte Analyse, persönliche Erzählweise, anspruchsvolle Geschichten und die Vielfalt der Beitragsformen prägen das &quot;auslandsjournal&quot;. In der Rubrik &quot;außendienst&quot; testen Reporter, was das Leben in fremden Ländern mit sich bringen kann.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/f0f0cb05-34cc-399f-9afe-459d94074e18/25094972-8d2e-44eb-834d-20b4b14f5fdf</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>630d561295bb1f6b886a8245e40b24e7</id>
+      <key>2015-08-20T04:00:00+02:00</key>
+      <value>
+        <time>2015-08-20T04:00:00+02:00</time>
+        <endTime>2015-08-20T04:45:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>SOKO Kitzbühel</titel>
+        <untertitel>Roter Wein</untertitel>
+        <beschreibung>Beim Finale der internationalen &quot;Trophee du Cabernet&quot; in Kitzbühel wird auf den renommierten Winzer aus Bordeaux, Jacques Bellbleu, ein Gift-Anschlag verübt.  Als kurz darauf ein zweiter Finalist Ziel eines Anschlags wird, sieht sich die SOKO mit einem höchst komplexen Fall unter den Verfechtern der traditionellen und der industriellen Methoden der Weinerzeugung konfrontiert.  Es geht um das Verschneiden von Billigstweinen, um die Zulassung von fraktionierten Weinen, die &quot;feindliche Übernahme&quot; bedrohter Weingüter in aller Welt - und um Mord.  Verdächtig sind die weiteren Anwesenden: Frank Kempen, Besitzer eines australischen Wein-Imperiums, Christoph Hohenfels, ein österreichischer Weinbauer, Klaus Friedrich, der deutsche &quot;Weinpapst&quot;, der Inhaber der Tiroler Weinhandlung Magreid und die Weinbau-Ingenieurin Annemarie Winter, die auf dem Gut von Frank Kempen ihr Wissen über Weinerzeugung und Vermarktungsstrategien vervollständigen wollte.</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/fcbd63bd-e723-3a7f-9b38-92fbc83bb6a3/d82111c0-814d-4c77-b104-05370a07e88d</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>c85d079dc2edc97bc72db0d1626ec3ce</id>
+      <key>2015-08-20T04:45:00+02:00</key>
+      <value>
+        <time>2015-08-20T04:45:00+02:00</time>
+        <endTime>2015-08-20T05:00:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>Leute heute</titel>
+        <beschreibung>Mette-Marit hat Geburtstag Norwegische Prinzessin wird 42  Prominente Adoptionen Stars und ihre Kinder  Bildbearbeitung statt natürlich schön Stars helfen nach  Moderation: Florian Weiss</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/2659dafe-6bf5-354c-bd6d-d8f6db1396ce/5ed22e2f-3840-4326-8bb3-6bae511662df</url>
+      </value>
+    </sendung>
+    <sendung>
+      <id>009a6db84d73280f42ca7fbbafbcef39</id>
+      <key>2015-08-20T05:00:00+02:00</key>
+      <value>
+        <time>2015-08-20T05:00:00+02:00</time>
+        <endTime>2015-08-20T05:30:00+02:00</endTime>
+        <station>
+          <name>ZDF</name>
+        </station>
+        <titel>hallo deutschland</titel>
+        <beschreibung>Zunahme von Gewalt im Nahverkehr Die Polizei im Einsatz gegen Gewalt  War es Ärztepfusch? Darmverletzung bei Kaiserschnitt  35 Jahre deutscher Pop Neue Deutsche Welle hat Geburtstag  Moderation: Sandra Maria Gronewald</beschreibung>
+        <programdata>
+        </programdata>
+        <url>http://www.zdf.de/programdata/9c4e1912-ec14-35ec-b869-fdf6d697a91f/5f2997d2-595f-483d-96ee-9516ed0fe56f</url>
+      </value>
+    </sendung>
+  </sendungen>
+</response>

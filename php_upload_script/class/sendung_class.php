@@ -8,7 +8,7 @@ class sendung{
 	private $titel;
 	private $stationName;
 
-	function __construct ( $sendetermin, $position ) {
+	function __construct ( $sendetermin, $position, $stationName ) {
 
 		//neue xml erzeugen
 		$xml = new DOMDocument('1.0', 'UTF-8');
@@ -23,8 +23,8 @@ class sendung{
 
 
 		//Sendername 
-		$matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
-		$stationName = $matches->item(0)->nodeValue;
+		// $matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
+		// $stationName = $matches->item(0)->nodeValue;
 		$this->stationName = $stationName;
 
 		//url um die restlichen daten abzurufen
@@ -35,6 +35,7 @@ class sendung{
 		//titel der sendung
 		$matches = $xpath->query('/zdf:Sendetermin/zdf:titel/text()');
 		$this->titel = $matches->item(0)->nodeValue;
+
 
 		$sendung = $xml->createElement("sendung");
 		$xml->appendChild( $sendung );
@@ -50,6 +51,27 @@ class sendung{
 		$sendung->appendChild( $pos );
 
 
+
+				//titel
+				$element = $xml->createElement("titel");
+				$sendung->appendChild( $element );
+				$element->appendChild($xml->createTextNode( $this->titel ));
+
+				//untertitel
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:untertitel/text()');
+				$value = $matches->item(0)->nodeValue;
+				$element = $xml->createElement("subtitle");
+				$sendung->appendChild( $element );	
+				$element->appendChild($xml->createTextNode( $value ));
+				
+				//dachzeile/kicker
+				$matches = $xpath->query('/zdf:Sendetermin/zdf:dachzeile/text()');
+				$value = $matches->item(0)->nodeValue;
+				$element = $xml->createElement("kicker");
+				$sendung->appendChild( $element );	
+				$element->appendChild($xml->createTextNode( $value ));
+
+
 				//beschreibung <= text
 				$matches = $xpath->query('/zdf:Sendetermin/zdf:text/text()');
 				$value = $matches->item(0)->nodeValue;
@@ -60,12 +82,12 @@ class sendung{
 				//echo $value."\n\n";
 
 				//station
-				$matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
-				$value = $matches->item(0)->nodeValue;			
+				// $matches = $xpath->query('/zdf:Sendetermin/zdf:sender/zdf:Sender/zdf:titel/text()');
+				// $value = $matches->item(0)->nodeValue;			
 				$stationElement = $xml->createElement("station");
 				$stationElement->setAttribute("contentId", "0");
 				$stationElement->setAttribute("externalId");
-				$stationElement->setAttribute("name", $value);
+				$stationElement->setAttribute("name", $this->stationName);
 				$stationElement->setAttribute("serviceId", "0");			
 
 				//epgLogo				
@@ -311,9 +333,7 @@ class sendung{
 				$f->appendXML('<tvTipp>false</tvTipp>');
 				$sendung->appendChild($f);				
 
-				//titel
-				$element = $xml->createElement("titel", $this->titel);
-				$sendung->appendChild( $element );
+
 
 
 
