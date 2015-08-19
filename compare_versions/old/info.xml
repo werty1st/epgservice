@@ -6,24 +6,6 @@
   <sendungen>
     <sendung>
       <id>3f994c769aeca70e7bf99832ef127022</id>
-      <key>2015-08-14T04:45:00+02:00</key>
-      <value>
-        <time>2015-08-14T04:45:00+02:00</time>
-        <endTime>2015-08-20T00:00:00+02:00</endTime>
-        <station>
-          <name>ZDFinfo</name>
-        </station>
-        <kicker>History XXL: Überfall auf Frankreich</kicker>
-        <titel>Hitlers Blitzkrieg 1940</titel>
-        <untertitel>Der Fall &quot;Gelb&quot;</untertitel>
-        <beschreibung>Hitlers Westfeldzug: Dieses Kapitel ist, überschattet von den späteren Katastrophen, aus dem Blickfeld geraten. Obwohl er entscheidend war für die folgenden dramatischen Ereignisse.  Es war ein gespenstischer Anblick an jenem 13. Mai 1940, als deutsche Panzereinheiten die französische Grenze bei Sedan erreichten. In nur drei Tagen sind Hitlers Armeen durch Luxemburg und Belgien gestürmt. Der Film dokumentiert die Tragödie Frankreichs.</beschreibung>
-        <programdata>
-        </programdata>
-        <url>http://www.zdf.de/programdata/08f09dee-c131-3898-beea-3efa0cea90b0/81bf7e75-21da-47b5-afa3-0edc0c4f6aeb</url>
-      </value>
-    </sendung>
-    <sendung>
-      <id>2eb23fa15a2a74d3f1c819e7b383e592</id>
       <key>2015-08-19T04:50:00+02:00</key>
       <value>
         <time>2015-08-19T04:50:00+02:00</time>
@@ -41,7 +23,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>98df3cc3aa6d85db206c3856c5bd872d</id>
+      <id>2eb23fa15a2a74d3f1c819e7b383e592</id>
       <key>2015-08-19T05:35:00+02:00</key>
       <value>
         <time>2015-08-19T05:35:00+02:00</time>
@@ -59,7 +41,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>d6c32a8d683e4ce29e849b12822af512</id>
+      <id>98df3cc3aa6d85db206c3856c5bd872d</id>
       <key>2015-08-19T06:20:00+02:00</key>
       <value>
         <time>2015-08-19T06:20:00+02:00</time>
@@ -76,7 +58,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>c2494dc3057e2bf944e21a3659268f66</id>
+      <id>d6c32a8d683e4ce29e849b12822af512</id>
       <key>2015-08-19T07:00:00+02:00</key>
       <value>
         <time>2015-08-19T07:00:00+02:00</time>
@@ -92,7 +74,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>ca1e28d1dd5eabc6ac36a1d25e95da9f</id>
+      <id>c2494dc3057e2bf944e21a3659268f66</id>
       <key>2015-08-19T07:45:00+02:00</key>
       <value>
         <time>2015-08-19T07:45:00+02:00</time>
@@ -110,7 +92,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>c6840d49dcfb2eb4c99d1ad934ece0fb</id>
+      <id>ca1e28d1dd5eabc6ac36a1d25e95da9f</id>
       <key>2015-08-19T08:20:00+02:00</key>
       <value>
         <time>2015-08-19T08:20:00+02:00</time>
@@ -127,7 +109,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>7268e5ec2e717de2d60409c83c9b6647</id>
+      <id>c6840d49dcfb2eb4c99d1ad934ece0fb</id>
       <key>2015-08-19T09:00:00+02:00</key>
       <value>
         <time>2015-08-19T09:00:00+02:00</time>
@@ -145,7 +127,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>ea20555fe28f2acf72ccbd8247c94a7c</id>
+      <id>7268e5ec2e717de2d60409c83c9b6647</id>
       <key>2015-08-19T09:45:00+02:00</key>
       <value>
         <time>2015-08-19T09:45:00+02:00</time>
@@ -157,13 +139,12 @@
         <titel>Abzocke in Deutschland</titel>
         <beschreibung>Sie treffen sich in Hotelzimmern, an Flughäfen oder auch in der Sauna, alles streng geheim. Manager großer deutscher Firmen sprechen sich ab, wenn es um die Preise ihrer Produkte geht.  Schokoriegel, Matratzen oder Bier, Verbraucher müssen für viele Produkte mehr zahlen, als eigentlich nötig. Was nur die wenigsten wissen: In so gut wie allen Branchen gibt es illegale Kartelle, die konspirativ Preise absprechen, um mehr Profit zu machen.  Die investigative Dokumentation zeigt auf, wie zahlreiche große und mittelständische Unternehmen in vielen Bereichen des täglichen Lebens unzulässige Kartelle bilden und so ihre Kunden massiv abzocken, meist durch illegale Preisabsprachen untereinander und verbotenen Druck auf die Verkäufer. Die Hersteller und Großhändler diktieren hier die Preise, nicht der Wettbewerb. Die überteuerte Zeche zahlen die Verbraucher, weil es nach den Absprachen keinen funktionierenden Wettbewerb mehr gibt. Und Verkäufer, die nicht mitmachen wollen, werden oft bedroht, schikaniert und geschäftlich ruiniert.  Beispiel Matratzenbranche. Adam Szpyt hat sich schon vor Jahren mit Internetläden selbständig gemacht. Der &quot;Preis-Rebell&quot; hat dort Matratzen von bekannten Herstellern günstig angeboten - zu günstig, aus deren Sicht. Denn Szpyt habe sich nicht an detaillierten, hohen Preisvorgaben dieser Hersteller gehalten und so deren Zorn auf sich gezogen. Er wurde deshalb von Verkaufsleitern bedroht, in öffentlichen Hetzkampagnen diffamiert und mit Lieferblockaden und Prozessen überzogen, wie er sagt. &quot;Wir werden Sie geschäftlich vernichten&quot;, sei ihm ganz unverhohlen angekündigt worden.   Szpyt hat deshalb zur Selbsthilfe gegriffen und versucht, die großen Hersteller auszutricksen. Jetzt hat er selbst eine kostengünstige &quot;Anti-Kartell-Matratze&quot; auf den Markt gebracht, wie er sie provokant nennt. Erneut ein rotes Tuch für die Matratzenhersteller, die ihm die Werbung für seine &quot;Anti-Kartell-Matratze&quot; gerichtlich verbieten lassen wollen.   Die Dokumentation zeigt das Phänomen anhand verschiedener Fälle und Stichproben mit versteckten Kameras auf - sie lässt Ermittler, Insider, Informanten und Betroffene ebenso zu Wort kommen wie Juristen und Verbraucherschützer.</beschreibung>
         <programdata>
-          <genre>Wirtschaftsmagazin</genre>
         </programdata>
         <url>http://www.zdf.de/programdata/e614e5f7-af9c-345b-b7d2-6cb508ee6ebe/591d0f4d-293f-43fa-ad0b-0aa0f38cbeae</url>
       </value>
     </sendung>
     <sendung>
-      <id>7c71e2dbbbf712223b12d026c47a16f4</id>
+      <id>ea20555fe28f2acf72ccbd8247c94a7c</id>
       <key>2015-08-19T10:30:00+02:00</key>
       <value>
         <time>2015-08-19T10:30:00+02:00</time>
@@ -181,7 +162,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>b52238d99b6f970c3136f00b36cfd477</id>
+      <id>7c71e2dbbbf712223b12d026c47a16f4</id>
       <key>2015-08-19T11:00:00+02:00</key>
       <value>
         <time>2015-08-19T11:00:00+02:00</time>
@@ -198,7 +179,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>09fa3dd235d2e2aa7c598a8eeb00f49a</id>
+      <id>b52238d99b6f970c3136f00b36cfd477</id>
       <key>2015-08-19T11:15:00+02:00</key>
       <value>
         <time>2015-08-19T11:15:00+02:00</time>
@@ -216,7 +197,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>35e2654137827723640551e33cfc78ca</id>
+      <id>09fa3dd235d2e2aa7c598a8eeb00f49a</id>
       <key>2015-08-19T12:00:00+02:00</key>
       <value>
         <time>2015-08-19T12:00:00+02:00</time>
@@ -234,7 +215,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>fee41c59ac2aef3f4a193c4e634a04ef</id>
+      <id>35e2654137827723640551e33cfc78ca</id>
       <key>2015-08-19T12:45:00+02:00</key>
       <value>
         <time>2015-08-19T12:45:00+02:00</time>
@@ -252,7 +233,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>2f4f1024f4e0b658b2d4d99fc764c75a</id>
+      <id>fee41c59ac2aef3f4a193c4e634a04ef</id>
       <key>2015-08-19T13:30:00+02:00</key>
       <value>
         <time>2015-08-19T13:30:00+02:00</time>
@@ -270,7 +251,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>90fc94f95d77addfde13be3413131066</id>
+      <id>2f4f1024f4e0b658b2d4d99fc764c75a</id>
       <key>2015-08-19T14:15:00+02:00</key>
       <value>
         <time>2015-08-19T14:15:00+02:00</time>
@@ -288,7 +269,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>2595a7b1e374d1ecac3e5fcff53bc9cb</id>
+      <id>90fc94f95d77addfde13be3413131066</id>
       <key>2015-08-19T15:00:00+02:00</key>
       <value>
         <time>2015-08-19T15:00:00+02:00</time>
@@ -306,7 +287,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>537ae382f37f7f90b453da93c1232786</id>
+      <id>2595a7b1e374d1ecac3e5fcff53bc9cb</id>
       <key>2015-08-19T15:45:00+02:00</key>
       <value>
         <time>2015-08-19T15:45:00+02:00</time>
@@ -324,7 +305,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>7dc445ccf70800c0ceefaee26e4efd90</id>
+      <id>537ae382f37f7f90b453da93c1232786</id>
       <key>2015-08-19T16:30:00+02:00</key>
       <value>
         <time>2015-08-19T16:30:00+02:00</time>
@@ -342,7 +323,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>3a69a7b0f2f67763e1d88c67b44d2c31</id>
+      <id>7dc445ccf70800c0ceefaee26e4efd90</id>
       <key>2015-08-19T17:15:00+02:00</key>
       <value>
         <time>2015-08-19T17:15:00+02:00</time>
@@ -360,7 +341,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>3fbb669d9c2d65af759b1a06dd536ba3</id>
+      <id>3a69a7b0f2f67763e1d88c67b44d2c31</id>
       <key>2015-08-19T18:00:00+02:00</key>
       <value>
         <time>2015-08-19T18:00:00+02:00</time>
@@ -377,7 +358,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>d9b94fd988cdff9cc6da7187c33fe397</id>
+      <id>3fbb669d9c2d65af759b1a06dd536ba3</id>
       <key>2015-08-19T18:45:00+02:00</key>
       <value>
         <time>2015-08-19T18:45:00+02:00</time>
@@ -393,7 +374,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>2700b69e7600b78521b4c82873de084f</id>
+      <id>d9b94fd988cdff9cc6da7187c33fe397</id>
       <key>2015-08-19T19:30:00+02:00</key>
       <value>
         <time>2015-08-19T19:30:00+02:00</time>
@@ -409,7 +390,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>99f8e2e9afced2a3ff94c90fb80f8c9d</id>
+      <id>2700b69e7600b78521b4c82873de084f</id>
       <key>2015-08-19T20:15:00+02:00</key>
       <value>
         <time>2015-08-19T20:15:00+02:00</time>
@@ -425,7 +406,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>4cc799b76b862356cda2b7e8f56f5df3</id>
+      <id>99f8e2e9afced2a3ff94c90fb80f8c9d</id>
       <key>2015-08-19T21:00:00+02:00</key>
       <value>
         <time>2015-08-19T21:00:00+02:00</time>
@@ -442,7 +423,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>c6f5bb15425ead1641601e2c4a9d2d75</id>
+      <id>4cc799b76b862356cda2b7e8f56f5df3</id>
       <key>2015-08-19T21:45:00+02:00</key>
       <value>
         <time>2015-08-19T21:45:00+02:00</time>
@@ -460,7 +441,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>17c80baf458ea8d3f547c164bbce1a91</id>
+      <id>c6f5bb15425ead1641601e2c4a9d2d75</id>
       <key>2015-08-19T22:30:00+02:00</key>
       <value>
         <time>2015-08-19T22:30:00+02:00</time>
@@ -476,7 +457,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>d5b61ad58640bca82c44a7ba20f08316</id>
+      <id>17c80baf458ea8d3f547c164bbce1a91</id>
       <key>2015-08-19T23:15:00+02:00</key>
       <value>
         <time>2015-08-19T23:15:00+02:00</time>
@@ -492,7 +473,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>834e3c607e2128cd203df05f12c90b6f</id>
+      <id>d5b61ad58640bca82c44a7ba20f08316</id>
       <key>2015-08-20T00:00:00+02:00</key>
       <value>
         <time>2015-08-20T00:00:00+02:00</time>
@@ -507,7 +488,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>b71216f94912155dbbb16d83c59d0a04</id>
+      <id>834e3c607e2128cd203df05f12c90b6f</id>
       <key>2015-08-20T00:30:00+02:00</key>
       <value>
         <time>2015-08-20T00:30:00+02:00</time>
@@ -525,7 +506,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>40081d642073519c3ab9321c4a0d3064</id>
+      <id>b71216f94912155dbbb16d83c59d0a04</id>
       <key>2015-08-20T01:15:00+02:00</key>
       <value>
         <time>2015-08-20T01:15:00+02:00</time>
@@ -543,7 +524,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>0e8263f63836be24e5ec7f1c17831e17</id>
+      <id>40081d642073519c3ab9321c4a0d3064</id>
       <key>2015-08-20T02:00:00+02:00</key>
       <value>
         <time>2015-08-20T02:00:00+02:00</time>
@@ -561,7 +542,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>4fafa2002b55797ed3ab86340b3081a4</id>
+      <id>0e8263f63836be24e5ec7f1c17831e17</id>
       <key>2015-08-20T02:45:00+02:00</key>
       <value>
         <time>2015-08-20T02:45:00+02:00</time>
@@ -579,7 +560,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>662940996bf7090a97101b94592545ae</id>
+      <id>4fafa2002b55797ed3ab86340b3081a4</id>
       <key>2015-08-20T03:30:00+02:00</key>
       <value>
         <time>2015-08-20T03:30:00+02:00</time>
@@ -596,7 +577,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>df13ea2cc76fe70cae2ad9c67df7de2e</id>
+      <id>662940996bf7090a97101b94592545ae</id>
       <key>2015-08-20T04:15:00+02:00</key>
       <value>
         <time>2015-08-20T04:15:00+02:00</time>
@@ -613,7 +594,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>4df2ba2191d4e17f698ca89d2c1a740d</id>
+      <id>df13ea2cc76fe70cae2ad9c67df7de2e</id>
       <key>2015-08-20T05:00:00+02:00</key>
       <value>
         <time>2015-08-20T05:00:00+02:00</time>
@@ -631,7 +612,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>9e1182d2230b5720e9cacaa5b3ae6136</id>
+      <id>4df2ba2191d4e17f698ca89d2c1a740d</id>
       <key>2015-08-20T05:25:00+02:00</key>
       <value>
         <time>2015-08-20T05:25:00+02:00</time>

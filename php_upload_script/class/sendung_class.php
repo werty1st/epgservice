@@ -162,7 +162,8 @@ class sendung{
 
 					$matches = $xpath->query('/zdf:Sendetermin/zdf:sendeTag/text()');
 					$value = $matches->item(0)->nodeValue;
-					$element  	= $xml->createElement("airtimeDate", (new DateTime($value))->format('c') );
+					$element  	= new DateTime($value);
+					$element  	= $xml->createElement("airtimeDate", $element->format('c') );
 					$programdata->appendChild( $element );
 
 
@@ -322,7 +323,8 @@ class sendung{
 
 					$matches = $xpath->query('/zdf:Beitrag/zdf:redaktionellesDatum/text()');
 					$value = $matches->item(0)->nodeValue;						
-					$element 	= $xml->createElement("year", (new DateTime($value))->format('Y'));
+					$element 	= new DateTime($value);
+					$element 	= $xml->createElement("year", $element->format('Y'));
 					$programdata->appendChild( $element );
 
 

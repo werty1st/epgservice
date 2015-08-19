@@ -108,8 +108,11 @@ class sender{
 				$sendungs_start_date = new DateTime($sendungs_start);
 				$sendungs_start_date_string = $sendungs_start_date->format('c');
 
-				$sendungs_filter_date = (new DateTime())->setTimestamp(date($filter_date));
+				$sendungs_filter_date = new DateTime();
+				$sendungs_filter_date = $sendungs_filter_date->setTimestamp(date($filter_date));
 				$sendungs_filter_date_string = $sendungs_filter_date->format('c');
+				
+
 
 				//echo "$sendungs_titel\n";
 				//echo "$sendungs_start_date_string  == $sendungs_filter_date_string => ";

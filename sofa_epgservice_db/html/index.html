@@ -3,20 +3,13 @@
 	<head> 	
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		
-		<script type="text/javascript" src="modules.js"></script>
-		<script type="text/javascript">
-			var $ = require('jquery');
 			
-			$(document).on('mobileinit', function() {
-				console.log("mobileinit");
-			});
-		</script>		
+		<link rel="stylesheet" href="html/main.css" />	
+		<link rel="stylesheet" href="html/jquery-mobile/jquery.mobile-1.4.5.min.css" />	
 
-	<script src="html/jquery-mobile/jquery.mobile-1.3.2.min.js"></script>
-	<script type="text/javascript" src="html/sh/scripts/shCore.js"></script>
-	<script type="text/javascript" src="html/sh/scripts/shBrushXml.js"></script>
-	<script type="text/javascript" src="html/sh/scripts/shBrushJScript.js"></script>	
+		<link href="html/sh/styles/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="html/sh/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />			
+
 
 	</head>
 
@@ -34,50 +27,50 @@
 				        <p>I'm the collapsible content for section 1</p>
 				    </div>
 					-->
-				    <div data-role="collapsible" >
+				    <div data-role="collapsible" data-collapsed="false" >
 				        <h3>Use Case</h3>
 						<div id="details">
 						</div>
 						<h4>Example Source</h4>
 						<pre class="brush: javascript">
-	function getDetails(id) {
-	db.getShow('epgservice', "getByID_show", id,  { accept: 'json'}, function (err, data) {
-	    if (err) {
-	        // an error occurred
-	        $('#detail').append("keine Daten");
-	        return;
-	    }
-	    var context = {};
-	    	context = JSON.parse(data).response.sendungsdetails;
-	    	context.imgurls = "getById/json/"+id+"/small";
-	    	context.imgurll = "getById/json/"+id+"/large";
-		var html = handlebars.templates['details.html'](context);
-		$("#details").append(html);
-	});  
-	return false;
-	}								
+							function getDetails(id) {
+							db.getShow('epgservice', "getByID_show", id,  { accept: 'json'}, function (err, data) {
+							    if (err) {
+							        // an error occurred
+							        $('#detail').append("keine Daten");
+							        return;
+							    }
+							    var context = {};
+							    	context = JSON.parse(data).response.sendungsdetails;
+							    	context.imgurls = "getById/json/"+id+"/small";
+							    	context.imgurll = "getById/json/"+id+"/large";
+								var html = handlebars.templates['details.html'](context);
+								$("#details").append(html);
+							});  
+							return false;
+							}								
 						</pre>
 						<h4>Example Template</h4>
 						<pre class="brush: html">
-	<div data-role="header">
-	<h2>{{titel}}</h2>
-	<h3>{{programdata.genre}}</h3>
-	</div>
-	<div data-role="content">
-		<table>
-			<tr>
-			<td> <a href="{{imgurll}}"><img src="{{imgurls}}"></img> </a></td>
-			<td>{{programdata.airtimeBegin}} - </td>
-			<td>{{endTime}}</td>
-			</tr>
-			<tr>
-			<td> <a href="{{url}}">Mehr Infos</a></td>
-			<td>  </td>
-			<td>  </td>
-			</tr>	
-	</table>		
-	<p>{{beschreibung}}</p>
-	</div>
+							<div data-role="header">
+							<h2>{{titel}}</h2>
+							<h3>{{programdata.genre}}</h3>
+							</div>
+							<div data-role="content">
+								<table>
+									<tr>
+									<td> <a href="{{imgurll}}"><img src="{{imgurls}}"></img> </a></td>
+									<td>{{programdata.airtimeBegin}} - </td>
+									<td>{{endTime}}</td>
+									</tr>
+									<tr>
+									<td> <a href="{{url}}">Mehr Infos</a></td>
+									<td>  </td>
+									<td>  </td>
+									</tr>	
+							</table>		
+							<p>{{beschreibung}}</p>
+							</div>
 						</pre>
 				    </div> 
 	<!-- 				    <div id="summary_sender" data-role="collapsible">
@@ -117,7 +110,19 @@
 		<div data-role="page" id="dialogPage">
 			<!-- dummy -->
 		</div>	
-	</body>
+		<script type="text/javascript" src="modules.js"></script>
+		<script type="text/javascript">
+			var $ = jQuery = require('jquery');
+			
+			$(document).bind("mobileinit", function(){
+					console.log("mobileinit");
+			});
+		</script>		
+
+		<script src="html/jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="html/sh/scripts/shCore.js"></script>
+		<script type="text/javascript" src="html/sh/scripts/shBrushXml.js"></script>
+		<script type="text/javascript" src="html/sh/scripts/shBrushJScript.js"></script>	
 
 		<script type="text/javascript">
 		    var db = require('db').use("epgservice");//current();
@@ -208,10 +213,7 @@
 			}		    
 		</script>
 		
-	<link rel="stylesheet" href="html/main.css" />	
-	<link rel="stylesheet" href="html/jquery-mobile/jquery.mobile-1.3.2.min.css" />	
 
-	<link href="html/sh/styles/shCore.css" rel="stylesheet" type="text/css" />
-	<link href="html/sh/styles/shThemeDefault.css" rel="stylesheet" type="text/css" />	
+	</body>
 
 </html>

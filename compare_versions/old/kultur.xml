@@ -6,22 +6,6 @@
   <sendungen>
     <sendung>
       <id>facd0575411db6c052118f61812968c0</id>
-      <key>2015-08-19T05:25:00+02:00</key>
-      <value>
-        <time>2015-08-19T05:25:00+02:00</time>
-        <endTime>2015-08-19T06:25:00+02:00</endTime>
-        <station>
-          <name>ZDF.kultur</name>
-        </station>
-        <titel>zdf@bauhaus: Lena</titel>
-        <beschreibung>Lena gewann mit ihrem Lied &quot;Satellite&quot; 2010 den Eurovision Song Contest. Das geschichtsträchtige Bauhaus in Dessau ist gleichzeitig Bühne und Produktionsort für die Konzertreihe &quot;zdf@bauhaus&quot;.  Internationale Künstler geben in einem intimen Rahmen exklusive Konzerte vor Live-Publikum. Präsentiert werden die Konzerte von Moderator Jo Schück.  Lena hat bei Raab gewonnen, einen Plattenvertrag unterschrieben, &quot;Satellite&quot; veröffentlicht, den Eurovision Song Contest gewonnen, einen Auftritt bei Wetten, dass..? absolviert, ihr zweites Album gemacht, sechs Songs gleichzeitig in den Top 100 gehabt, Kai Pflaume und Gary Barlow beim Echo kennengelernt und für Matthias Schweighöfer gesungen. Nach zwei mit Platin ausgezeichneten Nummer-1-Alben und diversen Musikpreisen präsentiert Lena nun ihr aktuelles Album &quot;Stardust&quot;.</beschreibung>
-        <programdata>
-        </programdata>
-        <url>http://www.zdf.de/programdata/867865c6-9cfe-4a72-80e6-574fe552b32b/08862ac4-6d7d-4a81-95c4-c334a6b4d8f5</url>
-      </value>
-    </sendung>
-    <sendung>
-      <id>1df9e6c91ca97b00623ea002134888c9</id>
       <key>2015-08-19T06:25:00+02:00</key>
       <value>
         <time>2015-08-19T06:25:00+02:00</time>
@@ -37,7 +21,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>8d75d9c506da6d3bd42604ec46418e36</id>
+      <id>1df9e6c91ca97b00623ea002134888c9</id>
       <key>2015-08-19T07:10:00+02:00</key>
       <value>
         <time>2015-08-19T07:10:00+02:00</time>
@@ -53,7 +37,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>8e0797c11d8c2fbbb96a0e819901424b</id>
+      <id>8d75d9c506da6d3bd42604ec46418e36</id>
       <key>2015-08-19T07:40:00+02:00</key>
       <value>
         <time>2015-08-19T07:40:00+02:00</time>
@@ -70,7 +54,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>86b7b6f8f4cece017a1630d0c03626f7</id>
+      <id>8e0797c11d8c2fbbb96a0e819901424b</id>
       <key>2015-08-19T08:10:00+02:00</key>
       <value>
         <time>2015-08-19T08:10:00+02:00</time>
@@ -86,7 +70,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>bf23a710b9aeeed06b4033e1aa0abb1b</id>
+      <id>86b7b6f8f4cece017a1630d0c03626f7</id>
       <key>2015-08-19T09:00:00+02:00</key>
       <value>
         <time>2015-08-19T09:00:00+02:00</time>
@@ -102,7 +86,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>a5fa1cdbdf5af6b45504146fc29a0971</id>
+      <id>bf23a710b9aeeed06b4033e1aa0abb1b</id>
       <key>2015-08-19T09:45:00+02:00</key>
       <value>
         <time>2015-08-19T09:45:00+02:00</time>
@@ -120,7 +104,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>7793a65e3df60accda2b4c37f4cc9cee</id>
+      <id>a5fa1cdbdf5af6b45504146fc29a0971</id>
       <key>2015-08-19T10:25:00+02:00</key>
       <value>
         <time>2015-08-19T10:25:00+02:00</time>
@@ -137,7 +121,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>2cc3122c1c68060129c0c8ccb8021ba6</id>
+      <id>7793a65e3df60accda2b4c37f4cc9cee</id>
       <key>2015-08-19T11:15:00+02:00</key>
       <value>
         <time>2015-08-19T11:15:00+02:00</time>
@@ -154,7 +138,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>fb22a3ea4d2d733c4b40abc1f017bad5</id>
+      <id>2cc3122c1c68060129c0c8ccb8021ba6</id>
       <key>2015-08-19T12:00:00+02:00</key>
       <value>
         <time>2015-08-19T12:00:00+02:00</time>
@@ -171,7 +155,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>11e283f7fadd83da767e413b13962d04</id>
+      <id>fb22a3ea4d2d733c4b40abc1f017bad5</id>
       <key>2015-08-19T12:45:00+02:00</key>
       <value>
         <time>2015-08-19T12:45:00+02:00</time>
@@ -188,7 +172,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>48bc16883ae2fba1ac3423fa09f3138e</id>
+      <id>11e283f7fadd83da767e413b13962d04</id>
       <key>2015-08-19T13:30:00+02:00</key>
       <value>
         <time>2015-08-19T13:30:00+02:00</time>
@@ -204,7 +188,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>0ed59b5c7035f06e8bc1519a16b4b06e</id>
+      <id>48bc16883ae2fba1ac3423fa09f3138e</id>
       <key>2015-08-19T14:10:00+02:00</key>
       <value>
         <time>2015-08-19T14:10:00+02:00</time>
@@ -220,7 +204,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>aa1477969580225bb6c8d91a67cc6242</id>
+      <id>0ed59b5c7035f06e8bc1519a16b4b06e</id>
       <key>2015-08-19T14:55:00+02:00</key>
       <value>
         <time>2015-08-19T14:55:00+02:00</time>
@@ -237,7 +221,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>ae0bc2fad186d3bdce3404a4e0c4db8a</id>
+      <id>aa1477969580225bb6c8d91a67cc6242</id>
       <key>2015-08-19T15:40:00+02:00</key>
       <value>
         <time>2015-08-19T15:40:00+02:00</time>
@@ -254,7 +238,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>eb0156b81489f3d68968d86e79dc6f45</id>
+      <id>ae0bc2fad186d3bdce3404a4e0c4db8a</id>
       <key>2015-08-19T16:25:00+02:00</key>
       <value>
         <time>2015-08-19T16:25:00+02:00</time>
@@ -271,7 +255,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>60a95ff7426b7741fec2bd954b2eadbf</id>
+      <id>eb0156b81489f3d68968d86e79dc6f45</id>
       <key>2015-08-19T17:10:00+02:00</key>
       <value>
         <time>2015-08-19T17:10:00+02:00</time>
@@ -288,7 +272,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>73bcc058b462c96adf2a00fe7520b3cb</id>
+      <id>60a95ff7426b7741fec2bd954b2eadbf</id>
       <key>2015-08-19T17:55:00+02:00</key>
       <value>
         <time>2015-08-19T17:55:00+02:00</time>
@@ -304,7 +288,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>bdc77fc63221d6ab37693b2ad987fba3</id>
+      <id>73bcc058b462c96adf2a00fe7520b3cb</id>
       <key>2015-08-19T18:40:00+02:00</key>
       <value>
         <time>2015-08-19T18:40:00+02:00</time>
@@ -320,7 +304,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>eacd207f65f95de4e0149c675f551beb</id>
+      <id>bdc77fc63221d6ab37693b2ad987fba3</id>
       <key>2015-08-19T19:30:00+02:00</key>
       <value>
         <time>2015-08-19T19:30:00+02:00</time>
@@ -336,7 +320,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>9e1198f7560b1af7ebff87f23c77d227</id>
+      <id>eacd207f65f95de4e0149c675f551beb</id>
       <key>2015-08-19T20:15:00+02:00</key>
       <value>
         <time>2015-08-19T20:15:00+02:00</time>
@@ -353,7 +337,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>6e87dbbde19c184a10c7c629790c3ca5</id>
+      <id>9e1198f7560b1af7ebff87f23c77d227</id>
       <key>2015-08-19T21:00:00+02:00</key>
       <value>
         <time>2015-08-19T21:00:00+02:00</time>
@@ -370,7 +354,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>6892ee17244998831a4e1c74a614e6f5</id>
+      <id>6e87dbbde19c184a10c7c629790c3ca5</id>
       <key>2015-08-19T21:40:00+02:00</key>
       <value>
         <time>2015-08-19T21:40:00+02:00</time>
@@ -387,7 +371,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>94d8c138f31e890ddcde450933a53344</id>
+      <id>6892ee17244998831a4e1c74a614e6f5</id>
       <key>2015-08-19T22:25:00+02:00</key>
       <value>
         <time>2015-08-19T22:25:00+02:00</time>
@@ -404,7 +388,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>0c52fe17a59ed213e401ac48e0f3e500</id>
+      <id>94d8c138f31e890ddcde450933a53344</id>
       <key>2015-08-19T23:10:00+02:00</key>
       <value>
         <time>2015-08-19T23:10:00+02:00</time>
@@ -421,7 +405,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>19e5d287d39fa34b6c05e46e3000eb4e</id>
+      <id>0c52fe17a59ed213e401ac48e0f3e500</id>
       <key>2015-08-19T23:55:00+02:00</key>
       <value>
         <time>2015-08-19T23:55:00+02:00</time>
@@ -438,7 +422,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>f9b1ec26c056e6161537b8d376777ce9</id>
+      <id>19e5d287d39fa34b6c05e46e3000eb4e</id>
       <key>2015-08-20T00:35:00+02:00</key>
       <value>
         <time>2015-08-20T00:35:00+02:00</time>
@@ -455,7 +439,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>cd03009f67b2eebfb31b5f3158fce43c</id>
+      <id>f9b1ec26c056e6161537b8d376777ce9</id>
       <key>2015-08-20T01:20:00+02:00</key>
       <value>
         <time>2015-08-20T01:20:00+02:00</time>
@@ -472,7 +456,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>d40823239ef171207c5ed43fd3420391</id>
+      <id>cd03009f67b2eebfb31b5f3158fce43c</id>
       <key>2015-08-20T02:05:00+02:00</key>
       <value>
         <time>2015-08-20T02:05:00+02:00</time>
@@ -489,7 +473,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>f6747e7bb5c0a3ef02e21863290ba2a0</id>
+      <id>d40823239ef171207c5ed43fd3420391</id>
       <key>2015-08-20T02:45:00+02:00</key>
       <value>
         <time>2015-08-20T02:45:00+02:00</time>
@@ -506,7 +490,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>da138aab8d5d50fc68c52cff44fbf813</id>
+      <id>f6747e7bb5c0a3ef02e21863290ba2a0</id>
       <key>2015-08-20T03:30:00+02:00</key>
       <value>
         <time>2015-08-20T03:30:00+02:00</time>
@@ -523,7 +507,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>d1660a9d92ef8295da949bd86c7190f6</id>
+      <id>da138aab8d5d50fc68c52cff44fbf813</id>
       <key>2015-08-20T04:30:00+02:00</key>
       <value>
         <time>2015-08-20T04:30:00+02:00</time>
@@ -540,7 +524,7 @@
       </value>
     </sendung>
     <sendung>
-      <id>05f7e812f1170fa2b0d5a94766cc622b</id>
+      <id>d1660a9d92ef8295da949bd86c7190f6</id>
       <key>2015-08-20T05:25:00+02:00</key>
       <value>
         <time>2015-08-20T05:25:00+02:00</time>
