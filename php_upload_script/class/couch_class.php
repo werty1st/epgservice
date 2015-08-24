@@ -107,7 +107,7 @@ class mycouch {
 
 		// echo "docid: $docid\n";
         //bilder besorgen
-        if ($doc["images"]["image"][0]["cuttingDimension"]["height"] == 378){
+        if ($doc["images"]["image"][0]["cuttingDimension"]["height"] == "378"){
         	$bildgroß  = $doc["images"]["image"][0]["uri"];
         	$bildklein = $doc["images"]["image"][1]["uri"];
 

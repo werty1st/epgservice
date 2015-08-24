@@ -119,14 +119,31 @@ class sendung{
 				$element = $xml->createElement("endTime", $value);
 				$sendung->appendChild( $element );
 				
-				//<images>
-				$element = $xml->createElement("images");
-				//images holen
-				$matches = $xpath->query('/zdf:Sendetermin/zdf:bildfamilie/zdf:VisualFamily_Reference/@ref');
-				$value = $matches->item(0)->nodeValue;	//url der bilder		
-				$this->getImages($element,$value);
-				//images einfügen
-				$sendung->appendChild($element);
+				//<images> BIS JETZT SIND ZWEI ARTEN BEKANNT
+                // /EPG/treffer/Sendetermin/bildfamilie/VisualFamily_Reference
+                    $element = $xml->createElement("images");
+                    //images holen
+                    $matches = $xpath->query('/zdf:Sendetermin/zdf:bildfamilie/zdf:VisualFamily_Reference/@ref');
+                    $value = $matches->item(0)->nodeValue;	//url der bilder
+                    if ($value != ""){
+                        $this->getImages($element,$value);
+                    } else {
+                        $matches = $xpath->query('/zdf:Sendetermin/zdf:bildfamilie/zdf:AutoVisualFamily/zdf:zuschnitte');
+                        //$value = $matches->item(0);
+                        $this->getImages2($element,$matches);
+                    }
+
+                    //images einfügen
+                    $sendung->appendChild($element);
+                //ODER
+                // /EPG/treffer/Sendetermin/bildfamilie/AutoVisualFamily/zuschnitte
+
+                // /EPG/treffer/Sendetermin/bildfamilie/AutoVisualFamily/zuschnitte/Zuschnitt/image/Link/url
+                // http://www.epg-image.zdf.de/fotobase-webdelivery/images/42e211a2-0be9-4a13-817d-7a8e2e3826aa?layout=672x378
+
+
+
+
 
 
 				//link <= <epgBeitrag> <Beitrag_Reference
@@ -351,54 +368,116 @@ class sendung{
 
 
 
-	private function getImages($element, $url){
 
-		$zuschnitte = new DOMDocument('1.0', 'UTF-8');	
+    private function getImages($element, $url){
 
-		try {
-		        $zuschnitte->load($url);
+        $zuschnitte = new DOMDocument('1.0', 'UTF-8');
 
-		        $xpath = new DOMXPath($zuschnitte);
-				$xpath->registerNameSpace('zdf', 'http://www.zdf.de/api/contentservice/v2');
+        try {
+            $zuschnitte->load($url);
 
-
-				//bild1
-				$matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '672' and zdf:hoehe = '378']/zdf:image/zdf:Link/zdf:url/text()");
-				$value = $matches->item(0)->nodeValue;
-
-				$image 			  = $element->ownerDocument->createElement("image");
-				$cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
-				$uri 		      = $element->ownerDocument->createElement("uri", $value);
-
-				$cuttingDimension->setAttribute("contentId", "0");
-				$cuttingDimension->setAttribute("externalId", "0");
-				$cuttingDimension->setAttribute("height", "378");
-				$cuttingDimension->setAttribute("width", "672");
-				$cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_672x378");
-				
-				$image->appendChild( $cuttingDimension );
-				$image->appendChild( $uri );
-				$element->appendChild( $image );
+            $xpath = new DOMXPath($zuschnitte);
+            $xpath->registerNameSpace('zdf', 'http://www.zdf.de/api/contentservice/v2');
 
 
-				//bild2
-				$matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '90' and zdf:hoehe = '51']/zdf:image/zdf:Link/zdf:url/text()");
-				$value = $matches->item(0)->nodeValue;
+            //bild1
+            $matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '672' and zdf:hoehe = '378']/zdf:image/zdf:Link/zdf:url/text()");
+            $value = $matches->item(0)->nodeValue;
 
-				$image 			  = $element->ownerDocument->createElement("image");
-				$cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
-				$uri 		      = $element->ownerDocument->createElement("uri", $value);
+            $image 			  = $element->ownerDocument->createElement("image");
+            $cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
+            $uri 		      = $element->ownerDocument->createElement("uri", $value);
 
-				$cuttingDimension->setAttribute("contentId", "0");
-				$cuttingDimension->setAttribute("externalId", "0");
-				$cuttingDimension->setAttribute("height", "51");
-				$cuttingDimension->setAttribute("width", "90");
-				$cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_90x51");
-				
-				$image->appendChild( $cuttingDimension );
-				$image->appendChild( $uri );
-				$element->appendChild( $image );
+            $cuttingDimension->setAttribute("contentId", "0");
+            $cuttingDimension->setAttribute("externalId", "0");
+            $cuttingDimension->setAttribute("height", "378");
+            $cuttingDimension->setAttribute("width", "672");
+            $cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_672x378");
 
+            $image->appendChild( $cuttingDimension );
+            $image->appendChild( $uri );
+            $element->appendChild( $image );
+
+
+            //bild2
+            $matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '90' and zdf:hoehe = '51']/zdf:image/zdf:Link/zdf:url/text()");
+            $value = $matches->item(0)->nodeValue;
+
+            $image 			  = $element->ownerDocument->createElement("image");
+            $cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
+            $uri 		      = $element->ownerDocument->createElement("uri", $value);
+
+            $cuttingDimension->setAttribute("contentId", "0");
+            $cuttingDimension->setAttribute("externalId", "0");
+            $cuttingDimension->setAttribute("height", "51");
+            $cuttingDimension->setAttribute("width", "90");
+            $cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_90x51");
+
+            $image->appendChild( $cuttingDimension );
+            $image->appendChild( $uri );
+            $element->appendChild( $image );
+
+
+
+        } catch (Exception $e){
+            throw new Exception("Error Processing Images", 1);
+        }
+
+
+
+    }
+
+
+    private function getImages2($element, $zuschnitte /*DomNodelist*/){
+
+        if ( $zuschnitte->length > 0){
+            $node = $zuschnitte->item(0);
+            $xml = $node->ownerDocument;
+        } else { return; }
+
+        $xpath = new DOMXPath($xml);
+        $xpath->registerNameSpace('zdf', 'http://www.zdf.de/api/contentservice/v2');
+
+        // /EPG/treffer/Sendetermin/bildfamilie/AutoVisualFamily/zuschnitte/Zuschnitt/image/Link/url
+            // http://www.epg-image.zdf.de/fotobase-webdelivery/images/42e211a2-0be9-4a13-817d-7a8e2e3826aa?layout=672x378
+
+        try {
+
+            $matches = $xpath->query("//zdf:Zuschnitt/zdf:image/zdf:Link/zdf:url", $node);
+
+            foreach ($matches as $n) {
+                $imgurl = $n->nodeValue;
+                //bild1
+                if (strpos($imgurl, "layout=672x378") !== false){
+					$image 			  = $element->ownerDocument->createElement("image");
+					$cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
+					$uri 		      = $element->ownerDocument->createElement("uri", $imgurl);
+
+					$cuttingDimension->setAttribute("contentId", "0");
+					$cuttingDimension->setAttribute("externalId", "0");
+					$cuttingDimension->setAttribute("height", "378");
+					$cuttingDimension->setAttribute("width", "672");
+					$cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_672x378");
+					
+					$image->appendChild( $cuttingDimension );
+					$image->appendChild( $uri );
+					$element->appendChild( $image );                	
+                } else if (strpos($imgurl, "layout=90x51") !== false){
+					$image 			  = $element->ownerDocument->createElement("image");
+					$cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
+					$uri 		      = $element->ownerDocument->createElement("uri", $imgurl);
+
+					$cuttingDimension->setAttribute("contentId", "0");
+					$cuttingDimension->setAttribute("externalId", "0");
+					$cuttingDimension->setAttribute("height", "51");
+					$cuttingDimension->setAttribute("width", "90");
+					$cuttingDimension->setAttribute("name", "MMBuehne_Bild_Video_5-5_90x51");
+					
+					$image->appendChild( $cuttingDimension );
+					$image->appendChild( $uri );
+					$element->appendChild( $image );
+                }
+            }
 
 
 		} catch (Exception $e){
