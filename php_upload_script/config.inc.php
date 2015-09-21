@@ -8,6 +8,7 @@ $senderliste = array ("ZDF"	=> "zdf",
 					  "ZDFinfo"	=> "zdfinfo",
 					  "3sat"	=> "3sat",
 					  "KI.KA"	=> "ki.ka",
+					  "phoenix"	=> "phoenix",
 					  "arte"	=> "arte");
 
 // $senderliste = array ( "ZDF.kultur"=> "zdf.kultur" );

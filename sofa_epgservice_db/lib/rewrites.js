@@ -54,6 +54,9 @@ module.exports = [
 
         {from: '/kika/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
         {from: '/kika/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},
+        
+        {from: '/phoenix/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "phoenix" }},
+        {from: '/phoenix/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "phoenix" }},
     //NOW END
 
     //NOW V2 DUMMY
@@ -77,6 +80,9 @@ module.exports = [
 
         {from: '/v2/kika/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
         {from: '/v2/kika/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},        
+        
+        {from: '/v2/phoenix/now/xml',  to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'xml', station: "phoenix" }},
+        {from: '/v2/phoenix/now/json', to: '_list/getNow_list/getAllWithTimeStamp', query: { accept: 'json', station: "phoenix" }},        
     //NOW V2 END
 
 
@@ -100,7 +106,10 @@ module.exports = [
         {from: '/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
         
         {from: '/kika/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
-        {from: '/kika/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},        
+        {from: '/kika/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},  
+        
+        {from: '/phoenix/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "phoenix" }},
+        {from: '/phoenix/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "phoenix" }},        
     //TODAY END
 
 
@@ -124,7 +133,10 @@ module.exports = [
         {from: '/v2/arte/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "arte" }},
 
         {from: '/v2/kika/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "KI.KA" }},
-        {from: '/v2/kika/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},                
+        {from: '/v2/kika/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "KI.KA" }},   
+
+        {from: '/v2/phoenix/today/xml',  to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'xml', station: "phoenix" }},
+        {from: '/v2/phoenix/today/json', to: '_list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', station: "phoenix" }},                
     //TODAY V2 END
 
 
