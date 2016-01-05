@@ -1,11 +1,11 @@
 {
   "name": "olympia",
   "version": "1.0.0",
-  "description": "setup: npm install -g tsd; tsd install mocha --save",
-  "main": "index.js",
+  "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode",
+  "main": "./app/main.js",
   "scripts": {
-    "test": "mocha --ui tdd  test/unit.js",
-    "lint": "eslint test/**"
+    "start": "node ./app/main.js",
+    "test": "mocha --ui tdd  test/*.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "jshint": "^2.9.1-rc2",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "should": "^8.0.2"
   }
 }

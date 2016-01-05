@@ -21,28 +21,28 @@ module.exports = function (options){
 
 	//zufrüh
     if (today.isBefore(startd)){
-        log = "zufrüh";
+        log = "before";
         //alle daten holen
         days = moment.duration(stopd.diff(startd)).asDays();
         skip = 0;
     }
 	//mittendrin
     if ((today.isSameOrAfter(startd)) && (today.isSameOrBefore(stopd))) {
-        log = "mittendrin";
+        log = "in progress";
         //daten ab heute holen
         days = moment.duration(stopd.diff(today)).asDays();
         skip = moment.duration(today.diff(startd)).asDays();
     }
 	//letzter tag
     if (today.isSame(stopd)){
-        log = "schluss";
+        log = "last day";
         //daten ab heute holen
         days = 1;
         skip = moment.duration(today.diff(startd)).asDays();
     }
 	//vorbei
     if (today.isAfter(stopd)) {
-        log = "vorbei";
+        log = "done";
         //keiner daten holen
         days = 0;
         skip = 0;
