@@ -1,14 +1,20 @@
 {
   "name": "olympia",
   "version": "1.0.0",
-  "description": "",
+  "description": "setup: npm install -g tsd; tsd install mocha --save",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --ui tdd  test/unit.js",
+    "lint": "eslint test/**"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "moment": "^2.11.0"
+    "moment": "^2.11.0",
+    "xml-stream": "^0.4.5"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.1-rc2",
+    "mocha": "^2.3.4"
   }
 }
