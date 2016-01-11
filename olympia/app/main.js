@@ -17,6 +17,7 @@ var options = { host: "eventcms.zdf.de",
 var https = require("https");
 var XmlStream = require("xml-stream");
 //var moment = require("moment");
+var async = require("async");
 
 
 //main
@@ -25,20 +26,15 @@ var urls = require("./urlgen")({ startdate: startdate,
                                  current: current,
                                  path: options.path});
 
-console.log(urls);
+//console.log(urls);
+async.forEachOf(urls.urls, function(item){
+    var fetchdata = require("./getUrlContent")(options);
+        fetchdata.get(item,function(result){
+            console.log(result);        
+        });            
+});
 
 
-function getXML(url,callback){
 
-    console.log(url);
-    var request = https.get({host:options.host,path:url}).on("response", function(response) {
 
-        var xml = new XmlStream(response, "utf8");
 
-        xml.on("data", function(data) {
-            process.stdout.write(data);
-        });
-
-    });
-
-}

@@ -5,7 +5,7 @@
   "main": "./app/main.js",
   "scripts": {
     "start": "node ./app/main.js",
-    "test": "mocha --ui tdd  test/*.js"
+    "test": "mocha --ui tdd  test/*.js;exit 0"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "xml-stream": "^0.4.5"
   },
   "devDependencies": {
+    "async": "^1.5.2",
     "jshint": "^2.9.1-rc2",
     "mocha": "^2.3.4",
     "should": "^8.0.2"

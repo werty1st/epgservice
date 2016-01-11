@@ -1,6 +1,9 @@
 //test url generator
 var should = require('should');
 var moment = require("moment");
+var https = require('https');
+var async = require('async');
+
 
 //startdate
 var startdate = moment("2014-02-06");
@@ -15,6 +18,8 @@ var duration = moment.duration( current_stop.diff(current_start) ).asDays();
 
 //array bauen
 //https://zackehh.com/asynchronous-test-loops-with-mocha/
+var urls = [];
+
 
 for(var i = 0; i<=duration; i++){
 
@@ -23,7 +28,7 @@ for(var i = 0; i<=duration; i++){
     
     switch (true) {
         case (current.isBefore(startdate)):
-            log = "xx";            
+            log = "before";            
             break;
         case (current.isSame(startdate)):
             log = "in progress";            
@@ -39,16 +44,39 @@ for(var i = 0; i<=duration; i++){
             break;
         default:
             break;
-    }    
+    }
     
-    test("should return "+ log, function() {
-        var urls = require("../app/urlgen")({ startdate: startdate,
-                                        enddate: enddate,
-                                        current: current,
-                                        path: "test"}
-                                        );
-        console.log("log",log);
-        should(urls.log).startWith( log );
-    });
-    current.add(1,"days");
+    urls.push({ startdate: startdate.clone(),
+                enddate: enddate.clone(),
+                current: current.clone(),
+                log: log });
+
+    current.add(1,"days");    
 }
+var result = {};
+var count = 0;
+
+describe('Asynchronous Date => url testing', function(){
+    async.forEachOf(urls, function(element, index, array){
+
+        var url = require("../app/urlgen")({ startdate: element.startdate,
+                                        enddate: element.enddate,
+                                        current: element.current,
+                                        path: "test"});
+                               
+
+        it("Result expected: \""+element.log+"\" <=> received: \""+url.log+"\"",function(){ 
+            should(url.log).startWith( element.log);
+        });
+
+    });
+});
+
+
+
+it('should return -1 when not present', function() { 
+      should.equal(-1, [1,2,3].indexOf(4));
+    });
+
+
+
