@@ -17,8 +17,9 @@ function Downloader(options){
             });
 
         });*/
-        https.get({host:options.host,path:url}, (res) => {
+        https.get(url, (res) => {
             console.log(`Got response: ${res.statusCode}`);
+            console.log(`Got ${url} response: ${res.statusCode}`);
             // consume response body
             res.resume();
         }).on('error', (e) => {

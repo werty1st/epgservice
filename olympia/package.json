@@ -17,6 +17,7 @@
     "async": "^1.5.2",
     "jshint": "^2.9.1-rc2",
     "mocha": "^2.3.4",
+    "node-telegram-bot-api": "^0.19.2",
     "should": "^8.0.2"
   }
 }

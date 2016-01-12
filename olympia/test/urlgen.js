@@ -5,11 +5,12 @@ var https = require('https');
 var async = require('async');
 
 
-//startdate
+//startdate event
 var startdate = moment("2014-02-06");
-//enddate
+//enddate event
 var enddate = moment("2014-02-23");
-//simulate old date
+
+//simulate date
 var current_start = moment("2014-02-05");
 var current_stop  = moment("2014-02-24");
 var current = current_start;
@@ -37,7 +38,7 @@ for(var i = 0; i<=duration; i++){
             log = "in progress";            
             break;
         case (current.isSame(enddate)):            
-            log = "last day";
+            log = "in progress";
             break;
         case (current.isAfter(enddate)):            
             log = "done";
@@ -62,16 +63,16 @@ describe('Asynchronous Date => url testing', function(){
         var url = require("../app/urlgen")({ startdate: element.startdate,
                                         enddate: element.enddate,
                                         current: element.current,
-                                        path: "test"});
+                                        options: {path: "test"}});
                                
 
-        it("Result expected: \""+element.log+"\" <=> received: \""+url.log+"\"",function(){ 
+
+       it("Result expected: \""+element.log+"\" <=> received: \""+url.log+"\"",function(){ 
             should(url.log).startWith( element.log);
         });
 
     });
 });
-
 
 
 it('should return -1 when not present', function() { 

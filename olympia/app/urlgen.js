@@ -6,14 +6,16 @@ var moment = require("moment");
  * @param {object} options which have to include 
  * startdate, enddate, current (current date) and a path
  */
-module.exports = function (options){ 
+module.exports = function (data){ 
 
 
 	//create date range urls
 	//days
-    var startd = moment(options.startdate);
-    var stopd = moment(options.enddate);
-    var today = moment(options.current);
+    var options = data.options;
+    
+    var startd = moment(data.startdate);
+    var stopd = moment(data.enddate);
+    var today = moment(data.current);
     var days = 0;
     var skip = 0;
     var urls = [];
@@ -35,7 +37,7 @@ module.exports = function (options){
     }
 	//letzter tag
     if (today.isSame(stopd)){
-        log = "last day";
+        log = "in progress";
         //daten ab heute holen
         days = 1;
         skip = moment.duration(today.diff(startd)).asDays();
@@ -55,7 +57,7 @@ module.exports = function (options){
         //url
         var filename = date.format("YYYY-MM-DD");
         date.add(1,"days");
-        var dpath = options.path + filename +".xml";
+        var dpath = options.proto + "://" + options.host + options.path + filename +".xml";
         urls.push(dpath);
     }
 

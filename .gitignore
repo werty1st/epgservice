@@ -10,3 +10,5 @@ cache
 node_modules
 
 !.gitignore
+
+.bottoken.json
