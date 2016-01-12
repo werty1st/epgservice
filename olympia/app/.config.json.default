@@ -1,0 +1,9 @@
+{
+    "couchdb": {
+        "user": "admin",
+        "pass": "",
+        "url": "localhost",
+        "port": 5984,
+        "db": "ecms"
+    }
+}

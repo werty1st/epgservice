@@ -13,14 +13,19 @@ var options = { proto: "https",
                  host: "eventcms.zdf.de",
                  path: "/xml/olympia2014/epg/" };
 
-
+/* global process bot global */
 
 //imports
 var https = require("https");
-var XmlStream = require("xml-stream");
+
 //var moment = require("moment");
 var async = require("async");
+var parseStream = require("./readXMLstream");
+var bot = require("./bot-client");
 
+global.bot = bot;
+
+bot.log("Init complete"); 
 
 //main
 var urls = require("./urlgen")({ startdate: startdate,
@@ -29,14 +34,38 @@ var urls = require("./urlgen")({ startdate: startdate,
                                  options: options });
 
 
-async.forEachOf(urls.urls, function(item){
-    var fetchdata = require("./getUrlContent")(options);
-        fetchdata.get(item,function(result){
-            console.log(result);        
-        });            
+//debug 1 item only
+urls.urls = urls.urls.splice(urls.urls.length-1);        
+
+//https://adambom.github.io/parallel.js/
+
+//fetch xml from url
+async.forEachOf(urls.urls, function(item, key, asyncDone){
+    var fetchData = require("./fetchXML")(options);
+    fetchData.get(item.url, function(stream){
+        parseStream(stream, item.date ,asyncDone);
+    });           
+},function done (){
+    console.log("Finished");
+    end();         
 });
 
 
+function end(){
+    //bot.close();
+    //process.exit();
+}
 
 
+/*
+function exitHandler(options, err) {
+    if (options.cleanup) console.log('clean');
+    if (err) console.log(err.stack);
+    if (options.exit) process.exit();
+}
 
+//do something when app is closing
+process.on('exit', exitHandler.bind(null,{cleanup:true}));
+
+//catches ctrl+c event
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));*/

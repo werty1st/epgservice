@@ -18,7 +18,7 @@ module.exports = function (data){
     var today = moment(data.current);
     var days = 0;
     var skip = 0;
-    var urls = [];
+    var urls = []; // [ uri:{ date , url} ]
     var log = "";
 
 	//zufrüh
@@ -56,9 +56,9 @@ module.exports = function (data){
     for (var i=0;i<days;i++){
         //url
         var filename = date.format("YYYY-MM-DD");
-        date.add(1,"days");
         var dpath = options.proto + "://" + options.host + options.path + filename +".xml";
-        urls.push(dpath);
+        urls.push({ url: dpath, date: date.clone()} );
+        date.add(1,"days");
     }
 
     return { urls: urls,
