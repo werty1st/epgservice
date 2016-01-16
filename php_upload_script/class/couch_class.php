@@ -111,17 +111,50 @@ class mycouch {
         	$bildgroß  = $doc["images"]["image"][0]["uri"];
         	$bildklein = $doc["images"]["image"][1]["uri"];
 
+			if(preg_match("/https?\:\/\//", $bildgroß, $m) == 0)
+			{
+				//ohne protocoll
+				$bildgroß = "http:".$bildgroß;
+			}
+			if(preg_match("/https?\:\/\//", $bildklein, $m) == 0)
+			{
+				//ohne protocoll
+				$bildklein = "http:".$bildklein;
+			}				        	
+
         	// $bildgroßStr  = file_get_contents($bildgroß);
         	$bildkleinStr = file_get_contents($bildklein);
+
+        	if($bildkleinStr === false){
+        		echo "Bild konnte nicht abgerufen werden $bildklein";
+        	}
+
         	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
         	if (strlen($bildkleinStr) >0)
         		$doc["images"]["image"][1]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);
+
         } else {
 			$bildgroß  = $doc["images"]["image"][1]["uri"];
         	$bildklein = $doc["images"]["image"][0]["uri"];
 
+			if(preg_match("/https?\:\/\//", $bildgroß) == 0)
+			{
+				//ohne protocoll
+				$bildgroß = "http:".$bildgroß;
+			}
+			if(preg_match("/https?\:\/\//", $bildklein) == 0)
+			{
+				//ohne protocoll
+				$bildklein = "http:".$bildklein;
+			}		
+
         	// $bildgroßStr  = file_get_contents($bildgroß);
         	$bildkleinStr = file_get_contents($bildklein);
+
+        	if($bildkleinStr === false){
+        		echo ("Bild konnte nicht abgerufen werden $bildklein");
+        	}	
+
         	// $doc["images"]["image"][0]["data"] = base64_encode($bildgroßStr);
         	if (strlen($bildkleinStr) >0)
         		$doc["images"]["image"][0]["data"] = "data:image/jpg;base64,".base64_encode($bildkleinStr);	        	        	

@@ -382,11 +382,11 @@ class sendung{
 
             //bild1
             $matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '672' and zdf:hoehe = '378']/zdf:image/zdf:Link/zdf:url/text()");
-            $value = $matches->item(0)->nodeValue;
+            $imageurl = $matches->item(0)->nodeValue;
 
             $image 			  = $element->ownerDocument->createElement("image");
             $cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
-            $uri 		      = $element->ownerDocument->createElement("uri", $value);
+            $uri 		      = $element->ownerDocument->createElement("uri", $imageurl);
 
             $cuttingDimension->setAttribute("contentId", "0");
             $cuttingDimension->setAttribute("externalId", "0");
@@ -401,11 +401,11 @@ class sendung{
 
             //bild2
             $matches = $xpath->query("/zdf:VisualFamily/zdf:zuschnitte/zdf:Zuschnitt[zdf:breite = '90' and zdf:hoehe = '51']/zdf:image/zdf:Link/zdf:url/text()");
-            $value = $matches->item(0)->nodeValue;
+            $imageurl = $matches->item(0)->nodeValue;
 
             $image 			  = $element->ownerDocument->createElement("image");
             $cuttingDimension = $element->ownerDocument->createElement("cuttingDimension");
-            $uri 		      = $element->ownerDocument->createElement("uri", $value);
+            $uri 		      = $element->ownerDocument->createElement("uri", $imageurl);
 
             $cuttingDimension->setAttribute("contentId", "0");
             $cuttingDimension->setAttribute("externalId", "0");
@@ -447,6 +447,7 @@ class sendung{
 
             foreach ($matches as $n) {
                 $imgurl = $n->nodeValue;
+
                 //bild1
                 if (strpos($imgurl, "layout=672x378") !== false){
 					$image 			  = $element->ownerDocument->createElement("image");
