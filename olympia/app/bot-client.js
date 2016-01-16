@@ -18,7 +18,7 @@ ipc.connectTo(
                     );
                 },
             log: function(msg){
-                console.log("ipc log");
+                console.log("ipc log 2");
                 ipc.of.server.emit(
                         'app.message.log',
                         {

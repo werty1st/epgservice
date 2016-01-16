@@ -20,7 +20,7 @@ var https = require("https");
 
 //var moment = require("moment");
 var async = require("async");
-var parseStream = require("./readXMLstream");
+var readXMLstream = require("./readXMLstream");
 var bot = require("./bot-client");
 
 global.bot = bot;
@@ -38,12 +38,11 @@ var urls = require("./urlgen")({ startdate: startdate,
 urls.urls = urls.urls.splice(urls.urls.length-1);        
 
 //https://adambom.github.io/parallel.js/
-
 //fetch xml from url
 async.forEachOf(urls.urls, function(item, key, asyncDone){
     var fetchData = require("./fetchXML")(options);
     fetchData.get(item.url, function(stream){
-        parseStream(stream, item.date ,asyncDone);
+        readXMLstream(stream, item.date ,asyncDone);
     });           
 },function done (){
     console.log("Finished");
