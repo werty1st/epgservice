@@ -1,7 +1,7 @@
 {
   "name": "olympia",
   "version": "1.0.0",
-  "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode",
+  "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "main": "./app/main.js",
   "scripts": {
     "start": "node ./app/main.js",
@@ -13,7 +13,7 @@
     "moment": "^2.11.0",
     "node-couchdb": "^0.4.0",
     "node-ipc": "^6.0.0",
-    "xml-stream": "^0.4.5"
+    "xml-flow": "^0.4.0"
   },
   "devDependencies": {
     "async": "^1.5.2",

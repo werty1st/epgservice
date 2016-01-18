@@ -1,5 +1,5 @@
 var ipc  =require('node-ipc');
-var config = require('./.config.json').socket;
+var config = require('../.config.json').socket;
 
 ipc.config = config;
 
@@ -18,7 +18,6 @@ ipc.connectTo(
                     );
                 },
             log: function(msg){
-                console.log("ipc log 2");
                 ipc.of.server.emit(
                         'app.message.log',
                         {
@@ -28,7 +27,6 @@ ipc.connectTo(
                     );
             },
             close: function(){
-                console.log("ipc close");
                 ipc.disconnect(ipc.config.id);
             }
         };       

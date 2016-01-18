@@ -3,8 +3,10 @@ var startdate = "2014-02-06";
 //enddate event
 
 var enddate = "2014-02-23";
+var enddate = "2014-02-22";
 //simulate date before event
 var current = "2014-02-05";
+var current = "2014-02-22";
 //live
 //var current = moment();
 
@@ -20,8 +22,9 @@ var https = require("https");
 
 //var moment = require("moment");
 var async = require("async");
-var readXMLstream = require("./readXMLstream");
-var bot = require("./bot-client");
+var readXMLstream = require("./xml/readXMLstream");
+var bot = require("./bot/bot-client");
+var SenderGruppe = require("./sender/sender");
 
 global.bot = bot;
 
@@ -40,9 +43,10 @@ urls.urls = urls.urls.splice(urls.urls.length-1);
 //https://adambom.github.io/parallel.js/
 //fetch xml from url
 async.forEachOf(urls.urls, function(item, key, asyncDone){
-    var fetchData = require("./fetchXML")(options);
-    fetchData.get(item.url, function(stream){
-        readXMLstream(stream, item.date ,asyncDone);
+    var fetchXML = require("./xml/fetchXML")(options);
+    fetchXML.get(item.url, function(stream){
+        console.log("stream url", item.url);
+        readXMLstream(stream, SenderGruppe, item.date ,asyncDone);
     });           
 },function done (){
     console.log("Finished");
