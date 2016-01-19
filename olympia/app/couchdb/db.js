@@ -26,7 +26,7 @@ function save(sendung){
             //update attachment
             var mime = sendung.image64.match(/data:([a-z]+\/[a-z]+);/i)[1];
             //console.log(docHead);
-            ecms.attachment.insert(docHead.id, "image.png", decodeBase64Image(sendung.image64).data, mime, {rev: docHead.rev},(err)=>{
+            ecms.attachment.insert(docHead.id, "image", decodeBase64Image(sendung.image64).data, mime, {rev: docHead.rev},(err)=>{
                 if(err) console.log(err);
             });
         }
@@ -41,13 +41,20 @@ function store( sendung ){
     ecms.head(sendung._id, function(err, _, headers) {
     
         if (!err){
+             //console.log(headers);
             //update
             //build hash from json to decide if update needed
             sendung._rev = headers.etag.replace(/['"]+/g, ''); //nervige doppelte "
             save( sendung );
         } else {
             //save
-            save( sendung );            
+            if (err.statusCode == 404){
+                //save new
+                save( sendung );
+            } else{
+                console.log(err);                
+            }
+                     
         }
         
     });    
