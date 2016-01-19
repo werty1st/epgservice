@@ -1,3 +1,20 @@
 {
-	"token": "YOUR_TELEGRAM_BOT_TOKEN"
+	"token": "###",
+    "socket": {
+
+        "appspace"        : "app.",
+        "socketRoot"      : "/tmp/",
+        "id"              : "server",
+        "networkHost"     : "localhost",
+        "networkPort"     : 8000,
+        "encoding"        : "utf8",
+        "rawBuffer"       : false,
+        "sync"            : false,
+        "silent"          : false,
+        "maxConnections"  : 100,
+        "retry"           : 500,
+        "maxRetries"      : false,
+        "stopRetrying"    : false
+
+    }
 }

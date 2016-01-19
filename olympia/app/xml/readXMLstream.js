@@ -12,85 +12,76 @@ var sc=0;
  * @param {date} date of url 
  * @param {function} callback to call after stream is closed 
  */
-function readXML(stream, SenderGruppe, date, asyncDone){
+function readXML(stream, senderGruppe, date){
     var xml = flow(stream, "utf8");
+
          
     console.log(`Stream #${sc++} from: ${date.format("YYYY-MM-DD")}`);
-
-    
-    function processElement( item ) {
-        
-   
-               
-    }
-    
         
     xml.on('tag:video', function(video) {
-        
-        //12 videos
-        // 4 brackets
-        
-        vc++;
+
+        //get channel
+        var channel = video.$markup.find(item => item.$name == "channel").$markup[0];
+
         //drop channel <> 1-6
-        switch (video.channel) {
+        switch (channel) {
             case "1":
-                SenderGruppe.web1.addVideo();
+                senderGruppe.web1.addVideo(video);
                 break;
             case "2":
-                SenderGruppe.web2.addVideo();
+                senderGruppe.web2.addVideo(video);
                 break;
             case "3":
-                SenderGruppe.web3.addVideo();
+                senderGruppe.web3.addVideo(video);
                 break;
             case "4":
-                SenderGruppe.web4.addVideo();
+                senderGruppe.web4.addVideo(video);
                 break;
             case "5":
-                SenderGruppe.web5.addVideo();
+                senderGruppe.web5.addVideo(video);
                 break;
             case "6":
-                SenderGruppe.web6.addVideo();
+                senderGruppe.web6.addVideo(video);
                 break;
             default:
-                //console.log("Channel out of bounds", video.station);  
+                //console.log("Channel out of bounds", channel);  
                 break;
         }
-        
     }); 
 
     xml.on('tag:bracket', function(bracket) {
+       
+        //get channel
+        var channel = bracket.$markup.find(item => item.$name == "channel").$markup[0];
         
-        bc++; 
         //drop channel <> 1-6
-        switch (bracket.channel) {
+        switch (channel) {
             case "1":
-                SenderGruppe.web1.addBracket();
+                senderGruppe.web1.addBracket(bracket);
                 break;
             case "2":
-                SenderGruppe.web2.addBracket();
+                senderGruppe.web2.addBracket(bracket);
                 break;
             case "3":
-                SenderGruppe.web3.addBracket();
+                senderGruppe.web3.addBracket(bracket);
                 break;
             case "4":
-                SenderGruppe.web4.addBracket();
+                senderGruppe.web4.addBracket(bracket);
                 break;
             case "5":
-                SenderGruppe.web5.addBracket();
+                senderGruppe.web5.addBracket(bracket);
                 break;
             case "6":
-                SenderGruppe.web6.addBracket();
+                senderGruppe.web6.addBracket(bracket);
                 break;
             default:
-                //console.log("Channel out of bounds", video.station);  
+                //console.log("Channel out of bounds", channel);  
                 break;
-        }      
+        }        
     });  
      
     
-    xml.on("end", function(){
-        console.log("vc",vc,"bc",bc);
-        asyncDone();
+    xml.on("end", () =>{        
         xml = null;
     });
 }

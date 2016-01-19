@@ -1,9 +1,20 @@
-{
+{    
+    "socket": {
+        "appspace"        : "app.",
+        "socketRoot"      : "/tmp/",
+        "id"              : "client1",
+        "networkHost"     : "localhost",
+        "networkPort"     : 8000,
+        "encoding"        : "utf8",
+        "rawBuffer"       : false,
+        "sync"            : false,
+        "silent"          : true,
+        "maxConnections"  : 100,
+        "retry"           : 500,
+        "maxRetries"      : false,
+        "stopRetrying"    : false
+    },
     "couchdb": {
-        "user": "admin",
-        "pass": "",
-        "url": "localhost",
-        "port": 5984,
-        "db": "ecms"
+        "url": "http://**@localhost:5984/ecms"
     }
 }

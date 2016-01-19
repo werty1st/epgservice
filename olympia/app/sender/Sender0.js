@@ -1,3 +1,19 @@
+function Sender0(db){
+
+    var sendungen = [];
+
+
+    this.addVideo = function addVideo (xmlElement){
+
+    };
+        
+    this.addBracket = function addBracket (xmlElement){
+        
+    };       
+}
+
+module.exports = Sender0;
+
 //p12 daten laden mit v2 api für heute+7
 // http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2015-12-15
 
