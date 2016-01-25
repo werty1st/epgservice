@@ -2,17 +2,18 @@
 
 
 // startdate event
-var startdate = "2014-02-06";
+//var startdate = "2014-02-06";
+var startdate = "2014-02-12"; //demo 3 tage
 
 // enddate event
-var enddate = "2014-02-23";
-//var enddate = "2014-02-22";
+//var enddate = "2014-02-23";
+var enddate = "2014-02-14"; //demo 3 tage
 
 // live
 //var current = moment();
 // simulate date before event
-var current = "2014-02-05";
-//var current = "2014-02-22";
+//var current = "2014-02-05";
+var current = "2014-02-12";
 
 
 var options = { proto: "https",
@@ -45,21 +46,27 @@ var db = require("./couchdb/db");
 //https://ecms.zdf.de/xml/olympia2014/sports.xml
 
 // debug 1 item only
-urls.urls = urls.urls.splice(urls.urls.length-1);        
+//urls.urls = urls.urls.splice(urls.urls.length-1);        
+
+console.log(urls); end();
 
 // https://adambom.github.io/parallel.js/
 // fetch xml from url
+
+
 async.forEachOf(urls.urls, function(item, key, asyncDone){
     var fetchXML = require("./xml/fetchXML")(options);
+
     fetchXML.get(item.url, function(stream){
         //console.log("stream url", item.url);
         var senderGruppe = new SenderGruppe(db);
-        readXMLstream(stream, senderGruppe, item.date);
+        readXMLstream(stream, item.date, senderGruppe.storeTag, ()=>{ console.log("done xml reading");} );
     });           
 },function done (err){
     if (err){
         bot.err("Error: Stream parsing failed.")
     }
+    console.log("open",open);
     end();         
 });
 

@@ -5,11 +5,14 @@
   "main": "./app/main.js",
   "scripts": {
     "start": "node ./app/main.js",
-    "test": "mocha --ui tdd  test/*.js;exit 0"
+    "test": "mocha --ui tdd  test/*.js;exit 0",
+    "push": "couchapp push ./sofaapp/app.js http://localhost:5984/ecms",
+    "watch:push": "watch 'npm run push' sofaapp/"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "couchapp": "^0.11.0",
     "moment": "^2.11.0",
     "nano": "^6.1.5",
     "node-ipc": "^6.0.0",
@@ -22,6 +25,7 @@
     "jshint": "^2.9.1-rc2",
     "mocha": "^2.3.4",
     "node-telegram-bot-api": "^0.19.2",
-    "should": "^8.0.2"
+    "should": "^8.0.2",
+    "watch": "^0.17.1"
   }
 }

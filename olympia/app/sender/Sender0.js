@@ -15,7 +15,7 @@ function Sender0(db){
 module.exports = Sender0;
 
 //p12 daten laden mit v2 api für heute+7
-// http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2015-12-15
+// http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2016-02-04&currentIndex=2 => ZDF SPORTextra - Wintersport - Biathlon-Weltcup
 
 
 //nur olympia aber vorbereiten für alles
