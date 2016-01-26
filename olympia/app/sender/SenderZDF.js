@@ -17,6 +17,7 @@ module.exports = Sender0;
 //p12 daten laden mit v2 api für heute+7
 // http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2016-02-04&currentIndex=2 => ZDF SPORTextra - Wintersport - Biathlon-Weltcup
 
+// curl --header "Range: bytes=343-703" "http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2016-02-04&endDate=2016-02-04&currentIndex=1"
 
 //nur olympia aber vorbereiten für alles
 

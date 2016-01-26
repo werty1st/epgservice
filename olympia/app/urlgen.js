@@ -8,6 +8,7 @@ var moment = require("moment");
  */
 module.exports = function (data){ 
 
+    //console.log(data);
 
 	//create date range urls
 	//days
@@ -25,14 +26,14 @@ module.exports = function (data){
     if (today.isBefore(startd)){
         log = "before";
         //alle daten holen
-        days = moment.duration(stopd.diff(startd)).asDays();
+        days = moment.duration(stopd.diff(startd)).asDays()+1; //plus heute
         skip = 0;
     }
 	//mittendrin
     if ((today.isSameOrAfter(startd)) && (today.isSameOrBefore(stopd))) {
         log = "in progress";
         //daten ab heute holen
-        days = moment.duration(stopd.diff(today)).asDays();
+        days = moment.duration(stopd.diff(today)).asDays()+1; //plus heute
         skip = moment.duration(today.diff(startd)).asDays();
     }
 	//letzter tag
@@ -49,6 +50,9 @@ module.exports = function (data){
         days = 0;
         skip = 0;
     }
+    
+    //console.log("log",log);
+    //console.log("skip",skip);
 
 	//add skip days
     var date = startd.add(skip,"days");

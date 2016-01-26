@@ -1,19 +1,27 @@
 /* global process bot global */
-
+var moment = require("moment");
 
 // startdate event
-//var startdate = "2014-02-06";
-var startdate = "2014-02-12"; //demo 3 tage
+var startdate = "2014-02-06";
+//var startdate = "2014-02-12"; //demo 3 tage
 
 // enddate event
-//var enddate = "2014-02-23";
-var enddate = "2014-02-14"; //demo 3 tage
+var enddate = "2014-02-23";
+//var enddate = "2014-02-14"; //demo 3 tage
 
 // live
 //var current = moment();
 // simulate date before event
-//var current = "2014-02-05";
-var current = "2014-02-12";
+var current = "2014-02-06";
+//var current = "2014-02-12";
+
+
+/**
+ * delta berechnen und dann allen datumsanagben draufrechnen
+ * heute - 2014-02-12 = x days
+ */
+var delta = global.delta = moment().diff(moment("2014-02-06"), "days") ;
+    console.log("Delta:",delta);
 
 
 var options = { proto: "https",
@@ -22,7 +30,9 @@ var options = { proto: "https",
 
 
 // imports
+var Parallel = require('paralleljs');
 var https = require("https");
+var db = require("./couchdb/db");
 //var moment = require("moment");
 var async = require("async");
 var readXMLstream = require("./xml/readXMLstream");
@@ -31,7 +41,6 @@ var SenderGruppe = require("./sender/SenderGruppe");
 
 
 global.bot = bot;
-
 bot.log("Init complete"); 
 
 //main
@@ -39,7 +48,7 @@ var urls = require("./urlgen")({ startdate: startdate,
                                  enddate: enddate,
                                  current: current,
                                  options: options });
-var db = require("./couchdb/db");
+
 
 
 // sportarten mapping
@@ -47,32 +56,64 @@ var db = require("./couchdb/db");
 
 // debug 1 item only
 //urls.urls = urls.urls.splice(urls.urls.length-1);        
+//console.log(urls); end();
 
-console.log(urls); end();
+// create new SenderGruppe
+var senderGruppe = new SenderGruppe(db);
+var websender = senderGruppe.web;
+var zdfsender = senderGruppe.p12;
 
-// https://adambom.github.io/parallel.js/
+    senderGruppe.completed(websender, function(){
+        console.log("websender finished");
+        end();
+    });
+    
+/*    senderGruppe.completed(zdfsender, function(){
+        console.log("zdfsender finished");
+    });
+    */
+
+
 // fetch xml from url
 
+var sc=0;
+
+// web channels
+// create new https client
+var fetchXML = require("./xml/fetchXML")(options);
 
 async.forEachOf(urls.urls, function(item, key, asyncDone){
-    var fetchXML = require("./xml/fetchXML")(options);
 
     fetchXML.get(item.url, function(stream){
-        //console.log("stream url", item.url);
-        var senderGruppe = new SenderGruppe(db);
-        readXMLstream(stream, item.date, senderGruppe.storeTag, ()=>{ console.log("done xml reading");} );
-    });           
-},function done (err){
+        
+        // print current stream #
+        process.stdout.write(`Stream #${++sc} from: ${item.date.format("YYYY-MM-DD")}: `);
+             
+        // pipe xml Stream to SenderGruppe
+        readXMLstream(stream, websender.passElementFn, ()=>{
+            
+                // xml parsing done
+                // saving to couchdb is still in progress at this point
+                               
+                // this stream is empty now
+                console.log("done");
+                
+                // asyncDone internally counts open streams
+                asyncDone();                 
+        });
+    });               
+},function (err){
     if (err){
-        bot.err("Error: Stream parsing failed.")
+        bot.error("Error: Stream parsing failed.");
+    } else {
+        // notify senderGruppe about that
+        console.log("Xml parsing done");        
     }
-    console.log("open",open);
-    end();         
 });
 
 
 function end(){
-    bot.close();
+    //bot.close();
     process.exit();
 }
 

@@ -10,7 +10,7 @@ function decodeBase64Image(dataString) {
 
     if (matches.length !== 3) {
         return new Error('Invalid input string');
-    }
+    }   
 
     response.type = matches[1];
     response.data = new Buffer(matches[2], 'base64');
@@ -25,11 +25,12 @@ function save( sendung, done ){
             bot.error("failed saving doc");
             done();
         }else{
-            //console.log("updated");
+            //console.log("updated",sendung.image64);
             //update attachment
-            var mime = sendung.image64.match(/data:([a-z]+\/[a-z]+);/i)[1];
+            //console.log("updated",sendung);
+            var image = decodeBase64Image(sendung.image64);
             //console.log(docHead);
-            ecms.attachment.insert(docHead.id, "image", decodeBase64Image(sendung.image64).data, mime, {rev: docHead.rev},(err)=>{
+            ecms.attachment.insert(docHead.id, "image", image.data, image.type, {rev: docHead.rev},(err)=>{
                 if(err) console.log(err);
                 done();
             });
@@ -40,6 +41,7 @@ function save( sendung, done ){
 
 function store( sendung, done ){
    
+    //console.log("dbstore");
 
     //check if exists then update else save
     ecms.head(sendung._id, function(err, _, headers) {
