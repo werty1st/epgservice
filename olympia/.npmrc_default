@@ -1,0 +1,16 @@
+;usage from package.json config
+;in js: process.env.npm_package_config_port
+;in json: ${npm_package_config_demo}
+
+;usage from .npmrc
+;in js: process.env.npm_config_port
+;in json: ${npm_config_demo}
+
+
+;botclient
+bot_token=***
+
+
+couchdb = http://localhost:5984/ecms
+couchdb_sofa1 = http://****:****@wmaiz-v-sofa01.dbc.zdf.de:5984/ecms
+couchdb_sofa2 = http://****:****@wmaiz-v-sofa02.dbc.zdf.de:5984/ecms

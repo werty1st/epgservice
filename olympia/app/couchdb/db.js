@@ -1,7 +1,6 @@
 /* global bot */
 
-var dbconf = require('../.config.json').couchdb;
-var ecms = require('nano')(dbconf.url);
+var ecms = require('nano')(process.env.DB);
 
 
 function decodeBase64Image(dataString) {

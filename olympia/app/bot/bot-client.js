@@ -1,5 +1,19 @@
 var ipc  =require('node-ipc');
-var config = require('../.config.json').socket;
+var config = {
+        "appspace"        : "app.",
+        "socketRoot"      : "/tmp/",
+        "id"              : "client1",
+        "networkHost"     : "localhost",
+        "networkPort"     : 8000,
+        "encoding"        : "utf8",
+        "rawBuffer"       : false,
+        "sync"            : false,
+        "silent"          : true,
+        "maxConnections"  : 100,
+        "retry"           : 500,
+        "maxRetries"      : false,
+        "stopRetrying"    : false
+    };
 
 ipc.config = config;
 

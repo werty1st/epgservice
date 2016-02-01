@@ -1,5 +1,19 @@
-var token = require('./.config.json').token;
-var config = require('./.config.json').socket;
+var token = process.env.npm_config_bot_token;
+var config = {
+        "appspace"        : "app.",
+        "socketRoot"      : "/tmp/",
+        "id"              : "server",
+        "networkHost"     : "localhost",
+        "networkPort"     : 8000,
+        "encoding"        : "utf8",
+        "rawBuffer"       : false,
+        "sync"            : false,
+        "silent"          : false,
+        "maxConnections"  : 100,
+        "retry"           : 500,
+        "maxRetries"      : false,
+        "stopRetrying"    : false
+};
 
 var ipc  =require('node-ipc');
 var TelegramBot = require('node-telegram-bot-api');

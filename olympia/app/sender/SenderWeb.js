@@ -72,6 +72,7 @@ function SenderWeb(db){
          * TODO: remove
          * add delta to get current sendungen
          */
+        console.debug("modify date");
         sendung.start = moment(sendung.start).add(delta, 'days').format(); 
         sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
         

@@ -17,8 +17,9 @@ function Downloader(options){
     this.get = function get(url,callback){
         
         return https.get(url, (res) => {
-                //console.log(`Got response: ${res.statusCode}`);
+                
                 if (res.statusCode != 200){
+                    console.log(`Got response: ${res.statusCode} from ${url}`);
                     bot.error(`URL ${url} Error response: ${res.statusCode}`);
                 } else {
                     //send to xml stream reader

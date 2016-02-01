@@ -22,6 +22,7 @@ var current = "2014-02-06";
  */
 var delta = global.delta = moment().diff(moment("2014-02-06"), "days") ;
     console.log("Delta:",delta);
+    console.log("Delta:",process.env.DB);
 
 
 var options = { proto: "https",
@@ -84,6 +85,7 @@ var fetchXML = require("./xml/fetchXML")(options);
 
 async.forEachOf(urls.urls, function(item, key, asyncDone){
 
+    
     fetchXML.get(item.url, function(stream){
         
         // print current stream #
