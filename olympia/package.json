@@ -12,7 +12,8 @@
     "test": "mocha --ui tdd  test/*.js;exit 0",
     "push": "couchapp push ./sofaapp/app.js ${npm_config_couchdb}",
     "push:s2": "couchapp push ./sofaapp/app.js ${npm_config_couchdb_sofa2}",
-    "watch:push": "watch 'npm run push' sofaapp/"
+    "watch:push": "watch 'npm run push' sofaapp/",
+    "watch:push:s2": "watch 'npm run push:s2' sofaapp/"
   },
   "author": "",
   "license": "ISC",

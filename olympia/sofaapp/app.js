@@ -4,11 +4,11 @@ var path = require('path');
 var couchapp = require('couchapp');
 
 var ddoc = 
-  { _id:'_design/app',
+  { _id:'_design/olympia',
     rewrites: require('./rewrites'),
     views: require('./views/index'),
     lists: require('./lists/index'),
-    shows:{},    
+    shows: require('./shows/index')    
   };
 
 module.exports = ddoc; 
