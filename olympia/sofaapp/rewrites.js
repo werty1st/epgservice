@@ -11,6 +11,10 @@ module.exports = [
     {from:"/jetzt/:channel", to:'_list/list_getNow/view_getAllbyDate', query: { channel: ':channel' }},
     {from:"/heute/:channel", to:'_list/list_getToday/view_getAllbyDate', query: { channel: ':channel' }},
     
+    
+    {from:"/heute/:plus/:channel", to:'_list/list_getToday/view_getAllbyDate', query: { channel: ':channel', addDays: ':plus' }},    
+    
+    
     //show sendung
     {from:"/jetzt/:channel/:vcmsid", to:'_show/show_getByID/:vcmsid' },
     {from:"/heute/:channel/:vcmsid", to:'_show/show_getByID/:vcmsid' },
@@ -21,7 +25,8 @@ module.exports = [
     
     
     //
-    {from:"/heute+1/:vcmsid", to:'_show/show_getByID/:vcmsid' },
+    {from:"/byId/:vcmsid", to:'_show/show_getByID/:vcmsid' },
+    
     
     
     {from:"/*", to:'*'}

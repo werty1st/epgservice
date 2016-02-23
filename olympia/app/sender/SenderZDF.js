@@ -1,18 +1,88 @@
-function Sender0(db){
+var moment = require("moment");
+var request = require('request').defaults({ encoding: null });
+var async = require("async");
+var https = require("https");
+var flow = require("xml-flow");
 
-    var sendungen = [];
+
+function SenderZDF(db){
 
 
-    this.addVideo = function addVideo (xmlElement){
+    //xml stream reader
+    /**
+     * @param {stream} stream from http get 
+     * @param {function} callback to call after stream is closed 
+     */
+    function readXML(stream, storeTagFn, doneXmlCb){
+        var xml = flow(stream, "utf8");
+        
+        xml.on('tag:EPG', (x)=>{
+            console.log("nextPageLink",x);            
+        }); 
+        
+        
+        xml.on("end", () =>{
+            //doneXmlCb();        
+            console.log("done xml",stream);            
+                   
+            xml = null;
+        });
+    }
+    
+
+    function getPage(url){
+        
+            console.log("getPage");
+            https.get(url, (res) => {
+                
+                if (res.statusCode != 200){
+                    console.log(`Got response: ${res.statusCode} from ${url}`);
+                } else {
+                    //send to xml stream reader                   
+                    readXML(res);
+                }
+            }).on('error', (e) => {
+                console.log(`Error in response: ${res}`);
+            });         
+                
+    }
+
+    /**
+     * Genrate URLs based on DateTime.now() from Today-1 to Today+30 
+     * 
+     */
+    this.update = function update(){
+        var startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
+        var stopd =  moment().add(30, 'days').format("YYYY-MM-DD");
+      
+        var url = `https://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}`;
+        
+        console.log("url",url);
+        
+        //find
+        /**
+         * <navigation>    
+         * <Navigation>      
+         * <currentPage>14</currentPage>
+         * <maxPage>14</maxPage>
+         * <nextPageLink/> 
+         */
+        getPage(url);
+
+        
 
     };
         
-    this.addBracket = function addBracket (xmlElement){
-        
-    };       
 }
 
-module.exports = Sender0;
+module.exports = SenderZDF;
+
+
+
+
+
+
+
 
 //p12 daten laden mit v2 api für heute+7
 // http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2016-02-04&currentIndex=2 => ZDF SPORTextra - Wintersport - Biathlon-Weltcup

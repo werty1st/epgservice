@@ -14,7 +14,7 @@ var ddoc =
 module.exports = ddoc; 
 
   
-console.log(ddoc);
+//console.log(ddoc);
 
 
 

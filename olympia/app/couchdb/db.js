@@ -18,6 +18,11 @@ function decodeBase64Image(dataString) {
 }
 
 function save( sendung, done ){
+    
+    var image = decodeBase64Image(sendung.image64);
+    // remove inline image
+    delete sendung.image64;
+    
     ecms.insert(sendung, (err, docHead)=>{
         if(err){
             console.log("failed saving doc");
@@ -25,9 +30,10 @@ function save( sendung, done ){
             done();
         }else{
             //console.log("updated",sendung.image64);
-            //update attachment
+            
+            // update attachment
             //console.log("updated",sendung);
-            var image = decodeBase64Image(sendung.image64);
+            
             //console.log(docHead);
             ecms.attachment.insert(docHead.id, "image", image.data, image.type, {rev: docHead.rev},(err)=>{
                 if(err) console.log(err);

@@ -72,7 +72,7 @@ function SenderWeb(db){
          * TODO: remove
          * add delta to get current sendungen
          */
-        console.debug("modify date");
+        console.log("modify date",delta);
         sendung.start = moment(sendung.start).add(delta, 'days').format(); 
         sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
         
@@ -124,6 +124,8 @@ function Sendung(db){
         //var url = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
         var url = `https://placeholdit.imgix.net/~text?txtsize=33&txt=${new Date().toISOString()}&w=485&h=273`;
         request.get(url, (error, response, body) => {
+
+        sendung.externalImageUrl = url;
             
             if (!error && response.statusCode == 200) {
                 sendung.image64 = "data:" + response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');
@@ -133,8 +135,8 @@ function Sendung(db){
             if (sendung.image64 === ""){
                 // retry
                 console.log("response error", response.statusCode);
-                sendung.image64 = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
-            }            
+                //sendung.image64 = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
+            }          
             
             // callback image load complete
             done();

@@ -62,20 +62,23 @@ var urls = require("./urlgen")({ startdate: startdate,
 // create new SenderGruppe
 var senderGruppe = new SenderGruppe(db);
 var websender = senderGruppe.web;
-var zdfsender = senderGruppe.p12;
+var zdfsender = senderGruppe.zdf;
 
     senderGruppe.completed(websender, function(){
         console.log("websender finished");
         end();
     });
     
-/*    senderGruppe.completed(zdfsender, function(){
+    senderGruppe.completed(zdfsender, function(){
         console.log("zdfsender finished");
     });
-    */
 
+
+    zdfsender.update();
 
 // fetch xml from url
+
+return;
 
 var sc=0;
 

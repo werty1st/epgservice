@@ -6,6 +6,8 @@
   "scripts": {
     
     "debug": "DB=${npm_config_couchdb} node ./app/main.js",
+    "debug:watch": "DB=${npm_config_couchdb} watch 'node ./app/main.js'",
+    
     "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
     "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js",
     
