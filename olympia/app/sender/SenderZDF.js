@@ -1,13 +1,24 @@
-var moment = require("moment");
+var moment  = require("moment");
 var request = require('request').defaults({ encoding: null });
 var async = require("async");
-var http = require("http");
-var flow = require("xml-flow");
+var http  = require("http");
+var flow  = require("xml-flow");
 var xpathStream = require('xpath-stream');
 var _ = require('underscore');
+var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
+
+
+var log = bunyan.createLogger({
+    name: 'epgservice/olympia/sender/zdf',
+    stream: formatOut
+    });
+
 
 
 function SenderZDF(db){
+    
+    var download_counter = 0;
+    var sendungs_counter = 0;
 
      /**
      * addVideo creates a new Sendung Object and assigns data from xml object
@@ -16,14 +27,15 @@ function SenderZDF(db){
      */
     function addSendetermin (xmlElement, done){
         
-               
+        log.warn("sendungen:",++sendungs_counter);
+        
         //var sendung = new Sendung(db);
         var sendung = {};
         
         sendung.externalId      = xmlElement.$attrs["externalId"];
         sendung._id             = xmlElement.$attrs["externalId"];
 
-        sendung.vcmsid          = "vcmsidDummy";
+        sendung.vcmsid          = "vcmsid24/7";
         sendung.vcmsChannelId   = "vcmsChannelIdDummy";
         sendung.copy            = xmlElement.text;
                 
@@ -34,7 +46,7 @@ function SenderZDF(db){
         sendung.end             = xmlElement.endeDatum;
         sendung.channel         = "zdf";
         
-        
+        // 378x672
         if ( xmlElement.bildfamilie.ref ){
         /**
          * option1
@@ -55,23 +67,17 @@ function SenderZDF(db){
          */      
             sendung.imageUrl = "xmlElement.bildfamilie.zuschnitte";  
         } else {
-            sendung.imageUrl = "URLdummy";            
+            sendung.imageUrl = "URLdummy";  
+            console.log("URLdummy");          
         }
-                
-        /*
-        sendung.title           = xmlElement.$markup.find(item => item.$name == "title").$markup[0];
-        sendung.copy            = xmlElement.$markup.find(item => item.$name == "copy").$markup[0];
-        sendung.start           = xmlElement.$markup.find(item => item.$name == "start").$markup[0];
-        sendung.end             = xmlElement.$markup.find(item => item.$name == "end").$markup[0];
-        sendung.channel         = "web" + xmlElement.$markup.find(item => item.$name == "channel").$markup[0];
-        sendung.image64         = "";
-        sendung.sportart = "?";
-        */
-
-         console.log(sendung.dachzeile," - ",sendung.imageUrl);
-         console.log();
         
-         
+        /**
+         *     3
+         *  <bildfamilie>        
+         *  <AutoVisualFamily>      
+         */
+                
+        //db.save(sendung);         
     }
 
 
@@ -79,9 +85,8 @@ function SenderZDF(db){
     //xml stream reader
     /**
      * @param {stream} stream from http get 
-     * @param {function} callback to call after stream is closed 
      */
-    function readXML(stream, doneXmlCb){
+    function parseXml(stream){
 
         var xml = flow(stream, {strict:true});
         
@@ -96,33 +101,35 @@ function SenderZDF(db){
 
         // getSendungen
         xml.on('tag:Sendetermin', (x)=>{
-            console.log("add sendetermin");
             addSendetermin(x);            
         }); 
 
         // Stream End
         xml.on("end", () =>{
-            //doneXmlCb();        
-            console.log("done xml");
+            //console.log("done xml");
             xml = null;
         });
     }
     
-
+    //xml download
+    /**
+     * @param {string} url download xml  
+     */
     function getEpgXml(url){
         
-            console.log("getEpgXml");
-            http.get(url, (res) => {
-                
-                if (res.statusCode != 200){
-                    console.log(`Got response: ${res.statusCode} from ${url}`);
-                } else {
-                    //send to xml stream reader                   
-                    readXML(res);
-                }
-            }).on('error', (e) => {
-                console.log(`Error in response: ${res}`);
-            });
+        log.info("downloaded xmls:",{ count: ++download_counter} );
+
+        http.get(url, (responeStream) => {
+
+            if (responeStream.statusCode != 200){
+                console.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+            } else {
+                //send to xml stream reader                   
+                parseXml(responeStream);
+            }
+        }).on('error', (e) => {
+            console.error(`Error in response: from ${url}`);
+        });
     }
 
     /**
@@ -135,7 +142,7 @@ function SenderZDF(db){
       
         var url = `http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}`;
         
-        console.log("url",url);
+        console.log("Download:",url);
         
         //find
         /**
@@ -145,7 +152,10 @@ function SenderZDF(db){
          * <maxPage>14</maxPage>
          * <nextPageLink/> 
          */
-        getEpgXml(url);
+        getEpgXml(url,(done)=>{
+            //callback after xml stream is read
+            console.log("xml done");
+        });
 
         
 

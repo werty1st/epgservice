@@ -1,6 +1,7 @@
 var moment = require("moment");
 var request = require('request').defaults({ encoding: null });
-
+var bunyan = require('bunyan');
+var log = bunyan.createLogger({name: 'epgservice/olympia/sender/Web'});
 
 
 

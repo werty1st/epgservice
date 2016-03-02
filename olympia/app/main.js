@@ -1,5 +1,7 @@
 /* global process bot global */
 var moment = require("moment");
+var bunyan = require('bunyan');
+var log = bunyan.createLogger({name: 'epgservice/Olympia/main'});
 
 // startdate event
 var startdate = "2014-02-06";

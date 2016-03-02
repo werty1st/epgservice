@@ -4,10 +4,10 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "main": "./app/main.js",
   "scripts": {
-    "debug": "DB=${npm_config_couchdb} node ./app/main.js",
-    "debug:watch": "DB=${npm_config_couchdb} watch 'node ./app/main.js'",
-    "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
-    "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js",
+    "debug": "DB=${npm_config_couchdb} node ./app/main.js | bunyan",
+    "debug:watch": "DB=${npm_config_couchdb} watch 'node ./app/main.js | bunyan'",
+    "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js | bunyan",
+    "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js | bunyan",
     "test": "mocha --ui tdd  test/*.js;exit 0",
     "push": "couchapp push ./sofaapp/app.js ${npm_config_couchdb}",
     "push:s2": "couchapp push ./sofaapp/app.js ${npm_config_couchdb_sofa2}",
@@ -28,6 +28,8 @@
   },
   "devDependencies": {
     "async": "^1.5.2",
+    "bunyan": "^1.7.1",
+    "bunyan-format": "^0.2.1",
     "gulp": "^3.9.0",
     "jshint": "^2.9.1-rc2",
     "mocha": "^2.3.4",
