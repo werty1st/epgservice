@@ -7,7 +7,7 @@ exports.getNow = function (head, req) {
 	}
 
 	var format = req.query.accept || "";
-	var channel = req.query.channel || "all";
+	var station = req.query.station || "all";
 	var version = req.query.version || "3";
 
 	var nowsendung = false;
@@ -20,25 +20,25 @@ exports.getNow = function (head, req) {
 
     header['X-Log'] = JSON.stringify(req.requested_path);
     header['X-Log-1'] = JSON.stringify(req.query);
-    header['X-Log-3'] = channel;
+    header['X-Log-3'] = station;
 
     //return;
     var i=0;
 
     //alle stationen
-    if (channel == "all") {
+    if (station == "all") {
 
 	   	while( (row = getRow()) ) {
                          
 	   		//wenn kein sendername vorhanden weiter zum nächsten
-	   		if (!(row.value.channel)) continue;
+	   		if (!(row.value.station)) continue;
                
-	   		channel = row.value.channel;
+	   		station = row.value.station;
 
 	   		//wenn der sender noch nicht exisitert lege neuen array unter sendername an
-	   		if (!(channel in outAll)){
+	   		if (!(station in outAll)){
 
-				outAll[channel] = [];	
+				outAll[station] = [];	
 	   		} 
 
 
@@ -55,7 +55,7 @@ exports.getNow = function (head, req) {
                 var x = {};
                 x[row.id] = row.value;
 
-				outAll[channel].push( x );
+				outAll[station].push( x );
 
 				continue;
 			}
@@ -64,15 +64,15 @@ exports.getNow = function (head, req) {
             var z = {};
             z[row.id] = row.value;
 
-			if (outAll[channel].length == 1){
-				outAll[channel].push(z);
+			if (outAll[station].length == 1){
+				outAll[station].push(z);
 			}
 		}
         wrapper = outAll;
     } else {
     //eine station   
 	   	while( (row = getRow()) )  {
-	   		if (row.value.channel != channel) continue;
+	   		if (row.value.station != station) continue;
 	   		
 	        // c1 = c1+1;
 			var now   	  = new Date();

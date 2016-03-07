@@ -28,9 +28,9 @@ exports.getToday = function (head, req) {
 			// var time_old = new Date(row.value.time);
 			// var time_now = new Date();
 			// var diff = parseFloat((Math.abs(time_now - time_old)/3600000).toPrecision(4));
-			if (!(row.value.channel)) continue;
+			if (!(row.value.station)) continue;
 
-	   		var stationname = row.value.channel;
+	   		var stationname = row.value.station;
 
 	   		if (!(stationname in outAll.sender)){
 	   			outAll.sender[stationname] = {};
@@ -82,7 +82,7 @@ exports.getToday = function (head, req) {
 			// var time_old = new Date(row.value.time);
 			// var time_now = new Date();
 			// var diff = parseFloat((Math.abs(time_now - time_old)/3600000).toPrecision(4));
-			if (row.value.channel != station) continue;
+			if (row.value.station != station) continue;
 
 			var today     = new Date();
 			var today_int = (today.getHours()) * 10000 + today.getMinutes() * 100 + today.getSeconds();

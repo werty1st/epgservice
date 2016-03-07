@@ -1,15 +1,19 @@
 var moment = require("moment");
+var https = require("https");
+var flow  = require("xml-flow");
 var request = require('request').defaults({ encoding: null });
 var bunyan = require('bunyan');
-var log = bunyan.createLogger({name: 'epgservice/olympia/sender/Web'});
+var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
 
 
-
+var log = bunyan.createLogger({
+    name: 'epgservice/olympia/sender/web',
+    stream: formatOut
+    });
 
 function SenderWeb(db){
     
     var opentag = 0;
-    var sc = 0;
     var senderO = this;
         
     /**
@@ -18,10 +22,10 @@ function SenderWeb(db){
      * channel (web[web1-6, p12[Hauptprogramm])
      * at this time it is possible to reduce 
      */
-    this.passElementFn = function passElementFn( video ) {
-        
+    function passElementFn( video ) {
+
         //get channel
-        var channel = video.$markup.find(item => item.$name == "channel").$markup[0];
+        var channel = video.channel;
 
         //drop channel <> 1-6
         switch (channel) {
@@ -31,10 +35,9 @@ function SenderWeb(db){
             case "4":
             case "5":
             case "6":
-                addVideo(video, ()=>{ 
+                addSendetermin(video, ()=>{ 
                     opentag--;
                     if (opentag===0){
-                        console.log();
                         senderO.completed();
                     }
                 });
@@ -45,111 +48,110 @@ function SenderWeb(db){
     
 
     /**
-     * addVideo creates a new Sendung Object and assigns data from xml object
+     * addSendetermin creates a new Sendung Object and assigns data from xml object
      * after that it collects the Sendungs Preview Image
      * the done callback is passed from main.js@readXMLstream and gets passed to 
      */
-    function addVideo (xmlElement, done){
+    function addSendetermin (xmlElement, done){
         
         opentag++;
                
-        var sendung = new Sendung(db);
+        var sendung = {};
         
-        sendung.ecmsid          = xmlElement.$attrs["ecms-id"];
-        sendung.vcmsid          = xmlElement.$attrs["vcms-id"];
-        sendung._id             = xmlElement.$attrs["vcms-id"]; //doc id
-        sendung.vcmsChannelId   = xmlElement.$attrs["vcms-channel-id"];
-        sendung.typicalId       = xmlElement.$attrs["typical-id"];
-        sendung.title           = xmlElement.$markup.find(item => item.$name == "title").$markup[0];
-        sendung.copy            = xmlElement.$markup.find(item => item.$name == "copy").$markup[0];
-        sendung.start           = xmlElement.$markup.find(item => item.$name == "start").$markup[0];
-        sendung.end             = xmlElement.$markup.find(item => item.$name == "end").$markup[0];
-        sendung.channel         = "web" + xmlElement.$markup.find(item => item.$name == "channel").$markup[0];
-        sendung.image64         = "";
-        //sendung.sportart = "?";
+        sendung.ecmsid           = xmlElement.$attrs["ecms-id"];
+        sendung.vcmsid           = xmlElement.$attrs["vcms-id"];
+        sendung._id              = xmlElement.$attrs["vcms-id"]; //doc id
+        sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
+        sendung.typicalId        = xmlElement.$attrs["typical-id"];
+        sendung.title            = xmlElement.title;
+        sendung.copy             = xmlElement.copy;
+        sendung.start            = xmlElement.start;
+        sendung.end              = xmlElement.end;
+        sendung.station          = "web" + xmlElement.channel;
+        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
 
 
         /**
          * TODO: remove
          * add delta to get current sendungen
          */
-        console.log("modify date",delta);
+        log.info("modify date",delta);
         sendung.start = moment(sendung.start).add(delta, 'days').format(); 
         sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
         
 
-        /**
-         * load image from sendung.url
-         * callback is called after image is loaded
-         */
-        sendung.getImage( sendung, ()=>{
-           
-            
-            // store sendung to db
-            sendung.store( ()=>{
-               
-                process.stdout.cursorTo(0);
-                process.stdout.write(`Get Image #${++sc}`);
-                                
-                // store to db complete
-                done();
-                // delete sendung Obj
-                sendung = null;
-                    
-            } );
-            
+
+        // store sendung to db
+        db.store(sendung, (err)=>{
+            if (err){
+                log.error("Error saving Sendung: ", err);
+            }                
+            // store to db complete
+            done();
+            // delete sendung Obj
+            sendung = null;
         });
-        
+
+    }
+
+
+
+    //xml stream reader
+    /**
+     * @param {stream} stream from http get 
+     */
+    function parseXml(stream){
+
+        var xml = flow(stream, {strict:true});
          
+        xml.on('tag:video', passElementFn); 
+        xml.on('tag:bracket', passElementFn);  
+         
+        
+        xml.on("end", () =>{
+            xml = null;
+        });
     }
     
-      
-    
+    //xml download
     /**
-     * bracket contains the same items as video
-     * as long as no special handling for bracket or video is needed 
-     * the video function can be used
+     * @param {string} url download xml  
      */
-    this.addBracket = this.addVideo; /*function addBracket (xmlElement){};*/
-}
-
-/**
- * Felder einer Sendung(db)
- * getImage() lädt Vorschaubild nach
- * store() speichert Sendung mit Bild in db
- */
-function Sendung(db){
-
-    this.getImage = function getImage( sendung, done ){
-
-        //var url = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
-        var url = `https://placeholdit.imgix.net/~text?txtsize=33&txt=${new Date().toISOString()}&w=485&h=273`;
-        request.get(url, (error, response, body) => {
-
-        sendung.externalImageUrl = url;
+    function getEpgXml(url){
+        
+        https.get(url, (res) => {
             
-            if (!error && response.statusCode == 200) {
-                sendung.image64 = "data:" + response.headers["content-type"] + ";base64," + new Buffer(body).toString('base64');
+            if (res.statusCode != 200){
+                log.error(`Got response: ${res.statusCode} from ${url}`);
+            } else {
+                //send to xml stream reader
+                parseXml(res);   
             }
-            
-            // if placeholdit wont answer set default image
-            if (sendung.image64 === ""){
-                // retry
-                console.log("response error", response.statusCode);
-                //sendung.image64 = "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
-            }          
-            
-            // callback image load complete
-            done();
-            
-        });        
+
+        }).on('error', (e) => {
+            log.error(`Got error: ${e.message}`);
+        });   
+
+
+    }
+
+
+
+    /**
+     * Genrate URLs based on DateTime.now() from Today-1 to Today+30 
+     * 
+     */
+    this.update = function update(options){
+
+
+        for (var url of options.urls) {
+            getEpgXml(url);
+        }
+
     };
-    
-    this.store = function store ( done ){
-        //console.log("store ok");
-        db.store( JSON.parse(JSON.stringify(this)), done );
-    };    
+
 }
+
 
 module.exports = SenderWeb;
 

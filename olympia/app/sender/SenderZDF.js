@@ -17,8 +17,8 @@ var log = bunyan.createLogger({
 
 function SenderZDF(db){
     
-    var download_counter = 0;
-    var sendungs_counter = 0;
+    var opentag = 0;
+    var senderO = this;
 
      /**
      * addVideo creates a new Sendung Object and assigns data from xml object
@@ -27,16 +27,15 @@ function SenderZDF(db){
      */
     function addSendetermin (xmlElement, done){
         
-        log.warn("sendungen:",++sendungs_counter);
+        opentag++;
         
-        //var sendung = new Sendung(db);
         var sendung = {};
         
         sendung.externalId      = xmlElement.$attrs["externalId"];
         sendung._id             = xmlElement.$attrs["externalId"];
 
-        sendung.vcmsid          = "vcmsid24/7";
-        sendung.vcmsChannelId   = "vcmsChannelIdDummy";
+        sendung.vcmsid          = "1822600";
+        sendung.vcmsChannelId   = "74";
         sendung.copy            = xmlElement.text;
                 
         sendung.titel           = xmlElement.titel || "";
@@ -44,7 +43,7 @@ function SenderZDF(db){
         sendung.dachzeile       = xmlElement.dachzeile || "";
         sendung.start           = xmlElement.beginnDatum;
         sendung.end             = xmlElement.endeDatum;
-        sendung.channel         = "zdf";
+        sendung.station         = "zdf";
         
         // 378x672
         if ( xmlElement.bildfamilie.ref ){
@@ -77,9 +76,30 @@ function SenderZDF(db){
          *  <AutoVisualFamily>      
          */
                 
-        //db.save(sendung);         
+        /**
+         * load image from sendung.url
+         * callback is called after image is loaded
+         */
+        getImageUrl( sendung, ()=>{
+            
+            // store sendung to db
+            db.store(sendung, (err)=>{
+                if (err){
+                    log.error("Error saving Sendung: ", err);
+                }                
+                // store to db complete
+                done();
+                // delete sendung Obj
+                sendung = null;
+            });
+            
+        });          
     }
 
+
+    function getImageUrl(sendung,callback){
+        callback();
+    }
 
 
     //xml stream reader
@@ -100,8 +120,13 @@ function SenderZDF(db){
             });
 
         // getSendungen
-        xml.on('tag:Sendetermin', (x)=>{
-            addSendetermin(x);            
+        xml.on('tag:Sendetermin', (xml)=>{
+            addSendetermin(xml, ()=>{
+                opentag--;
+                if (opentag===0){
+                    senderO.completed();
+                }                
+            });            
         }); 
 
         // Stream End
@@ -116,8 +141,6 @@ function SenderZDF(db){
      * @param {string} url download xml  
      */
     function getEpgXml(url){
-        
-        log.info("downloaded xmls:",{ count: ++download_counter} );
 
         http.get(url, (responeStream) => {
 

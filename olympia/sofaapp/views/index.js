@@ -8,7 +8,7 @@
 exports.view_getAllbyDate = {
     map: function(doc) {
 
-        if (doc.channel) {
+        if (doc.station) {
             delete doc.image64;
             emit(doc.start, doc);                
         }       
@@ -53,20 +53,20 @@ exports.view_getAllbyDate = {
     }
 };
 
-exports.view_getAllByChannel = {
+exports.view_getAllByStation = {
     map: function(doc) {
-        if(doc.channel !== undefined) {
-            emit(doc.channel, {"_id":doc._id,"_rev":doc._rev});
+        if(doc.station !== undefined) {
+            emit(doc.station, {"_id":doc._id,"_rev":doc._rev});
         }
     }
 };
 
 
-// http://localhost:5984/ecms/_design/app/_view/getAllByChannelDate?startkey=["web2"]&endkey=["web3"]
-exports.view_getAllByChannelDate = {
+// http://localhost:5984/ecms/_design/app/_view/getAllByShannelDate?startkey=["web2"]&endkey=["web3"]
+exports.view_getAllByStationDate = {
     map: function(doc) {
-        if(doc.channel !== undefined) {
-            emit([doc.channel, doc.start], {"_id":doc._id,"_rev":doc._rev});
+        if(doc.station !== undefined) {
+            emit([doc.station, doc.start], {"_id":doc._id,"_rev":doc._rev});
         }
     }
 };

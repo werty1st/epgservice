@@ -1,78 +1,45 @@
 /* global bot */
 
-var ecms = require('nano')(process.env.DB);
-
-
-function decodeBase64Image(dataString) {
-    var matches = dataString.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
-    response = {};
-
-    if (matches.length !== 3) {
-        return new Error('Invalid input string');
-    }   
-
-    response.type = matches[1];
-    response.data = new Buffer(matches[2], 'base64');
-
-    return response;
-}
+var db = require('nano')(process.env.DB);
 
 function save( sendung, done ){
     
-    var image = decodeBase64Image(sendung.image64);
-    // remove inline image
-    delete sendung.image64;
-    
-    ecms.insert(sendung, (err, docHead)=>{
+    db.insert(sendung, (err, docHead)=>{
         if(err){
             console.log("failed saving doc");
             bot.error("failed saving doc");
+            done(err);
+        } else {
             done();
-        }else{
-            //console.log("updated",sendung.image64);
-            
-            // update attachment
-            //console.log("updated",sendung);
-            
-            //console.log(docHead);
-            ecms.attachment.insert(docHead.id, "image", image.data, image.type, {rev: docHead.rev},(err)=>{
-                if(err) console.log(err);
-                done();
-            });
         }
-    });
+    });    
 }
+
 
 
 function store( sendung, done ){
    
-    //console.log("dbstore");
-
     //check if exists then update else save
-    ecms.head(sendung._id, function(err, _, headers) {
+    db.head(sendung._id, function(err, _, headers) {
     
+
         if (!err){
-            //console.log(headers);
             // update
             //build hash from json to decide if update needed
             sendung._rev = headers.etag.replace(/['"]+/g, ''); //nervige doppelte "
+            
+            //update
             save( sendung, done );
         } else {
-            // save
             if (err.statusCode == 404){
-                //save new
+                //new
                 save( sendung, done );
             } else{
-                console.log(err);
-                done();                
+                console.log("err.statusCode",err);
+                done(err);
             }
-                     
         }
-        
-    });    
-    
-
-
+    });
 }
     
 module.exports = {
