@@ -1,18 +1,16 @@
-/* global process global */
+/* global process log */
 
-var Parallel = require('paralleljs');
-var https = require("https");
 var db = require("./couchdb/db");
-var async = require("async");
-var readXMLstream = require("./xml/readXMLstream");
 var SenderGruppe = require("./sender/SenderGruppe");
-
 var moment = require("moment");
 var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
 var log = bunyan.createLogger({
     name: 'epgservice/olympia/main',
-    stream: formatOut
+    stream: formatOut,
+    level: process.env.logLevel
     });
+/*fatal (60) error (50) warn (40) info (30) debug (20) trace (10)*/
+
 
 // startdate event
 var startdate = "2014-02-06";
@@ -20,54 +18,38 @@ var startdate = "2014-02-06";
 // enddate event
 var enddate = "2014-02-23";
 
+// user-agent
+var useragent = `request (nodejs ${process.version}) - Olympia/ECMS (HRNM TTP)`;
 
-/**
- * delta berechnen und dann allen datumsanagben draufrechnen
- * heute - 2014-02-12 = x days
- */
-var delta = global.delta = moment().diff(moment("2014-02-06"), "days") ;
-    log.info("Delta:",delta);
-    log.info("Delta:",process.env.DB);
-
-
-var options = { proto: "https",
-                 host: "eventcms.zdf.de",
-                 path: "/xml/olympia2014/epg/" };
-
-//main
-var ecms_urls = require("./urlgen")({ startdate, enddate, options });
-
+// create ECMS URLs based on Event Data
+var ecms_urls = require("./urlgen")({ startdate, enddate, options: { proto: "https",
+                                                            host : "eventcms.zdf.de",
+                                                            path : "/xml/olympia2014/epg/" } });
 
 
 // create new SenderGruppe
 var senderGruppe = new SenderGruppe(db);
-var websender = senderGruppe.web;
-var zdfsender = senderGruppe.zdf;
 
-    senderGruppe.completed(websender, function(){
-        console.log("websender finished");
-        end();
-    });
+var websender    = senderGruppe.web;
+var zdfsender    = senderGruppe.zdf;
 
-    senderGruppe.completed(zdfsender, function(){
-        console.log("zdfsender finished");
-    });
+zdfsender.update({useragent}, ()=>{
+    // done
+    log.warn("zdfsender finished");
+    console.log("zdfsender finished");
+});
 
-
-    websender.update({ urls:ecms_urls });
-    zdfsender.update();
-
-
+/*websender.update({ urls:ecms_urls, delta: true, https: false, useragent },()=>{
+    // done
+    log.warn("websender finished");
+    console.log("websender finished");
+});*/
 
 
-
-function end(){
-    //bot.close();
-    process.exit();
+function end(code){
+    process.exit(code);
 }
 
-
-/*
 function exitHandler(options, err) {
     if (options.cleanup) console.log('clean');
     if (err) console.log(err.stack);
@@ -78,4 +60,10 @@ function exitHandler(options, err) {
 process.on('exit', exitHandler.bind(null,{cleanup:true}));
 
 //catches ctrl+c event
-process.on('SIGINT', exitHandler.bind(null, {exit:true}));*/
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+
+//catch unhandled Exception
+process.on('uncaughtException', (err) => {
+    log.fatal("uncaughtException",err);
+    end();
+});

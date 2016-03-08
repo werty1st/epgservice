@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "main": "./app/main.js",
+  "config": {
+    "logLevel": "debug" 
+  },
   "scripts": {
-    "debug": "DB=${npm_config_couchdb} node ./app/main.js | bunyan",
-    "debug:watch": "DB=${npm_config_couchdb} watch 'node ./app/main.js | bunyan'",
+    "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js | bunyan",
+    "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js | bunyan'",
     "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js | bunyan",
     "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js | bunyan",
     "test": "mocha --ui tdd  test/*.js;exit 0",
@@ -21,7 +24,7 @@
     "moment": "^2.11.0",
     "nano": "^6.1.5",
     "node-ipc": "^6.0.0",
-    "request": "^2.67.0",
+    "request": "^2.69.0",
     "underscore": "^1.8.3",
     "xml-flow": "^0.4.0",
     "xpath-stream": "0.0.8"

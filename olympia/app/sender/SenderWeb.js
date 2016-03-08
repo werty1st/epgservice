@@ -1,51 +1,24 @@
 var moment = require("moment");
 var https = require("https");
 var flow  = require("xml-flow");
-var request = require('request').defaults({ encoding: null });
-var bunyan = require('bunyan');
+
 var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
-
-
 var log = bunyan.createLogger({
     name: 'epgservice/olympia/sender/web',
-    stream: formatOut
+    stream: formatOut,
+    level: process.env.logLevel
     });
+
 
 function SenderWeb(db){
     
     var opentag = 0;
+    var delta = 0;
     var senderO = this;
-        
-    /**
-     * passElementFn is passed to the xml parser
-     * it receives a xml video/bracket element and stores it to its corresponding 
-     * channel (web[web1-6, p12[Hauptprogramm])
-     * at this time it is possible to reduce 
-     */
-    function passElementFn( video ) {
+    var finished;    
+    var agent;
 
-        //get channel
-        var channel = video.channel;
 
-        //drop channel <> 1-6
-        switch (channel) {
-            case "1":
-            case "2":
-            case "3":
-            case "4":
-            case "5":
-            case "6":
-                addSendetermin(video, ()=>{ 
-                    opentag--;
-                    if (opentag===0){
-                        senderO.completed();
-                    }
-                });
-                break;
-            default:
-        }
-    };
-    
 
     /**
      * addSendetermin creates a new Sendung Object and assigns data from xml object
@@ -68,14 +41,14 @@ function SenderWeb(db){
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
         sendung.station          = "web" + xmlElement.channel;
-        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
+        //sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
+        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
 
 
         /**
          * TODO: remove
          * add delta to get current sendungen
-         */
-        log.info("modify date",delta);
+         */        
         sendung.start = moment(sendung.start).add(delta, 'days').format(); 
         sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
         
@@ -87,9 +60,8 @@ function SenderWeb(db){
                 log.error("Error saving Sendung: ", err);
             }                
             // store to db complete
+            log.debug(`id ${sendung._id} saved`);
             done();
-            // delete sendung Obj
-            sendung = null;
         });
 
     }
@@ -100,37 +72,69 @@ function SenderWeb(db){
     /**
      * @param {stream} stream from http get 
      */
-    function parseXml(stream){
+    function parseXmlStream(stream){
+
+        /**
+         * passElementFn is passed to the xml parser
+         * it receives a xml video/bracket element and stores it to its corresponding 
+         * channel (web[web1-6, p12[Hauptprogramm])
+         * at this time it is possible to reduce 
+         */
+        function passElementFn( video ) {
+
+            //get channel
+            var channel = video.channel;
+
+            //drop channel <> 1-6
+            switch (channel) {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                    addSendetermin(video, ()=>{ 
+                        opentag--;
+                        if (opentag===0){
+                            if (finished) finished();
+                        }
+                    });
+                    break;
+                default:
+            }
+        }
 
         var xml = flow(stream, {strict:true});
          
         xml.on('tag:video', passElementFn); 
         xml.on('tag:bracket', passElementFn);  
-         
-        
-        xml.on("end", () =>{
-            xml = null;
-        });
     }
     
     //xml download
     /**
      * @param {string} url download xml  
      */
-    function getEpgXml(url){
+    function getXmlStream(url){
         
-        https.get(url, (res) => {
+        log.info("Download:",url);
+
+        var get_options = require('url').parse(url);
+        get_options.headers = {
+                'User-Agent': agent
+            };
+
+        https.get(get_options, (responeStream) => {
             
-            if (res.statusCode != 200){
-                log.error(`Got response: ${res.statusCode} from ${url}`);
+            if (responeStream.statusCode != 200){
+                log.error(`Got response: ${responeStream.statusCode} from ${url}`);
             } else {
                 //send to xml stream reader
-                parseXml(res);   
+                parseXmlStream(responeStream);   
             }
 
         }).on('error', (e) => {
             log.error(`Got error: ${e.message}`);
-        });   
+        });
 
 
     }
@@ -141,11 +145,29 @@ function SenderWeb(db){
      * Genrate URLs based on DateTime.now() from Today-1 to Today+30 
      * 
      */
-    this.update = function update(options){
+    this.update = function update(options, done){
 
+        if (typeof options === 'function' ) {
+            done = options;
+            options = null;
+        }
+        finished = done;
+        
+        if (typeof options === 'object'){
+            agent = options.useragent;
+        }
+        /**
+         * delta berechnen und dann allen datumsanagben draufrechnen
+         * heute - 2014-02-12 = x days
+         */
+        if (options.delta){
+            delta = moment().diff(moment("2014-02-06"), "days") ;
+            log.info("Delta:",delta);
+            log.info("Delta:",process.env.DB);
+        }
 
         for (var url of options.urls) {
-            getEpgXml(url);
+            getXmlStream(url);
         }
 
     };
