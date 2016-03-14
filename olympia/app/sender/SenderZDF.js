@@ -49,7 +49,7 @@ function SenderZDF(db){
         
 
         // 672x378
-        if ( xmlElement.bildfamilie.ref ){
+        if ( xmlElement.bildfamilie && xmlElement.bildfamilie.ref ){
         /**
          * option1
          *   bildfamilie: 
@@ -58,7 +58,7 @@ function SenderZDF(db){
          */            
             sendung.externalImageUrl = xmlElement.bildfamilie.ref;
             type_image = "xmlElement.bildfamilie.ref";
-        } else if ( xmlElement.bildfamilie.zuschnitte ){
+        } else if ( xmlElement.bildfamilie && xmlElement.bildfamilie.zuschnitte ){
         /** 
          * option2
          *  bildfamilie: 
@@ -82,6 +82,7 @@ function SenderZDF(db){
             sendung.externalImageUrl = "URLdummy";
             log.warn("URLdummy4");
         }
+        
                         
  
         getImageUrl(type_image, sendung, ()=>{

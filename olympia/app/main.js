@@ -6,7 +6,8 @@ var moment = require("moment");
 var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
 var log = bunyan.createLogger({
     name: 'epgservice/olympia/main',
-    stream: formatOut,
+    //stream: formatOut,
+    stream: process.stderr,
     level: process.env.logLevel
     });
 /*fatal (60) error (50) warn (40) info (30) debug (20) trace (10)*/
@@ -39,11 +40,11 @@ zdfsender.update({useragent}, ()=>{
     console.log("zdfsender finished");
 });
 
-/*websender.update({ urls:ecms_urls, delta: true, https: false, useragent },()=>{
+websender.update({ urls:ecms_urls, delta: true, https: false, useragent },()=>{
     // done
     log.warn("websender finished");
     console.log("websender finished");
-});*/
+});
 
 
 function end(code){
@@ -63,7 +64,7 @@ process.on('exit', exitHandler.bind(null,{cleanup:true}));
 process.on('SIGINT', exitHandler.bind(null, {exit:true}));
 
 //catch unhandled Exception
-process.on('uncaughtException', (err) => {
+/*process.on('uncaughtException', (err) => {
     log.fatal("uncaughtException",err);
     end();
-});
+});*/

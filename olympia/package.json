@@ -4,17 +4,17 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "main": "./app/main.js",
   "config": {
-    "logLevel": "debug" 
+    "logLevel": "info" 
   },
   "scripts": {
-    "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js | bunyan",
-    "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js | bunyan'",
-    "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js | bunyan",
-    "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js | bunyan",
+    "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js",
+    "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js'",
+    "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
+    "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js",
     "test": "mocha --ui tdd  test/*.js;exit 0",
-    "push": "couchapp push ./sofaapp/app.js ${npm_config_couchdb}",
-    "push:s2": "couchapp push ./sofaapp/app.js ${npm_config_couchdb_sofa2}",
-    "push:watch": "watch 'npm run push' sofaapp/",
+    "push": "cd sofaapp; kanso push ${npm_config_couchdb}; cd ..",
+    "push:s2": "kanso push ${npm_config_couchdb_sofa2}",
+    "push:watch": "watch 'npm run push'",
     "push:s2:watch": "watch 'npm run push:s2' sofaapp/"
   },
   "author": "",

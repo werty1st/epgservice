@@ -4,7 +4,6 @@
 
 // listFn+viewFn
 // _list/getToday_list/getAllWithTimeStamp', query: { accept: 'json', version: '2' }},
-
 exports.view_getAllbyDate = {
     map: function(doc) {
 
@@ -52,22 +51,3 @@ exports.view_getAllbyDate = {
         
     }
 };
-
-exports.view_getAllByStation = {
-    map: function(doc) {
-        if(doc.station !== undefined) {
-            emit(doc.station, {"_id":doc._id,"_rev":doc._rev});
-        }
-    }
-};
-
-
-// http://localhost:5984/ecms/_design/app/_view/getAllByShannelDate?startkey=["web2"]&endkey=["web3"]
-exports.view_getAllByStationDate = {
-    map: function(doc) {
-        if(doc.station !== undefined) {
-            emit([doc.station, doc.start], {"_id":doc._id,"_rev":doc._rev});
-        }
-    }
-};
-

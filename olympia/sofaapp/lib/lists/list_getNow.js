@@ -1,4 +1,4 @@
-exports.getNow = function (head, req) {
+exports.list_getNow = function (head, req) {
 
 	function provides_json(out,header) {
         header['Content-Type'] = 'application/json; charset=utf-8';

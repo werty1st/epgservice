@@ -1,14 +1,23 @@
-exports.getToday = function (head, req) {
+exports.list_getToday = function (head, req) {
 
-	var format = req.query.accept || "";
+	function provides_json(out,header) {
+		
+        header['Content-Type'] = 'application/json; charset=utf-8';
+		start({code: 200, headers: header});
+		//TODO Fehlermeldung wenn leer
+		send(JSON.stringify(out));
+	}
+
+
+	var format  = req.query.accept  || "";
 	var station = req.query.station || "all";
-	var version = req.query.version || "1";
+	var version = req.query.version || "3";
 
-	var wrapper = { "response" : { status : { "statuscode" : "ok"} , "sendungen" : [] }};
+	var wrapper = { "response" : { status : { "statuscode" : "ok"}, "sendungen" : [] }};
 	var out = wrapper.response;
 
 	//für alle sender station=""
-	var wrapperAll = { "response" : { status : { "statuscode" : "ok"} , "sender" : {}  }};
+	var wrapperAll = { "response" : { status : { "statuscode" : "ok"}, "sender" : {}  }};
 	var outAll = wrapperAll.response;
 
     var header = {};
@@ -19,13 +28,9 @@ exports.getToday = function (head, req) {
 			// var time_old = new Date(row.value.time);
 			// var time_now = new Date();
 			// var diff = parseFloat((Math.abs(time_now - time_old)/3600000).toPrecision(4));
-			if (!(row.value.station && row.value.station.name)) continue;
+			if (!(row.value.station)) continue;
 
-	   		var stationname = row.value.station.name;
-
-			if ( (version == "2") && (row.value.station.name == "3sat") ) {
-				stationname = "dreisat";
-			}
+	   		var stationname = row.value.station;
 
 	   		if (!(stationname in outAll.sender)){
 	   			outAll.sender[stationname] = {};
@@ -37,13 +42,13 @@ exports.getToday = function (head, req) {
 			var today_int = (today.getHours()) * 10000 + today.getMinutes() * 100 + today.getSeconds();
 
 			//2013-08-28T05:00:00+02:00
-			var airtime    = new Date(row.value.time);
+			var airtime    = new Date(row.value.start);
 			var airtime_ms = airtime.valueOf();
 
 			var startzeit = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 5, 30, 0, 0);
 			var startzeit_ms = 0;
 
-			var endzeit = new Date(row.value.endTime);
+			var endzeit = new Date(row.value.end);
 			var endzeit_ms = endzeit.valueOf();
 
 			if( today_int < 50300) //wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
@@ -77,19 +82,19 @@ exports.getToday = function (head, req) {
 			// var time_old = new Date(row.value.time);
 			// var time_now = new Date();
 			// var diff = parseFloat((Math.abs(time_now - time_old)/3600000).toPrecision(4));
-			if (row.value.station.name != station) continue;
+			if (row.value.station != station) continue;
 
 			var today     = new Date();
 			var today_int = (today.getHours()) * 10000 + today.getMinutes() * 100 + today.getSeconds();
 
 			//2013-08-28T05:00:00+02:00
-			var airtime    = new Date(row.value.time);
+			var airtime    = new Date(row.value.start);
 			var airtime_ms = airtime.valueOf();
 
 			var startzeit = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 5, 30, 0, 0);
 			var startzeit_ms = 0;
 
-			var endzeit = new Date(row.value.endTime);
+			var endzeit = new Date(row.value.end);
 			var endzeit_ms = endzeit.valueOf();
 
 			if( today_int < 50300) //wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
@@ -114,7 +119,7 @@ exports.getToday = function (head, req) {
 
 
 			//betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
-			if (airtime_ms >= startzeit_ms){
+			if (airtime_ms >= startzeit){
 				out.sendungen.push({sendung:row});
 			}	
 		}    	
@@ -134,27 +139,4 @@ exports.getToday = function (head, req) {
 	}
 }
 
-	function provides_json(out,header) {
-		
-        header['Content-Type'] = 'application/json; charset=utf-8';
-		start({code: 200, headers: header});
-		//TODO Fehlermeldung wenn leer
-		send(JSON.stringify(out));
-	}
 
-	function provides_xml (out,header) {
-
-        header['Content-Type'] = 'application/xml; charset=utf-8';
-        start({code: 200, headers: header});
-				
-		//TODO Fehlermeldung wenn leer
-		var filter = Object();
-			filter['"'] = "&quot;";
-			filter["'"] = "&apos;";
-			filter["<"] = "&lt;";
-			filter[">"] = "&gt;";
-			filter["&"] = "&amp;";
-		var myxml = require('lib/jstoxml');
-		var xmlout = myxml.toXML(out,{header: true, indent: '  ',"filter":filter });
-		send(xmlout);		
-	}	
