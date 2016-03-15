@@ -67,7 +67,7 @@ exports.getToday = function (head, req) {
 			}
 
 			//betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
-			if (airtime_ms >= startzeit){
+			if (airtime_ms >= startzeit_ms){
 				outAll.sender[stationname].sendungen.push({sendung:row});
 			}	
 		} 
@@ -114,7 +114,7 @@ exports.getToday = function (head, req) {
 
 
 			//betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
-			if (airtime_ms >= startzeit){
+			if (airtime_ms >= startzeit_ms){
 				out.sendungen.push({sendung:row});
 			}	
 		}    	
