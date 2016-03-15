@@ -6,32 +6,37 @@
   "config": {
     "logLevel": "debug",
     "ecms": {
-        "delta": true,
-        "startdate": "2014-02-06",
-        "enddate":   "2014-02-23",
-        "proto": "https",
-        "host":  "eventcms.zdf.de",
-        "path":  "/xml/olympia2014/epg/"
+      "delta": true,
+      "startdate": "2014-02-06",
+      "enddate": "2014-02-23",
+      "proto": "https",
+      "host": "eventcms.zdf.de",
+      "path": "/xml/olympia2014/epg/"
     },
     "p12": {
-        "proto": "http",
-        "range": 14
+      "proto": "http",
+      "range": 14
     },
     "useragent": "request (nodejs) - Olympia/ECMS (HRNM - Webmaster/TTP)"
   },
   "scripts": {
+    "production:run": "",
+    "production:install": "npm install; cd sofaapp; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
     "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js",
     "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js'",
     "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
     "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js",
-    "test": "mocha --ui tdd  test/*.js;exit 0",
     "push": "cd sofaapp; kanso push ${npm_config_couchdb}; cd ..",
     "push:s2": "kanso push ${npm_config_couchdb_sofa2}",
     "push:watch": "watch 'npm run push'",
     "push:s2:watch": "watch 'npm run push:s2' sofaapp/"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "ronny adams",
+  "license": "GPL-3.0",
+  "repository" : {
+      "type" : "git"
+    , "url" : "https://github.com/werty1st/epgservice.git#apiv2"
+    }, 
   "dependencies": {
     "couchapp": "^0.11.0",
     "moment": "^2.11.0",
@@ -48,7 +53,7 @@
     "bunyan-format": "^0.2.1",
     "gulp": "^3.9.0",
     "jshint": "^2.9.1-rc2",
-    "mocha": "^2.3.4",
+    "kanso": "^0.5.0",
     "node-telegram-bot-api": "^0.19.2",
     "should": "^8.0.2",
     "watch": "^0.17.1"
