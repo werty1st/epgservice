@@ -12,13 +12,6 @@ var log = bunyan.createLogger({
     });
 /*fatal (60) error (50) warn (40) info (30) debug (20) trace (10)*/
 
-
-// user-agent
-var useragent = process.env.npm_package_config_useragent;
-
-console.log(useragent); process.exit();
-
-
 // create new SenderGruppe
 var senderGruppe = new SenderGruppe(db);
 
@@ -53,7 +46,7 @@ process.on('exit', exitHandler.bind(null,{cleanup:true}));
 process.on('SIGINT', exitHandler.bind(null, {exit:true}));
 
 //catch unhandled Exception
-/*process.on('uncaughtException', (err) => {
+process.on('uncaughtException', (err) => {
     log.fatal("uncaughtException",err);
     end();
-});*/
+});

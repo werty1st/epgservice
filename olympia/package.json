@@ -1,8 +1,7 @@
 {
-  "name": "olympia",
+  "name": "ecms_p12_epg_aggregator",
   "version": "1.0.0",
-  "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
-  "main": "./app/main.js",
+  "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",  
   "config": {
     "logLevel": "debug",
     "ecms": {
@@ -31,31 +30,27 @@
     "push:watch": "watch 'npm run push'",
     "push:s2:watch": "watch 'npm run push:s2' sofaapp/"
   },
+  "main": "./app/main.js",
   "author": "ronny adams",
   "license": "GPL-3.0",
+  "readme": "readme.md",
   "repository" : {
-      "type" : "git"
-    , "url" : "https://github.com/werty1st/epgservice.git#apiv2"
+      "type" : "git",
+      "url" : "https://github.com/werty1st/epgservice.git#apiv2"
     }, 
   "dependencies": {
-    "couchapp": "^0.11.0",
     "moment": "^2.11.0",
     "nano": "^6.1.5",
-    "node-ipc": "^6.0.0",
     "request": "^2.69.0",
     "underscore": "^1.8.3",
     "xml-flow": "^0.4.0",
     "xpath-stream": "0.0.8"
   },
   "devDependencies": {
-    "async": "^1.5.2",
     "bunyan": "^1.7.1",
     "bunyan-format": "^0.2.1",
-    "gulp": "^3.9.0",
     "jshint": "^2.9.1-rc2",
     "kanso": "^0.5.0",
-    "node-telegram-bot-api": "^0.19.2",
-    "should": "^8.0.2",
     "watch": "^0.17.1"
   }
 }

@@ -1,13 +1,17 @@
-/* global bot */
-
 var db = require('nano')(process.env.DB);
+var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
+var log = bunyan.createLogger({
+    name: 'epgservice/olympia/couchdb/db',
+    stream: formatOut,
+    level: process.env.logLevel
+    });
+
 
 function save( sendung, done ){
     
     db.insert(sendung, (err, docHead)=>{
         if(err){
-            console.log("failed saving doc");
-            bot.error("failed saving doc");
+            log.error("failed saving doc");
             done(err);
         } else {
             done();
@@ -35,7 +39,7 @@ function store( sendung, done ){
                 //new
                 save( sendung, done );
             } else{
-                console.log("err.statusCode",err);
+                log.error("err.statusCode",err);
                 done(err);
             }
         }
