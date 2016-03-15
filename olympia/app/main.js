@@ -3,14 +3,35 @@
 var db = require("./couchdb/db");
 var SenderGruppe = require("./sender/SenderGruppe");
 var moment = require("moment");
-var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
-var log = bunyan.createLogger({
-    name: 'epgservice/olympia/main',
-    stream: formatOut,
-    //stream: process.stderr,
-    level: process.env.logLevel
-    });
-/*fatal (60) error (50) warn (40) info (30) debug (20) trace (10)*/
+var winston = require('winston');
+
+
+var log = new (winston.Logger)({
+    exitOnError: false,
+    transports: [
+      new (winston.transports.Console)({colorize: true, level: process.env.logLevel}),
+     /* new (winston.transports.File)({ level: process.env.logLevel, filename: "../somefile.log"  }),
+      new (winston.transports.File)({
+        name: 'info-file',
+        filename: 'filelog-info.log',
+        level: 'info'
+      }),
+      new (winston.transports.File)({
+        name: 'error-file',
+        filename: 'filelog-error.log',
+        level: 'error'
+      })*/
+    ]
+  });
+/*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
+
+var openLogs = 0;
+
+log.on('logging', function (transport, level, msg, meta) {
+// [msg] and [meta] have now been logged at [level] to [transport]
+    //console.log("winston");
+}); 
+
 
 // create new SenderGruppe
 var senderGruppe = new SenderGruppe(db);
@@ -20,33 +41,52 @@ var zdfsender    = senderGruppe.zdf;
 
 zdfsender.update(()=>{
     // done
-    log.debug("zdfsender finished");
+    log.info("zdfsender finished");
 });
 
 websender.update(()=>{
     // done
-    log.debug("websender finished");
+    log.info("websender finished");
 });
 
 
 function end(code){
-    process.exit(code);
+    log.info('cleanup');
+    setTimeout(()=>{
+        process.exit(code);
+    },2000);
+
 }
 
-function exitHandler(options, err) {
-    if (options.cleanup) console.log('clean');
-    if (err) console.log(err.stack);
-    if (options.exit) process.exit();
+function exitHandler(err) {
+    
+    process.removeListener('uncaughtException', exitHandler);
+    
+    //log.error("error", err);
+
+    // detect special xml error which occurs randomly
+    if(err && err.message && (err.message.search("Unclosed root tag") > -1) ){
+        log.error("Unclosed root tag",err);
+        return end(15); 
+    }
+    
+    if (err){
+        // all other Exceptions
+        log.error("uncaughtException",err);
+        return end(2);         
+    }
+    
+    end(0); //=>
 }
 
 //do something when app is closing
-process.on('exit', exitHandler.bind(null,{cleanup:true}));
+process.on('exit', exitHandler.bind());
 
 //catches ctrl+c event
-process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+process.on('SIGINT', exitHandler.bind());
 
 //catch unhandled Exception
-process.on('uncaughtException', (err) => {
-    log.fatal("uncaughtException",err);
-    end();
-});
+process.on('uncaughtException', exitHandler.bind());
+
+
+//throw new Error('suicide');

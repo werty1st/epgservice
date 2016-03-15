@@ -45,7 +45,7 @@ exports.list_getToday = function (head, req) {
     // Sendungstag von StopTag
     var stopSendungstag = stopTag.hour(5).minute(30).second(0).millisecond(0);
 
-    while(row = getRow()){	
+    while( (row = getRow()) ){	
 
         // filter station
         if (( station != "all" ) && ( row.value.station != station)) continue;
@@ -102,6 +102,6 @@ exports.list_getToday = function (head, req) {
 	} else {
 		provides_json(wrapper, header);
 	}
-}
+};
 
 

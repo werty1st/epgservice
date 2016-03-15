@@ -23,6 +23,12 @@ exports.list_getNow = function (head, req) {
 
     //return;
     var i=0;
+    
+    var now;
+    var startzeit;
+    var endzeit;
+    
+    var z = {};    
 
     //alle stationen
     if (station == "all") {
@@ -43,9 +49,9 @@ exports.list_getNow = function (head, req) {
 
 	   		
 	        // c1 = c1+1;
-			var now   	  = new Date();
-			var startzeit = new Date(row.value.start);
-			var endzeit   = new Date(row.value.end);
+			now   	  = new Date();
+			startzeit = new Date(row.value.start);
+			endzeit   = new Date(row.value.end);
 			
 			//is sendung begin <=0 dann sendung = now
 	        //suche aktuelle sendung wenn gefunden, gib sie aus und springe zu nächsten
@@ -60,7 +66,7 @@ exports.list_getNow = function (head, req) {
 			}
 	        //folgesendung gefunden, gib sie aus und beende
 
-            var z = {};
+            z = {};
             z[row.id] = row.value;
 
 			if (outAll[station].length == 1){
@@ -74,11 +80,11 @@ exports.list_getNow = function (head, req) {
 	   		if (row.value.station != station) continue;
 	   		
 	        // c1 = c1+1;
-			var now   	  = new Date();
-			var startzeit = new Date(row.value.start);
-			var endzeit   = new Date(row.value.end);
+			now   	  = new Date();
+			startzeit = new Date(row.value.start);
+			endzeit   = new Date(row.value.end);
 			
-            var z = {};
+            z = {};
             z[row.id] = row.value;
 			//is sendung begin <=0 dann sendung = now
 	        //suche aktuelle sendung wenn gefunden, gib sie aus und springe zu nächsten
@@ -103,6 +109,6 @@ exports.list_getNow = function (head, req) {
 	}else{
         provides_json(wrapper, header);
     }
-}	
+};	
 
 

@@ -25,8 +25,7 @@ function store( sendung, done ){
    
     //check if exists then update else save
     db.head(sendung._id, function(err, _, headers) {
-    
-
+        
         if (!err){
             // update
             //build hash from json to decide if update needed

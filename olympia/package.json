@@ -1,9 +1,9 @@
 {
   "name": "ecms_p12_epg_aggregator",
   "version": "1.0.0",
-  "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",  
+  "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
-    "logLevel": "debug",
+    "logLevel": "info",
     "ecms": {
       "delta": true,
       "startdate": "2014-02-06",
@@ -14,12 +14,12 @@
     },
     "p12": {
       "proto": "http",
-      "range": 14
+      "range": 60
     },
     "useragent": "request (nodejs) - Olympia/ECMS (HRNM - Webmaster/TTP)"
   },
   "scripts": {
-    "production:run": "",
+    "production:run": "DB=${npm_config_couchdb} logLevel=error node ./app/main.js",
     "production:install": "npm install; cd sofaapp; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
     "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js",
     "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js'",
@@ -34,21 +34,20 @@
   "author": "ronny adams",
   "license": "GPL-3.0",
   "readme": "readme.md",
-  "repository" : {
-      "type" : "git",
-      "url" : "https://github.com/werty1st/epgservice.git#apiv2"
-    }, 
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/werty1st/epgservice.git#apiv2"
+  },
   "dependencies": {
     "moment": "^2.11.0",
     "nano": "^6.1.5",
     "request": "^2.69.0",
     "underscore": "^1.8.3",
+    "winston": "^2.2.0",
     "xml-flow": "^0.4.0",
     "xpath-stream": "0.0.8"
   },
   "devDependencies": {
-    "bunyan": "^1.7.1",
-    "bunyan-format": "^0.2.1",
     "jshint": "^2.9.1-rc2",
     "kanso": "^0.5.0",
     "watch": "^0.17.1"

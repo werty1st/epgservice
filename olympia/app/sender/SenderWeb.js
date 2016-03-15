@@ -147,6 +147,7 @@ function SenderWeb(db){
      */
     this.update = function update(done){
 
+        finished = done;
         agent = process.env.npm_package_config_useragent;
         
         /**
@@ -201,7 +202,7 @@ function urlgen (data){
     }
 
     return  urls;
-};
+}
 
 //endpunkte definieren
 

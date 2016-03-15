@@ -34,11 +34,11 @@ function SenderZDF(db){
         var type_image;
         
         sendung.externalId      = xmlElement.$attrs.externalId;
-        sendung._id             = xmlElement.$attrs.externalId;
+        sendung._id             = sendung.externalId;
 
         sendung.vcmsid          = "1822600";
         sendung.vcmsChannelId   = "74";
-        sendung.copy            = xmlElement.text;
+        sendung.copy            = xmlElement.text || "";
                 
         sendung.titel           = xmlElement.titel || "";
         sendung.untertitel      = xmlElement.untertitel || "";
@@ -70,17 +70,20 @@ function SenderZDF(db){
          */      
             sendung.externalImageUrl = xmlElement.bildfamilie.zuschnitte;
             type_image = "xmlElement.bildfamilie.zuschnitte";
-        } else if ("xmlElement.AutoVisualFamily") {
+        } else if (xmlElement.bildfamilie && xmlElement.bildfamilie.AutoVisualFamily) {
         /**
          *     3
          *  <bildfamilie>        
          *  <AutoVisualFamily>      
          */
-            //sendung.externalImageUrl = xmlElement.bildfamilie.zuschnitte;
-            type_image = "xmlElement.AutoVisualFamily";
+            sendung.externalImageUrl = xmlElement.bildfamilie.AutoVisualFamily;
+            type_image = "xmlElement.bildfamilie.AutoVisualFamily";
+        } else if (xmlElement.epgBeitrag && xmlElement.epgBeitrag.Beitrag_Reference) {
+            console.log("XXX",xmlElement.epgBeitrag.Beitrag_Reference);
+            sendung.externalImageUrl = xmlElement.epgBeitrag.Beitrag_Reference;
+            type_image = "xmlElement.epgBeitrag.Beitrag_Reference";
         } else {
-            sendung.externalImageUrl = "URLdummy";
-            log.warn("URLdummy4");
+            throw new Error("keine bilder gefunden");
         }
         
                         
@@ -128,7 +131,6 @@ function SenderZDF(db){
                         //send to xml stream reader                   
                         parseXmlStreamImage(responeStream, (imageurl)=>{
                             sendung.externalImageUrl = imageurl;
-                            callback();
                         });
                     }
                 }).on('error', (e) => {
@@ -136,6 +138,7 @@ function SenderZDF(db){
                 });                
                 break;
             case "xmlElement.bildfamilie.zuschnitte":
+            case "xmlElement.bildfamilie.AutoVisualFamily":
 
                 //object of image urls
                 for (var objects in sendung.externalImageUrl) {
@@ -143,16 +146,13 @@ function SenderZDF(db){
                         sendung.externalImageUrl = proto + sendung.externalImageUrl[objects].image;
                         break;
                     }
-                }
-                callback();
+                }                
                 break;
-            case "xmlElement.AutoVisualFamily":
-                
+            case "xmlElement.epgBeitrag.Beitrag_Reference":
+
                 break;
         }
-        
-        
-        
+        callback();
     }
 
 
@@ -195,7 +195,7 @@ function SenderZDF(db){
 
         // getNavigation
         stream
-            .pipe(xpathStream("/EPG//navigation//Navigation//nextPageLink//Link//url//text()"))
+            .pipe(xpathStream("/EPG/navigation/Navigation/nextPageLink/Link/url/text()"))
             .on('data',(x)=>{
                 last_page = false;
                 var unescaped = _.unescape(x);
@@ -203,15 +203,76 @@ function SenderZDF(db){
             });    
 
 
+
+        stream
+            .pipe(xpathStream("/EPG/treffer/Sendetermin",{
+                externalId: "./@externalId",
+                copy: "text/text()",
+                titel: "titel/text()",
+                untertitel: "untertitel/text()",
+                dachzeile: "dachzeile/text()",
+                start: "beginnDatum/text()",
+                end: "endeDatum/text()",
+                bildfamilie: {
+                 ref: "bildfamilie/VisualFamily_Reference/@ref",
+                 epgref: "epgBeitrag/Beitrag_Reference/@ref",
+                 AutoVisualFamily: "bildfamilie/AutoVisualFamily/zuschnitte/Zuschnitt/image/Link/url/text()"                    
+                }
+            }))
+            .on('data',(x)=>{
+                /*console.log("XXXXX");
+                console.log("Sendetermin");*/
+                for(var i = 0; i< x.length; i++){
+                    var f=false;
+                    
+                    // xml mit zuschnitt => http://www.zdf.de/api/v2/content/p12:31372964
+                    if(x[i].bildfamilie.ref){
+                        console.log(x[i].bildfamilie.ref);
+                        f=true;
+                    }
+                    
+                    // xml mit zuschnitten => http://www.zdf.de/api/v2/content/p12:21698990
+                    if (x[i].bildfamilie.epgref){
+                        console.log(x[i].bildfamilie.epgref);
+                        f=true;
+                    }
+                    
+                    // bisher nicht gefunden
+                    if (x[i].bildfamilie.zuschnitte){
+                        console.log(x[i].bildfamilie.zuschnitte);
+                        console.log("bildfamilie.zuschnitte",x[i].externalId); 
+                        throw new Error("XX no image handler XX",x[i].externalId);
+                        //process.exit();                         
+                        f=true;
+                    }
+                    
+                    // array mit urls => [ '//epg-image.zdf.de/fotobase-webdelivery/images/b2e8954b-c66b-4cf9-9b55-9439f9b1f674?layout=672x378', ...] 
+                    if (x[i].bildfamilie.AutoVisualFamily) {
+                        console.log(x[i].bildfamilie.AutoVisualFamily);
+                        f=true;
+                    }
+                    
+                    if (!f){
+                        throw new Error("XX no image XX",x[i].externalId);
+                    }
+                
+                    
+                }
+                
+            });    
+
+
         // getSendungen
-        xml.on('tag:Sendetermin', (xml)=>{
+/*        xml.on('tag:Sendetermin', (xml)=>{
             addSendetermin(xml, ()=>{
                 opentag--;
+                //console.log("opentag",opentag);
                 if (opentag===0 && last_page){
+                    console.log("finished");
                     if (finished) finished();
                 }              
             });            
-        });
+        });*/
     }
     
     //xml download
@@ -247,6 +308,7 @@ function SenderZDF(db){
      */
     this.update = function update(done){
 
+        finished = done;
         agent = process.env.npm_package_config_useragent;
         var range = process.env.npm_package_config_p12_range;
 
@@ -256,7 +318,7 @@ function SenderZDF(db){
             request = http;
         }
 
-        var startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
+        var startd = moment().subtract(30, 'days').format("YYYY-MM-DD");
         var stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
       
         var url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}`;
