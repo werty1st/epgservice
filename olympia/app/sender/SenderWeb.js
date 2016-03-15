@@ -145,28 +145,29 @@ function SenderWeb(db){
      * Genrate URLs based on DateTime.now() from Today-1 to Today+30 
      * 
      */
-    this.update = function update(options, done){
+    this.update = function update(done){
 
-        if (typeof options === 'function' ) {
-            done = options;
-            options = null;
-        }
-        finished = done;
+        agent = process.env.npm_package_config_useragent;
         
-        if (typeof options === 'object'){
-            agent = options.useragent;
-        }
         /**
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
          */
-        if (options.delta){
+        if (process.env.npm_package_config_ecms_delta){
             delta = moment().diff(moment("2014-02-06"), "days") ;
             log.info("Delta:",delta);
-            log.info("Delta:",process.env.DB);
+            log.info("DB:",process.env.DB);
         }
 
-        for (var url of options.urls) {
+        // create ECMS URLs based on Event Data
+        var ecms_urls = urlgen({ startdate: process.env.npm_package_config_ecms_startdate,
+                                            enddate: process.env.npm_package_config_ecms_enddate,
+                                            options: { proto: process.env.npm_package_config_ecms_proto,
+                                                        host : process.env.npm_package_config_ecms_host,
+                                                        path : process.env.npm_package_config_ecms_path } });
+
+
+        for (var url of ecms_urls) {
             getXmlStream(url);
         }
 
@@ -177,7 +178,30 @@ function SenderWeb(db){
 
 module.exports = SenderWeb;
 
+function urlgen (data){ 
 
+    var options = data.options;
+   
+    var startd = moment(data.startdate);
+    var stopd = moment(data.enddate);
+    var days = 0;
+    var urls = []; // [ uri:{ date , url} ]
+
+
+
+    days = moment.duration(stopd.diff(startd)).asDays()+1; //plus heute
+    var date = startd.clone();
+
+    for (var i=0;i<days;i++){
+        //url
+        var filename = date.format("YYYY-MM-DD");
+        var dpath = options.proto + "://" + options.host + options.path + filename +".xml";
+        urls.push(dpath);
+        date.add(1,"days");
+    }
+
+    return  urls;
+};
 
 //endpunkte definieren
 

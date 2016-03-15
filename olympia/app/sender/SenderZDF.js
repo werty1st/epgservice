@@ -245,27 +245,19 @@ function SenderZDF(db){
      * Genrate URLs based on DateTime.now() from Today-1 to Today+30 
      * 
      */
-    this.update = function update(options, done){
+    this.update = function update(done){
 
-        if (typeof options === 'function' ) {
-            done = options;
-            options = null;
-        }
-        finished = done;
+        agent = process.env.npm_package_config_useragent;
+        var range = process.env.npm_package_config_p12_range;
 
-        if (typeof options === 'object'){
-            agent = options.useragent;
-            use_https = options.https;
-        }
-
-        if (use_https){
+        if (process.env.npm_package_config_p12_proto === "https"){
             request = https;
         }else{
             request = http;
         }
 
         var startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
-        var stopd =  moment().add(1, 'days').format("YYYY-MM-DD");
+        var stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
       
         var url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}`;
         

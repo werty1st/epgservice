@@ -2,7 +2,7 @@
 exports.view_getAllByStationDate = {
     map: function(doc) {
         if(doc.station !== undefined) {
-            emit([doc.station, doc.start], {"_id":doc._id,"_rev":doc._rev});
+            emit([doc.station.toLowerCase(), doc.start], doc);
         }
     }
 };

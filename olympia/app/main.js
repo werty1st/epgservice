@@ -6,26 +6,17 @@ var moment = require("moment");
 var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
 var log = bunyan.createLogger({
     name: 'epgservice/olympia/main',
-    //stream: formatOut,
-    stream: process.stderr,
+    stream: formatOut,
+    //stream: process.stderr,
     level: process.env.logLevel
     });
 /*fatal (60) error (50) warn (40) info (30) debug (20) trace (10)*/
 
 
-// startdate event
-var startdate = "2014-02-06";
-
-// enddate event
-var enddate = "2014-02-23";
-
 // user-agent
-var useragent = `request (nodejs ${process.version}) - Olympia/ECMS (HRNM TTP)`;
+var useragent = process.env.npm_package_config_useragent;
 
-// create ECMS URLs based on Event Data
-var ecms_urls = require("./urlgen")({ startdate, enddate, options: { proto: "https",
-                                                            host : "eventcms.zdf.de",
-                                                            path : "/xml/olympia2014/epg/" } });
+console.log(useragent); process.exit();
 
 
 // create new SenderGruppe
@@ -34,16 +25,14 @@ var senderGruppe = new SenderGruppe(db);
 var websender    = senderGruppe.web;
 var zdfsender    = senderGruppe.zdf;
 
-zdfsender.update({useragent}, ()=>{
+zdfsender.update(()=>{
     // done
-    log.warn("zdfsender finished");
-    console.log("zdfsender finished");
+    log.debug("zdfsender finished");
 });
 
-websender.update({ urls:ecms_urls, delta: true, https: false, useragent },()=>{
+websender.update(()=>{
     // done
-    log.warn("websender finished");
-    console.log("websender finished");
+    log.debug("websender finished");
 });
 
 

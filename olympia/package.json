@@ -4,7 +4,20 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "main": "./app/main.js",
   "config": {
-    "logLevel": "info" 
+    "logLevel": "debug",
+    "ecms": {
+        "delta": true,
+        "startdate": "2014-02-06",
+        "enddate":   "2014-02-23",
+        "proto": "https",
+        "host":  "eventcms.zdf.de",
+        "path":  "/xml/olympia2014/epg/"
+    },
+    "p12": {
+        "proto": "http",
+        "range": 14
+    },
+    "useragent": "request (nodejs) - Olympia/ECMS (HRNM - Webmaster/TTP)"
   },
   "scripts": {
     "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js",

@@ -11,16 +11,15 @@ exports.list_getNow = function (head, req) {
 	var version = req.query.version || "3";
 
 	var nowsendung = false;
-    var wrapper;
+	var wrapper = { "response" : { status : { "statuscode" : "ok"}, "sendungen" : [] }};
+	var out = wrapper.response;
 
-	var out = [];
-	var outAll = {};
+	//für alle sender station=""
+	var wrapperAll = { "response" : { status : { "statuscode" : "ok"}, "sender" : {}  }};
+	var outAll = wrapperAll.response;
 
     var header = {};
 
-    header['X-Log'] = JSON.stringify(req.requested_path);
-    header['X-Log-1'] = JSON.stringify(req.query);
-    header['X-Log-3'] = station;
 
     //return;
     var i=0;
@@ -85,12 +84,12 @@ exports.list_getNow = function (head, req) {
 	        //suche aktuelle sendung wenn gefunden, gib sie aus und springe zu nächsten
 			if ( (startzeit <= now) && (now <= endzeit) ){
 				nowsendung = true;
-				out.push(z);
+				out.sendungen.push(z);
 				continue;
 			}
 	        //folgesendung gefunden, gib sie aus und beende
 			if (nowsendung){
-				out.push(z);
+				out.sendungen.push(z);
 				break;
 			}
 		}
