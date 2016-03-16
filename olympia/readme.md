@@ -68,3 +68,14 @@ npm run production:run
 ``` 
 
 
+## Debug
+
+* terminal 1:
+```bash
+npm run inspect
+``` 
+
+* terminal 2:
+```bash
+node-inspector
+``` 
