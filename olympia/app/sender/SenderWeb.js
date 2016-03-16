@@ -203,34 +203,3 @@ function urlgen (data){
 
     return  urls;
 }
-
-//endpunkte definieren
-
-/* EPG_Olympia
- * web1,web2, ..., zdf,  zdfneo, dreisat, kika, arte
-sofa01.zdf.de/epgservice/events/web[1..6]/heute/json
-sofa01.zdf.de/epgservice/events/all/heute/json
-...
-
-*/
-
-/* EPGNG
-sofa01.zdf.de/epg/heute/zdf/
-
-sofa01.zdf.de/epg/heute/alle/
-sofa01.zdf.de/epg/gestern/alle/
-sofa01.zdf.de/epg/morgen/alle/
-
-sofa01.zdf.de/epg/heute+1/alle/
-sofa01.zdf.de/epg/heute+2/alle/
-sofa01.zdf.de/epg/heute+3/alle/
-sofa01.zdf.de/epg/heute+4/alle/
-sofa01.zdf.de/epg/heute+5/alle/
-sofa01.zdf.de/epg/heute+6/alle/
-sofa01.zdf.de/epg/heute+7/alle/
-
-sofa01.zdf.de/epg/heute+7/alle/zdf/{sendungID}/titel
-sofa01.zdf.de/epg/heute+7/alle/zdf/{sendungID}/bilder/{small}
-sofa01.zdf.de/epg/heute+7/alle/zdf/{sendungID}/bilder/{large}
-
-*/

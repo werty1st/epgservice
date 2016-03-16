@@ -59,3 +59,12 @@ var log = bunyan.createLogger({
     });
 ```
 
+
+## Run
+
+* register cronjob to execute:
+```bash
+npm run production:run
+``` 
+
+

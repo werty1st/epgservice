@@ -25,7 +25,7 @@ var log = new (winston.Logger)({
   });
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
-var openLogs = 0;
+global.openLogs = [];
 
 log.on('logging', function (transport, level, msg, meta) {
 // [msg] and [meta] have now been logged at [level] to [transport]
@@ -51,11 +51,18 @@ websender.update(()=>{
 
 
 function end(code){
-    log.info('cleanup');
-    setTimeout(()=>{
-        process.exit(code);
-    },2000);
+    
+    /*    
+    for(var property in openLogs){
+        var sendung = openLogs[property];
 
+        if(Object.keys(sendung).length < 3 ){
+            console.log(property,sendung);
+        }
+    }*/
+    
+    log.info('cleanup');
+    process.exit(code);
 }
 
 function exitHandler(err) {
@@ -79,13 +86,13 @@ function exitHandler(err) {
     end(0); //=>
 }
 
-//do something when app is closing
+// do something when app is closing
 process.on('exit', exitHandler.bind());
 
-//catches ctrl+c event
+// catches ctrl+c event
 process.on('SIGINT', exitHandler.bind());
 
-//catch unhandled Exception
+// catch unhandled Exception
 process.on('uncaughtException', exitHandler.bind());
 
 

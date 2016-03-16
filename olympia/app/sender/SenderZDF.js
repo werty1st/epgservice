@@ -12,94 +12,75 @@ var log = bunyan.createLogger({
     level: process.env.logLevel
     });
 
+
+
 function SenderZDF(db){
+    'use strict';
     
-    var opentag = 0;
+    const EventEmitter = require('events');
+    class OpenReqCounter extends EventEmitter {}
+    
+    var opened = 0;
+    var last_page = false;
     var senderO = this;
     var finished;
     var agent;
-    var use_https;
     var request;
+    
+    const openReqCounter = new OpenReqCounter();
+    
+    openReqCounter.on('open', () => {
+        opened++;
+        //log.error("open:",opened);
+    });
+    
+    openReqCounter.on('close', () => {
+        opened--; 
+        if(opened===0)
+            openReqCounter.emit('empty');
+    });    
+    
+    openReqCounter.on('empty', () => {
+        if (last_page){
+            if (finished) finished();
+        }
+        console.log("all requests finished");
+    });
+    
+    
 
      /**
      * addVideo creates a new Sendung Object and assigns data from xml object
      * after that it collects the Sendungs Preview Image
      * the done callback is passed from main.js@readXMLstream and gets passed to 
      */
-    function addSendetermin (xmlElement, done){
+    function addSendetermin (sendung, done){
         
-        opentag++;
+        //sendung.externalId
+        //sendung.start
+        //sendung.end
         
-        var sendung = {};
-        var type_image;
-        
-        sendung.externalId      = xmlElement.$attrs.externalId;
-        sendung._id             = sendung.externalId;
-
+        sendung.station         = "zdf";
         sendung.vcmsid          = "1822600";
         sendung.vcmsChannelId   = "74";
-        sendung.copy            = xmlElement.text || "";
-                
-        sendung.titel           = xmlElement.titel || "";
-        sendung.untertitel      = xmlElement.untertitel || "";
-        sendung.dachzeile       = xmlElement.dachzeile || "";
-        sendung.start           = xmlElement.beginnDatum;
-        sendung.end             = xmlElement.endeDatum;
-        sendung.station         = "zdf";
-        
-
-        // 672x378
-        if ( xmlElement.bildfamilie && xmlElement.bildfamilie.ref ){
-        /**
-         * option1
-         *   bildfamilie: 
-         *      { ref: 'http://www.zdf.de/api/v2/content/p12:5989584',
-         *       type: 'VisualFamily' }
-         */            
-            sendung.externalImageUrl = xmlElement.bildfamilie.ref;
-            type_image = "xmlElement.bildfamilie.ref";
-        } else if ( xmlElement.bildfamilie && xmlElement.bildfamilie.zuschnitte ){
-        /** 
-         * option2
-         *  bildfamilie: 
-         *      { visibleFrom: { 'xsi:nil': 'true' },
-         *          visibleTo: { 'xsi:nil': 'true' },
-         *          zuschnitte: 
-         *          { '0': [Object],
-         *          '1': [Object]  
-         */      
-            sendung.externalImageUrl = xmlElement.bildfamilie.zuschnitte;
-            type_image = "xmlElement.bildfamilie.zuschnitte";
-        } else if (xmlElement.bildfamilie && xmlElement.bildfamilie.AutoVisualFamily) {
-        /**
-         *     3
-         *  <bildfamilie>        
-         *  <AutoVisualFamily>      
-         */
-            sendung.externalImageUrl = xmlElement.bildfamilie.AutoVisualFamily;
-            type_image = "xmlElement.bildfamilie.AutoVisualFamily";
-        } else if (xmlElement.epgBeitrag && xmlElement.epgBeitrag.Beitrag_Reference) {
-            console.log("XXX",xmlElement.epgBeitrag.Beitrag_Reference);
-            sendung.externalImageUrl = xmlElement.epgBeitrag.Beitrag_Reference;
-            type_image = "xmlElement.epgBeitrag.Beitrag_Reference";
-        } else {
-            throw new Error("keine bilder gefunden");
-        }
-        
+        sendung._id             = sendung.externalId;
+        sendung.copy            = (sendung.copy       === undefined)?"" : sendung.copy;
+        sendung.titel           = (sendung.titel      === undefined)?"" : sendung.titel;
+        sendung.untertitel      = (sendung.untertitel === undefined)?"" : sendung.untertitel;
+        sendung.dachzeile       = (sendung.dachzeile  === undefined)?"" : sendung.dachzeile;
                         
- 
-        getImageUrl(type_image, sendung, ()=>{
-
+        getImageUrl(sendung, ()=>{
+   
+            delete sendung.bildfamilie;
             // store sendung to db
             db.store(sendung, (err)=>{
                 if (err){
                     log.error("Error saving Sendung: ", err);
                 }                
                 // store to db complete
-                log.debug(`id ${sendung._id} saved. id: ${opentag}`);
                 done();
+                //log.debug(`id ${sendung._id} saved. open: ${opened}`);                
             });
-            
         });          
     }
 
@@ -108,77 +89,108 @@ function SenderZDF(db){
      * load image from sendung.url
      * callback is called after image is loaded
      */
-    function getImageUrl(type, sendung, callback){
-        var proto;
+    function getImageUrl(sendung, callback){
         
-        if (use_https){
-            proto = "https:";
-        }else{
-            proto = "http:";
-        }
-        
-        switch (type) {
-            case "xmlElement.bildfamilie.ref":                
-                var get_options = require('url').parse(sendung.externalImageUrl);
-                    get_options.headers = {'User-Agent': agent};
+        // sendetermin.bildfamilie.Beitrag_Reference/epg
+               
+        var get_options = require('url').parse(sendung.bildfamilie.Beitrag_Reference);
+            get_options.headers = {'User-Agent': agent};
 
-                //log.debug("1",sendung.externalImageUrl);
-                request.get(get_options, (responeStream) => {
+        request.get(get_options, (responeStream) => {
 
-                    if (responeStream.statusCode != 200){
-                        log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
-                    } else {
-                        //send to xml stream reader                   
-                        parseXmlStreamImage(responeStream, (imageurl)=>{
-                            sendung.externalImageUrl = imageurl;
-                        });
-                    }
-                }).on('error', (e) => {
-                    console.error(`Error in response: from ${url}`);
-                });                
-                break;
-            case "xmlElement.bildfamilie.zuschnitte":
-            case "xmlElement.bildfamilie.AutoVisualFamily":
+            if (responeStream.statusCode != 200){
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                sendung.externalImageUrl = "";
+                callback();
+            } else {
+                // send to xml stream reader                  
+                var found=false;
+                responeStream
+                    .pipe(xpathStream("//image/Link/url/text()"))
+                    .on('data',(imageList)=>{
+                        
+                        // filter required image urls from response 
+                        var url = imageList.filter((item)=>{
+                            if( (item.search("layout=672x378")>-1) || (item.search("timg672x378blob")>-1) ) return true; 
+                        });      
 
-                //object of image urls
-                for (var objects in sendung.externalImageUrl) {
-                    if (sendung.externalImageUrl[objects].image.indexOf("672x378") > -1){
-                        sendung.externalImageUrl = proto + sendung.externalImageUrl[objects].image;
-                        break;
-                    }
-                }                
-                break;
-            case "xmlElement.epgBeitrag.Beitrag_Reference":
+                        if (url.length > 0){
+                            found=true;
+                            // return the first image
+                            sendung.externalImageUrl = url[0];
+                            callback();
+                        }
+                    })
+                    .on("end",()=>{
+                        // no valid url found try next
+                        if(!found){
+                            getImageUrl2 (sendung, callback);                    
+                        }
+                    });                
 
-                break;
-        }
-        callback();
+            }
+        }).on('error', (e) => {
+            log.error(`Error in response: from ${url}`);
+            sendung.externalImageUrl = "";
+            callback();            
+        });
     }
 
-
-    //xml stream parser to find image url
     /**
-     * @param {stream} stream from http get.
-     * passes sendungen to addSendetermin
+     * load image from sendung.url
+     * callback is called after image is loaded
      */
-    function parseXmlStreamImage(stream, callback){
+    function getImageUrl2 (sendung, callback){
+        
+        // sendetermin.bildfamilie.VisualFamily_Reference
+               
+        var get_options = require('url').parse(sendung.bildfamilie.VisualFamily_Reference);
+            get_options.headers = {'User-Agent': agent};
 
-        ///VisualFamily/zuschnitte/Zuschnitt/breite
+        request.get(get_options, (responeStream) => {
 
-        stream
-            .pipe(xpathStream("/VisualFamily/zuschnitte/Zuschnitt",{  
-                breite: "breite/text()",
-                hoehe:  "hoehe/text()",
-                url: "image/Link/url/text()"
-             }))
-            .on('data',(imageList)=>{
-                var url = imageList.filter((item)=>{
-                   if ((item.breite == "672") && (item.hoehe == "378")){
-                       return item.url;
-                   } 
-                });
-                callback(url);
-            });
+            if (responeStream.statusCode != 200){
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                sendung.externalImageUrl = "";
+                callback();
+            } else {
+                //send to xml stream reader                        
+                var found=false;      
+                
+                responeStream
+                    //.pipe(xpathStream("//Zuschnitt[/breite/text()='1358']",{
+                    .pipe(xpathStream("//image/Link",{
+                        url: "url/text()",
+                        width: "../../breite/text()",
+                        height: "../../hoehe/text()"
+                    }))
+                    .on('data',(imageList)=>{
+
+                        // filter required image urls from response 
+                        var url = imageList.filter((item)=>{
+                            if( (item.width === "672") && (item.height === "378") ) return true; 
+                        });      
+                        
+                        if (url.length > 0){
+                            found=true;
+                            // return the first image
+                            sendung.externalImageUrl = url[0].url;
+                            callback();
+                        }
+                    })
+                    .on('end', () => {
+                        if(!found){
+                            log.error("getImageUrl2: no matching urls found");
+                            sendung.externalImageUrl = "";
+                            callback(); 
+                        }
+                    });                
+            }
+        }).on('error', (e) => {
+            log.error(`Error in response: from ${url}`);
+            sendung.externalImageUrl = "";
+            callback();            
+        });
     }
 
 
@@ -188,22 +200,34 @@ function SenderZDF(db){
      * passes sendungen to addSendetermin
      */
     function parseXmlStream(stream){
+        
+        var has_data=false;
 
-
-        var xml = flow(stream, {strict:true});
-        var last_page = true;
-
-        // getNavigation
+        // get Navigation
         stream
             .pipe(xpathStream("/EPG/navigation/Navigation/nextPageLink/Link/url/text()"))
             .on('data',(x)=>{
-                last_page = false;
+                has_data = true;
                 var unescaped = _.unescape(x);
                 getXmlStream(unescaped);
+            })
+            .on("end",()=>{
+                if(!has_data){
+                    last_page = true;    
+                }
             });    
+       
+        // callback func used in for loop
+        function addSendeterminDone(sendung){
+            
+            return function(){
+                log.debug("close",sendung.start,"-",sendung.titel);
+                //(openLogs[sendung.start,"-",sendung.titel]).close=true;
+                openReqCounter.emit('close');
+            };
+        }
 
-
-
+        // get Sendungen
         stream
             .pipe(xpathStream("/EPG/treffer/Sendetermin",{
                 externalId: "./@externalId",
@@ -213,66 +237,31 @@ function SenderZDF(db){
                 dachzeile: "dachzeile/text()",
                 start: "beginnDatum/text()",
                 end: "endeDatum/text()",
-                bildfamilie: {
-                 ref: "bildfamilie/VisualFamily_Reference/@ref",
-                 epgref: "epgBeitrag/Beitrag_Reference/@ref",
-                 AutoVisualFamily: "bildfamilie/AutoVisualFamily/zuschnitte/Zuschnitt/image/Link/url/text()"                    
+                bildfamilie:{
+                  Beitrag_Reference: "epgBeitrag/Beitrag_Reference/@ref",
+                  VisualFamily_Reference  : "bildfamilie/VisualFamily_Reference/@ref"
                 }
             }))
-            .on('data',(x)=>{
-                /*console.log("XXXXX");
-                console.log("Sendetermin");*/
-                for(var i = 0; i< x.length; i++){
-                    var f=false;
+            .on('data',(result)=>{
+ 
+                // array of Sendetermin
+                for(var i = 0; i< result.length; i++){
                     
-                    // xml mit zuschnitt => http://www.zdf.de/api/v2/content/p12:31372964
-                    if(x[i].bildfamilie.ref){
-                        console.log(x[i].bildfamilie.ref);
-                        f=true;
-                    }
-                    
-                    // xml mit zuschnitten => http://www.zdf.de/api/v2/content/p12:21698990
-                    if (x[i].bildfamilie.epgref){
-                        console.log(x[i].bildfamilie.epgref);
-                        f=true;
-                    }
-                    
-                    // bisher nicht gefunden
-                    if (x[i].bildfamilie.zuschnitte){
-                        console.log(x[i].bildfamilie.zuschnitte);
-                        console.log("bildfamilie.zuschnitte",x[i].externalId); 
-                        throw new Error("XX no image handler XX",x[i].externalId);
-                        //process.exit();                         
-                        f=true;
-                    }
-                    
-                    // array mit urls => [ '//epg-image.zdf.de/fotobase-webdelivery/images/b2e8954b-c66b-4cf9-9b55-9439f9b1f674?layout=672x378', ...] 
-                    if (x[i].bildfamilie.AutoVisualFamily) {
-                        console.log(x[i].bildfamilie.AutoVisualFamily);
-                        f=true;
-                    }
-                    
-                    if (!f){
-                        throw new Error("XX no image XX",x[i].externalId);
+                    var sendung = result[i];
+                    // xml with zuschnitten => http://www.zdf.de/api/v2/content/p12:21698990
+                    if ( (!sendung.bildfamilie.Beitrag_Reference) && (!sendung.bildfamilie.VisualFamily_Reference) ){
+                        log.error("No images found in:", sendung.externalId);                       
                     }
                 
-                    
+                    log.debug("open ",sendung.start,"-",sendung.titel);                    
+                    openReqCounter.emit("open");
+                    //openLogs.push(sendung.start,"-",sendung.titel);
+                    //(openLogs[sendung.start,"-",sendung.titel])={};
+                    //(openLogs[sendung.start,"-",sendung.titel]).open=true;
+                    //(openLogs[sendung.start,"-",sendung.titel]).sendung=sendung;
+                    addSendetermin(sendung, addSendeterminDone(sendung) );                    
                 }
-                
             });    
-
-
-        // getSendungen
-/*        xml.on('tag:Sendetermin', (xml)=>{
-            addSendetermin(xml, ()=>{
-                opentag--;
-                //console.log("opentag",opentag);
-                if (opentag===0 && last_page){
-                    console.log("finished");
-                    if (finished) finished();
-                }              
-            });            
-        });*/
     }
     
     //xml download
@@ -318,7 +307,7 @@ function SenderZDF(db){
             request = http;
         }
 
-        var startd = moment().subtract(30, 'days').format("YYYY-MM-DD");
+        var startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
         var stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
       
         var url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}`;
