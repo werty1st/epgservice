@@ -86,6 +86,12 @@ function SenderZDF(db){
     function getImageUrl(sendung, callback){
         
         // sendetermin.bildfamilie.Beitrag_Reference/epg
+        if ( !(sendung.bildfamilie && sendung.bildfamilie.Beitrag_Reference)){
+            log.error(`getImageUrl: no valid image url`);
+            sendung.externalImageUrl = "";
+            callback();    
+            return;        
+        }    
                
         var get_options = require('url').parse(sendung.bildfamilie.Beitrag_Reference);
             get_options.headers = {'User-Agent': agent};
@@ -93,10 +99,18 @@ function SenderZDF(db){
         request.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.error(`getImageUrl: Got invalid statusCode`);
                 sendung.externalImageUrl = "";
                 callback();
             } else {
+                
+                if (responeStream.headers['content-length'] == 0){
+                    log.error(`getImageUrl: Got emtpy response`);
+                    sendung.externalImageUrl = "";
+                    callback();
+                    return;
+                }
+                
                 // send to xml stream reader                  
                 var found=false;
                 responeStream
@@ -137,13 +151,12 @@ function SenderZDF(db){
     function getImageUrl2 (sendung, callback){
         
         // sendetermin.bildfamilie.VisualFamily_Reference
-
-        if ( !(sendung.bildfamilie && sendung.bildfamilie.VisualFamily_Reference) ){
-            //no url available
-            log.error(`Error in response: ${sendung.sendung_id}`);
+               
+        if ( !(sendung.bildfamilie && sendung.bildfamilie.VisualFamily_Reference)){
+            log.error(`getImageUrl2: no valid image url`);
             sendung.externalImageUrl = "";
-            callback(); 
-            return;   
+            callback();
+            return;            
         }
                
         var get_options = require('url').parse(sendung.bildfamilie.VisualFamily_Reference);
@@ -152,10 +165,17 @@ function SenderZDF(db){
         request.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.error(`getImageUrl2: Got invalid statusCode`);
                 sendung.externalImageUrl = "";
                 callback();
             } else {
+                
+                if (responeStream.headers['content-length'] == 0){
+                    log.error(`getImageUrl2: Got emtpy response`);
+                    sendung.externalImageUrl = "";
+                    callback();
+                    return;
+                }
                 //send to xml stream reader                        
                 var found=false;      
                 
@@ -278,8 +298,14 @@ function SenderZDF(db){
         request.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.error(`getXmlStream: Got invalid statusCode`);
+                return;
             } else {
+                
+                if (responeStream.headers['content-length'] == 0){
+                    log.error(`getXmlStream: Got emtpy response`);
+                    return;
+                }
                 //send to xml stream reader                   
                 parseXmlStream(responeStream);
             }
