@@ -5,32 +5,16 @@ var SenderGruppe = require("./sender/SenderGruppe");
 var moment = require("moment");
 var winston = require('winston');
 
-
-var log = new (winston.Logger)({
+global.log = new (winston.Logger)({
     exitOnError: false,
     transports: [
-      new (winston.transports.Console)({colorize: true, level: process.env.logLevel}),
-     /* new (winston.transports.File)({ level: process.env.logLevel, filename: "../somefile.log"  }),
-      new (winston.transports.File)({
-        name: 'info-file',
-        filename: 'filelog-info.log',
-        level: 'info'
-      }),
-      new (winston.transports.File)({
-        name: 'error-file',
-        filename: 'filelog-error.log',
-        level: 'error'
-      })*/
+      new (require('winston-daily-rotate-file'))({ name:"errorlog", level: "error", dirname: "logs", filename: "error.log"  }),
+      new (require('winston-daily-rotate-file'))({ name:"infolog",  level: "info", dirname: "logs", filename: "info.log"  }),
+      new (winston.transports.Console)({colorize: true, level: process.env.logLevel })
     ]
   });
+  
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
-
-global.openLogs = [];
-
-log.on('logging', function (transport, level, msg, meta) {
-// [msg] and [meta] have now been logged at [level] to [transport]
-    //console.log("winston");
-}); 
 
 
 // create new SenderGruppe
@@ -50,18 +34,8 @@ websender.update(()=>{
 });
 
 
-function end(code){
-    
-    /*    
-    for(var property in openLogs){
-        var sendung = openLogs[property];
-
-        if(Object.keys(sendung).length < 3 ){
-            console.log(property,sendung);
-        }
-    }*/
-    
-    log.info('cleanup');
+function end(code){   
+    log.debug('cleanup');
     process.exit(code);
 }
 

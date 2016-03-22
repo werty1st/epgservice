@@ -6,9 +6,7 @@
 ;in js: process.env.npm_config_port
 ;in json: ${npm_config_demo}
 
-
-;botclient
-bot_token=***
+loglevel=silent
 
 
 couchdb = http://localhost:5984/ecms

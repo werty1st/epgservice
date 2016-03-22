@@ -2,12 +2,6 @@ var moment = require("moment");
 var https = require("https");
 var flow  = require("xml-flow");
 
-var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
-var log = bunyan.createLogger({
-    name: 'epgservice/olympia/sender/web',
-    stream: formatOut,
-    level: process.env.logLevel
-    });
 
 
 function SenderWeb(db){
@@ -124,12 +118,19 @@ function SenderWeb(db){
             };
 
         https.get(get_options, (responeStream) => {
-            
+                       
+
             if (responeStream.statusCode != 200){
-                log.error(`Got response: ${responeStream.statusCode} from ${url}`);
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
             } else {
-                //send to xml stream reader
-                parseXmlStream(responeStream);   
+                
+                if (responeStream.headers['content-length'] == 0){
+                    log.error(`Got emtpy response from ${url}`);
+                    return;
+                }else {                
+                    //send to xml stream reader
+                    parseXmlStream(responeStream);
+                }   
             }
 
         }).on('error', (e) => {
@@ -156,8 +157,8 @@ function SenderWeb(db){
          */
         if (process.env.npm_package_config_ecms_delta){
             delta = moment().diff(moment("2014-02-06"), "days") ;
-            log.info("Delta:",delta);
-            log.info("DB:",process.env.DB);
+            log.debug("Delta:",delta);
+            log.info("Database:",process.env.DB);
         }
 
         // create ECMS URLs based on Event Data

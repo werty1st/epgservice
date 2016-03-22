@@ -1,0 +1,41 @@
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:25:52.056Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:25:52.060Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:25:52.193Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:25:52.194Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:25:52.194Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:25:52.194Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:25:52.195Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:25:52.195Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:25:52.267Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:25:52.317Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:26:31.371Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:26:31.439Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:26:31.440Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:26:31.646Z"}
+{"message":"uncaughtException","stack":"ReferenceError: sendung_id is not defined\n    at getImageUrl2 (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:143:45)\n    at Transform.<anonymous> (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:121:29)\n    at emitNone (events.js:72:20)\n    at Transform.emit (events.js:166:7)\n    at /home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xpath-stream/node_modules/through2/node_modules/readable-stream/lib/_stream_readable.js:965:16\n    at nextTickCallbackWith0Args (node.js:420:9)\n    at process._tickCallback (node.js:349:13)","level":"error","timestamp":"2016-03-22T09:26:40.988Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:26:56.186Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:26:56.190Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:26:56.191Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:26:56.192Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:26:56.192Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:26:56.193Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:26:56.193Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:27:11.970Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:27:11.975Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:27:12.136Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:27:12.351Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:27:12.442Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:27:12.448Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:27:17.264Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:28:28.293Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:28:28.297Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:28:28.298Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:28:28.315Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:28:28.315Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:28:28.380Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:28:28.432Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:28:28.433Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:28:28.433Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:28:28.434Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:28:28.434Z"}
+{"level":"error","message":"Error in response: undefined","timestamp":"2016-03-22T09:28:34.384Z"}

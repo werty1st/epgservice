@@ -1,0 +1,628 @@
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:10:09.024Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:10:09.073Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:10:09.075Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:10:09.087Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:10:09.088Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:10:09.089Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:10:09.090Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:10:09.090Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:10:09.091Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:10:09.091Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:10:09.092Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:10:09.092Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:10:09.093Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:10:09.094Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:10:09.094Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:10:09.095Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:10:09.096Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:10:09.097Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:10:09.097Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:10:09.098Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:10:09.150Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:10:26.459Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:10:26.505Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:10:26.508Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:10:26.519Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:10:26.521Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:10:26.521Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:10:26.522Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:10:26.523Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:10:26.523Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:10:26.524Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:10:26.525Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:10:26.525Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:10:26.526Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:10:26.526Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:10:26.527Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:10:26.528Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:10:26.529Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:10:26.530Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:10:26.530Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:10:26.530Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:10:26.664Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:10:34.034Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:10:34.066Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:10:34.068Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:10:34.080Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:10:34.081Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:10:34.082Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:10:34.083Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:10:34.083Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:10:34.085Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:10:34.085Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:10:34.086Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:10:34.087Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:10:34.087Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:10:34.088Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:10:34.089Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:10:34.090Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:10:34.091Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:10:34.091Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:10:34.092Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:10:34.092Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:10:34.226Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:10:36.841Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:10:36.856Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:10:36.859Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:10:36.872Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:10:36.873Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:10:36.874Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:10:36.875Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:10:36.875Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:10:36.876Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:10:36.877Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:10:36.877Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:10:36.878Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:10:36.878Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:10:36.879Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:10:36.879Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:10:36.881Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:10:36.881Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:10:36.882Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:10:36.883Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:10:36.884Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:10:36.935Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:11:12.536Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:11:12.571Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:11:12.574Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:11:12.585Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:11:12.586Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:11:12.587Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:11:12.588Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:11:12.588Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:11:12.589Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:11:12.590Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:11:12.591Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:11:12.592Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:11:12.592Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:11:12.593Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:11:12.593Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:11:12.594Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:11:12.595Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:11:12.596Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:11:12.596Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:11:12.597Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:11:12.665Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:11:23.124Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:11:23.166Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:11:23.168Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:11:23.179Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:11:23.180Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:11:23.181Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:11:23.182Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:11:23.182Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:11:23.183Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:11:23.183Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:11:23.184Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:11:23.185Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:11:23.185Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:11:23.186Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:11:23.186Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:11:23.187Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:11:23.188Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:11:23.189Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:11:23.189Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:11:23.190Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:11:23.240Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:12:37.218Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:12:37.282Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:12:37.284Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:12:37.295Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:12:37.297Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:12:37.297Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:12:37.298Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:12:37.298Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:12:37.299Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:12:37.300Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:12:37.300Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:12:37.301Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:12:37.301Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:12:37.302Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:12:37.302Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:12:37.303Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:12:37.304Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:12:37.305Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:12:37.305Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:12:37.305Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:12:37.448Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:13:42.636Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:13:42.649Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:13:42.651Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:13:42.663Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:13:42.665Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:13:42.665Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:13:42.666Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:13:42.666Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:13:42.667Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:13:42.668Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:13:42.669Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:13:42.670Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:13:42.670Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:13:42.671Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:13:42.671Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:13:42.672Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:13:42.673Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:13:42.674Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:13:42.674Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:13:42.675Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:13:42.743Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:13:44.662Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:13:44.676Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:13:44.680Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:13:44.693Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:13:44.695Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:13:44.696Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:13:44.697Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:13:44.697Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:13:44.698Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:13:44.699Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:13:44.700Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:13:44.701Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:13:44.702Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:13:44.702Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:13:44.703Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:13:44.704Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:13:44.705Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:13:44.706Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:13:44.706Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:13:44.707Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:13:44.765Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:13:46.745Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:13:46.759Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:13:46.762Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:13:46.775Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:13:46.777Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:13:46.778Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:13:46.778Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:13:46.779Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:13:46.780Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:13:46.781Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:13:46.782Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:13:46.782Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:13:46.783Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:13:46.784Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:13:46.784Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:13:46.786Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:13:46.786Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:13:46.788Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:13:46.789Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:13:46.789Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:13:46.878Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:13:47.005Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:13:48.908Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:13:48.925Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:13:48.928Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:13:48.939Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:13:48.941Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:13:48.942Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:13:48.942Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:13:48.943Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:13:48.944Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:13:48.945Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:13:48.946Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:13:48.947Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:13:48.948Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:13:48.948Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:13:48.949Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:13:48.950Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:13:48.950Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:13:48.951Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:13:48.952Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:13:48.952Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:13:49.027Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:13:49.170Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:18:27.914Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:18:27.925Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:18:27.928Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:18:27.940Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:18:27.942Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:18:27.943Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:18:27.943Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:18:27.944Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:18:27.945Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:18:27.945Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:18:27.946Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:18:27.947Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:18:27.948Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:18:27.949Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:18:27.949Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:18:27.950Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:18:27.951Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:18:27.951Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:18:27.952Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:18:27.952Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:28.811Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=3&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:30.286Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=4&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:31.493Z"}
+{"level":"info","message":"websender finished","timestamp":"2016-03-22T09:18:31.800Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=5&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:32.183Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=6&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:32.701Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=7&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:33.975Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=8&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:34.387Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=9&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:35.017Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=10&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:35.777Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=11&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:36.273Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=12&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:36.782Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=13&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:18:37.508Z"}
+{"message":"uncaughtException","stack":"TypeError: Parameter 'url' must be a string, not undefined\n    at Url.parse (url.js:90:11)\n    at Object.urlParse [as parse] (url.js:84:5)\n    at getImageUrl2 (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:141:42)\n    at Transform.<anonymous> (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:121:29)\n    at emitNone (events.js:72:20)\n    at Transform.emit (events.js:166:7)\n    at /home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xpath-stream/node_modules/through2/node_modules/readable-stream/lib/_stream_readable.js:965:16\n    at nextTickCallbackWith0Args (node.js:420:9)\n    at process._tickCallback (node.js:349:13)","level":"error","timestamp":"2016-03-22T09:18:37.694Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:21:50.545Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:21:50.559Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:21:50.562Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:21:50.577Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:21:50.579Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:21:50.579Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:21:50.580Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:21:50.581Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:21:50.582Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:21:50.583Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:21:50.584Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:21:50.585Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:21:50.585Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:21:50.586Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:21:50.587Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:21:50.589Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:21:50.590Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:21:50.591Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:21:50.592Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:21:50.592Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:21:50.739Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:21:54.094Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:21:54.109Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:21:54.112Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:21:54.123Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:21:54.125Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:21:54.126Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:21:54.126Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:21:54.127Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:21:54.128Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:21:54.128Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:21:54.129Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:21:54.130Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:21:54.130Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:21:54.131Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:21:54.131Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:21:54.132Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:21:54.133Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:21:54.134Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:21:54.134Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:21:54.135Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:21:54.510Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:22:56.241Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:22:56.280Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:22:56.284Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:22:56.300Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:22:56.301Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:22:56.302Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:22:56.302Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:22:56.303Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:22:56.304Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:22:56.305Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:22:56.305Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:22:56.306Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:22:56.306Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:22:56.307Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:22:56.308Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:22:56.309Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:22:56.309Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:22:56.310Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:22:56.311Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:22:56.312Z"}
+{"message":"uncaughtException","stack":"ReferenceError: res is not defined\n    at ClientRequest.<anonymous> (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderWeb.js:122:25)\n    at ClientRequest.g (events.js:260:16)\n    at emitOne (events.js:77:13)\n    at ClientRequest.emit (events.js:169:7)\n    at HTTPParser.parserOnIncomingClient [as onIncoming] (_http_client.js:419:21)\n    at HTTPParser.parserOnHeadersComplete (_http_common.js:103:23)\n    at TLSSocket.socketOnData (_http_client.js:309:20)\n    at emitOne (events.js:77:13)\n    at TLSSocket.emit (events.js:169:7)\n    at readableAddChunk (_stream_readable.js:146:16)","level":"error","timestamp":"2016-03-22T09:22:56.357Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:23:07.383Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:23:07.401Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:23:07.406Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:23:07.438Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:23:07.440Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:23:07.441Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:23:07.442Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:23:07.443Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:23:07.445Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:23:07.446Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:23:07.448Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:23:07.449Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:23:07.450Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:23:07.450Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:23:07.452Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:23:07.454Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:23:07.455Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:23:07.456Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:23:07.457Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:23:07.458Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:23:07.663Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:23:07.933Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:24:36.247Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:24:36.261Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:24:36.265Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:24:36.290Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:24:36.292Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:24:36.292Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:24:36.293Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:24:36.294Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:24:36.295Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:24:36.296Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:24:36.297Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:24:36.298Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:24:36.299Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:24:36.299Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:24:36.300Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:24:36.301Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:24:36.302Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:24:36.303Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:24:36.304Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:24:36.304Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:24:36.453Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:24:54.902Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:24:54.913Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:24:54.915Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:24:54.927Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:24:54.928Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:24:54.929Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:24:54.929Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:24:54.930Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:24:54.931Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:24:54.931Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:24:54.932Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:24:54.933Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:24:54.934Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:24:54.934Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:24:54.935Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:24:54.936Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:24:54.936Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:24:54.937Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:24:54.937Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:24:54.938Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:24:55.221Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:25:25.028Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:25:25.038Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:25:25.040Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:25:25.052Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:25:25.053Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:25:25.054Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:25:25.054Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:25:25.055Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:25:25.056Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:25:25.056Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:25:25.057Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:25:25.058Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:25:25.058Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:25:25.058Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:25:25.059Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:25:25.060Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:25:25.061Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:25:25.062Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:25:25.063Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:25:25.063Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:25:25.447Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:25:51.783Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:25:51.793Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:25:51.795Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:25:51.807Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:25:51.809Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:25:51.810Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:25:51.811Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:25:51.812Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:25:51.813Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:25:51.814Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:25:51.815Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:25:51.816Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:25:51.817Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:25:51.817Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:25:51.818Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:25:51.820Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:25:51.821Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:25:51.822Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:25:51.824Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:25:51.825Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:51.906Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:25:52.056Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:25:52.060Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:25:52.193Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:25:52.194Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:25:52.194Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:25:52.194Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:25:52.195Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:25:52.195Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:25:52.267Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:25:52.317Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:25:52.342Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=3&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:52.712Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=4&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:53.584Z"}
+{"level":"info","message":"websender finished","timestamp":"2016-03-22T09:25:54.013Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=5&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:54.245Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=6&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:55.540Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=7&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:56.010Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=8&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:56.634Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=9&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:57.282Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=10&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:58.386Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=11&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:58.951Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=12&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:25:59.404Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=13&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:00.134Z"}
+{"message":"uncaughtException","stack":"ReferenceError: sendung_id is not defined\n    at getImageUrl2 (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:143:45)\n    at Transform.<anonymous> (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:121:29)\n    at emitNone (events.js:72:20)\n    at Transform.emit (events.js:166:7)\n    at /home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xpath-stream/node_modules/through2/node_modules/readable-stream/lib/_stream_readable.js:965:16\n    at nextTickCallbackWith0Args (node.js:420:9)\n    at process._tickCallback (node.js:349:13)","level":"error","timestamp":"2016-03-22T09:26:00.643Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:26:31.207Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:26:31.217Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:26:31.220Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:26:31.231Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:26:31.232Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:26:31.233Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:26:31.234Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:26:31.234Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:26:31.235Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:26:31.236Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:26:31.236Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:26:31.237Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:26:31.238Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:26:31.239Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:26:31.240Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:26:31.240Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:26:31.241Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:26:31.242Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:26:31.242Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:26:31.243Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:26:31.371Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:26:31.439Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:26:31.440Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:26:31.646Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:32.242Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=3&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:32.481Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=4&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:33.043Z"}
+{"level":"info","message":"websender finished","timestamp":"2016-03-22T09:26:33.360Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=5&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:35.283Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=6&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:36.796Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=7&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:37.305Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=8&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:37.890Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=9&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:38.557Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=10&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:39.600Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=11&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:39.801Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=12&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:40.360Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=13&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:40.528Z"}
+{"message":"uncaughtException","stack":"ReferenceError: sendung_id is not defined\n    at getImageUrl2 (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:143:45)\n    at Transform.<anonymous> (/home/ronny/git_managed_projects/zdf/epgservice/olympia/app/sender/SenderZDF.js:121:29)\n    at emitNone (events.js:72:20)\n    at Transform.emit (events.js:166:7)\n    at /home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xpath-stream/node_modules/through2/node_modules/readable-stream/lib/_stream_readable.js:965:16\n    at nextTickCallbackWith0Args (node.js:420:9)\n    at process._tickCallback (node.js:349:13)","level":"error","timestamp":"2016-03-22T09:26:40.990Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:26:56.035Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:26:56.047Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:26:56.050Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:26:56.062Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:26:56.064Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:26:56.064Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:26:56.065Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:26:56.066Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:26:56.067Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:26:56.067Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:26:56.068Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:26:56.068Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:26:56.069Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:26:56.069Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:26:56.070Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:26:56.072Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:26:56.073Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:26:56.073Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:26:56.074Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:26:56.075Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:26:56.186Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:26:56.190Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:26:56.191Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:26:56.192Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:26:56.192Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:26:56.193Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:26:56.193Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:26:56.341Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:26:56.343Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:26:56.398Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:26:56.398Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:56.557Z"}
+{"level":"info","message":"websender finished","timestamp":"2016-03-22T09:26:56.959Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=3&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:57.070Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=4&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:57.740Z"}
+{"level":"info","message":"websender finished","timestamp":"2016-03-22T09:26:58.195Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=5&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:58.219Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=6&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:58.708Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=7&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:59.279Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=8&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:26:59.898Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=9&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:00.024Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=10&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:00.110Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=11&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:01.002Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:27:01.269Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:27:11.882Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:27:11.893Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:27:11.896Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:27:11.909Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:27:11.910Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:27:11.911Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:27:11.912Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:27:11.913Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:27:11.913Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:27:11.914Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:27:11.915Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:27:11.915Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:27:11.916Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:27:11.917Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:27:11.917Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:27:11.919Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:27:11.920Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:27:11.921Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:27:11.922Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:27:11.923Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:27:11.970Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:27:11.975Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:12.046Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:27:12.136Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:27:12.351Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:27:12.442Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:27:12.448Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:27:12.560Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:27:12.598Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=3&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:13.346Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=4&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:13.973Z"}
+{"level":"info","message":"websender finished","timestamp":"2016-03-22T09:27:14.334Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=5&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:14.545Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=6&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:15.281Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=7&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:15.391Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=8&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:16.020Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=9&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:27:16.656Z"}
+{"message":"Unclosed root tag","stack":"Error: Unclosed root tag\nLine: 0\nColumn: 0\nChar: \n    at error (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:642:8)\n    at strictFail (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:662:22)\n    at end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:649:27)\n    at Object.SAXParser.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:149:24)\n    at SAXStream.end (/home/ronny/git_managed_projects/zdf/epgservice/olympia/node_modules/xml-flow/node_modules/sax/lib/sax.js:234:16)\n    at IncomingMessage.onend (_stream_readable.js:490:10)\n    at IncomingMessage.g (events.js:260:16)\n    at emitNone (events.js:72:20)\n    at IncomingMessage.emit (events.js:166:7)\n    at endReadableNT (_stream_readable.js:905:12)","level":"error","timestamp":"2016-03-22T09:27:17.266Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/epg?station=zdf&startDate=2016-03-21&endDate=2016-04-21","timestamp":"2016-03-22T09:28:28.088Z"}
+{"level":"info","message":"Database: http://localhost:5984/ecms","timestamp":"2016-03-22T09:28:28.098Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:28:28.100Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-07.xml","timestamp":"2016-03-22T09:28:28.111Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:28:28.113Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-09.xml","timestamp":"2016-03-22T09:28:28.113Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:28:28.114Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:28:28.114Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:28:28.115Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-13.xml","timestamp":"2016-03-22T09:28:28.116Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:28:28.117Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:28:28.118Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:28:28.118Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:28:28.119Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:28:28.119Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:28:28.120Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-20.xml","timestamp":"2016-03-22T09:28:28.121Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-21.xml","timestamp":"2016-03-22T09:28:28.121Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-22.xml","timestamp":"2016-03-22T09:28:28.122Z"}
+{"level":"info","message":"Download: https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:28:28.122Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-23.xml","timestamp":"2016-03-22T09:28:28.294Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-06.xml","timestamp":"2016-03-22T09:28:28.297Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-15.xml","timestamp":"2016-03-22T09:28:28.298Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-14.xml","timestamp":"2016-03-22T09:28:28.315Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-08.xml","timestamp":"2016-03-22T09:28:28.315Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-12.xml","timestamp":"2016-03-22T09:28:28.380Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-16.xml","timestamp":"2016-03-22T09:28:28.432Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-17.xml","timestamp":"2016-03-22T09:28:28.433Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-11.xml","timestamp":"2016-03-22T09:28:28.433Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-18.xml","timestamp":"2016-03-22T09:28:28.434Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-10.xml","timestamp":"2016-03-22T09:28:28.434Z"}
+{"level":"error","message":"Got emtpy response from https://eventcms.zdf.de/xml/olympia2014/epg/2014-02-19.xml","timestamp":"2016-03-22T09:28:28.502Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=2&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:28.593Z"}
+{"level":"info","message":"websender finished","timestamp":"2016-03-22T09:28:29.021Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=3&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:29.153Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=4&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:29.893Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=5&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:30.086Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=6&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:30.496Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=7&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:31.350Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=8&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:31.601Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=9&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:32.468Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=10&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:33.116Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=11&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:33.415Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=12&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:34.035Z"}
+{"level":"error","message":"Error in response: undefined","timestamp":"2016-03-22T09:28:34.384Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=13&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:34.753Z"}
+{"level":"info","message":"Download: http://www.zdf.de/api/v2/content/p12:6018820?startDate=2016-03-21&currentIndex=14&station=zdf&pageSize=50&endDate=2016-04-21&maxHits=200","timestamp":"2016-03-22T09:28:35.370Z"}
+{"level":"info","message":"zdfsender finished","timestamp":"2016-03-22T09:28:37.222Z"}

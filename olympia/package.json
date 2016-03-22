@@ -14,7 +14,7 @@
     },
     "p12": {
       "proto": "http",
-      "range": 0
+      "range": 30
     },
     "useragent": "request (nodejs) - Olympia/ECMS (HRNM - Webmaster/TTP)"
   },
@@ -45,6 +45,7 @@
     "request": "^2.69.0",
     "underscore": "^1.8.3",
     "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.0.1",
     "xml-flow": "^0.4.0",
     "xpath-stream": "0.0.8"
   },

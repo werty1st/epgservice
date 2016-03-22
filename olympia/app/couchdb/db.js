@@ -1,10 +1,5 @@
 var db = require('nano')(process.env.DB);
-var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
-var log = bunyan.createLogger({
-    name: 'epgservice/olympia/couchdb/db',
-    stream: formatOut,
-    level: process.env.logLevel
-    });
+
 
 
 function save( sendung, done ){

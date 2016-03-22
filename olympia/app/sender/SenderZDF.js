@@ -5,12 +5,6 @@ var https  = require("https");
 var flow  = require("xml-flow");
 var xpathStream = require('xpath-stream');
 var _ = require('underscore');
-var bunyan = require('bunyan'), bformat = require('bunyan-format'), formatOut = bformat({ outputMode: 'short' });
-var log = bunyan.createLogger({
-    name: 'epgservice/olympia/sender/zdf',
-    stream: formatOut,
-    level: process.env.logLevel
-    });
 
 
 
@@ -44,7 +38,7 @@ function SenderZDF(db){
         if (last_page){
             if (finished) finished();
         }
-        console.log("all requests finished");
+        log.debug("all requests finished");
     });
     
     
@@ -143,6 +137,14 @@ function SenderZDF(db){
     function getImageUrl2 (sendung, callback){
         
         // sendetermin.bildfamilie.VisualFamily_Reference
+
+        if ( !(sendung.bildfamilie && sendung.bildfamilie.VisualFamily_Reference) ){
+            //no url available
+            log.error(`Error in response: ${sendung.sendung_id}`);
+            sendung.externalImageUrl = "";
+            callback(); 
+            return;   
+        }
                
         var get_options = require('url').parse(sendung.bildfamilie.VisualFamily_Reference);
             get_options.headers = {'User-Agent': agent};
@@ -222,7 +224,6 @@ function SenderZDF(db){
             
             return function(){
                 log.debug("close",sendung.start,"-",sendung.titel);
-                //(openLogs[sendung.start,"-",sendung.titel]).close=true;
                 openReqCounter.emit('close');
             };
         }
@@ -255,10 +256,6 @@ function SenderZDF(db){
                 
                     log.debug("open ",sendung.start,"-",sendung.titel);                    
                     openReqCounter.emit("open");
-                    //openLogs.push(sendung.start,"-",sendung.titel);
-                    //(openLogs[sendung.start,"-",sendung.titel])={};
-                    //(openLogs[sendung.start,"-",sendung.titel]).open=true;
-                    //(openLogs[sendung.start,"-",sendung.titel]).sendung=sendung;
                     addSendetermin(sendung, addSendeterminDone(sendung) );                    
                 }
             });    
