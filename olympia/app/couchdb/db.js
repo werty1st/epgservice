@@ -1,14 +1,21 @@
-var db = require('nano')(process.env.DB);
+var nano = require('nano')(process.env.DB);
+
+db = nano.use(process.env.npm_package_config_database);
+
+
+nano.session(function(err, session) {
+  if (err) {    
+    throw new Error("no database");
+  }
+  log.debug('user is %s and has these roles: %j',session.userCtx.name, session.userCtx.roles);
+});
+
 
 
 
 function save( sendung, done ){
     
     db.insert(sendung, (err, docHead)=>{
-        
-        if(sendung.externalId==="837c975b-a1bd-48b0-8059-9128d0187645"){
-            log.debug("break");
-        }
         
         if(err){
             log.error("failed saving doc");

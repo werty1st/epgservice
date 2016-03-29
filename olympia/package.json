@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
+    "database": "ecms",
     "logLevel": "info",
     "ecms": {
       "delta": true,
@@ -20,7 +21,7 @@
   },
   "scripts": {
     "production:run": "DB=${npm_config_couchdb} logLevel=error node ./app/main.js",
-    "production:install": "npm install; cd sofaapp; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
+    "production:install": "npm install; cd sofaapp; npm install -g kanso; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
     "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js",
     "inspect": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node --debug-brk=5858 ./app/main.js",
     "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js'",
