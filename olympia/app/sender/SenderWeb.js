@@ -108,7 +108,7 @@ function SenderWeb(db){
     /**
      * @param {string} url download xml  
      */
-    function getXmlStream(url){
+    function getXmlStream(url,retry){
         
         log.info("Download:",url);
 
@@ -125,7 +125,8 @@ function SenderWeb(db){
             } else {
                 
                 if (responeStream.headers['content-length'] == 0){
-                    log.error(`Got emtpy response from ${url}`);
+                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
+                    retry(url);
                     return;
                 }else {                
                     //send to xml stream reader
@@ -169,8 +170,15 @@ function SenderWeb(db){
                                                         path : process.env.npm_package_config_ecms_path } });
 
 
+        var retryFn = function(url){
+    
+            getXmlStream(url, (url)=>{
+                log.error("failed 2 times: ",url);
+            });
+        };     
+                                                        
         for (var url of ecms_urls) {
-            getXmlStream(url);
+            getXmlStream(url, retryFn);
         }
 
     };
