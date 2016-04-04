@@ -15,7 +15,7 @@
     },
     "p12": {
       "proto": "http",
-      "range": 20
+      "range": 1
     },
     "useragent": "request (nodejs) - Olympia/ECMS (HRNM - Webmaster/TTP)"
   },

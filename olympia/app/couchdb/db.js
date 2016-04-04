@@ -1,17 +1,13 @@
-var nano = require('nano')(process.env.DB);
-
-db = nano.use(process.env.npm_package_config_database);
+const nano = require('nano')(process.env.DB);
+const db = nano.db.use(process.env.npm_package_config_database);
 
 
 nano.session(function(err, session) {
   if (err) {    
-    throw new Error("no database");
+    throw new Error(err);
   }
   log.debug('DB user is %s and has these roles: %j',session.userCtx.name, session.userCtx.roles);
 });
-
-
-
 
 function save( sendung, done ){
     
@@ -32,7 +28,7 @@ function store( sendung, done ){
    
     //check if exists then update else save
     db.head(sendung._id, function(err, _, headers) {
-        
+                
         log.debug("save ",sendung.start,"-",sendung.titel);
         //openLogs[sendung.start,"-",sendung.titel].save=true;
 

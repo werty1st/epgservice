@@ -258,6 +258,7 @@ function SenderZDF(db){
                 untertitel: "untertitel/text()",
                 dachzeile: "dachzeile/text()",
                 start: "beginnDatum/text()",
+                kategorien: "sendungsinformation/Sendungsinformation/kategorien/text()",
                 end: "endeDatum/text()",
                 bildfamilie:{
                   Beitrag_Reference: "epgBeitrag/Beitrag_Reference/@ref",
@@ -275,7 +276,12 @@ function SenderZDF(db){
                         log.error("No images found in:", sendung.externalId);                       
                     }
                 
-                    log.debug("open ",sendung.start,"-",sendung.titel);                    
+                    log.debug("open ",sendung.start,"-",sendung.titel);
+                    //TODO
+                    /*log.info("open kategorien",sendung.kategorien);
+                    break;
+                    process.exit();*/
+                                        
                     openReqCounter.emit("open");
                     addSendetermin(sendung, addSendeterminDone(sendung) );                    
                 }
