@@ -15,7 +15,7 @@
     },
     "p12": {
       "proto": "http",
-      "range": 30
+      "range": 20
     },
     "useragent": "request (nodejs) - Olympia/ECMS (HRNM - Webmaster/TTP)"
   },
@@ -27,10 +27,10 @@
     "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js'",
     "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
     "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js",
-    "push": "cd sofaapp; kanso push ${npm_config_couchdb}; cd ..",
-    "push:s2": "kanso push ${npm_config_couchdb_sofa2}",
+    "push": "cd sofaapp; kanso push ${npm_config_couchdb}/${npm_package_config_database}; cd ..",
+    "push:s2": "cd sofaapp; kanso push ${npm_config_couchdb_sofa2}/${npm_package_config_database}; cd ..",
     "push:watch": "watch 'npm run push'",
-    "push:s2:watch": "watch 'npm run push:s2' sofaapp/"
+    "push:s2:watch": "watch 'npm run push:s2'"
   },
   "main": "./app/main.js",
   "author": "ronny adams",

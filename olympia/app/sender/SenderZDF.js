@@ -58,10 +58,11 @@ function SenderZDF(db){
         sendung.vcmsid          = "1822600";
         sendung.vcmsChannelId   = "74";
         sendung._id             = sendung.externalId;
-        sendung.copy            = (sendung.copy       === undefined)?"" : sendung.copy;
+        sendung.text            = (sendung.copy       === undefined)?"" : sendung.copy;
         sendung.titel           = (sendung.titel      === undefined)?"" : sendung.titel;
         sendung.untertitel      = (sendung.untertitel === undefined)?"" : sendung.untertitel;
         sendung.dachzeile       = (sendung.dachzeile  === undefined)?"" : sendung.dachzeile;
+        sendung.moderator       = "";
                         
         getImageUrl(sendung, ()=>{
    
@@ -292,7 +293,8 @@ function SenderZDF(db){
 
         var get_options = require('url').parse(url);
         get_options.headers = {
-                'User-Agent': agent
+                'User-Agent': agent,
+                'Cache-Control': 'no-cache'
             };
 
         request.get(get_options, (responeStream) => {
@@ -333,7 +335,7 @@ function SenderZDF(db){
         var startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
         var stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
       
-        var url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}`;
+        var url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`;
         
         getXmlStream(url);
 

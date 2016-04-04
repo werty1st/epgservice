@@ -7,7 +7,7 @@ nano.session(function(err, session) {
   if (err) {    
     throw new Error("no database");
   }
-  log.debug('user is %s and has these roles: %j',session.userCtx.name, session.userCtx.roles);
+  log.debug('DB user is %s and has these roles: %j',session.userCtx.name, session.userCtx.roles);
 });
 
 

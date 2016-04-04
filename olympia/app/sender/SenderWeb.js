@@ -29,9 +29,10 @@ function SenderWeb(db){
         sendung.vcmsid           = xmlElement.$attrs["vcms-id"];
         sendung._id              = xmlElement.$attrs["vcms-id"]; //doc id
         sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
-        sendung.typicalId        = xmlElement.$attrs["typical-id"];
-        sendung.title            = xmlElement.title;
-        sendung.copy             = xmlElement.copy;
+        //sendung.typicalId        = xmlElement.$attrs["typical-id"];
+        sendung.titel            = xmlElement.title;
+        sendung.moderator        = xmlElement.moderator;
+        sendung.text             = xmlElement.copy;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
         sendung.station          = "web" + xmlElement.channel;
@@ -114,7 +115,8 @@ function SenderWeb(db){
 
         var get_options = require('url').parse(url);
         get_options.headers = {
-                'User-Agent': agent
+                'User-Agent': agent,
+                'Cache-Control': 'no-cache'
             };
 
         https.get(get_options, (responeStream) => {
@@ -172,6 +174,7 @@ function SenderWeb(db){
 
         var retryFn = function(url){
     
+            log.error("failed 1 time: ",url);
             getXmlStream(url, (url)=>{
                 log.error("failed 2 times: ",url);
             });
