@@ -277,13 +277,26 @@ function SenderZDF(db){
                     }
                 
                     log.debug("open ",sendung.start,"-",sendung.titel);
-                    //TODO
-                    /*log.info("open kategorien",sendung.kategorien);
-                    break;
-                    process.exit();*/
+                    if (sendung.kategorien)
+                        log.info("open kategorien",sendung.kategorien);
+                        
+                    // find sport emission
+                    var sport = sendung.titel.split(/,| /).find(x=>{
+                        if ((x.toLowerCase() === "uefa") ||
+                            (x.toLowerCase() === "fifa") ||
+                            (x.toLowerCase() === "sport") ||
+                            (x.toLowerCase() === "wintersport") ||
+                            (x.toLowerCase() === "leichtathletik") ||
+                            (x.toLowerCase() === "olympia"))
+                        return true;
+                    });
+                    
+                    // sport found. add it
+                    if (sport !== undefined){                        
+                        openReqCounter.emit("open");
+                        addSendetermin(sendung, addSendeterminDone(sendung) );                    
+                    }
                                         
-                    openReqCounter.emit("open");
-                    addSendetermin(sendung, addSendeterminDone(sendung) );                    
                 }
             });    
     }
