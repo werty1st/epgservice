@@ -9,8 +9,8 @@ include_once("class/couch_class.php");
 
 
 //db_setup
-$couch = &Factory::getDB(array("host" => $db_host,
-							   "name" => $db_name));
+$couch = &Factory::getDB(array("host" => $db_host, "name" => $db_name));
+//$couch->cleanup(true); //true=all
 
 
 //set Date
