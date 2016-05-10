@@ -5,6 +5,8 @@ var SenderGruppe = require("./sender/SenderGruppe");
 var moment = require("moment");
 var winston = require('winston');
 
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
 global.log = new (winston.Logger)({
     exitOnError: false,
     transports: [

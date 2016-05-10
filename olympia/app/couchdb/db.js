@@ -35,7 +35,8 @@ function store( sendung, done ){
         if (!err){
             // update
             //build hash from json to decide if update needed
-            sendung._rev = headers.etag.replace(/['"]+/g, ''); //nervige doppelte "
+            if (headers.etag)
+                sendung._rev = headers.etag.replace(/['"]+/g, ''); //nervige doppelte "
             
             //update
             save( sendung, done );

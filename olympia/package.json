@@ -4,7 +4,7 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
     "database": "ecms",
-    "logLevel": "info",
+    "logLevel": "debug",
     "ecms": {
       "delta": true,
       "startdate": "2014-02-06",
@@ -44,6 +44,7 @@
     "moment": "^2.11.0",
     "nano": "^6.1.5",
     "request": "^2.69.0",
+    "stream": "0.0.2",
     "underscore": "^1.8.3",
     "winston": "^2.2.0",
     "winston-daily-rotate-file": "^1.0.1",

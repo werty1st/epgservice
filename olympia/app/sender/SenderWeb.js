@@ -1,17 +1,56 @@
+(function (){
+'use strict';
+
 var moment = require("moment");
 var https = require("https");
 var flow  = require("xml-flow");
+var xpathStream = require('xpath-stream');
+var stream = require('stream');
+var request = require('request');
+const EventEmitter = require('events');
 
 
+
+class OpenReqCounter extends EventEmitter {
+
+    constructor(next){
+        super();
+        
+        this.opened = 0;
+        this.last_page = false;
+        this.next = next;
+
+        this.on('open', () => {
+            this.opened++;
+            //log.error("open:",opened);
+        });
+    
+        this.on('close', () => {
+            this.opened--; 
+            if(this.opened===0)
+                this.emit('empty');
+        });    
+    
+        this.on('empty', () => {
+            if (this.last_page){
+                if (this.next) this.next();
+            }
+            log.debug("all requests finished");
+        });        
+    }
+}
 
 function SenderWeb(db){
-    
-    var opentag = 0;
+
+    // protoype
+    var openReqCounter = null;
+
     var delta = 0;
     var senderO = this;
-    var finished;    
     var agent;
 
+
+        
 
 
     /**
@@ -19,26 +58,7 @@ function SenderWeb(db){
      * after that it collects the Sendungs Preview Image
      * the done callback is passed from main.js@readXMLstream and gets passed to 
      */
-    function addSendetermin (xmlElement, done){
-        
-        opentag++;
-               
-        var sendung = {};
-        
-        sendung.ecmsid           = xmlElement.$attrs["ecms-id"];
-        sendung.vcmsid           = xmlElement.$attrs["vcms-id"];
-        sendung._id              = xmlElement.$attrs["vcms-id"]; //doc id
-        sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
-        //sendung.typicalId        = xmlElement.$attrs["typical-id"];
-        sendung.titel            = xmlElement.title;
-        sendung.moderator        = xmlElement.moderator;
-        sendung.text             = xmlElement.copy;
-        sendung.start            = xmlElement.start;
-        sendung.end              = xmlElement.end;
-        sendung.station          = "web" + xmlElement.channel;
-        //sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
-        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
-
+    function addSendetermin (sendung, done){
 
         /**
          * TODO: remove
@@ -62,48 +82,47 @@ function SenderWeb(db){
     }
 
 
-
     //xml stream reader
     /**
      * @param {stream} stream from http get 
      */
-    function parseXmlStream(stream){
-
-        /**
-         * passElementFn is passed to the xml parser
-         * it receives a xml video/bracket element and stores it to its corresponding 
-         * channel (web[web1-6, p12[Hauptprogramm])
-         * at this time it is possible to reduce 
-         */
-        function passElementFn( video ) {
-
-            //get channel
-            var channel = video.channel;
-
-            //drop channel <> 1-6
-            switch (channel) {
-                case "1":
-                case "2":
-                case "3":
-                case "4":
-                case "5":
-                case "6":
-                    addSendetermin(video, ()=>{ 
-                        opentag--;
-                        if (opentag===0){
-                            if (finished) finished();
-                        }
-                    });
-                    break;
-                default:
-            }
-        }
-
-        var xml = flow(stream, {strict:true});
-         
-        xml.on('tag:video', passElementFn); 
-        xml.on('tag:bracket', passElementFn);  
+    function parseXmlStream(){
+        
+        // callback func used in for loop
+        function addSendeterminDone(sendung){
+            
+            return function(){
+                log.debug("close",sendung.start,"-",sendung.titel);
+                openReqCounter.emit('close');
+            };
+        }        
+        
+        return (xpathStream("/export/video",{
+                ecmsid: "./@ecms-id",
+                vcmsid: "./@vcms-id",
+                _id: "./@vcms-id",
+                vcmsChannelId: "./@vcms-channel-id",
+                titel: "title/text()",
+                moderator: "moderator/text()",
+                text: "copy/text()",
+                start: "start/text()",
+                end: "end/text()",
+                station: "channel/text()"
+            }))
+            .on('data',(result)=>{
+                for(var i = 0; i< result.length; i++){
+                    var sendung = result[i];
+                        sendung.station          = "web" + sendung.station;
+                        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
+                        
+                        openReqCounter.emit("open");
+                        addSendetermin(sendung, addSendeterminDone(sendung) );
+                }
+                
+            });
     }
+
+ 
     
     //xml download
     /**
@@ -113,34 +132,17 @@ function SenderWeb(db){
         
         log.info("Download:",url);
 
-        var get_options = require('url').parse(url);
-        get_options.headers = {
-                'User-Agent': agent,
-                'Cache-Control': 'no-cache'
-            };
-
-        https.get(get_options, (responeStream) => {
-                       
-
-            if (responeStream.statusCode != 200){
-                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
-            } else {
-                
-                if (responeStream.headers['content-length'] == 0){
-                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
-                    retry(url);
-                    return;
-                }else {                
-                    //send to xml stream reader
-                    parseXmlStream(responeStream);
-                }   
-            }
-
-        }).on('error', (e) => {
-            log.error(`Got error: ${e.message}`);
-        });
-
-
+        request
+            .get({url:url, method: 'GET', headers: {'Content-Type': 'application/x-www-form-urlencoded','User-Agent': agent }})
+            .on('response', function(response) {
+                //console.log(response.statusCode); // 200 
+                //console.log(response.headers['content-type']); 
+                if (response.statusCode != 200){
+                    log.error(`Got invalid response: ${response.statusCode} from ${url}`);
+                    this.end();
+                }
+            })
+            .pipe( parseXmlStream() );
     }
 
 
@@ -151,7 +153,8 @@ function SenderWeb(db){
      */
     this.update = function update(done){
 
-        finished = done;
+        openReqCounter = new OpenReqCounter(done);
+        
         agent = process.env.npm_package_config_useragent;
         
         /**
@@ -188,9 +191,6 @@ function SenderWeb(db){
 
 }
 
-
-module.exports = SenderWeb;
-
 function urlgen (data){ 
 
     var options = data.options;
@@ -215,3 +215,8 @@ function urlgen (data){
 
     return  urls;
 }
+
+
+module.exports = SenderWeb;
+
+}());

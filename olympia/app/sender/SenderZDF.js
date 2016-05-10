@@ -2,7 +2,6 @@ var moment  = require("moment");
 var async = require("async");
 var http  = require("http");
 var https  = require("https");
-var flow  = require("xml-flow");
 var xpathStream = require('xpath-stream');
 var _ = require('underscore');
 
@@ -96,6 +95,9 @@ function SenderZDF(db){
                
         var get_options = require('url').parse(sendung.bildfamilie.Beitrag_Reference);
             get_options.headers = {'User-Agent': agent};
+            get_options.timeout = 2000;
+            get_options.followRedirect = true;
+            get_options.maxRedirects = 10;
 
         request.get(get_options, (responeStream) => {
 
@@ -162,6 +164,10 @@ function SenderZDF(db){
                
         var get_options = require('url').parse(sendung.bildfamilie.VisualFamily_Reference);
             get_options.headers = {'User-Agent': agent};
+            get_options.timeout = 2000;
+            get_options.followRedirect = true;
+            get_options.maxRedirects = 10;
+            
 
         request.get(get_options, (responeStream) => {
 
@@ -311,10 +317,13 @@ function SenderZDF(db){
         log.info("Download:",url);
 
         var get_options = require('url').parse(url);
-        get_options.headers = {
-                'User-Agent': agent,
-                'Cache-Control': 'no-cache'
-            };
+            get_options.headers = {
+                    'User-Agent': agent,
+                    'Cache-Control': 'no-cache'
+                };
+            get_options.timeout = 2000;
+            get_options.followRedirect = true;
+            get_options.maxRedirects = 10;
 
         request.get(get_options, (responeStream) => {
 
