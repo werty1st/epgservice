@@ -61,14 +61,7 @@ function SenderWeb(db){
      * the done callback is passed from main.js@readXMLstream and gets passed to 
      */
     function addSendetermin (xmlElement, done){
-
-        /**
-         * TODO: remove
-         * add delta to get current sendungen
-         */        
-        // sendung.start = moment(sendung.start).add(delta, 'days').format(); 
-        // sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
-        
+       
         var sendung = {};
         
         sendung.ecmsid           = xmlElement.$attrs["ecms-id"];
@@ -84,6 +77,13 @@ function SenderWeb(db){
         sendung.station          = "web" + xmlElement.channel;
         //sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
         sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
+
+        /**
+         * TODO: remove
+         * add delta to get current sendungen
+         */        
+        sendung.start = moment(sendung.start).add(delta, 'days').format(); 
+        sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
 
         // store sendung to db
         db.store(sendung, (err)=>{
@@ -153,14 +153,14 @@ function SenderWeb(db){
 
     }
     
-    var stream = require('stream');
-    class EchoStream extends stream.Writable {
-        _write(chunk, enc, next) {
-            console.log(chunk.toString());
-            next();
-        }
-    }
-    const echoStream = new EchoStream();
+    // var stream = require('stream');
+    // class EchoStream extends stream.Writable {
+    //     _write(chunk, enc, next) {
+    //         console.log(chunk.toString());
+    //         next();
+    //     }
+    // }
+    // const echoStream = new EchoStream();
     
     //xml download
     /**
@@ -168,39 +168,19 @@ function SenderWeb(db){
      */
     function getXmlStream(url, callback){
         
-        url = "http://wmaiz-v-sofa02.dbc.zdf.de:7788/2014-02-06.xml";
+        //url = "http://wmaiz-v-sofa02.dbc.zdf.de:7788/2014-02-06.xml";
         
         log.info("Download:",url);
 
 
 
-        // curl.open([url], function(code){
-
-        //     if (code == 0){ // 0 is success
-
-        //         // what you want
-        //         console.log(this['header']);
-        //         console.log(this['error'].toString());
-
-        //     }else{
-        //         console.log(this['header']);
-        //         console.log(this['error'].toString());
-        //     }
-
-        // });
-                
         axios.get(url,{responseType: "text"})
-        .then(function (response) {
-            console.log();
-            //response.data.pipe(echoStream);
-
-            
+        .then(function (response) {            
             parseXmlStream(response.data);
-            
-            //response.data.pipe(parseXmlStream());
+            callback(null);
         })
         .catch(function (response) {
-            console.log(response);
+            callback(response);
         });        
         
         // var noerror = true;
@@ -255,7 +235,7 @@ function SenderWeb(db){
                                                         path : process.env.npm_package_config_ecms_path } });
 
     
-        var threads = 1;
+        var threads = 5;
         require('async').eachLimit(ecms_urls, threads, function(url, next){
             getXmlStream(url, next);
         }, function(){
