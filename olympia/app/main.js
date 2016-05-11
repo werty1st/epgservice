@@ -25,10 +25,10 @@ var senderGruppe = new SenderGruppe(db);
 var websender    = senderGruppe.web;
 var zdfsender    = senderGruppe.zdf;
 
-zdfsender.update(()=>{
-    // done
-    log.info("zdfsender finished");
-});
+// zdfsender.update(()=>{
+//     // done
+//     log.info("zdfsender finished");
+// });
 
 websender.update(()=>{
     // done

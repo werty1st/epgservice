@@ -17,7 +17,8 @@
       "proto": "http",
       "range": 10
     },
-    "useragent": "request (nodejs) - Olympia/ECMS (HRNM - Webmaster/TTP)"
+    "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)",
+    "useragent_old": "curl/7.21.1 (i686-pc-linux-gnu) libcurl/7.21.1 OpenSSL/1.0.0a zlib/1.2.5"
   },
   "scripts": {
     "production:run": "DB=${npm_config_couchdb} logLevel=error node ./app/main.js",

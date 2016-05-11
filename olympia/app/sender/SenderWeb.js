@@ -2,11 +2,13 @@
 'use strict';
 
 var moment = require("moment");
-var https = require("https");
+//var https = require("https");
+var axios  = require("axios").create({
+  timeout: 1000,
+  headers: {'User-Agent': process.env.npm_package_config_useragent}
+});
 var flow  = require("xml-flow");
-var xpathStream = require('xpath-stream');
-var stream = require('stream');
-var request = require('request');
+//var request = require('request');
 const EventEmitter = require('events');
 
 
@@ -58,16 +60,30 @@ function SenderWeb(db){
      * after that it collects the Sendungs Preview Image
      * the done callback is passed from main.js@readXMLstream and gets passed to 
      */
-    function addSendetermin (sendung, done){
+    function addSendetermin (xmlElement, done){
 
         /**
          * TODO: remove
          * add delta to get current sendungen
          */        
-        sendung.start = moment(sendung.start).add(delta, 'days').format(); 
-        sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
+        // sendung.start = moment(sendung.start).add(delta, 'days').format(); 
+        // sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
         
-
+        var sendung = {};
+        
+        sendung.ecmsid           = xmlElement.$attrs["ecms-id"];
+        sendung.vcmsid           = xmlElement.$attrs["vcms-id"];
+        sendung._id              = xmlElement.$attrs["vcms-id"]; //doc id
+        sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
+        //sendung.typicalId        = xmlElement.$attrs["typical-id"];
+        sendung.titel            = xmlElement.title;
+        sendung.moderator        = xmlElement.moderator;
+        sendung.text             = xmlElement.copy;
+        sendung.start            = xmlElement.start;
+        sendung.end              = xmlElement.end;
+        sendung.station          = "web" + xmlElement.channel;
+        //sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
+        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
 
         // store sendung to db
         db.store(sendung, (err)=>{
@@ -86,7 +102,7 @@ function SenderWeb(db){
     /**
      * @param {stream} stream from http get 
      */
-    function parseXmlStream(){
+    function parseXmlStream(xmldata){
         
         // callback func used in for loop
         function addSendeterminDone(sendung){
@@ -96,53 +112,117 @@ function SenderWeb(db){
                 openReqCounter.emit('close');
             };
         }        
-        
-        return (xpathStream("/export/video",{
-                ecmsid: "./@ecms-id",
-                vcmsid: "./@vcms-id",
-                _id: "./@vcms-id",
-                vcmsChannelId: "./@vcms-channel-id",
-                titel: "title/text()",
-                moderator: "moderator/text()",
-                text: "copy/text()",
-                start: "start/text()",
-                end: "end/text()",
-                station: "channel/text()"
-            }))
-            .on('data',(result)=>{
-                for(var i = 0; i< result.length; i++){
-                    var sendung = result[i];
-                        sendung.station          = "web" + sendung.station;
-                        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
-                        
-                        openReqCounter.emit("open");
-                        addSendetermin(sendung, addSendeterminDone(sendung) );
-                }
-                
-            });
-    }
 
- 
+
+        /**
+         * passElementFn is passed to the xml parser
+         * it receives a xml video/bracket element and stores it to its corresponding 
+         * channel (web[web1-6, p12[Hauptprogramm])
+         * at this time it is possible to reduce 
+         */
+        function passElementFn( video ) {
+
+            //get channel
+            var channel = video.channel;
+
+            //drop channel <> 1-6
+            switch (channel) {
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                    openReqCounter.emit("open");
+                    addSendetermin(video, addSendeterminDone);
+                    break;
+                default:
+            }
+        }
+
+        let Readable = require('stream').Readable;
+        let stream = new Readable();
+        stream.push(xmldata);
+        stream.push(null);
+
+
+        let xml = flow(stream, {strict:true});
+         
+        xml.on('tag:video', passElementFn); 
+        xml.on('tag:bracket', passElementFn); 
+
+    }
+    
+    var stream = require('stream');
+    class EchoStream extends stream.Writable {
+        _write(chunk, enc, next) {
+            console.log(chunk.toString());
+            next();
+        }
+    }
+    const echoStream = new EchoStream();
     
     //xml download
     /**
      * @param {string} url download xml  
      */
-    function getXmlStream(url,retry){
+    function getXmlStream(url, callback){
+        
+        url = "http://wmaiz-v-sofa02.dbc.zdf.de:7788/2014-02-06.xml";
         
         log.info("Download:",url);
 
-        request
-            .get({url:url, method: 'GET', headers: {'Content-Type': 'application/x-www-form-urlencoded','User-Agent': agent }})
-            .on('response', function(response) {
-                //console.log(response.statusCode); // 200 
-                //console.log(response.headers['content-type']); 
-                if (response.statusCode != 200){
-                    log.error(`Got invalid response: ${response.statusCode} from ${url}`);
-                    this.end();
-                }
-            })
-            .pipe( parseXmlStream() );
+
+
+        // curl.open([url], function(code){
+
+        //     if (code == 0){ // 0 is success
+
+        //         // what you want
+        //         console.log(this['header']);
+        //         console.log(this['error'].toString());
+
+        //     }else{
+        //         console.log(this['header']);
+        //         console.log(this['error'].toString());
+        //     }
+
+        // });
+                
+        axios.get(url,{responseType: "text"})
+        .then(function (response) {
+            console.log();
+            //response.data.pipe(echoStream);
+
+            
+            parseXmlStream(response.data);
+            
+            //response.data.pipe(parseXmlStream());
+        })
+        .catch(function (response) {
+            console.log(response);
+        });        
+        
+        // var noerror = true;
+        // request
+        //     .get({url:url, method: 'GET', headers: {'User-Agent': agent }})
+        //     .on('response', function(response) {
+        //         console.log(response.statusCode); // 200 
+        //         //console.log(response.headers['content-type']); 
+        //         console.log(response.headers['content-length']); 
+        //         if ( (response.statusCode != 200) || (response.headers['content-length'] == "0") ){
+        //             log.error(`Got invalid response: ${response.statusCode} from ${url}`);
+        //             callback(`Got invalid response: ${response.statusCode} from ${url}`);
+        //             noerror = false;
+        //             this.end();
+                    
+        //         }
+        //     })
+        //     //.pipe( parseXmlStream("bracket"))
+        //     //.pipe( parseXmlStream("video") )
+        //     .on("end", ()=>{
+        //         if (noerror) callback(null);
+        //     });
     }
 
 
@@ -174,18 +254,14 @@ function SenderWeb(db){
                                                         host : process.env.npm_package_config_ecms_host,
                                                         path : process.env.npm_package_config_ecms_path } });
 
-
-        var retryFn = function(url){
     
-            log.error("failed 1 time: ",url);
-            getXmlStream(url, (url)=>{
-                log.error("failed 2 times: ",url);
-            });
-        };     
-                                                        
-        for (var url of ecms_urls) {
-            getXmlStream(url, retryFn);
-        }
+        var threads = 1;
+        require('async').eachLimit(ecms_urls, threads, function(url, next){
+            getXmlStream(url, next);
+        }, function(){
+            console.log('finished async');
+        });                                                          
+ 
 
     };
 
