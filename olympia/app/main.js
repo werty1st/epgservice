@@ -1,10 +1,6 @@
 /* global process log */
 
-var db = require("./couchdb/db");
-var SenderGruppe = require("./sender/SenderGruppe");
-var moment = require("moment");
 var winston = require('winston');
-
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 global.log = new (winston.Logger)({
@@ -19,16 +15,23 @@ global.log = new (winston.Logger)({
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
 
+
+//var db = require("./couchdb/db");
+var db = require('./couchdb/DbWorker');
+var SenderGruppe = require("./sender/SenderGruppe");
+var moment = require("moment");
+
+
 // create new SenderGruppe
 var senderGruppe = new SenderGruppe(db);
 
 var websender    = senderGruppe.web;
 var zdfsender    = senderGruppe.zdf;
 
-zdfsender.update(()=>{
-    // done
-    log.info("zdfsender finished");
-});
+// zdfsender.update(()=>{
+//     // done
+//     log.info("zdfsender finished");
+// });
 
 websender.update(()=>{
     // done

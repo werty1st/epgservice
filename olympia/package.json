@@ -3,19 +3,19 @@
   "version": "1.0.0",
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
-    "database": "ecms",
     "logLevel": "debug",
+    "version": 2,
     "ecms": {
-      "delta": true,
-      "startdate": "2014-02-06",
-      "enddate": "2014-02-23",
+      "delta": false,
+      "startdate": "2016-08-13",
+      "enddate": "2016-08-15",
       "proto": "https",
       "host": "eventcms.zdf.de",
-      "path": "/xml/olympia2014/epg/"
+      "path": "/xml/olympia2016/epg/"
     },
     "p12": {
       "proto": "http",
-      "range": 10
+      "range": 3
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)",
     "useragent_old": "curl/7.21.1 (i686-pc-linux-gnu) libcurl/7.21.1 OpenSSL/1.0.0a zlib/1.2.5"
@@ -25,13 +25,13 @@
     "production:install": "npm install; cd sofaapp; npm install -g kanso; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
     "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js",
     "inspect": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node --debug-brk=5858 ./app/main.js",
-    "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js'",
+    "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js' app/",
     "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
     "debug:s2": "DB=${npm_config_couchdb_sofa2} node ./app/main.js",
-    "push": "cd sofaapp; kanso push ${npm_config_couchdb}/${npm_package_config_database}; cd ..",
-    "push:s2": "cd sofaapp; kanso push ${npm_config_couchdb_sofa2}/${npm_package_config_database}; cd ..",
-    "push:watch": "watch 'npm run push'",
-    "push:s2:watch": "watch 'npm run push:s2'"
+    "push": "cd sofaapp; kanso push ${npm_config_couchdb}; cd ..",
+    "push:s2": "cd sofaapp; kanso push ${npm_config_couchdb_sofa2}; cd ..",
+    "push:watch": "watch 'npm run push' sofaapp/",
+    "push:s2:watch": "watch 'npm run push:s2' sofaapp/"
   },
   "main": "./app/main.js",
   "author": "ronny adams",
@@ -42,8 +42,12 @@
     "url": "https://github.com/werty1st/epgservice.git#apiv2"
   },
   "dependencies": {
+    "deep-diff": "^0.3.4",
+    "memdown": "^1.1.2",
     "moment": "^2.11.0",
     "nano": "^6.1.5",
+    "pouchdb": "^5.3.2",
+    "pouchdb-upsert": "^2.0.0",
     "request": "^2.69.0",
     "stream": "0.0.2",
     "underscore": "^1.8.3",

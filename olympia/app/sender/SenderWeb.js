@@ -2,13 +2,8 @@
 'use strict';
 
 var moment = require("moment");
-//var https = require("https");
-var axios  = require("axios").create({
-  timeout: 1000,
-  headers: {'User-Agent': process.env.npm_package_config_useragent}
-});
+var https = require("https");
 var flow  = require("xml-flow");
-//var request = require('request');
 const EventEmitter = require('events');
 
 
@@ -19,7 +14,7 @@ class OpenReqCounter extends EventEmitter {
         super();
         
         this.opened = 0;
-        this.last_page = false;
+        this.last_page = true; // not require here
         this.next = next;
 
         this.on('open', () => {
@@ -74,25 +69,30 @@ function SenderWeb(db){
         sendung.text             = xmlElement.copy;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
-        sendung.station          = "web" + xmlElement.channel;
+        sendung.station          = "olympia" + xmlElement.channel;
+        
         //sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
         sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
+
+        sendung.version = process.env.npm_package_config_version;
 
         /**
          * TODO: remove
          * add delta to get current sendungen
          */        
-        sendung.start = moment(sendung.start).add(delta, 'days').format(); 
-        sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
+        // sendung.start = moment(sendung.start).add(delta, 'days').format(); 
+        // sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
 
         // store sendung to db
-        db.store(sendung, (err)=>{
+        db.save(sendung, (err) => {
+            // Sendung sent to DB callback
             if (err){
                 log.error("Error saving Sendung: ", err);
             }                
             // store to db complete
             log.debug(`id ${sendung._id} saved`);
-            done();
+            
+            done(sendung);
         });
 
     }
@@ -102,15 +102,12 @@ function SenderWeb(db){
     /**
      * @param {stream} stream from http get 
      */
-    function parseXmlStream(xmldata){
+    function parseXmlStream(xmlstream){
         
         // callback func used in for loop
         function addSendeterminDone(sendung){
-            
-            return function(){
-                log.debug("close",sendung.start,"-",sendung.titel);
-                openReqCounter.emit('close');
-            };
+            log.debug("close",sendung.start,"-",sendung.titel);
+            openReqCounter.emit('close');
         }        
 
 
@@ -123,7 +120,7 @@ function SenderWeb(db){
         function passElementFn( video ) {
 
             //get channel
-            var channel = video.channel;
+            let channel = video.channel;
 
             //drop channel <> 1-6
             switch (channel) {
@@ -140,13 +137,7 @@ function SenderWeb(db){
             }
         }
 
-        let Readable = require('stream').Readable;
-        let stream = new Readable();
-        stream.push(xmldata);
-        stream.push(null);
-
-
-        let xml = flow(stream, {strict:true});
+        let xml = flow(xmlstream, {strict:true});
          
         xml.on('tag:video', passElementFn); 
         xml.on('tag:bracket', passElementFn); 
@@ -172,37 +163,34 @@ function SenderWeb(db){
         
         log.info("Download:",url);
 
+        var get_options = require('url').parse(url);
+        get_options.headers = {
+                'User-Agent': agent,
+                'Cache-Control': 'no-cache'
+            };
 
+        https.get(get_options, (responeStream) => {
 
-        axios.get(url,{responseType: "text"})
-        .then(function (response) {            
-            parseXmlStream(response.data);
-            callback(null);
-        })
-        .catch(function (response) {
-            callback(response);
-        });        
-        
-        // var noerror = true;
-        // request
-        //     .get({url:url, method: 'GET', headers: {'User-Agent': agent }})
-        //     .on('response', function(response) {
-        //         console.log(response.statusCode); // 200 
-        //         //console.log(response.headers['content-type']); 
-        //         console.log(response.headers['content-length']); 
-        //         if ( (response.statusCode != 200) || (response.headers['content-length'] == "0") ){
-        //             log.error(`Got invalid response: ${response.statusCode} from ${url}`);
-        //             callback(`Got invalid response: ${response.statusCode} from ${url}`);
-        //             noerror = false;
-        //             this.end();
-                    
-        //         }
-        //     })
-        //     //.pipe( parseXmlStream("bracket"))
-        //     //.pipe( parseXmlStream("video") )
-        //     .on("end", ()=>{
-        //         if (noerror) callback(null);
-        //     });
+            if (responeStream.statusCode != 200){
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+            } else {
+                
+                if (responeStream.headers['content-length'] == 0){
+                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
+                    callback(`Got emtpy response from ${url}`,responeStream.headers);
+                    return;
+                }else {                
+                    //send to xml stream reader
+                    parseXmlStream(responeStream);
+                    callback(null);
+                }   
+            }
+
+        }).on('error', (e) => {
+            log.error(`Got error: ${e.message}`);
+            callback(`Got error: ${e.message}`);
+        });
     }
 
 
@@ -214,6 +202,10 @@ function SenderWeb(db){
     this.update = function update(done){
 
         openReqCounter = new OpenReqCounter(done);
+        
+        openReqCounter.on('empty', ()=>{
+            db.removeOutdated();
+        });
         
         agent = process.env.npm_package_config_useragent;
         
@@ -235,13 +227,13 @@ function SenderWeb(db){
                                                         path : process.env.npm_package_config_ecms_path } });
 
     
-        var threads = 5;
+        var threads = 1;
         require('async').eachLimit(ecms_urls, threads, function(url, next){
             getXmlStream(url, next);
         }, function(){
-            console.log('finished async');
+            log.info('SenderWeb','finished xml download');
         });                                                          
- 
+
 
     };
 

@@ -73,7 +73,7 @@ function SenderZDF(db){
                 }                
                 // store to db complete
                 done();
-                //log.debug(`id ${sendung._id} saved. open: ${opened}`);                
+                log.debug(`id ${sendung._id} saved. open: ${opened}`);                
             });
         });          
     }
@@ -293,12 +293,14 @@ function SenderZDF(db){
                             (x.toLowerCase() === "sport") ||
                             (x.toLowerCase() === "wintersport") ||
                             (x.toLowerCase() === "leichtathletik") ||
+                            (x.toLowerCase() === "zdf sportreportage") ||
                             (x.toLowerCase() === "olympia"))
                         return true;
                     });
                     
                     // sport found. add it
-                    if (sport !== undefined){                        
+                    if (sport !== undefined){       
+                        log.error("sport gefunden");                 
                         openReqCounter.emit("open");
                         addSendetermin(sendung, addSendeterminDone(sendung) );                    
                     }
