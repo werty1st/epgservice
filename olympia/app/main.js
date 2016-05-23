@@ -36,7 +36,21 @@ var zdfsender    = senderGruppe.zdf;
 websender.update(()=>{
     // done
     log.info("websender finished");
+    //loop();
 });
+
+
+function loop(){
+    setTimeout( ()=>{
+
+        websender.update(()=>{
+            // done
+            log.info("websender finished");
+            loop();
+        });
+        
+    }, 5000);    
+}
 
 
 function end(code){   

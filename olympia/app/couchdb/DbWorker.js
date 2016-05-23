@@ -5,6 +5,7 @@ var moment = require("moment");
 
 var PouchDB = require('pouchdb');
     PouchDB.plugin(require('pouchdb-upsert'));
+    require('pouchdb/extras/websql');
     //PouchDB.debug.enable('*');
     
 var diff = require('deep-diff').diff;    
@@ -14,63 +15,64 @@ class DbWorker {
         
     constructor (){     
         
-        const that = this;
-        
         // redirect save requests to this array as long as the constructor has not finished loading
         let workerQ = [];
-        
+        const that = this;
+                
         log.info("db init");
         
-        this.local = new PouchDB('localecms', {db: require('memdown')});
-        this.remote = new PouchDB(process.env.DB, {auto_compaction: true});
+        //setup local and remote DBs
+        this.local  = new PouchDB('localecms', {db: require('memdown') });
+        //this.local  = new PouchDB('localecms', {adapter: 'websql'});
+        this.remote = new PouchDB(process.env.DB, {auto_compaction: false});
         
         // test local and remote connection
-        // setup replication
+        // check local
         this.local.info().then((info) => {
-            
-            log.debug("local info:", info.doc_count);
-            
-            // if local db ok check remote    
-            that.remote.info().then( (info) => {
-            
-                log.debug("remote info:", info.doc_count);
-                
-                // remote db ok, sync remote
-                that.local.replicate.from(that.remote,{ filter: 'olympia/hauptprogrammFilter', }).then( (result) => {
-                    // handle 'completed' result
-                    log.debug("init replicate completed");
-
-
-                    ready();
-                    
-                    // setup live replication
-                    that.local.replicate.to(that.remote, { live: true})
-                        .on("change", (change) => {
-                            log.debug(`change event: docs_read: ${change.docs_read}, docs_written: ${change.docs_written}, doc_write_failures: ${change.doc_write_failures}`);
-                        })
-                        .on("error", (err) => {
-                            log.debug("change error", err);
-                        });
-                    
-                });
-            });   
-                                   
+            log.debug("local info:", info.doc_count);                                   
         }).catch( (err) =>{
             log.error(err);
             throw new Error (err);
         });
-        
+                
+        // check remote    
+        that.remote.info().then( (info) => {
+            log.debug("remote info:", info.doc_count);
+        }).catch( (err) =>{
+            log.error(err);
+            throw new Error (err);
+        });        
+       
+        // sync from remote /hauptprogrammFilter skips station==zdf 
+        that.local.replicate.from(that.remote,{ filter: 'olympia/hauptprogrammFilter', }).then( (result) => {
+            // handle 'completed' result
+            log.debug("init replicate completed");             
+            // replace save function
+            ready();
+        });     
+           
+        // setup live replication
+        that.local.replicate.to(that.remote, { live: true})
+            .on("change", (change) => {
+                log.debug(`change event: docs_read: ${change.docs_read}, docs_written: ${change.docs_written}, doc_write_failures: ${change.doc_write_failures}`);
+            })
+            .on("error", (err) => {
+                log.debug("change error", err);
+            });
+            
 
-        // collect items until class is ready
+                       
+
+        // public save function
+        // collect items until db is ready
         this.save = function save (item, done) {
             workerQ.push([item, done]);
-            //todo on constructor error call callbacks
         };
         
         /**
-         * add XML News Item to DB
+         * private save function
          */
-        const addItem = function addItem (item, done){
+        const _save = function _save (item, done){
             //send to db
             log.debug("upsert item",item._id);
                     
@@ -80,7 +82,7 @@ class DbWorker {
                 ).then( (response) => {
                     // item stored or skipped invoke callback now
                     done();
-                    log.debug("success", item._id, response);
+                    log.debug("upsert success", item._id, response);
                 }).catch((err) => {
                     log.error("error", err);
                     throw new Error (err);            
@@ -90,12 +92,12 @@ class DbWorker {
         // save items to DB
         const ready = function ready () {
             // constructor is ready now, send collected save requests to addItem function
-            that.save = addItem;
+            that.save = _save;
 
-            // wait one tick to catch late calls to old save function();
+            // wait one tick to catch late calls to old save function;
             process.nextTick( ()=>{
                 workerQ.forEach((item) => {
-                    addItem(item[0],item[1]);
+                    _save(item[0],item[1]);
                 });                        
             });            
         };
@@ -139,17 +141,20 @@ class DbWorker {
         //let old_count=0;
         //let outdated = process.env.npm_package_config_age_keep;
         
-        console.log("find outdated");
+        log.info("find outdated");
         
         /**
          * find docs with lower version 
          */
         this.local.query('olympia/viewByVersion',{
-                endkey: process.env.npm_package_config_version,
-                inclusive_end: "false"
+                endkey: process.env.npm_package_config_version.toString(),
+                inclusive_end: false
             }).then( (res) => {
                 
                 ver_count = res.rows.length;
+                
+                log.debug("Found "+res.rows.length+" outdated docs");
+                //log.debug(JSON.stringify(res.rows));
 
                 //build array of docs to delete
                 return res.rows.map((x)=>{                                        
@@ -161,10 +166,7 @@ class DbWorker {
                 });
             })
             .then( (docs2delete) => {
-                
-                // console.log("version: docs2delete",docs2delete);
-                // return;
-                
+                //return;
                 // remove old versions elements
                 this.local.bulkDocs(docs2delete)
                     .then((result)=>{
@@ -225,7 +227,11 @@ class DbWorker {
 
 
     
-
+    test1 (){
+        // this.local.query("olympia/view_getAllByStation").then( (res) => {
+        //     console.log("view_getAllByStation", res);
+        // });
+    }
 
 
 }

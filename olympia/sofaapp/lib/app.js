@@ -11,7 +11,7 @@ module.exports = {
     },
     filters : {
         hauptprogrammFilter: function (doc, req){
-            if (doc.station === "zdf"){
+            if (doc.station === "zdf" ){
                 return false;
             }
             return true;

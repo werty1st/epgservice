@@ -4,7 +4,7 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
     "logLevel": "debug",
-    "version": 2,
+    "version": 3,
     "ecms": {
       "delta": false,
       "startdate": "2016-08-13",
@@ -17,8 +17,7 @@
       "proto": "http",
       "range": 3
     },
-    "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)",
-    "useragent_old": "curl/7.21.1 (i686-pc-linux-gnu) libcurl/7.21.1 OpenSSL/1.0.0a zlib/1.2.5"
+    "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
   },
   "scripts": {
     "production:run": "DB=${npm_config_couchdb} logLevel=error node ./app/main.js",

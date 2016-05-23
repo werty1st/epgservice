@@ -59,20 +59,21 @@ function SenderWeb(db){
        
         var sendung = {};
         
-        sendung.ecmsid           = xmlElement.$attrs["ecms-id"];
-        sendung.vcmsid           = xmlElement.$attrs["vcms-id"];
-        sendung._id              = xmlElement.$attrs["vcms-id"]; //doc id
+        sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
+        sendung._id              = xmlElement.$attrs["ecms-id"]; //doc id
+        sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || 0; //bei ARD immer 0
         sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
-        //sendung.typicalId        = xmlElement.$attrs["typical-id"];
         sendung.titel            = xmlElement.title;
         sendung.moderator        = xmlElement.moderator;
         sendung.text             = xmlElement.copy;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
-        sendung.station          = "olympia" + xmlElement.channel;
+        //sendung.station          = "olympia" + xmlElement.channel; //OR ard
+        sendung.station          = (sendung.vcmsId === 0)?"ard":"olympia" + xmlElement.channel; //OR ard
+            
         
-        //sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg485x273blob`;
-        sendung.externalImageUrl = `http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
+        
+        sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
 
         sendung.version = process.env.npm_package_config_version;
 
@@ -90,7 +91,7 @@ function SenderWeb(db){
                 log.error("Error saving Sendung: ", err);
             }                
             // store to db complete
-            log.debug(`id ${sendung._id} saved`);
+            log.debug(`item ${sendung._id} saved`);
             
             done(sendung);
         });
@@ -106,7 +107,7 @@ function SenderWeb(db){
         
         // callback func used in for loop
         function addSendeterminDone(sendung){
-            log.debug("close",sendung.start,"-",sendung.titel);
+            //log.debug("close",sendung._id,"-",sendung.titel);
             openReqCounter.emit('close');
         }        
 
@@ -124,6 +125,7 @@ function SenderWeb(db){
 
             //drop channel <> 1-6
             switch (channel) {
+                case "0":
                 case "1":
                 case "2":
                 case "3":
@@ -205,6 +207,7 @@ function SenderWeb(db){
         
         openReqCounter.on('empty', ()=>{
             db.removeOutdated();
+            db.test1();
         });
         
         agent = process.env.npm_package_config_useragent;
@@ -213,11 +216,11 @@ function SenderWeb(db){
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
          */
-        if (process.env.npm_package_config_ecms_delta){
-            delta = moment().diff(moment("2014-02-06"), "days") ;
-            log.debug("Delta:",delta);
-            log.info("Database:",process.env.DB);
-        }
+        // if (process.env.npm_package_config_ecms_delta){
+        //     delta = moment().diff(moment("2014-02-06"), "days") ;
+        //     log.debug("Delta:",delta);
+        //     log.info("Database:",process.env.DB);
+        // }
 
         // create ECMS URLs based on Event Data
         var ecms_urls = urlgen({ startdate: process.env.npm_package_config_ecms_startdate,
@@ -227,7 +230,7 @@ function SenderWeb(db){
                                                         path : process.env.npm_package_config_ecms_path } });
 
     
-        var threads = 1;
+        var threads = 2;
         require('async').eachLimit(ecms_urls, threads, function(url, next){
             getXmlStream(url, next);
         }, function(){
