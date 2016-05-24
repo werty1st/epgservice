@@ -1,3 +1,7 @@
+(function (){
+'use strict';
+
+var flow  = require("xml-flow");
 var moment  = require("moment");
 var async = require("async");
 var http  = require("http");
@@ -5,41 +9,16 @@ var https  = require("https");
 var xpathStream = require('xpath-stream');
 var _ = require('underscore');
 
+const OpenReqCounter = require("./OpenReqCounter");
 
 
 function SenderZDF(db){
-    'use strict';
-    
-    const EventEmitter = require('events');
-    class OpenReqCounter extends EventEmitter {}
-    
-    var opened = 0;
-    var last_page = false;
+
     var senderO = this;
-    var finished;
     var agent;
     var request;
     
-    const openReqCounter = new OpenReqCounter();
-    
-    openReqCounter.on('open', () => {
-        opened++;
-        //log.error("open:",opened);
-    });
-    
-    openReqCounter.on('close', () => {
-        opened--; 
-        if(opened===0)
-            openReqCounter.emit('empty');
-    });    
-    
-    openReqCounter.on('empty', () => {
-        if (last_page){
-            if (finished) finished();
-        }
-        log.debug("all requests finished");
-    });
-    
+    var openReqCounter = null;
     
 
      /**
@@ -56,44 +35,32 @@ function SenderZDF(db){
         sendung.station         = "zdf";
         sendung.vcmsid          = "1822600";
         sendung.vcmsChannelId   = "74";
-        sendung._id             = sendung.externalId;
-        sendung.text            = (sendung.copy       === undefined)?"" : sendung.copy;
-        sendung.titel           = (sendung.titel      === undefined)?"" : sendung.titel;
-        sendung.untertitel      = (sendung.untertitel === undefined)?"" : sendung.untertitel;
-        sendung.dachzeile       = (sendung.dachzeile  === undefined)?"" : sendung.dachzeile;
-        sendung.moderator       = "";
+        sendung.text            = (sendung.text === undefined)?"" : sendung.text; //bei Wiederholungen leer
+        sendung._id             = sendung.externalId;                        
                         
-        getImageUrl(sendung, ()=>{
-   
-            delete sendung.bildfamilie;
-            // store sendung to db
-            db.store(sendung, (err)=>{
-                if (err){
-                    log.error("Error saving Sendung: ", err);
-                }                
-                // store to db complete
-                done();
-                log.debug(`id ${sendung._id} saved. open: ${opened}`);                
-            });
-        });          
+                
+        delete sendung.beitragReference;    
+        delete sendung.visualFamilyReference;    
+    
+                
+        // save sendung to db
+        db.save(sendung, (err)=>{
+            if (err){
+                log.error("Error saving Sendung: ", err);
+            }                
+            // save to db complete
+            done();
+            log.debug(`id ${sendung._id} saved.`);                
+        });
+        
     }
 
 
-    /**
-     * load image from sendung.url
-     * callback is called after image is loaded
-     */
-    function getImageUrl(sendung, callback){
-        
-        // sendetermin.bildfamilie.Beitrag_Reference/epg
-        if ( !(sendung.bildfamilie && sendung.bildfamilie.Beitrag_Reference)){
-            log.error(`getImageUrl: no valid image url`);
-            sendung.externalImageUrl = "";
-            callback();    
-            return;        
-        }    
-               
-        var get_options = require('url').parse(sendung.bildfamilie.Beitrag_Reference);
+    // get Sendungs Details from Beitrag
+    function getSendungsDetails(sendung, callback){
+    
+        //get url
+        var get_options = require('url').parse(sendung.beitragReference);
             get_options.headers = {'User-Agent': agent};
             get_options.timeout = 2000;
             get_options.followRedirect = true;
@@ -113,115 +80,37 @@ function SenderZDF(db){
                     callback();
                     return;
                 }
-                
-                // send to xml stream reader                  
-                var found=false;
-                responeStream
-                    .pipe(xpathStream("//image/Link/url/text()"))
-                    .on('data',(imageList)=>{
-                        
-                        // filter required image urls from response 
-                        var url = imageList.filter((item)=>{
-                            if( (item.search("layout=672x378")>-1) || (item.search("timg672x378blob")>-1) ) return true; 
-                        });      
 
-                        if (url.length > 0){
-                            found=true;
-                            // return the first image
-                            sendung.externalImageUrl = url[0];
-                            callback();
+
+                let xml = flow(responeStream, {strict:true});
+                
+                xml.on('tag:image', (elm) => {
+                        if (sendung.externalImageUrl !== ""){
+                            if( elm.Link.search("layout=672x378") >-1 ){
+                                //console.log("img found");
+                                sendung.externalImageUrl = elm.Link;
+                            }
                         }
-                    })
-                    .on("end",()=>{
-                        // no valid url found try next
-                        if(!found){
-                            getImageUrl2 (sendung, callback);                    
+                }); 
+
+                xml.on('tag:CrewDetail', (elm) => {
+                        if (sendung.moderator !== ""){
+                            if (elm.funktion === "moderation"){
+                                sendung.moderator = elm.name;
+                            }
                         }
-                    });                
+                }); 
+
+                xml.on("end",()=>{
+                    addSendetermin(sendung, callback);
+                });
 
             }
         }).on('error', (e) => {
             log.error(`Error in response: from ${url}`);
-            sendung.externalImageUrl = "";
-            callback();            
+            throw new Exception(e);
         });
     }
-
-    /**
-     * load image from sendung.url
-     * callback is called after image is loaded
-     */
-    function getImageUrl2 (sendung, callback){
-        
-        // sendetermin.bildfamilie.VisualFamily_Reference
-               
-        if ( !(sendung.bildfamilie && sendung.bildfamilie.VisualFamily_Reference)){
-            log.error(`getImageUrl2: no valid image url`);
-            sendung.externalImageUrl = "";
-            callback();
-            return;            
-        }
-               
-        var get_options = require('url').parse(sendung.bildfamilie.VisualFamily_Reference);
-            get_options.headers = {'User-Agent': agent};
-            get_options.timeout = 2000;
-            get_options.followRedirect = true;
-            get_options.maxRedirects = 10;
-            
-
-        request.get(get_options, (responeStream) => {
-
-            if (responeStream.statusCode != 200){
-                log.error(`getImageUrl2: Got invalid statusCode`);
-                sendung.externalImageUrl = "";
-                callback();
-            } else {
-                
-                if (responeStream.headers['content-length'] == 0){
-                    log.error(`getImageUrl2: Got emtpy response`);
-                    sendung.externalImageUrl = "";
-                    callback();
-                    return;
-                }
-                //send to xml stream reader                        
-                var found=false;      
-                
-                responeStream
-                    //.pipe(xpathStream("//Zuschnitt[/breite/text()='1358']",{
-                    .pipe(xpathStream("//image/Link",{
-                        url: "url/text()",
-                        width: "../../breite/text()",
-                        height: "../../hoehe/text()"
-                    }))
-                    .on('data',(imageList)=>{
-
-                        // filter required image urls from response 
-                        var url = imageList.filter((item)=>{
-                            if( (item.width === "672") && (item.height === "378") ) return true; 
-                        });      
-                        
-                        if (url.length > 0){
-                            found=true;
-                            // return the first image
-                            sendung.externalImageUrl = url[0].url;
-                            callback();
-                        }
-                    })
-                    .on('end', () => {
-                        if(!found){
-                            log.error("getImageUrl2: no matching urls found");
-                            sendung.externalImageUrl = "";
-                            callback(); 
-                        }
-                    });                
-            }
-        }).on('error', (e) => {
-            log.error(`Error in response: from ${url}`);
-            sendung.externalImageUrl = "";
-            callback();            
-        });
-    }
-
 
     //xml stream parser
     /**
@@ -232,20 +121,22 @@ function SenderZDF(db){
         
         var has_data=false;
 
-        // get Navigation
+        // get Navigation Links
         stream
             .pipe(xpathStream("/EPG/navigation/Navigation/nextPageLink/Link/url/text()"))
             .on('data',(x)=>{
                 has_data = true;
                 var unescaped = _.unescape(x);
+                // send url back to getXmlStream to find the next page
                 getXmlStream(unescaped);
             })
             .on("end",()=>{
                 if(!has_data){
-                    last_page = true;    
+                    openReqCounter.last_page = true;    
                 }
-            });    
+        });    
        
+        
         // callback func used in for loop
         function addSendeterminDone(sendung){
             
@@ -255,58 +146,39 @@ function SenderZDF(db){
             };
         }
 
+
         // get Sendungen
+        // filter Sportdata
         stream
             .pipe(xpathStream("/EPG/treffer/Sendetermin",{
                 externalId: "./@externalId",
-                copy: "text/text()",
+                text: "text/text()",
                 titel: "titel/text()",
-                untertitel: "untertitel/text()",
-                dachzeile: "dachzeile/text()",
                 start: "beginnDatum/text()",
-                kategorien: "sendungsinformation/Sendungsinformation/kategorien/text()",
                 end: "endeDatum/text()",
-                bildfamilie:{
-                  Beitrag_Reference: "epgBeitrag/Beitrag_Reference/@ref",
-                  VisualFamily_Reference  : "bildfamilie/VisualFamily_Reference/@ref"
-                }
+                beitragReference: "epgBeitrag/Beitrag_Reference/@ref",
+                visualFamilyReference  : "bildfamilie/VisualFamily_Reference/@ref"            
             }))
-            .on('data',(result)=>{
- 
-                // array of Sendetermin
-                for(var i = 0; i< result.length; i++){
+            .on('data',(sendungen)=>{
                     
-                    var sendung = result[i];
-                    // xml with zuschnitten => http://www.zdf.de/api/v2/content/p12:21698990
-                    if ( (!sendung.bildfamilie.Beitrag_Reference) && (!sendung.bildfamilie.VisualFamily_Reference) ){
-                        log.error("No images found in:", sendung.externalId);                       
-                    }
-                
-                    log.debug("open ",sendung.start,"-",sendung.titel);
-                    if (sendung.kategorien)
-                        log.info("open kategorien",sendung.kategorien);
-                        
-                    // find sport emission
-                    var sport = sendung.titel.split(/,| /).find(x=>{
-                        if ((x.toLowerCase() === "uefa") ||
-                            (x.toLowerCase() === "fifa") ||
-                            (x.toLowerCase() === "sport") ||
-                            (x.toLowerCase() === "wintersport") ||
-                            (x.toLowerCase() === "leichtathletik") ||
-                            (x.toLowerCase() === "zdf sportreportage") ||
-                            (x.toLowerCase() === "olympia"))
-                        return true;
+                    let sport = sendungen.filter(x=>{
+                        let titel = x.titel.toLowerCase();
+                        if ((titel.search("uefa") > -1) ||
+                            (titel.search("fifa") > -1) ||
+                            (titel.search("sport") > -1) ||
+                            (titel.search("fußball") > -1) ||
+                            (titel.search("leichtathletik") > -1) ||
+                            (titel.search("olympia") > -1))
+                            return true;
                     });
-                    
-                    // sport found. add it
-                    if (sport !== undefined){       
-                        log.error("sport gefunden");                 
-                        openReqCounter.emit("open");
-                        addSendetermin(sendung, addSendeterminDone(sendung) );                    
-                    }
-                                        
-                }
-            });    
+
+                    sport.map(sendung=>{
+                        getSendungsDetails(sendung, addSendeterminDone(sendung));
+                    });                        
+        });        
+
+            
+        
     }
     
     //xml download
@@ -352,8 +224,14 @@ function SenderZDF(db){
      */
     this.update = function update(done){
 
-        finished = done;
+        openReqCounter = new OpenReqCounter(done);
+        openReqCounter.on('empty', ()=>{
+            db.removeOutdated("zdf");
+        });
+                
         agent = process.env.npm_package_config_useragent;
+        
+        // how many days should i get
         var range = process.env.npm_package_config_p12_range;
 
         if (process.env.npm_package_config_p12_proto === "https"){
@@ -375,6 +253,7 @@ function SenderZDF(db){
 
 module.exports = SenderZDF;
 
+}());
 
 
 

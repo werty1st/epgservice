@@ -28,29 +28,29 @@ var senderGruppe = new SenderGruppe(db);
 var websender    = senderGruppe.web;
 var zdfsender    = senderGruppe.zdf;
 
-// zdfsender.update(()=>{
-//     // done
-//     log.info("zdfsender finished");
-// });
-
-websender.update(()=>{
+zdfsender.update(()=>{
     // done
-    log.info("websender finished");
-    //loop();
+    log.info("zdfsender finished");
 });
 
+// websender.update(()=>{
+//     // done
+//     log.info("websender finished");
+//     //loop();
+// });
 
-function loop(){
-    setTimeout( ()=>{
 
-        websender.update(()=>{
-            // done
-            log.info("websender finished");
-            loop();
-        });
+// function loop(){
+//     setTimeout( ()=>{
+
+//         websender.update(()=>{
+//             // done
+//             log.info("websender finished");
+//             loop();
+//         });
         
-    }, 5000);    
-}
+//     }, 5000);    
+// }
 
 
 function end(code){   

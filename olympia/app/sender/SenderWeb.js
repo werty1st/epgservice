@@ -4,38 +4,10 @@
 var moment = require("moment");
 var https = require("https");
 var flow  = require("xml-flow");
-const EventEmitter = require('events');
+
+const OpenReqCounter = require("./OpenReqCounter");
 
 
-
-class OpenReqCounter extends EventEmitter {
-
-    constructor(next){
-        super();
-        
-        this.opened = 0;
-        this.last_page = true; // not require here
-        this.next = next;
-
-        this.on('open', () => {
-            this.opened++;
-            //log.error("open:",opened);
-        });
-    
-        this.on('close', () => {
-            this.opened--; 
-            if(this.opened===0)
-                this.emit('empty');
-        });    
-    
-        this.on('empty', () => {
-            if (this.last_page){
-                if (this.next) this.next();
-            }
-            log.debug("all requests finished");
-        });        
-    }
-}
 
 function SenderWeb(db){
 
@@ -61,15 +33,18 @@ function SenderWeb(db){
         
         sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
         sendung._id              = xmlElement.$attrs["ecms-id"]; //doc id
-        sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || 0; //bei ARD immer 0
         sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
         sendung.titel            = xmlElement.title;
         sendung.moderator        = xmlElement.moderator;
         sendung.text             = xmlElement.copy;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
-        //sendung.station          = "olympia" + xmlElement.channel; //OR ard
-        sendung.station          = (sendung.vcmsId === 0)?"ard":"olympia" + xmlElement.channel; //OR ard
+        
+        // web only parameters
+        sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || 0; //bei ARD immer 0
+        sendung.station          = (sendung.vcmsId === 0)?"ard":"olympia" + xmlElement.channel;        
+        sendung.sportId          = (sendung.vcmsId === 0)?"":xmlElement["sport-id"];
+        sendung.sportName        = (sendung.vcmsId === 0)?"":xmlElement["sport-name"];
             
         
         
@@ -78,12 +53,13 @@ function SenderWeb(db){
         sendung.version = process.env.npm_package_config_version;
 
         /**
-         * TODO: remove
          * add delta to get current sendungen
          */        
-        // sendung.start = moment(sendung.start).add(delta, 'days').format(); 
-        // sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
-
+        if (process.env.npm_package_config_ecms_delta){
+            sendung.start = moment(sendung.start).add(delta, 'days').format(); 
+            sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
+        }
+        
         // store sendung to db
         db.save(sendung, (err) => {
             // Sendung sent to DB callback
@@ -166,10 +142,13 @@ function SenderWeb(db){
         log.info("Download:",url);
 
         var get_options = require('url').parse(url);
-        get_options.headers = {
-                'User-Agent': agent,
-                'Cache-Control': 'no-cache'
-            };
+            get_options.headers = {
+                    'User-Agent': agent,
+                    'Cache-Control': 'no-cache'
+                };
+            get_options.timeout = 2000;
+            get_options.followRedirect = true;
+            get_options.maxRedirects = 10;            
 
         https.get(get_options, (responeStream) => {
 
@@ -204,23 +183,25 @@ function SenderWeb(db){
     this.update = function update(done){
 
         openReqCounter = new OpenReqCounter(done);
-        
+        openReqCounter.last_page = true; //no need to track pagination here
         openReqCounter.on('empty', ()=>{
-            db.removeOutdated();
+            db.removeOutdated("web");
             db.test1();
         });
         
-        agent = process.env.npm_package_config_useragent;
+        agent = process.env.npm_package_config_useragent;        
         
         /**
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
          */
-        // if (process.env.npm_package_config_ecms_delta){
-        //     delta = moment().diff(moment("2014-02-06"), "days") ;
-        //     log.debug("Delta:",delta);
-        //     log.info("Database:",process.env.DB);
-        // }
+        if (process.env.npm_package_config_ecms_delta){
+            delta = moment().diff(moment("2014-02-06"), "days") ;
+            log.debug("Delta:",delta);
+            log.info("Database:",process.env.DB);
+        } else {
+            log.info("Delta disabled");
+        }
 
         // create ECMS URLs based on Event Data
         var ecms_urls = urlgen({ startdate: process.env.npm_package_config_ecms_startdate,
