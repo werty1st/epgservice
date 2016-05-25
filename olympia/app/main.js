@@ -1,7 +1,10 @@
 /* global process log */
+(function (){
+'use strict';
 
-var winston = require('winston');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+const winston = require('winston');
 
 global.log = new (winston.Logger)({
     exitOnError: false,
@@ -14,30 +17,28 @@ global.log = new (winston.Logger)({
   
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
-
-
-//var db = require("./couchdb/db");
-var db = require('./couchdb/DbWorker');
-var SenderGruppe = require("./sender/SenderGruppe");
-var moment = require("moment");
+const db = require('./couchdb/DbWorker');
+const SenderGruppe = require("./sender/SenderGruppe");
+const moment = require("moment");
 
 
 // create new SenderGruppe
-var senderGruppe = new SenderGruppe(db);
+const senderGruppe = new SenderGruppe(db);
 
-var websender    = senderGruppe.web;
-var zdfsender    = senderGruppe.zdf;
+const websender    = senderGruppe.web;
+const zdfsender    = senderGruppe.zdf;
+
 
 zdfsender.update(()=>{
     // done
     log.info("zdfsender finished");
 });
 
-// websender.update(()=>{
-//     // done
-//     log.info("websender finished");
-//     //loop();
-// });
+websender.update(()=>{
+    // done
+    log.info("websender finished");
+    //loop();
+});
 
 
 // function loop(){
@@ -90,3 +91,5 @@ process.on('uncaughtException', exitHandler.bind());
 
 
 //throw new Error('suicide');
+
+}());

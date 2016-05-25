@@ -1,25 +1,18 @@
 (function (){
 'use strict';
 
-var flow  = require("xml-flow");
-var moment  = require("moment");
-var async = require("async");
-var http  = require("http");
-var https  = require("https");
-var xpathStream = require('xpath-stream');
-var _ = require('underscore');
+const flow  = require("xml-flow");
+const moment  = require("moment");
+const async = require("async");
 
 const OpenReqCounter = require("./OpenReqCounter");
 
 
 function SenderZDF(db){
 
-    var senderO = this;
-    var agent;
-    var request;
-    
-    var openReqCounter = null;
-    
+    const agent = process.env.npm_package_config_useragent;
+    const openReqCounter = new OpenReqCounter();
+    const request = (process.env.npm_package_config_p12_proto === "https")? require("https") : require("http");
 
      /**
      * addVideo creates a new Sendung Object and assigns data from xml object
@@ -28,21 +21,17 @@ function SenderZDF(db){
      */
     function addSendetermin (sendung, done){
         
-        //sendung.externalId
-        //sendung.start
-        //sendung.end
-        
         sendung.station         = "zdf";
         sendung.vcmsid          = "1822600";
         sendung.vcmsChannelId   = "74";
         sendung.text            = (sendung.text === undefined)?"" : sendung.text; //bei Wiederholungen leer
         sendung._id             = sendung.externalId;                        
-                        
-                
+               
+        sendung.version = process.env.npm_package_config_version;
+        
         delete sendung.beitragReference;    
         delete sendung.visualFamilyReference;    
     
-                
         // save sendung to db
         db.save(sendung, (err)=>{
             if (err){
@@ -60,11 +49,11 @@ function SenderZDF(db){
     function getSendungsDetails(sendung, callback){
     
         //get url
-        var get_options = require('url').parse(sendung.beitragReference);
-            get_options.headers = {'User-Agent': agent};
-            get_options.timeout = 2000;
-            get_options.followRedirect = true;
-            get_options.maxRedirects = 10;
+        const get_options = require('url').parse(sendung.beitragReference);
+        get_options.headers = {'User-Agent': agent};
+        get_options.timeout = 2000;
+        get_options.followRedirect = true;
+        get_options.maxRedirects = 10;
 
         request.get(get_options, (responeStream) => {
 
@@ -119,22 +108,22 @@ function SenderZDF(db){
      */
     function parseXmlStream(stream){
         
-        var has_data=false;
+        let lastpage = false; //
 
         // get Navigation Links
-        stream
-            .pipe(xpathStream("/EPG/navigation/Navigation/nextPageLink/Link/url/text()"))
-            .on('data',(x)=>{
-                has_data = true;
-                var unescaped = _.unescape(x);
-                // send url back to getXmlStream to find the next page
-                getXmlStream(unescaped);
-            })
-            .on("end",()=>{
-                if(!has_data){
-                    openReqCounter.last_page = true;    
+        let xml = flow(stream, {strict:true});
+        
+        xml.on('tag:nextPageLink', (elm) => {
+                if (elm.Link){
+                    getXmlStream(elm.Link);
+                } else {
+                    lastpage = true;
                 }
-        });    
+        });         
+
+        xml.on('end', () => {
+               if (lastpage) openReqCounter.last_page = true;
+        });  
        
         
         // callback func used in for loop
@@ -147,38 +136,29 @@ function SenderZDF(db){
         }
 
 
-        // get Sendungen
-        // filter Sportdata
-        stream
-            .pipe(xpathStream("/EPG/treffer/Sendetermin",{
-                externalId: "./@externalId",
-                text: "text/text()",
-                titel: "titel/text()",
-                start: "beginnDatum/text()",
-                end: "endeDatum/text()",
-                beitragReference: "epgBeitrag/Beitrag_Reference/@ref",
-                visualFamilyReference  : "bildfamilie/VisualFamily_Reference/@ref"            
-            }))
-            .on('data',(sendungen)=>{
+        xml.on('tag:Sendetermin', (sendetermin) => {
+
+            let titel = sendetermin.titel.toLowerCase();
+            if ((titel.search("uefa") > -1) ||
+                (titel.search("fifa") > -1) ||
+                (titel.search("sport") > -1) ||
+                (titel.search("fußball") > -1) ||
+                (titel.search("leichtathletik") > -1) ||
+                (titel.search("olympia") > -1)) {
                     
-                    let sport = sendungen.filter(x=>{
-                        let titel = x.titel.toLowerCase();
-                        if ((titel.search("uefa") > -1) ||
-                            (titel.search("fifa") > -1) ||
-                            (titel.search("sport") > -1) ||
-                            (titel.search("fußball") > -1) ||
-                            (titel.search("leichtathletik") > -1) ||
-                            (titel.search("olympia") > -1))
-                            return true;
-                    });
-
-                    sport.map(sendung=>{
-                        getSendungsDetails(sendung, addSendeterminDone(sendung));
-                    });                        
+                    let sendung = {};
+                    
+                    sendung.externalId = sendetermin.$attrs.externalId;
+                    sendung.text = sendetermin.text;
+                    sendung.titel = sendetermin.titel;
+                    sendung.start = sendetermin.beginnDatum;
+                    sendung.end = sendetermin.endeDatum;
+                    sendung.beitragReference = sendetermin.epgBeitrag.ref;
+                    
+                    openReqCounter.emit("open");
+                    getSendungsDetails(sendung, addSendeterminDone(sendung));
+                }
         });        
-
-            
-        
     }
     
     //xml download
@@ -190,7 +170,7 @@ function SenderZDF(db){
 
         log.info("Download:",url);
 
-        var get_options = require('url').parse(url);
+        let get_options = require('url').parse(url);
             get_options.headers = {
                     'User-Agent': agent,
                     'Cache-Control': 'no-cache'
@@ -224,26 +204,17 @@ function SenderZDF(db){
      */
     this.update = function update(done){
 
-        openReqCounter = new OpenReqCounter(done);
         openReqCounter.on('empty', ()=>{
-            db.removeOutdated("zdf");
+            done();
         });
                 
-        agent = process.env.npm_package_config_useragent;
         
         // how many days should i get
-        var range = process.env.npm_package_config_p12_range;
-
-        if (process.env.npm_package_config_p12_proto === "https"){
-            request = https;
-        }else{
-            request = http;
-        }
-
-        var startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
-        var stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
+        const range = process.env.npm_package_config_p12_range;
+        const startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
+        const stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
       
-        var url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`;
+        const url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`;
         
         getXmlStream(url);
 

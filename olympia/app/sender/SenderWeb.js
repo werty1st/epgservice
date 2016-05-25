@@ -1,9 +1,9 @@
 (function (){
 'use strict';
 
-var moment = require("moment");
-var https = require("https");
-var flow  = require("xml-flow");
+const moment = require("moment");
+const https = require("https");
+const flow  = require("xml-flow");
 
 const OpenReqCounter = require("./OpenReqCounter");
 
@@ -12,14 +12,10 @@ const OpenReqCounter = require("./OpenReqCounter");
 function SenderWeb(db){
 
     // protoype
-    var openReqCounter = null;
+    const openReqCounter = new OpenReqCounter();
 
-    var delta = 0;
-    var senderO = this;
-    var agent;
-
-
-        
+    let delta = 0;
+    const agent = process.env.npm_package_config_useragent;        
 
 
     /**
@@ -29,7 +25,7 @@ function SenderWeb(db){
      */
     function addSendetermin (xmlElement, done){
        
-        var sendung = {};
+        const sendung = {};
         
         sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
         sendung._id              = xmlElement.$attrs["ecms-id"]; //doc id
@@ -121,16 +117,7 @@ function SenderWeb(db){
         xml.on('tag:bracket', passElementFn); 
 
     }
-    
-    // var stream = require('stream');
-    // class EchoStream extends stream.Writable {
-    //     _write(chunk, enc, next) {
-    //         console.log(chunk.toString());
-    //         next();
-    //     }
-    // }
-    // const echoStream = new EchoStream();
-    
+
     //xml download
     /**
      * @param {string} url download xml  
@@ -141,14 +128,14 @@ function SenderWeb(db){
         
         log.info("Download:",url);
 
-        var get_options = require('url').parse(url);
-            get_options.headers = {
-                    'User-Agent': agent,
-                    'Cache-Control': 'no-cache'
-                };
-            get_options.timeout = 2000;
-            get_options.followRedirect = true;
-            get_options.maxRedirects = 10;            
+        const get_options = require('url').parse(url);
+        get_options.headers = {
+                'User-Agent': agent,
+                'Cache-Control': 'no-cache'
+            };
+        get_options.timeout = 2000;
+        get_options.followRedirect = true;
+        get_options.maxRedirects = 10;            
 
         https.get(get_options, (responeStream) => {
 
@@ -182,15 +169,12 @@ function SenderWeb(db){
      */
     this.update = function update(done){
 
-        openReqCounter = new OpenReqCounter(done);
+        
         openReqCounter.last_page = true; //no need to track pagination here
         openReqCounter.on('empty', ()=>{
-            db.removeOutdated("web");
-            db.test1();
+            done();
         });
-        
-        agent = process.env.npm_package_config_useragent;        
-        
+                
         /**
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
@@ -204,14 +188,14 @@ function SenderWeb(db){
         }
 
         // create ECMS URLs based on Event Data
-        var ecms_urls = urlgen({ startdate: process.env.npm_package_config_ecms_startdate,
+        const ecms_urls = urlgen({ startdate: process.env.npm_package_config_ecms_startdate,
                                             enddate: process.env.npm_package_config_ecms_enddate,
                                             options: { proto: process.env.npm_package_config_ecms_proto,
                                                         host : process.env.npm_package_config_ecms_host,
                                                         path : process.env.npm_package_config_ecms_path } });
 
     
-        var threads = 2;
+        const threads = 2;
         require('async').eachLimit(ecms_urls, threads, function(url, next){
             getXmlStream(url, next);
         }, function(){
@@ -225,26 +209,20 @@ function SenderWeb(db){
 
 function urlgen (data){ 
 
-    var options = data.options;
-   
-    var startd = moment(data.startdate);
-    var stopd = moment(data.enddate);
-    var days = 0;
-    var urls = []; // [ uri:{ date , url} ]
+    const options = data.options;
+    const startd = moment(data.startdate);
+    const stopd = moment(data.enddate);
+    const days = moment.duration(stopd.diff(startd)).asDays()+1; //plus heute
+    const date = startd.clone();
+    const urls = []; // [ uri:{ date , url} ]
 
-
-
-    days = moment.duration(stopd.diff(startd)).asDays()+1; //plus heute
-    var date = startd.clone();
-
-    for (var i=0;i<days;i++){
+    for (let i=0;i<days;i++){
         //url
-        var filename = date.format("YYYY-MM-DD");
-        var dpath = options.proto + "://" + options.host + options.path + filename +".xml";
+        let filename = date.format("YYYY-MM-DD");
+        let dpath = options.proto + "://" + options.host + options.path + filename +".xml";
         urls.push(dpath);
         date.add(1,"days");
     }
-
     return  urls;
 }
 

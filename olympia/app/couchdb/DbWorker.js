@@ -1,14 +1,15 @@
 (function () {
 "use strict";
 
-var moment = require("moment");
+const moment = require("moment");
 
-var PouchDB = require('pouchdb');
+const PouchDB = require('pouchdb');
     PouchDB.plugin(require('pouchdb-upsert'));
     require('pouchdb/extras/websql');
-    //PouchDB.debug.enable('*');
+    PouchDB.debug.enable('*');
     
-var diff = require('deep-diff').diff;    
+const diff = require('deep-diff').diff;    
+
 
 
 class DbWorker {
@@ -16,8 +17,8 @@ class DbWorker {
     constructor (){     
         
         // redirect save requests to this array as long as the constructor has not finished loading
-        let workerQ = [];
-        const that = this;
+        this.workerQ = [];
+        //const that = this;
                 
         log.info("db init");
         
@@ -29,78 +30,91 @@ class DbWorker {
         // test local and remote connection
         // check local
         this.local.info().then((info) => {
-            log.debug("local info:", info.doc_count);                                   
-        }).catch( (err) =>{
-            log.error(err);
-            throw new Error (err);
+                log.debug("local info:", info.doc_count);                                   
+            }).catch( (err) =>{
+                log.error(err);
+                throw new Error (err);
         });
                 
         // check remote    
-        that.remote.info().then( (info) => {
-            log.debug("remote info:", info.doc_count);
-        }).catch( (err) =>{
-            log.error(err);
-            throw new Error (err);
-        });        
-       
-        // sync from remote /hauptprogrammFilter skips station==zdf 
-        that.local.replicate.from(that.remote,{ filter: 'olympia/hauptprogrammFilter', }).then( (result) => {
-            // handle 'completed' result
-            log.debug("init replicate completed");             
-            // replace save function
-            ready();
-        });     
-           
-        // setup live replication
-        that.local.replicate.to(that.remote, { live: true})
-            .on("change", (change) => {
-                log.debug(`change event: docs_read: ${change.docs_read}, docs_written: ${change.docs_written}, doc_write_failures: ${change.doc_write_failures}`);
-            })
-            .on("error", (err) => {
-                log.debug("change error", err);
+        this.remote.info().then( (info) => {
+                log.debug("remote info:", info.doc_count);
+            }).catch( (err) =>{
+                log.error(err);
+                throw new Error (err);
+        }); 
+
+
+
+        //delete old version docs from remote before syncing
+        this._removeOutdated(()=>{
+            //this._ready();
+            // sync from remote /hauptprogrammFilter skips station==zdf 
+            //that.local.replicate.from(that.remote,{ filter: 'olympia/hauptprogrammFilter'}).then( (result) => {
+            this.local.replicate.from(this.remote).then( (result) => {
+                // handle 'completed' result
+                log.debug("init replicate completed");             
+                // replace save function
+                this._ready();
+            });     
+            
+            // setup live replication
+            this.local.replicate.to(this.remote, { live: true})
+                .on("change", (change) => {
+                    log.debug(`change event: docs_read: ${change.docs_read}, docs_written: ${change.docs_written}, doc_write_failures: ${change.doc_write_failures}`);
+                })
+                .on("error", (err) => {
+                    log.debug("change error", err);
             });
             
-
-                       
-
-        // public save function
-        // collect items until db is ready
-        this.save = function save (item, done) {
-            workerQ.push([item, done]);
-        };
+        });     
         
-        /**
-         * private save function
-         */
-        const _save = function _save (item, done){
-            //send to db
-            log.debug("upsert item",item._id);
-                    
-            that.local.upsert(
-                    item._id,   //find oldDoc by id and pass it to function that _diffDocs returns
-                    that._diffDocs(item) //compare old and newDoc==item, returns false or newDoc
-                ).then( (response) => {
-                    // item stored or skipped invoke callback now
-                    done();
-                    log.debug("upsert success", item._id, response);
-                }).catch((err) => {
-                    log.error("error", err);
-                    throw new Error (err);            
-                });
-        };
-        
-        // save items to DB
-        const ready = function ready () {
-            // constructor is ready now, send collected save requests to addItem function
-            that.save = _save;
+            
 
-            // wait one tick to catch late calls to old save function;
-            process.nextTick( ()=>{
-                workerQ.forEach((item) => {
-                    _save(item[0],item[1]);
-                });                        
-            });            
-        };
+
+        //hole alle docs von remote nach lokal (1x)
+        
+        //markiere die dokumente die vom ecms kommen und lösche die nicht markierten, entferne die markierung und sync to remote ?zieht das remote die revision hoch?
+        //alternativ: hole alle documente, speichere die IDs in einem array, entferne alle vom ecms kommenden documente aus dem array und lösche nur die verbliebenden
+        
+    }
+
+
+
+    
+    // save items to DB
+    _ready () {
+        // constructor is ready now, send collected save requests to addItem function
+        this.save = this._save;
+        
+        // wait one tick to catch late calls to old save function;
+        process.nextTick( ()=>{
+            this.workerQ.forEach((item) => {
+                this._save(item[0],item[1]);
+            });                        
+        });            
+    }
+
+
+
+    /**
+     * "private" save function
+     */
+    _save (item, done){
+        //send to db
+        log.debug("upsert item",item._id);
+                
+        this.local.upsert(
+                item._id,   //find oldDoc by id and pass it to function this _diffDocs returns
+                this._diffDocs(item) //compare old and newDoc==item, returns false or newDoc
+            ).then( (response) => {
+                // item stored or skipped invoke callback now
+                done();
+                log.info("upsert success", item._id, response);
+            }).catch((err) => {
+                log.error("error", err);
+                throw new Error (err);            
+            });
     }
     
     /**
@@ -124,17 +138,23 @@ class DbWorker {
                
                 // console.log("XXXXXXXXXXXXXXXXXX");                
                 // console.log(diffResult);                
-                // console.log("zzzzzzzzzzzzzzzzzz");                
+                // console.log("zzzzzzz olddoc zzzzzzzzzz");                
+                // console.log(olddoc);                
+                // console.log("zzzzzzz newdoc zzzzzzzzzzz");                
+                // console.log(newdoc);                
+                // console.log("zzzzzzzzzzzzzzzzzz");
+                // process.exit();                
                 return newdoc;
             }        
         };
     }
 
 
+
     /**
      * remove outdated and wrong version items
      */
-    removeOutdated() {
+    _removeOutdated (done) {
     
         // count deleted items
         let ver_count=0;
@@ -146,7 +166,7 @@ class DbWorker {
         /**
          * find docs with lower version 
          */
-        this.local.query('olympia/viewByVersion',{
+        this.remote.query('olympia/viewByVersion',{
                 endkey: process.env.npm_package_config_version.toString(),
                 inclusive_end: false
             }).then( (res) => {
@@ -171,66 +191,33 @@ class DbWorker {
                 this.local.bulkDocs(docs2delete)
                     .then((result)=>{
                         log.info(`Deleted ${ver_count} old versions.`);
+                        done();
                     })
                     .catch((err)=>{
-                        log.error("Error removing docs with old version.");
+                        log.error("Error removing docs with old version.",err);
                         throw new Error(err);    
                     });
             })
             .catch( (err) => {
-                console.log(err);
-                // some error
+                log.err(err);
+                throw new Error(err); 
             });         
 
-
-        
-        /** 
-         * remove outdated docs 
-         * */
-        // this.db.query('app/viewByDate',{
-        //         descending: true, //newest first
-        //         startkey: moment().subtract(outdated, 'hours')                
-        //     }).then( (res) => {
-                
-        //         old_count = res.rows.length;
-
-        //         //build array of docs to delete
-        //         return res.rows.map((x)=>{                                        
-        //             return {
-        //                 _id: x.value._id,
-        //                 _rev: x.value._rev,
-        //                 _deleted: true
-        //             };
-        //         });
-        //     })
-        //     .then( (docs2delete) => {
-                
-        //         // console.log("outdated: docs2delete",docs2delete);
-        //         // return;
-                            
-        //         // remove outdated elements
-        //         this.db.bulkDocs(docs2delete)
-        //             .then((result)=>{
-        //                 log.info(`Deleted ${old_count} old items.`);
-        //             })
-        //             .catch((err)=>{
-        //                 log.error("Error removing outdated docs.");
-        //                 throw new Error(err);    
-        //             });
-        //     })
-        //     .catch( (err) => {
-        //         console.log(err);
-        //         // some error
-        //     });
     }
+    
 
 
+    // public save function
+    // collect items until db is ready
+    save (item, done) {
+        this.workerQ.push([item, done]);
+    }
 
     
     test1 (){
-        // this.local.query("olympia/view_getAllByStation").then( (res) => {
-        //     console.log("view_getAllByStation", res);
-        // });
+        this.local.query("olympia/view_getAllByStation").then( (res) => {
+            console.log("view_getAllByStation", res);
+        });
     }
 
 

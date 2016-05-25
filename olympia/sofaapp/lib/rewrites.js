@@ -14,7 +14,7 @@ module.exports = [
     {from:"/today/add/:days/",         to:'_list/list_getToday/view_getAllByDate', query: { station: 'all',      days: ':days' }},    
     {from:"/today/add/:days/:station", to:'_list/list_getToday/view_getAllByDate', query: { station: ':station', days: ':days' }},    
     
-    {from:"/google/",         to:'_list/list_getDays/view_getAllByDate', query: { station: 'all',  accept: "text/csv", range: '3' }},    
+    {from:"/google/",         to:'_list/list_getDays/view_getAllByDate', query: { station: 'all',  accept: "text/csv", range: '10' }},    
     /*sportart
     {from:"/today/add/:days/:sportart", to:'_list/list_getToday/view_getAllByDate', query: { station: ':station', days: ':days' }},
     {from:"/now/:sportart", to:'_list/list_getNow/view_getAllByDate',     query: { "station": ':station', "days": "0" }},

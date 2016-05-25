@@ -1,20 +1,13 @@
 /* global bot */
-var SenderWeb = require("./SenderWeb");
-var SenderZDF = require("./SenderZDF");
+const SenderWeb = require("./SenderWeb");
+const SenderZDF = require("./SenderZDF");
 
 // -> store(/db/tag/channel)
 
 module.exports = function SenderGruppe (db){
-   
-        
-        this.uuid = new Date().getTime();
 
-        this.web  = new SenderWeb(db);
-        this.zdf  = new SenderZDF(db);
+        const web  = new SenderWeb(db);
+        const zdf  = new SenderZDF(db);
         
-        this.completed = function (sender, cb){
-            sender.completed = cb;
-        };
-        
-
+        return { web, zdf };
 };
