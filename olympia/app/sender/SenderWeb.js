@@ -2,7 +2,7 @@
 'use strict';
 
 const moment = require("moment");
-const https = require("http");
+const https = require("https");
 const flow  = require("xml-flow");
 
 const OpenReqCounter = require("./OpenReqCounter");
