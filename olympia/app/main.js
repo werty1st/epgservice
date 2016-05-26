@@ -29,7 +29,7 @@ const websender    = senderGruppe.web;
 const zdfsender    = senderGruppe.zdf;
 
 senderGruppe.on("completed", ()=>{
-    console.log("all done");
+    end(0);
 });
 
 zdfsender.update(()=>{

@@ -25,7 +25,7 @@
                                         
                                         // trigger db sync
                                         // remove outdated docs
-                                        console.log("outdatedDocs",db.outdatedDocs);
+                                        //console.log("outdatedDocs",db.outdatedDocs);
                                         db.sync();
                                         db.removeOutdated(()=>{
                                                 self.emit("completed");
