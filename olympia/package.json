@@ -47,16 +47,13 @@
     "deep-diff": "^0.3.4",
     "memdown": "^1.1.2",
     "moment": "^2.11.0",
-    "nano": "^6.1.5",
     "pouchdb": "^5.3.2",
     "pouchdb-upsert": "^2.0.0",
     "request": "^2.69.0",
     "stream": "0.0.2",
-    "underscore": "^1.8.3",
     "winston": "^2.2.0",
     "winston-daily-rotate-file": "^1.0.1",
-    "xml-flow": "^0.4.0",
-    "xpath-stream": "0.0.8"
+    "xml-flow": "^0.4.0"
   },
   "devDependencies": {
     "jshint": "^2.9.1-rc2",
