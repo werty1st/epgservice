@@ -2,28 +2,31 @@
 "use strict";
 
 const moment = require("moment");
-
+const diff = require('deep-diff').diff;
 const PouchDB = require('pouchdb');
-    PouchDB.plugin(require('pouchdb-upsert'));
-    require('pouchdb/extras/websql');
-    PouchDB.debug.enable('*');
+PouchDB.plugin(require('pouchdb-upsert'));
+//require('pouchdb/extras/websql');
+//PouchDB.debug.enable('*');
     
-const diff = require('deep-diff').diff;    
 
 
 
 class DbWorker {
         
     constructor (){     
-        
-        // redirect save requests to this array as long as the constructor has not finished loading
-        this.workerQ = [];
-        //const that = this;
-                
         log.info("db init");
         
+        // redirect save requests to this array as long as the constructor is not ready
+        this.workerQ = [];
+        
+        this.outdatedDocs = new Map();
+        
         //setup local and remote DBs
-        this.local  = new PouchDB('localecms', {db: require('memdown') });
+        this.local = new PouchDB('localecms', {db: require('memdown') });
+        
+        //temp db to store outdated ids
+        this.temp  = new PouchDB('tempdb', {db: require('memdown') });
+
         //this.local  = new PouchDB('localecms', {adapter: 'websql'});
         this.remote = new PouchDB(process.env.DB, {auto_compaction: false});
         
@@ -44,42 +47,58 @@ class DbWorker {
                 throw new Error (err);
         }); 
 
-
+        // save all docIds to temp db
+        this.remote.query('olympia/view_getAllProgrammData').then( (result) =>{
+            //console.log(result);
+            result.rows.map( (item) => {
+                this.outdatedDocs.set(item.id,item.value);
+            });
+            /**
+             * Map {
+             *      '1653' => '2-5ef0249f5573c0499f40985fece14e9d',
+             *      '1654' => '2-57065de65b4d2690ccfa6156377af365',
+             *      '1655' => '2-b6a3351426e5ad023883095af06b4149'}
+             */
+        });
 
         //delete old version docs from remote before syncing
         this._removeOutdated(()=>{
-            //this._ready();
+
+            /**
+             * change detection sync strategy
+             * 1. get all docs from remote
+             * 2.a keep list of IDs synced from remote, remove all that get loaded from ecms/p12, remove remaining from remote
+             * 2.b get all docs from ecms/p12 and mark them as new, delete unmarked, remove mark, sync to remote //does that inc rev counter?
+             * 
+             */
+            // 
+            
             // sync from remote /hauptprogrammFilter skips station==zdf 
             //that.local.replicate.from(that.remote,{ filter: 'olympia/hauptprogrammFilter'}).then( (result) => {
             this.local.replicate.from(this.remote).then( (result) => {
                 // handle 'completed' result
-                log.debug("init replicate completed");             
+                log.debug("init replicate completed");
                 // replace save function
                 this._ready();
             });     
             
+
+                        
             // setup live replication
-            this.local.replicate.to(this.remote, { live: true})
-                .on("change", (change) => {
-                    log.debug(`change event: docs_read: ${change.docs_read}, docs_written: ${change.docs_written}, doc_write_failures: ${change.doc_write_failures}`);
-                })
-                .on("error", (err) => {
-                    log.debug("change error", err);
-            });
+            // this.local.replicate.to(this.remote, { live: true})
+            //     .on("change", (change) => {
+            //         log.debug(`change event: docs_read: ${change.docs_read}, docs_written: ${change.docs_written}, doc_write_failures: ${change.doc_write_failures}`);
+            //     })
+            //     .on("error", (err) => {
+            //         log.debug("change error", err);
+            // });
             
         });     
         
             
 
-
-        //hole alle docs von remote nach lokal (1x)
-        
-        //markiere die dokumente die vom ecms kommen und lösche die nicht markierten, entferne die markierung und sync to remote ?zieht das remote die revision hoch?
-        //alternativ: hole alle documente, speichere die IDs in einem array, entferne alle vom ecms kommenden documente aus dem array und lösche nur die verbliebenden
         
     }
-
-
 
     
     // save items to DB
@@ -103,6 +122,9 @@ class DbWorker {
     _save (item, done){
         //send to db
         log.debug("upsert item",item._id);
+        
+        // remove item from outdatedDocs Map
+        this.outdatedDocs.delete(item._id);
                 
         this.local.upsert(
                 item._id,   //find oldDoc by id and pass it to function this _diffDocs returns
@@ -149,10 +171,8 @@ class DbWorker {
         };
     }
 
-
-
     /**
-     * remove outdated and wrong version items
+     * remove wrong version items
      */
     _removeOutdated (done) {
     
@@ -204,7 +224,49 @@ class DbWorker {
             });         
 
     }
-    
+
+    /**
+     * sync local to remote
+     */
+    sync(){
+        this.local.replicate.to(this.remote).then( (result) => {
+            // handle 'completed' result
+            log.debug("sync to remote completed");
+            
+        });          
+    }    
+
+    /**
+     * remove outdated items
+     */
+    removeOutdated (done){
+
+        // create array of docs to remove from remote
+        let docs2delete = [];
+        
+        this.outdatedDocs.forEach((value,key)=>{
+            // add item to array
+            docs2delete.push({
+                _id: key,
+                _rev: value,
+                _deleted: true
+            });
+            this.outdatedDocs.delete(key);
+        });
+
+        // remove old versions elements
+        this.remote.bulkDocs(docs2delete)
+            .then((result)=>{
+                log.info(result);
+                done();
+            })
+            .catch((err)=>{
+                log.error("Error removing outdated docs.",err);
+                throw new Error(err);    
+            });
+
+        
+    }
 
 
     // public save function

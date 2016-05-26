@@ -10,11 +10,11 @@ module.exports = {
         } 
     },
     filters : {
-        hauptprogrammFilter: function (doc, req){
-            if (doc.station === "zdf" ){
-                return false;
+        programmFilter: function (doc, req){
+            if (doc.station){
+                return true;
             }
-            return true;
+            return false;
         }
     }    
   };

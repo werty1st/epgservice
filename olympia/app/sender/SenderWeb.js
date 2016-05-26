@@ -2,7 +2,7 @@
 'use strict';
 
 const moment = require("moment");
-const https = require("https");
+const https = require("http");
 const flow  = require("xml-flow");
 
 const OpenReqCounter = require("./OpenReqCounter");
@@ -12,7 +12,7 @@ const OpenReqCounter = require("./OpenReqCounter");
 function SenderWeb(db){
 
     // protoype
-    const openReqCounter = new OpenReqCounter();
+    const openReqCounter = new OpenReqCounter("web");
 
     let delta = 0;
     const agent = process.env.npm_package_config_useragent;        
@@ -27,31 +27,32 @@ function SenderWeb(db){
        
         const sendung = {};
         
-        sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
         sendung._id              = xmlElement.$attrs["ecms-id"]; //doc id
+        sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
         sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
+        sendung.channelId        = xmlElement.channel;    
+        sendung.text             = (xmlElement.copy === undefined)?"":xmlElement.copy;
+        sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || 0; //bei ARD immer 0
+        sendung.station          = (sendung.vcmsId === 0)?"ard":"olympia" + xmlElement.channel;   
+        sendung.sportId          = xmlElement["sport-id"];
+        sendung.sportName        = xmlElement["sport-name"];
+        sendung.version          = process.env.npm_package_config_version;
+        
         sendung.titel            = xmlElement.title;
         sendung.moderator        = xmlElement.moderator;
-        sendung.text             = xmlElement.copy;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
         
-        // web only parameters
-        sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || 0; //bei ARD immer 0
-        sendung.station          = (sendung.vcmsId === 0)?"ard":"olympia" + xmlElement.channel;        
-        sendung.sportId          = (sendung.vcmsId === 0)?"":xmlElement["sport-id"];
-        sendung.sportName        = (sendung.vcmsId === 0)?"":xmlElement["sport-name"];
             
         
         
         sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
 
-        sendung.version = process.env.npm_package_config_version;
 
         /**
          * add delta to get current sendungen
          */        
-        if (process.env.npm_package_config_ecms_delta){
+        if (process.env.npm_package_config_ecms_delta === "true"){
             sendung.start = moment(sendung.start).add(delta, 'days').format(); 
             sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
         }
@@ -169,17 +170,18 @@ function SenderWeb(db){
      */
     this.update = function update(done){
 
-        
-        openReqCounter.last_page = true; //no need to track pagination here
+        log.info("web start");
+        openReqCounter.lastPage = true; //no need to track pagination here
         openReqCounter.on('empty', ()=>{
             done();
         });
+                
                 
         /**
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
          */
-        if (process.env.npm_package_config_ecms_delta){
+        if (process.env.npm_package_config_ecms_delta === "true"){
             delta = moment().diff(moment("2014-02-06"), "days") ;
             log.debug("Delta:",delta);
             log.info("Database:",process.env.DB);

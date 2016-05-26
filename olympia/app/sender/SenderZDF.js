@@ -11,7 +11,7 @@ const OpenReqCounter = require("./OpenReqCounter");
 function SenderZDF(db){
 
     const agent = process.env.npm_package_config_useragent;
-    const openReqCounter = new OpenReqCounter();
+    const openReqCounter = new OpenReqCounter("zdf");
     const request = (process.env.npm_package_config_p12_proto === "https")? require("https") : require("http");
 
      /**
@@ -21,12 +21,15 @@ function SenderZDF(db){
      */
     function addSendetermin (sendung, done){
         
-        sendung.station         = "zdf";
-        sendung.vcmsid          = "1822600";
-        sendung.vcmsChannelId   = "74";
-        sendung.text            = (sendung.text === undefined)?"" : sendung.text; //bei Wiederholungen leer
         sendung._id             = sendung.externalId;                        
-               
+        sendung.ecmsId          = "0";
+        sendung.vcmsChannelId   = "74";
+        sendung.channelId       = "10";                        
+        sendung.text            = (sendung.text === undefined)?"" : sendung.text; //bei Wiederholungen leer
+        sendung.vcmsid          = "1822600";
+        sendung.station         = "zdf";
+        sendung.sportId          = "0";
+        sendung.sportName        = "";
         sendung.version = process.env.npm_package_config_version;
         
         delete sendung.beitragReference;    
@@ -108,25 +111,10 @@ function SenderZDF(db){
      */
     function parseXmlStream(stream){
         
-        let lastpage = false; //
-
-        // get Navigation Links
+        let lastPage = false;
         let xml = flow(stream, {strict:true});
-        
-        xml.on('tag:nextPageLink', (elm) => {
-                if (elm.Link){
-                    getXmlStream(elm.Link);
-                } else {
-                    lastpage = true;
-                }
-        });         
 
-        xml.on('end', () => {
-               if (lastpage) openReqCounter.last_page = true;
-        });  
-       
-        
-        // callback func used in for loop
+        // callback func used in for loop completes after getDetails
         function addSendeterminDone(sendung){
             
             return function(){
@@ -134,7 +122,15 @@ function SenderZDF(db){
                 openReqCounter.emit('close');
             };
         }
-
+        
+        // get Navigation Links
+        xml.on('tag:nextPageLink', (elm) => {
+                if (elm.Link){
+                    getXmlStream(elm.Link);
+                } else {
+                    lastPage = true;
+                }
+        });         
 
         xml.on('tag:Sendetermin', (sendetermin) => {
 
@@ -156,9 +152,15 @@ function SenderZDF(db){
                     sendung.beitragReference = sendetermin.epgBeitrag.ref;
                     
                     openReqCounter.emit("open");
+                    //console.log("open request: details, lastPage:",openReqCounter.lastPage);
                     getSendungsDetails(sendung, addSendeterminDone(sendung));
                 }
         });        
+
+        xml.on('end', () => {
+               if (lastPage) openReqCounter.lastPage = true;
+        });  
+
     }
     
     //xml download
@@ -203,6 +205,8 @@ function SenderZDF(db){
      * 
      */
     this.update = function update(done){
+
+        log.info("zdf start");
 
         openReqCounter.on('empty', ()=>{
             done();

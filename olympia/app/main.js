@@ -28,17 +28,23 @@ const senderGruppe = new SenderGruppe(db);
 const websender    = senderGruppe.web;
 const zdfsender    = senderGruppe.zdf;
 
+senderGruppe.on("completed", ()=>{
+    console.log("all done");
+});
 
 zdfsender.update(()=>{
     // done
     log.info("zdfsender finished");
+    senderGruppe.emit("ready","zdf");
 });
 
 websender.update(()=>{
     // done
     log.info("websender finished");
+    senderGruppe.emit("ready","web");
     //loop();
 });
+
 
 
 // function loop(){
