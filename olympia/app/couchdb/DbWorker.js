@@ -40,7 +40,7 @@ class DbWorker {
         this.remote.info().then( (info) => {
                 log.debug("remote info:", info.doc_count);
             }).catch( (err) =>{
-                //log.error("remote error:",err);
+                log.error("remote error:",err);
                 setTimeout(()=>{ throw err; });                
         }); 
 
@@ -229,7 +229,6 @@ class DbWorker {
         this.local.replicate.to(this.remote).then( (result) => {
             // handle 'completed' result
             log.debug("sync to remote completed");
-            
         });          
     }    
 
@@ -254,7 +253,7 @@ class DbWorker {
         // remove old versions elements
         this.remote.bulkDocs(docs2delete)
             .then((result)=>{
-                log.info(result);
+                log.info("docs2delete",result);
                 done();
             })
             .catch((err)=>{

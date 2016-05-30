@@ -28,9 +28,9 @@ const senderGruppe = new SenderGruppe(db);
 const websender    = senderGruppe.web;
 const zdfsender    = senderGruppe.zdf;
 
-senderGruppe.on("completed", ()=>{
-    end(0);
-});
+// senderGruppe.on("completed", ()=>{
+//     log.info("finished all");
+// });
 
 zdfsender.update(()=>{
     // done

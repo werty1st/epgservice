@@ -28,7 +28,7 @@
                                         //console.log("outdatedDocs",db.outdatedDocs);
                                         db.sync();
                                         db.removeOutdated(()=>{
-                                                self.emit("completed");
+                                                self.emit("sync+removeOutdated completed");
                                         });
                                 }
                         } );
