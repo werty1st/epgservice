@@ -69,7 +69,7 @@ function exitHandler(err) {
     
     process.removeListener('uncaughtException', exitHandler);
     
-    //log.error("error", err);
+    log.error("error", err);
 
     // detect special xml error which occurs randomly
     if(err && err.message && (err.message.search("ECONNREFUSED") > -1) ){

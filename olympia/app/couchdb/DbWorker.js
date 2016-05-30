@@ -38,7 +38,7 @@ class DbWorker {
                 
         // check remote    
         this.remote.info().then( (info) => {
-                log.debug("remote info:", info);
+                log.debug("remote info:", info.doc_count);
             }).catch( (err) =>{
                 //log.error("remote error:",err);
                 setTimeout(()=>{ throw err; });                
