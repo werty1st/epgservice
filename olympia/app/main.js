@@ -61,7 +61,7 @@ websender.update(()=>{
 
 
 function end(code){   
-    log.debug('cleanup');
+    log.debug('cleanup');        
     process.exit(code);
 }
 
@@ -72,8 +72,8 @@ function exitHandler(err) {
     //log.error("error", err);
 
     // detect special xml error which occurs randomly
-    if(err && err.message && (err.message.search("Unclosed root tag") > -1) ){
-        log.error("Unclosed root tag",err);
+    if(err && err.message && (err.message.search("ECONNREFUSED") > -1) ){
+        log.error("DB not reachable");
         return end(15); 
     }
     
@@ -87,7 +87,7 @@ function exitHandler(err) {
 }
 
 // do something when app is closing
-process.on('exit', exitHandler.bind());
+//process.on('exit', exitHandler.bind());
 
 // catches ctrl+c event
 process.on('SIGINT', exitHandler.bind());

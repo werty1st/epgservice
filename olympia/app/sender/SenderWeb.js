@@ -96,7 +96,7 @@ function SenderWeb(db){
             //get channel
             let channel = video.channel;
 
-            //drop channel <> 1-6
+            //drop channel <> 0-6 //0= ard 1-6 = websender
             switch (channel) {
                 case "0":
                 case "1":

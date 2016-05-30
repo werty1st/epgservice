@@ -32,16 +32,16 @@ class DbWorker {
         this.local.info().then((info) => {
                 log.debug("local info:", info.doc_count);                                   
             }).catch( (err) =>{
-                log.error(err);
-                throw new Error (err);
+                log.error("local error:",err);
+                setTimeout(()=>{ throw err; });
         });
                 
         // check remote    
         this.remote.info().then( (info) => {
-                log.debug("remote info:", info.doc_count);
+                log.debug("remote info:", info);
             }).catch( (err) =>{
-                log.error(err);
-                throw new Error (err);
+                //log.error("remote error:",err);
+                setTimeout(()=>{ throw err; });                
         }); 
 
         // save all docIds to temp db
@@ -132,7 +132,7 @@ class DbWorker {
                 log.info("upsert success", item._id, response);
             }).catch((err) => {
                 log.error("error", err);
-                throw new Error (err);            
+                setTimeout(()=>{ throw err; });           
             });
     }
     
@@ -212,12 +212,12 @@ class DbWorker {
                     })
                     .catch((err)=>{
                         log.error("Error removing docs with old version.",err);
-                        throw new Error(err);    
+                        setTimeout(()=>{ throw err; });    
                     });
             })
             .catch( (err) => {
                 log.err(err);
-                throw new Error(err); 
+                setTimeout(()=>{ throw err; }); 
             });         
 
     }
@@ -259,7 +259,7 @@ class DbWorker {
             })
             .catch((err)=>{
                 log.error("Error removing outdated docs.",err);
-                throw new Error(err);    
+                setTimeout(()=>{ throw err; });    
             });
 
         
