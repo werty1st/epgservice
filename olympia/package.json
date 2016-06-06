@@ -10,10 +10,10 @@
       "startdate": "2016-08-13",
       "enddate": "2016-08-15",
       "proto": "https",
-      "host1": "eventcms.zdf.de",     
-      "host": "sofa.zdf.de",
-      "path1": "/xml/olympia2016/epg/",
-      "path": "/fakecms/"
+      "host": "eventcms.zdf.de",     
+      "host1": "sofa.zdf.de",
+      "path": "/xml/olympia2016/epg/",
+      "path1": "/fakecms/"
     },
     "p12": {
       "proto": "http",
