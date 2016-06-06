@@ -17,7 +17,7 @@
     },
     "p12": {
       "proto": "http",
-      "range": 1
+      "range": 10
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
   },
