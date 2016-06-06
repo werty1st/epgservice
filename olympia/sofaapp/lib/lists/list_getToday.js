@@ -2,28 +2,18 @@
 exports.list_getToday = function (head, req) {
     
     var moment = require("lib/moment");
-        
-    function provides_json(out,header) {
-        
-        header['Content-Type'] = 'application/json; charset=utf-8';
-        start({code: 200, headers: header});
-        //TODO Fehlermeldung wenn leer
-        send(JSON.stringify(out));
-    }
-    
-	var format  = req.query.accept  || "";
 	var station = req.query.station || "all";
 	var days    = parseInt(req.query.days || 0);
-	var version = req.query.version || "3";
 
-	var wrapper = { "response" : { status : { "statuscode" : "ok"}, "sendungen" : [] }};
-	var out = wrapper.response;
-
-	//für alle sender station=""
-	var wrapperAll = { "response" : { status : { "statuscode" : "ok"}, "sender" : {}  }};
-	var outAll = wrapperAll.response;
+	var out = [];
+	var outAll = {};
 
     var header = {};
+    
+    var airtimeSendung;
+    var endzeitSendung;   
+    
+    var sendung = {};  
 
     // jetzt plus X Tage
     var startTag = moment().add(days, 'days');
@@ -50,27 +40,32 @@ exports.list_getToday = function (head, req) {
         // filter station
         if (( station != "all" ) && ( row.value.station != station)) continue;
        
+        sendung = row.value;
+       
         // selected station OR all
-        var stationname = row.value.station;    
-        if (!(stationname in outAll.sender)){
-            outAll.sender[stationname] = {};
-            outAll.sender[stationname].sendungen = [];	
+        var stationname = sendung.station;    
+        if (!(stationname in outAll)){
+            outAll[stationname] = [];	
         }
         
-        var airtimeSendung = moment(row.value.start);
-        var endzeitSendung = moment(row.value.end);
+        airtimeSendung = moment(sendung.start);
+        endzeitSendung = moment(sendung.end);
 
-        delete row.value.rev;
-        delete row.value.item_created;
-        delete row.value.item_modified;			
+      
+        /**
+         * remove unwanted properties */        
+        delete sendung._rev;
+        delete sendung._id;
+        delete sendung.version;			
+        		
 
             //5:35		> 5:30 			 4:00       < 5:30
         if (( endzeitSendung.isAfter(startTag) ) && ( airtimeSendung.isBefore(startTag) )){
             
             if (station == "all"){
-                outAll.sender[stationname].sendungen.push({sendung:row});                 
+                outAll[stationname].push(sendung);                 
             } else if (stationname == station) {
-                out.sendungen.push({sendung:row});    
+                out.push(sendung);    
             }
         }
 
@@ -78,30 +73,29 @@ exports.list_getToday = function (head, req) {
         if ( airtimeSendung.isSameOrAfter(startTag) && ( endzeitSendung.isBefore(stopSendungstag) )){
 
             if (station == "all"){
-                outAll.sender[stationname].sendungen.push({sendung:row});                
+                outAll[stationname].push(sendung);                
             } else if (stationname == station) {
-                out.sendungen.push({sendung:row});    
+                out.push(sendung);    
             }            
         }
     }
     
-    
-    if (station == "all"){
-        wrapper = wrapperAll;
-    }
-
-
-
-
-
-	if (format == "json") {
-		provides_json(wrapper, header);
-
-	}else if (format == "xml") {
-		provides_xml(wrapper, header);
-	} else {
-		provides_json(wrapper, header);
+	// send outAll to client
+	if (station == "all"){
+		//remove empty arrays
+		for (var key in outAll) {
+			if (outAll.hasOwnProperty(key) && (outAll[key].length === 0) ) {
+				delete outAll[key];
+			}
+		}
+		out = outAll;
 	}
+    
+    header['Content-Type'] = 'application/json; charset=utf-8';
+    start({code: 200, headers: header});
+    //TODO Fehlermeldung wenn leer
+    send(JSON.stringify(out));
+
 };
 
 

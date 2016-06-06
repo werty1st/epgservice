@@ -11,6 +11,10 @@ exports.show_getByID = function(doc, req) {
     } else {		
                     
         delete doc._revisions;
+		delete doc._rev;
+		delete doc._id;
+		delete doc.version;	
+                
         return {
             body : JSON.stringify(doc),
             headers : {
