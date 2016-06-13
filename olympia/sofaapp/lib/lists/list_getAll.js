@@ -1,9 +1,8 @@
-
-exports.list_getToday = function (head, req) {
+module.exports = function (head, req) {
     
     var moment = require("lib/moment");
 	var station = req.query.station || "all";
-	var days    = parseInt(req.query.days || 0);
+
 
 	var out = [];
 	var outAll = {};
@@ -16,8 +15,8 @@ exports.list_getToday = function (head, req) {
     var sendung = {};  
 
     // jetzt plus X Tage
-    var startTag = moment().add(days, 'days');
-    var stopTag  = moment().add(days+1, 'days');
+    var startTag = moment();
+    var stopTag  = moment().add(100, 'days');
 
     // wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
     if( startTag.isBefore(startSendungstag) ) 

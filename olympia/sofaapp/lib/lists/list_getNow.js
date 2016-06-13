@@ -23,7 +23,7 @@ exports.list_getNow = function (head, req) {
 		
 		if (( station != "all" ) && ( row.value.station != station)) continue;
 			
-		sendung = row.value;   
+		sendung = row.value;
 		delete sendung._rev;
 		delete sendung._id;
 		delete sendung.version;	

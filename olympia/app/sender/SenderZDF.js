@@ -21,8 +21,8 @@ function SenderZDF(db){
      */
     function addSendetermin (sendung, done){
         
-        sendung._id             = sendung.externalId;                        
-        sendung.ecmsId          = "0";
+        sendung._id             = sendung.id;                        
+        //sendung.ecmsId          = "0";
         sendung.vcmsChannelId   = "74";
         sendung.channelId       = "10";                        
         sendung.text            = (sendung.text === undefined)?"" : sendung.text; //bei Wiederholungen leer
@@ -51,6 +51,9 @@ function SenderZDF(db){
     // get Sendungs Details from Beitrag
     function getSendungsDetails(sendung, callback){
     
+
+        //log.debug("sendung.beitragReference",sendung.beitragReference);
+
         //get url
         const get_options = require('url').parse(sendung.beitragReference);
         get_options.headers = {'User-Agent': agent};
@@ -78,7 +81,7 @@ function SenderZDF(db){
                 
                 xml.on('tag:image', (elm) => {
                         if (sendung.externalImageUrl !== ""){
-                            if( elm.Link.search("layout=672x378") >-1 ){
+                            if( elm.Link.search("layout=946x532") >-1 ){
                                 //console.log("img found");
                                 sendung.externalImageUrl = elm.Link;
                             }
@@ -145,7 +148,8 @@ function SenderZDF(db){
                     
                     let sendung = {};
                     
-                    sendung.externalId = sendetermin.$attrs.externalId;
+                    //sendung.externalId = sendetermin.$attrs.externalId;
+                    sendung.id = sendetermin.$attrs.externalId;
                     sendung.text = sendetermin.text;
                     sendung.titel = sendetermin.titel;
                     sendung.start = sendetermin.beginnDatum;
@@ -230,48 +234,3 @@ function SenderZDF(db){
 module.exports = SenderZDF;
 
 }());
-
-
-
-
-
-
-
-//p12 daten laden mit v2 api für heute+7
-// http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2016-02-04&currentIndex=2 => ZDF SPORTextra - Wintersport - Biathlon-Weltcup
-
-// curl --header "Range: bytes=343-703" "http://www.zdf.de/ZDF/zdfportal/api/v2/epg?station=zdf&startDate=2016-02-04&endDate=2016-02-04&currentIndex=1"
-
-//nur olympia aber vorbereiten für alles
-
-
-
-//Ziel definieren
-
-/* EPG_Olympia
-sofa01.zdf.de/epgservice/olympia/web[1..6]/heute/json
-sofa01.zdf.de/epgservice/olympia/all/heute/json
-...
-
-*/
-
-/* EPGNG
-sofa01.zdf.de/epg-ng/heute/zdf/
-
-sofa01.zdf.de/epg-ng/heute/alle/
-sofa01.zdf.de/epg-ng/gestern/alle/
-sofa01.zdf.de/epg-ng/morgen/alle/
-
-sofa01.zdf.de/epg-ng/heute+1/alle/
-sofa01.zdf.de/epg-ng/heute+2/alle/
-sofa01.zdf.de/epg-ng/heute+3/alle/
-sofa01.zdf.de/epg-ng/heute+4/alle/
-sofa01.zdf.de/epg-ng/heute+5/alle/
-sofa01.zdf.de/epg-ng/heute+6/alle/
-sofa01.zdf.de/epg-ng/heute+7/alle/
-
-sofa01.zdf.de/epg-ng/heute+7/alle/zdf/{sendungID}/titel
-sofa01.zdf.de/epg-ng/heute+7/alle/zdf/{sendungID}/bilder/{small}
-sofa01.zdf.de/epg-ng/heute+7/alle/zdf/{sendungID}/bilder/{large}
-
-*/

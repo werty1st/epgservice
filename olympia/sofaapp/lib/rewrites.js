@@ -5,7 +5,11 @@ module.exports = [
     {from:"/api", to:'../../'},
     {from:"/api/*", to:'../../*'},
     */
-    
+
+
+    /* get current+next broadcast from all stations */
+    {from:"/all", to:'_list/list_getAll/view_getAllByDate', query: { station: 'all',  startkey: "2016-08-05T05:30:00+02:00", endkey:"2016-08-22T05:30:00+02:00" }},
+
     /* get current+next broadcast from all stations */
     {from:"/now", to:'_list/list_getNow/view_getAllByDate'},
 

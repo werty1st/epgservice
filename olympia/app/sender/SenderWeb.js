@@ -28,7 +28,8 @@ function SenderWeb(db){
         const sendung = {};
         
         sendung._id              = xmlElement.$attrs["ecms-id"]; //doc id
-        sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
+        sendung.id              = xmlElement.$attrs["ecms-id"]; //doc id
+        //sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
         sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
         sendung.channelId        = xmlElement.channel;    
         sendung.text             = (xmlElement.copy === undefined)?"":xmlElement.copy;
@@ -46,7 +47,7 @@ function SenderWeb(db){
             
         
         
-        sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsid}/timg672x378blob`;
+        sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsId}/timg946x532blob`;
 
 
         /**
