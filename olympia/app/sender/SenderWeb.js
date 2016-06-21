@@ -142,13 +142,13 @@ function SenderWeb(db){
         https.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
                 callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
             } else {
                 
-                if (responeStream.headers['content-length'] == 0){
-                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
+                if (responeStream.headers['content-length'] === 0){
                     callback(`Got emtpy response from ${url}`,responeStream.headers);
+                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
                     return;
                 }else {                
                     //send to xml stream reader
@@ -156,10 +156,9 @@ function SenderWeb(db){
                     callback(null);
                 }   
             }
-
         }).on('error', (e) => {
-            log.error(`Got error: ${e.message}`);
             callback(`Got error: ${e.message}`);
+            log.error(`Got error: ${e.message}`);
         });
     }
 

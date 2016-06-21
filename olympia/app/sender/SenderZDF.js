@@ -27,7 +27,7 @@ function SenderZDF(db){
         sendung.channelId       = "10";                        
         sendung.text            = (sendung.text === undefined)?"" : sendung.text; //bei Wiederholungen leer
         sendung.vcmsid          = "1822600";
-        sendung.station         = "zdf";
+        //sendung.station         = "zdf";
         sendung.sportId          = "0";
         sendung.sportName        = "";
         sendung.version = process.env.npm_package_config_version;
@@ -151,6 +151,7 @@ function SenderZDF(db){
                     //sendung.externalId = sendetermin.$attrs.externalId;
                     sendung.id = sendetermin.$attrs.externalId;
                     sendung.text = sendetermin.text;
+                    sendung.station = sendetermin.sender.titel.toLowerCase();
                     sendung.titel = sendetermin.titel;
                     sendung.start = sendetermin.beginnDatum;
                     sendung.end = sendetermin.endeDatum;
@@ -173,35 +174,43 @@ function SenderZDF(db){
      * @param {string} url download xml  
      * passes xml stream to parseXmlStream
      */
-    function getXmlStream(url){
+    function getXmlStream(url, callback){
 
         log.info("Download:",url);
+        
+        // set dummy for following requests
+        if (!callback) callback=function(){};
 
-        let get_options = require('url').parse(url);
-            get_options.headers = {
-                    'User-Agent': agent,
-                    'Cache-Control': 'no-cache'
-                };
-            get_options.timeout = 2000;
-            get_options.followRedirect = true;
-            get_options.maxRedirects = 10;
+        const get_options = require('url').parse(url);
+        get_options.headers = {
+                'User-Agent': agent,
+                'Cache-Control': 'no-cache'
+            };
+        get_options.timeout = 2000;
+        get_options.followRedirect = true;
+        get_options.maxRedirects = 10;
 
         request.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                log.error(`getXmlStream: Got invalid statusCode`);
+                callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
                 return;
             } else {
                 
-                if (responeStream.headers['content-length'] == 0){
-                    log.error(`getXmlStream: Got emtpy response`);
+                if (responeStream.headers['content-length'] === 0){
+                    callback(`Got emtpy response from ${url}`,responeStream.headers);
+                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
                     return;
+                } else {
+                    //send to xml stream reader                   
+                    parseXmlStream(responeStream);
+                    callback(null);
                 }
-                //send to xml stream reader                   
-                parseXmlStream(responeStream);
             }
         }).on('error', (e) => {
-            log.error(`Error in response: from ${url}`);
+            callback(`Got error: ${e.message}`);
+            log.error(`Got error: ${e.message}`);
         });
     }
 
@@ -212,7 +221,6 @@ function SenderZDF(db){
     this.update = function update(done){
 
         log.info("zdf start");
-
         openReqCounter.on('empty', ()=>{
             done();
         });
@@ -223,9 +231,24 @@ function SenderZDF(db){
         const startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
         const stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
       
-        const url = `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`;
+        const urls = [
+            `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+            `http://www.zdf.de/api/v2/epg?station=zdfinfo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+            `http://www.zdf.de/api/v2/epg?station=zdfneo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+            `http://www.zdf.de/api/v2/epg?station=arte&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+            `http://www.zdf.de/api/v2/epg?station=3sat&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+            `http://www.zdf.de/api/v2/epg?station=zdf.kultur&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+            `http://www.zdf.de/api/v2/epg?station=phoenix&startDate=${startd}&endDate=${stopd}&maxHits=2000`
+        ];
+
+        // zdf zdfinfo zdfneo arte 3sat zdf.kultur phoenix ki.ka
         
-        getXmlStream(url);
+        const threads = 2;
+        require('async').eachLimit(urls, threads, function(url, next){
+            getXmlStream(url, next);
+        }, function(){
+            log.info('SenderZDF','finished xml download');
+        });
 
     };
         

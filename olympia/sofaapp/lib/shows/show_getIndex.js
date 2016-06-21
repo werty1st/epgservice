@@ -62,7 +62,7 @@ doc =
                         "required": true,
                         "type": "string",
                         "enum": [
-                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard"
+                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat"
                         ]
                     }
                 ],
@@ -122,7 +122,7 @@ doc =
                         "required": true,
                         "type": "string",
                         "enum": [
-                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard"
+                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat"
                         ]
                     }
                 ],
@@ -200,7 +200,7 @@ doc =
                         "required": true,
                         "type": "string",
                         "enum": [
-                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard"
+                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat"
                         ]
                     },
                     {

@@ -4,7 +4,7 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
     "logLevel": "debug",
-    "version": "6",
+    "version": "7",
     "ecms": {
       "delta": "false",
       "startdate": "2016-08-13",
@@ -17,7 +17,7 @@
     },
     "p12": {
       "proto": "http",
-      "range": 10
+      "range": 3
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
   },
