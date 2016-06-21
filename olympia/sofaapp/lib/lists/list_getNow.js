@@ -16,6 +16,16 @@ exports.list_getNow = function (head, req) {
 	var sendung = {}; 
 
 
+	//detect wrong station
+	if (["olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard","all"].indexOf(station) === -1 )
+	{
+		header['Content-Type'] = 'application/json; charset=utf-8';
+		start({code: 404, headers: header});
+		send(["Document not found."]);
+		return;
+	}
+
+
 	while( (row = getRow()) ) {
 						
 		//wenn kein sendername vorhanden weiter zum nächsten
@@ -75,6 +85,12 @@ exports.list_getNow = function (head, req) {
 	}
 	
 
+	if (JSON.stringify(out).length === 2){
+		header['Content-Type'] = 'application/json; charset=utf-8';
+		start({code: 204, headers: header});
+		send(["Empty response"]);
+		return;		
+	}
 
 	header['Content-Type'] = 'application/json; charset=utf-8';
 	start({code: 200, headers: header});

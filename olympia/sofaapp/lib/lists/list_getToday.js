@@ -15,6 +15,16 @@ exports.list_getToday = function (head, req) {
     
     var sendung = {};  
 
+
+	//detect wrong station
+	if (["olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard","all"].indexOf(station) === -1 )
+	{
+		header['Content-Type'] = 'application/json; charset=utf-8';
+		start({code: 404, headers: header});
+		send(["Document not found."]);
+		return;
+	}
+
     // jetzt plus X Tage
     var startTag = moment().add(days, 'days');
     var stopTag  = moment().add(days+1, 'days');
@@ -92,6 +102,14 @@ exports.list_getToday = function (head, req) {
 		out = outAll;
 	}
     
+
+	if (JSON.stringify(out).length === 2){
+		header['Content-Type'] = 'application/json; charset=utf-8';
+		start({code: 204, headers: header});
+		send(["Empty response"]);
+		return;		
+	}
+
     header['Content-Type'] = 'application/json; charset=utf-8';
     start({code: 200, headers: header});
     //TODO Fehlermeldung wenn leer
