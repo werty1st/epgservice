@@ -17,7 +17,7 @@ exports.list_getNow = function (head, req) {
 
 
 	//detect wrong station
-	if (["olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard","all"].indexOf(station) === -1 )
+	if (["olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat", "all"].indexOf(station) === -1 )
 	{
 		header['Content-Type'] = 'application/json; charset=utf-8';
 		start({code: 404, headers: header});

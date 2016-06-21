@@ -91,6 +91,14 @@ module.exports = function (head, req) {
 		out = outAll;
 	}
     
+	if (JSON.stringify(out).length === 2){
+		header['Content-Type'] = 'application/json; charset=utf-8';
+		start({code: 204, headers: header});
+		send(["Empty response"]);
+		return;		
+	}
+
+
     header['Content-Type'] = 'application/json; charset=utf-8';
     start({code: 200, headers: header});
     //TODO Fehlermeldung wenn leer
