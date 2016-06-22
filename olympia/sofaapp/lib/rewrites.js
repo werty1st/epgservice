@@ -7,8 +7,8 @@ module.exports = [
     {from:"/lib/*", to:'attachments/lib/*'},
 
     
-    {from:"/swagger.json", to:'_show/show_getIndex'},
-    {from:"/api/", to:'_show/show_getIndex'},
+    {from:"/swagger.json", to:'attachments/swagger.json'},
+    {from:"/api/", to:'attachments/swagger.json'},
     /*  
     {from:"/*", to:'*'}
     {from:"/api", to:'../../'},

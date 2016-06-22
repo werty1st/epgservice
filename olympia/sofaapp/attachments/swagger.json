@@ -1,10 +1,7 @@
-module.exports = function(doc, req) {
-               
-doc = 
-    {
+{
     "swagger": "2.0",
     "info": {
-        "description": "This is the Olympia 2016 ECMS EPG Data server.\n\n",
+        "description": "This is the Olympia 2016 ECMS EPG Data server.",
         "version": "2.0.2",
         "title": "Swagger API Definition",
         "termsOfService": "http://zdf.de/",
@@ -25,7 +22,8 @@ doc =
         "/now/": {
             "get": {
                 "tags": [
-                    "stations", "now"
+                    "stations",
+                    "now"
                 ],
                 "summary": "current and next broadcast of all stations",
                 "description": "Returns Object of stations or an empty Object if no data is available",
@@ -42,11 +40,12 @@ doc =
                     }
                 }
             }
-        },        
+        },
         "/now/{station}/": {
             "get": {
                 "tags": [
-                    "station", "now"
+                    "station",
+                    "now"
                 ],
                 "summary": "Current and next broadcast of selected station",
                 "description": "Returns Array of Objects with EPG data of current and next or an empty Array if no data is available",
@@ -62,7 +61,14 @@ doc =
                         "required": true,
                         "type": "string",
                         "enum": [
-                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat"
+                            "olympia1",
+                            "olympia2",
+                            "olympia3",
+                            "olympia4",
+                            "olympia5",
+                            "olympia6",
+                            "zdf",
+                            "ard"
                         ]
                     }
                 ],
@@ -73,8 +79,8 @@ doc =
                             "$ref": "#/definitions/station"
                         }
                     },
-                    "204":{
-                      "description": "No Data"
+                    "204": {
+                        "description": "No Data"
                     },
                     "404": {
                         "description": "Station not found"
@@ -85,7 +91,8 @@ doc =
         "/today/": {
             "get": {
                 "tags": [
-                    "stations", "today"
+                    "stations",
+                    "today"
                 ],
                 "summary": "todays broadcast of all stations",
                 "description": "Returns Object of stations or an empty Object if no data is available",
@@ -102,11 +109,12 @@ doc =
                     }
                 }
             }
-        },        
+        },
         "/today/{station}/": {
             "get": {
                 "tags": [
-                    "station", "today"
+                    "station",
+                    "today"
                 ],
                 "summary": "todays broadcast of selected station",
                 "description": "Returns Array of Objects with EPG data of current and next or an empty Array if no data is available",
@@ -122,7 +130,14 @@ doc =
                         "required": true,
                         "type": "string",
                         "enum": [
-                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat"
+                            "olympia1",
+                            "olympia2",
+                            "olympia3",
+                            "olympia4",
+                            "olympia5",
+                            "olympia6",
+                            "zdf",
+                            "ard"
                         ]
                     }
                 ],
@@ -133,8 +148,8 @@ doc =
                             "$ref": "#/definitions/allStations"
                         }
                     },
-                    "204":{
-                      "description": "No Data"
+                    "204": {
+                        "description": "No Data"
                     },
                     "404": {
                         "description": "Station not found"
@@ -145,7 +160,8 @@ doc =
         "/today/add/{days}/": {
             "get": {
                 "tags": [
-                    "stations", "future"
+                    "stations",
+                    "future"
                 ],
                 "summary": "today+days broadcast of all stations",
                 "description": "Returns Array of Objects with EPG data of the calcuated date or an empty Array if no data is available",
@@ -172,19 +188,20 @@ doc =
                             "$ref": "#/definitions/allStations"
                         }
                     },
-                    "204":{
-                      "description": "No Data"
+                    "204": {
+                        "description": "No Data"
                     },
                     "404": {
                         "description": "Station not found"
                     }
                 }
             }
-        },  
+        },
         "/today/add/{days}/{station}/": {
             "get": {
                 "tags": [
-                    "station", "future"
+                    "station",
+                    "future"
                 ],
                 "summary": "todays broadcast of selected station",
                 "description": "Returns Array of Objects with EPG data of current and next or an empty Array if no data is available",
@@ -200,7 +217,14 @@ doc =
                         "required": true,
                         "type": "string",
                         "enum": [
-                          "olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat"
+                            "olympia1",
+                            "olympia2",
+                            "olympia3",
+                            "olympia4",
+                            "olympia5",
+                            "olympia6",
+                            "zdf",
+                            "ard"
                         ]
                     },
                     {
@@ -212,7 +236,7 @@ doc =
                         "format": "int32",
                         "minimum": 1,
                         "maximum": 30
-                    }                    
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -221,19 +245,20 @@ doc =
                             "$ref": "#/definitions/station"
                         }
                     },
-                    "204":{
-                      "description": "No Data"
+                    "204": {
+                        "description": "No Data"
                     },
                     "404": {
                         "description": "Station not found"
                     }
                 }
             }
-        },  
+        },
         "/allbydate/{startdate}/{enddate}": {
             "get": {
                 "tags": [
-                    "stations", "future"
+                    "stations",
+                    "future"
                 ],
                 "summary": "broadcast of all stations between startdate and enddate",
                 "description": "Returns Array of Objects with EPG data of the calcuated date or an empty Array if no data is available",
@@ -257,7 +282,7 @@ doc =
                         "required": true,
                         "type": "string",
                         "format": "date-time"
-                    }                    
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -266,8 +291,8 @@ doc =
                             "$ref": "#/definitions/allStations"
                         }
                     },
-                    "204":{
-                      "description": "No Data"
+                    "204": {
+                        "description": "No Data"
                     },
                     "404": {
                         "description": "Station not found"
@@ -299,37 +324,25 @@ doc =
         }
     },
     "definitions": {
-        "allStations":{
-          "type": "object",
-          "properties": {
-            "station": {
-              "type": "array",
-              "items": {
-                "type": "object"
-              }
+        "allStations": {
+            "type": "object",
+            "properties": {
+                "station": {
+                    "type": "array",
+                    "items": {
+                        "type": "object"
+                    }
+                }
             }
-          }          
         },
         "sportarten": {
-          "type": "object"
-        },
-        "station":{
-          "type": "array",
-          "items": {
             "type": "object"
-          }
+        },
+        "station": {
+            "type": "array",
+            "items": {
+                "type": "object"
+            }
         }
     }
-};
-
-               
-    return {
-        body : JSON.stringify(doc),
-        headers : {
-            "Content-Type" : "application/json; charset=utf-8"
-            }
-    };		
-
-};
-
-
+}
