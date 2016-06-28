@@ -27,8 +27,9 @@ function SenderWeb(db){
        
         const sendung = {};
         
-        sendung._id              = xmlElement.$attrs["ecms-id"]; //doc id
+        sendung._id             = xmlElement.$attrs["ecms-id"]; //doc id
         sendung.id              = xmlElement.$attrs["ecms-id"]; //doc id
+        sendung.rscId           = xmlElement["rsc-id"]; //doc id
         //sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
         sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
         sendung.channelId        = xmlElement.channel;    
@@ -44,8 +45,13 @@ function SenderWeb(db){
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
         
-            
         
+        if (xmlElement['$name'] === 'bracket'){
+            let event = xmlElement.event[0];
+            sendung.rscId = event["rsc-id"];
+        }
+        //console.log(xmlElement);
+        //console.log(sendung);
         
         sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsId}/timg946x532blob`;
 
