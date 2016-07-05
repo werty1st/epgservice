@@ -4,7 +4,7 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
     "logLevel": "debug",
-    "version": "8",
+    "version": "9",
     "ecms": {
       "delta": "true",
       "startdate": "2016-08-06",
