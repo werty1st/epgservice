@@ -91,12 +91,12 @@ exports.list_google = function (head, req) {
         
             //5:35		> 5:30 			 4:00       < 5:30
         if (( endTime.isAfter(startTag) ) && ( startTime.isBefore(startTag) )){
-            out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);
+            out.push([startTime.format(),endTime.format(),channelName,channelId+channelName,programName,programDescription,language]);
         }
 
         //betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
         if ( startTime.isSameOrAfter(startTag) && ( endTime.isBefore(stopSendungstag) )){
-            out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);           
+            out.push([startTime.format(),endTime.format(),channelName,channelId+channelName,programName,programDescription,language]);           
         }
     }
     
