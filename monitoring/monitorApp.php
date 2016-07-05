@@ -9,7 +9,7 @@ $url = "http://sofa01.zdf.de/epgservice/status";
 $ch = curl_init($url);
 curl_setopt($ch,  CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt ($ch, CURLOPT_USERAGENT, $user_agent); 
-curl_setopt ($ch, CURLOPT_TIMEOUT, 1); //1sec timeout
+curl_setopt ($ch, CURLOPT_TIMEOUT, 2); //1sec timeout
 
 
 /* Get the HTML or whatever is linked in $url. */
