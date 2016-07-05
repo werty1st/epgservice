@@ -188,7 +188,7 @@ function SenderWeb(db){
          * heute - 2014-02-12 = x days
          */
         if (process.env.npm_package_config_ecms_delta === "true"){
-            delta = moment().diff(moment("2014-02-06"), "days") ;
+            delta = moment().diff(moment("2016-08-06"), "days") ;
             log.debug("Delta:",delta);
             log.info("Database:",process.env.DB);
         } else {

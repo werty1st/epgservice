@@ -6,7 +6,7 @@
     "logLevel": "debug",
     "version": "8",
     "ecms": {
-      "delta": "false",
+      "delta": "true",
       "startdate": "2016-08-06",
       "enddate": "2016-08-22",
       "proto": "https",
