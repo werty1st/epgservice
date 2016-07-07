@@ -48,7 +48,8 @@ function SenderWeb(db){
         
         if (xmlElement['$name'] === 'bracket'){
             let event = xmlElement.event[0];
-            sendung.rscId = event["rsc-id"];
+            sendung.rscId   = event["rsc-id"];
+            sendung.sportId = event["sport-id"];
         }
         //console.log(xmlElement);
         //console.log(sendung);
