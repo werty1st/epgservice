@@ -35,7 +35,7 @@ function SenderWeb(db){
         sendung.channelId        = xmlElement.channel;    
         sendung.text             = (xmlElement.copy === undefined)?"":xmlElement.copy;
         sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || "0"; //bei ARD immer 0
-        sendung.station          = (sendung.vcmsId === "0")?"ard":"olympia" + xmlElement.channel;   
+        sendung.station          = (sendung.vcmsId == "0")?"ard":"olympia" + xmlElement.channel;   
         sendung.sportId          = xmlElement["sport-id"];
         sendung.sportName        = xmlElement["sport-name"];
         sendung.version          = process.env.npm_package_config_version;
