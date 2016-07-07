@@ -67,7 +67,8 @@ exports.list_getToday = function (head, req) {
          * remove unwanted properties */        
         delete sendung._rev;
         delete sendung._id;
-        delete sendung.version;			
+        delete sendung.version;         
+        delete sendung._conflicts;			
         		
 
             //5:35		> 5:30 			 4:00       < 5:30
