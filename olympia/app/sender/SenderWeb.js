@@ -53,7 +53,7 @@ function SenderWeb(db){
         //console.log(xmlElement);
         //console.log(sendung);
         
-        sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsId}/timg946x532blob`;
+        sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsChannelId}/timg946x532blob`;
 
 
         /**
