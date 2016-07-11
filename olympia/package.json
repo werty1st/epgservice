@@ -7,7 +7,7 @@
     "version": "10",
     "ecms": {
       "delta": "true",
-      "startdate": "2016-08-06",
+      "startdate": "2016-08-03",
       "enddate": "2016-08-22",
       "proto": "https",
       "host": "eventcms.zdf.de",     

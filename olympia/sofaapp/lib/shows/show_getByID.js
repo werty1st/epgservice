@@ -15,6 +15,7 @@ exports.show_getByID = function(doc, req) {
 		delete doc._id;
         delete doc.version; 
 		delete doc._conflicts;	
+		delete doc._deleted_conflicts;	
                 
         return {
             body : JSON.stringify(doc),

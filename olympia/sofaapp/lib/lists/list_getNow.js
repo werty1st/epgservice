@@ -38,6 +38,7 @@ exports.list_getNow = function (head, req) {
 		delete sendung._id;
 		delete sendung.version;	
 		delete sendung._conflicts;	
+		delete sendung._deleted_conflicts;	
 				
 		stationname = sendung.station;
 
