@@ -4,7 +4,7 @@
 const moment = require("moment");
 const diff = require('deep-diff').diff;
 const PouchDB = require('pouchdb');
-PouchDB.plugin(require('pouchdb-upsert'));
+      PouchDB.plugin(require('pouchdb-upsert'));
 //require('pouchdb/extras/websql');
 //PouchDB.debug.enable('*');
     
@@ -22,17 +22,17 @@ class DbWorker {
         this.outdatedDocs = new Map();
         
         //setup local and remote DBs
-        this.local = new PouchDB('localecms', {db: require('memdown') });
+        this.local = new PouchDB('localecms', {db: require('memdown')});
 
         //this.local  = new PouchDB('localecms', {adapter: 'websql'});
-        this.remote = new PouchDB(process.env.DB, {auto_compaction: true});
+        this.remote = new PouchDB(process.env.DB, {auto_compaction: true, ajax: {timeout: 2000} });
 
         // test local and remote connection
         // check local
         this.local.info().then((info) => {
                 log.debug("local info:", info.doc_count);                                   
             }).catch( (err) =>{
-                log.error("local error:",err);
+                log.error("local Database is not available");
                 setTimeout(()=>{ throw err; });
         });
                 
@@ -40,13 +40,13 @@ class DbWorker {
         this.remote.info().then( (info) => {
                 log.debug("remote info:", info.doc_count);
             }).catch( (err) =>{
-                log.error("remote error:",err);
+                log.error("remote Database is not available");
                 setTimeout(()=>{ throw err; });                
         }); 
 
-        // save all docIds to temp db
+        // save all docIds to temp array, they will be removed from this array if they are
+        // downloaded again, otherwise this ids are outdated and safe to remove
         this.remote.query('olympia/view_getAllProgrammData').then( (result) =>{
-            //console.log(result);
             result.rows.map( (item) => {
                 this.outdatedDocs.set(item.id,item.value);
             });
@@ -59,19 +59,8 @@ class DbWorker {
         });
 
         //delete old version docs from remote before syncing
-        this._removeOutdated(()=>{
+        this._removeOldversion( ()=>{
 
-            /**
-             * change detection sync strategy
-             * 1. get all docs from remote
-             * 2.a keep list of IDs synced from remote, remove all that get loaded from ecms/p12, remove remaining from remote
-             * 2.b get all docs from ecms/p12 and mark them as new, delete unmarked, remove mark, sync to remote //does that inc rev counter?
-             * 
-             */
-            // 
-            
-            // sync from remote /hauptprogrammFilter skips station==zdf 
-            //that.local.replicate.from(that.remote,{ filter: 'olympia/hauptprogrammFilter'}).then( (result) => {
             this.local.replicate.from(this.remote).then( (result) => {
                 // handle 'completed' result
                 log.debug("init replicate completed");
@@ -131,7 +120,7 @@ class DbWorker {
                 done();
                 log.info("upsert success", item._id, response);
             }).catch((err) => {
-                log.error("error", err);
+                log.error(`Ìtem ${item._id} not updated.`);
                 setTimeout(()=>{ throw err; });           
             });
     }
@@ -169,29 +158,24 @@ class DbWorker {
     }
 
     /**
-     * remove wrong version items
+     * remove lower version items
      */
-    _removeOutdated (done) {
+    _removeOldversion (done) {
+        log.info("find outdated");
     
         // count deleted items
-        let ver_count=0;
-        //let old_count=0;
-        //let outdated = process.env.npm_package_config_age_keep;
-        
-        log.info("find outdated");
+        let ver_count=0;        
         
         /**
          * find docs with lower version 
          */
         this.remote.query('olympia/viewByVersion',{
                 endkey: process.env.npm_package_config_version.toString(),
-                inclusive_end: false
-            }).then( (res) => {
+                inclusive_end: false })
+            .then( (res) => {
                 
                 ver_count = res.rows.length;
-                
-                log.debug("Found "+res.rows.length+" outdated docs");
-                //log.debug(JSON.stringify(res.rows));
+                log.debug(`Found ${res.rows.length} outdated docs`);
 
                 //build array of docs to delete
                 return res.rows.map((x)=>{                                        
@@ -203,7 +187,7 @@ class DbWorker {
                 });
             })
             .then( (docs2delete) => {
-                //return;
+
                 // remove old versions elements
                 this.local.bulkDocs(docs2delete)
                     .then((result)=>{
@@ -211,7 +195,7 @@ class DbWorker {
                         done();
                     })
                     .catch((err)=>{
-                        log.error("Error removing docs with old version.",err);
+                        log.error("Error removing docs with old version.");
                         setTimeout(()=>{ throw err; });    
                     });
             })
@@ -224,6 +208,7 @@ class DbWorker {
 
     /**
      * sync local to remote
+     * TODO test live replication just after this.remote.query('olympia/view_getAllProgrammData')
      */
     sync(){
         this.local.replicate.to(this.remote).then( (result) => {
@@ -234,6 +219,7 @@ class DbWorker {
 
     /**
      * remove outdated items
+     * called from SenderGruppe
      */
     removeOutdated (done){
 
@@ -257,7 +243,7 @@ class DbWorker {
                 done();
             })
             .catch((err)=>{
-                log.error("Error removing outdated docs.",err);
+                log.error("Error removing outdated docs.");
                 setTimeout(()=>{ throw err; });    
             });
 

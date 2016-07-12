@@ -156,7 +156,7 @@ function SenderWeb(db){
 
             if (responeStream.statusCode != 200){
                 callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
-                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.warn(`Got invalid response: ${responeStream.statusCode} from ${url}`);
             } else {
                 
                 if (responeStream.headers['content-length'] === 0){
