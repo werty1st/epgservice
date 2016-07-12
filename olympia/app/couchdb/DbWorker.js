@@ -25,8 +25,8 @@ class DbWorker {
         this.local = new PouchDB('localecms', {db: require('memdown') });
 
         //this.local  = new PouchDB('localecms', {adapter: 'websql'});
-        this.remote = new PouchDB(process.env.DB, {auto_compaction: false});
-        
+        this.remote = new PouchDB(process.env.DB, {auto_compaction: true});
+
         // test local and remote connection
         // check local
         this.local.info().then((info) => {

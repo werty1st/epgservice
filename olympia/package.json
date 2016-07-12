@@ -6,7 +6,7 @@
     "logLevel": "debug",
     "version": "10",
     "ecms": {
-      "delta": "true",
+      "delta": "false",
       "startdate": "2016-08-03",
       "enddate": "2016-08-22",
       "proto": "https",
@@ -17,7 +17,7 @@
     },
     "p12": {
       "proto": "http",
-      "range": 17
+      "range": 3
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
   },

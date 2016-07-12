@@ -54,7 +54,13 @@ function SenderWeb(db){
         //console.log(xmlElement);
         //console.log(sendung);
         
-        sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsChannelId}/timg946x532blob`;
+        if (sendung.vcmsId == 0){
+            //ARD
+        } else if (sendung.vcmsId == 10){
+            //ZDF
+        } else {
+            sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsChannelId}/timg946x532blob`;
+        }
 
 
         /**

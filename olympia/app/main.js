@@ -5,12 +5,13 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const winston = require('winston');
+const DailyRotateFile = require('winston-daily-rotate-file');
 
 global.log = new (winston.Logger)({
     exitOnError: false,
     transports: [
-      new (require('winston-daily-rotate-file'))({ name:"errorlog", level: "error", dirname: "logs", filename: "error.log"  }),
-      new (require('winston-daily-rotate-file'))({ name:"infolog",  level: "info", dirname: "logs", filename: "info.log"  }),
+      new DailyRotateFile({datePattern: 'yyyy-MM-dd-',prepend: true, name:"infolog",  level: "info", dirname: "logs", filename: "info.log"  }),
+      new DailyRotateFile({datePattern: 'yyyy-MM-dd-',prepend: true, name:"errorlog",  level: "error", dirname: "logs", filename: "error.log"  }),
       new (winston.transports.Console)({colorize: true, level: process.env.logLevel })
     ]
   });

@@ -232,13 +232,13 @@ function SenderZDF(db){
         const stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
       
         const urls = [
-            `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
-            `http://www.zdf.de/api/v2/epg?station=zdfinfo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+            `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`
+          /*`http://www.zdf.de/api/v2/epg?station=zdfinfo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
             `http://www.zdf.de/api/v2/epg?station=zdfneo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
             `http://www.zdf.de/api/v2/epg?station=arte&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
             `http://www.zdf.de/api/v2/epg?station=3sat&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
             `http://www.zdf.de/api/v2/epg?station=zdf.kultur&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
-            `http://www.zdf.de/api/v2/epg?station=phoenix&startDate=${startd}&endDate=${stopd}&maxHits=2000`
+            `http://www.zdf.de/api/v2/epg?station=phoenix&startDate=${startd}&endDate=${stopd}&maxHits=2000`*/
         ];
 
         // zdf zdfinfo zdfneo arte 3sat zdf.kultur phoenix ki.ka
