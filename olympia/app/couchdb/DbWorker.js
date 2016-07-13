@@ -19,6 +19,7 @@ class DbWorker {
         // redirect save requests to this array as long as the constructor is not ready
         this.workerQ = [];
         
+        // store document Ids + Revs
         this.outdatedDocs = new Map();
         
         //setup local and remote DBs
@@ -27,8 +28,7 @@ class DbWorker {
         //this.local  = new PouchDB('localecms', {adapter: 'websql'});
         this.remote = new PouchDB(process.env.DB, {auto_compaction: true, ajax: {timeout: 2000} });
 
-        // test local and remote connection
-        // check local
+        // check local connection
         this.local.info().then((info) => {
                 log.debug("local info:", info.doc_count);                                   
             }).catch( (err) =>{
@@ -36,53 +36,52 @@ class DbWorker {
                 setTimeout(()=>{ throw err; });
         });
                 
-        // check remote    
+        // check remote connection
         this.remote.info().then( (info) => {
                 log.debug("remote info:", info.doc_count);
+                /**
+                 * REMOTE DATABASE READY
+                 */
+
+                //delete old version docs from remote before syncing
+                this._removeOldversion( ()=>{
+
+                    /**
+                     * Called after remove version to avoid syncing outdated items
+                     */
+                    // save all docIds to temp array, they will be removed from this array if they are
+                    // downloaded again, otherwise this ids are outdated and safe to remove
+                    this.remote.query('olympia/view_getAllProgrammData').then( (result) =>{
+                        result.rows.map( (item) => {
+                            this.outdatedDocs.set(item.id,item.value);
+                        });
+                         /* Map {'1653' => '2-5ef0249f5573c0499f40985fece14e9d',
+                         *       '1654' => '2-57065de65b4d2690ccfa6156377af365',
+                         *       '1655' => '2-b6a3351426e5ad023883095af06b4149'} */
+                    });
+
+
+
+                    const timer = setInterval(()=>{
+                        log.info("replicating", repl.state);
+                    },1000);
+
+                    const repl = this.local.replicate.from(this.remote);
+                    repl.then( (result) => {
+                        clearInterval(timer);
+
+                        // handle 'completed' result
+                        log.debug("init replicate completed");
+                        // replace save function
+                        this._ready();
+                    });
+                });     
+                
+
             }).catch( (err) =>{
                 log.error("remote Database is not available");
                 setTimeout(()=>{ throw err; });                
         }); 
-
-        // save all docIds to temp array, they will be removed from this array if they are
-        // downloaded again, otherwise this ids are outdated and safe to remove
-        this.remote.query('olympia/view_getAllProgrammData').then( (result) =>{
-            result.rows.map( (item) => {
-                this.outdatedDocs.set(item.id,item.value);
-            });
-            /**
-             * Map {
-             *      '1653' => '2-5ef0249f5573c0499f40985fece14e9d',
-             *      '1654' => '2-57065de65b4d2690ccfa6156377af365',
-             *      '1655' => '2-b6a3351426e5ad023883095af06b4149'}
-             */
-        });
-
-        //delete old version docs from remote before syncing
-        this._removeOldversion( ()=>{
-
-            this.local.replicate.from(this.remote).then( (result) => {
-                // handle 'completed' result
-                log.debug("init replicate completed");
-                // replace save function
-                this._ready();
-            });     
-            
-
-                        
-            // setup live replication
-            // this.local.replicate.to(this.remote, { live: true})
-            //     .on("change", (change) => {
-            //         log.debug(`change event: docs_read: ${change.docs_read}, docs_written: ${change.docs_written}, doc_write_failures: ${change.doc_write_failures}`);
-            //     })
-            //     .on("error", (err) => {
-            //         log.debug("change error", err);
-            // });
-            
-        });     
-        
-            
-
         
     }
 
@@ -161,7 +160,7 @@ class DbWorker {
      * remove lower version items
      */
     _removeOldversion (done) {
-        log.info("find outdated");
+        log.info("find old versions");
     
         // count deleted items
         let ver_count=0;        

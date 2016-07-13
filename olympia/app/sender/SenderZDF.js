@@ -33,7 +33,8 @@ function SenderZDF(db){
         sendung.version = process.env.npm_package_config_version;
         
         delete sendung.beitragReference;    
-        delete sendung.visualFamilyReference;    
+        delete sendung.visualFamilyReference;  
+        
     
         // save sendung to db
         db.save(sendung, (err)=>{
@@ -68,14 +69,6 @@ function SenderZDF(db){
                 sendung.externalImageUrl = "";
                 callback();
             } else {
-                
-                if (responeStream.headers['content-length'] == 0){
-                    log.error(`getImageUrl: Got emtpy response`);
-                    sendung.externalImageUrl = "";
-                    callback();
-                    return;
-                }
-
 
                 let xml = flow(responeStream, {strict:true});
                 
@@ -103,7 +96,7 @@ function SenderZDF(db){
             }
         }).on('error', (e) => {
             log.error(`Error in response: from ${url}`);
-            throw new Exception(e);
+            setTimeout(()=>{ throw e; });
         });
     }
 
@@ -193,24 +186,18 @@ function SenderZDF(db){
         request.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
-                log.warn(`Got invalid response: ${responeStream.statusCode} from ${url}`);
-                return;
+                //callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                setTimeout(()=>{ throw new Error(`Got invalid response: ${responeStream.statusCode} from ${url}`); });
             } else {
-                
-                if (responeStream.headers['content-length'] === 0){
-                    callback(`Got emtpy response from ${url}`,responeStream.headers);
-                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
-                    return;
-                } else {
-                    //send to xml stream reader                   
-                    parseXmlStream(responeStream);
-                    callback(null);
-                }
+                //send to xml stream reader                   
+                parseXmlStream(responeStream);
+                callback(null);                
             }
         }).on('error', (e) => {
-            callback(`Got error: ${e.message}`);
+            //callback(`Got error: ${e.message}`);
             log.error(`Got error: ${e.message}`);
+            setTimeout(()=>{ throw new Error(`Got error: ${e.message}`); });
         });
     }
 
@@ -220,16 +207,30 @@ function SenderZDF(db){
      */
     this.update = function update(done){
 
+        let delta = 0;
+
         log.info("zdf start");
         openReqCounter.on('empty', ()=>{
             done();
         });
                 
+
+        /**
+         * delta berechnen und dann allen datumsanagben draufrechnen
+         * heute - 2014-02-12 = x days
+         */
+        if (process.env.npm_package_config_p12_delta === "true"){
+            delta = moment( process.env.npm_package_config_ecms_startdate ).diff(moment(), "days")*1 + 1;
+            log.info("P12 delta:",delta);
+        } else {
+            log.info("P12 delta disabled");
+        }                
         
         // how many days should i get
-        const range = process.env.npm_package_config_p12_range;
-        const startd = moment().subtract(1, 'days').format("YYYY-MM-DD");
-        const stopd =  moment().add(range, 'days').format("YYYY-MM-DD");
+        const range = process.env.npm_package_config_p12_range*1;
+
+        const startd = moment().add(delta - 1, 'days').format("YYYY-MM-DD");
+        const stopd  = moment().add(delta + range, 'days').format("YYYY-MM-DD");
       
         const urls = [
             `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`

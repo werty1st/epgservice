@@ -4,11 +4,11 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
     "logLevel": "debug",
-    "version": "11",
+    "version": "13",
     "ecms": {
       "delta": "false",
       "startdate": "2016-08-03",
-      "enddate": "2016-08-22",
+      "enddate": "2016-08-21",
       "proto": "https",
       "host": "eventcms.zdf.de",     
       "host1": "sofa.zdf.de",
@@ -16,8 +16,9 @@
       "path1": "/fakecms/"
     },
     "p12": {
+      "delta": "true",
       "proto": "http",
-      "range": 3
+      "range": 19
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
   },

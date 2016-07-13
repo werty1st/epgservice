@@ -30,6 +30,8 @@ const zdfsender    = senderGruppe.zdf;
 //     log.info("finished all");
 // });
 
+log.info("Database:",process.env.DB);
+
 zdfsender.update(()=>{
     // done
     log.info("zdfsender finished");

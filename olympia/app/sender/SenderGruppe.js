@@ -18,6 +18,10 @@
                         this._web  = new SenderWeb(db);
                         this._zdf  = new SenderZDF(db);                
 
+                        /**
+                         * source = web/zdf
+                         * called from main after sender.update()
+                         */
                         this.on("ready", (source) =>{
                                 open--;
                                 //log.error("ready event",this.open.size);

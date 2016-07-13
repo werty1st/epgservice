@@ -48,19 +48,20 @@ function SenderWeb(db){
         
         if (xmlElement['$name'] === 'bracket'){
             let event = xmlElement.event[0];
-            sendung.rscId   = event["rsc-id"];
-            sendung.sportId = event["sport-id"];
+            sendung.rscId     = event["rsc-id"];
+            sendung.sportId   = event["sport-id"];
+            sendung.sportName = event["sport-name"];
         }
         //console.log(xmlElement);
         //console.log(sendung);
         
-        if (sendung.vcmsId == 0){
-            //ARD
-        } else if (sendung.vcmsId == 10){
-            //ZDF
-        } else {
-            sendung.externalImageUrl = (sendung.vcmsId === 0)?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsChannelId}/timg946x532blob`;
-        }
+        // if (sendung.vcmsId == 0){
+        //     //ARD wird nur für google benötigt und hat kein bild
+        // } else if (sendung.vcmsId == 10){
+        //     //ZDF kommt hier nie vor
+        // } else {
+        // }
+        sendung.externalImageUrl = (sendung.vcmsId == "0")?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsChannelId}/timg946x532blob`;
 
 
         /**
@@ -110,7 +111,7 @@ function SenderWeb(db){
             //get channel
             let channel = video.channel;
 
-            //drop channel <> 0-6 //0= ard 1-6 = websender
+            //drop channel <> 0-6 //0= ard 1-6 = websender 10=zdf=>drop
             switch (channel) {
                 case "0":
                 case "1":
@@ -155,23 +156,16 @@ function SenderWeb(db){
         https.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
-                log.warn(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
+                setTimeout(()=>{ throw new Error(`Got invalid response: ${responeStream.statusCode} from ${url}`); });     
             } else {
-                
-                if (responeStream.headers['content-length'] === 0){
-                    callback(`Got emtpy response from ${url}`,responeStream.headers);
-                    log.error(`Got emtpy response from ${url}`,responeStream.headers);
-                    return;
-                }else {                
-                    //send to xml stream reader
-                    parseXmlStream(responeStream);
-                    callback(null);
-                }   
+                //send to xml stream reader
+                parseXmlStream(responeStream);
             }
+            callback(null);
         }).on('error', (e) => {
-            callback(`Got error: ${e.message}`);
             log.error(`Got error: ${e.message}`);
+            setTimeout(()=>{ throw new Error(`Got error: ${e.message}`); });
         });
     }
 
@@ -194,12 +188,12 @@ function SenderWeb(db){
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
          */
+        
         if (process.env.npm_package_config_ecms_delta === "true"){
-            delta = moment().diff(moment("2016-08-06"), "days") ;
-            log.debug("Delta:",delta);
-            log.info("Database:",process.env.DB);
+            delta = moment().diff(moment( process.env.npm_package_config_ecms_startdate ), "days") ;
+            log.debug("ECMS delta:",delta);
         } else {
-            log.info("Delta disabled");
+            log.info("ECMS delta disabled");
         }
 
         // create ECMS URLs based on Event Data
@@ -207,10 +201,10 @@ function SenderWeb(db){
                                             enddate: process.env.npm_package_config_ecms_enddate,
                                             options: { proto: process.env.npm_package_config_ecms_proto,
                                                         host : process.env.npm_package_config_ecms_host,
-                                                        path : process.env.npm_package_config_ecms_path } });
+                                                        path : process.env.npm_package_config_ecms_path }
+        });
 
-    
-        const threads = 2;
+        const threads = 3;
         require('async').eachLimit(ecms_urls, threads, function(url, next){
             getXmlStream(url, next);
         }, function(){
