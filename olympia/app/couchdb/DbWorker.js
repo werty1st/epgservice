@@ -215,7 +215,7 @@ class DbWorker {
     sync(){
         this.local.replicate.to(this.remote).then( (result) => {
             // handle 'completed' result
-            log.debug("sync to remote completed");
+            log.info("sync to remote completed");
         });          
     }    
 

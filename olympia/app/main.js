@@ -8,12 +8,14 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 const winston = require('winston');
 
+
 global.log = new (winston.Logger)({
     exitOnError: false,
     transports: [
       new (winston.transports.Console)({colorize: true, level: process.env.logLevel })
     ]
   });
+
   
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
@@ -45,8 +47,14 @@ websender.update(()=>{
     senderGruppe.emit("finished","web");
 });
 
+senderGruppe.on("sync+removeOutdated completed",()=>{
+    log.info("sync+removeOutdated completed");
+    clearTimeout(fallbackstop);
+    //process.exit(0);
+});
+
 // debug timeout
-setTimeout(()=>{
+const fallbackstop = setTimeout(()=>{
     // if script takes longer than 3min kill it
 
     console.log("open req web", websender.openreq());
