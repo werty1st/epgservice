@@ -1,3 +1,6 @@
+// @flow
+/* global process log */
+
 (function (){
 'use strict';
 
@@ -17,13 +20,16 @@ function SenderWeb(db){
     let delta = 0;
     const agent = process.env.npm_package_config_useragent;        
 
+    this.openreq = function (){
+        return openReqCounter.opened;
+    };
+
 
     /**
      * addSendetermin creates a new Sendung Object and assigns data from xml object
      * after that it collects the Sendungs Preview Image
-     * the done callback is passed from main.js@readXMLstream and gets passed to 
      */
-    function addSendetermin (xmlElement, done){
+    function addSendetermin (xmlElement){
        
         const sendung = {};
         
@@ -52,8 +58,6 @@ function SenderWeb(db){
             sendung.sportId   = event["sport-id"];
             sendung.sportName = event["sport-name"];
         }
-        //console.log(xmlElement);
-        //console.log(sendung);
         
         // if (sendung.vcmsId == 0){
         //     //ARD wird nur für google benötigt und hat kein bild
@@ -81,7 +85,8 @@ function SenderWeb(db){
             // store to db complete
             log.debug(`item ${sendung._id} saved`);
             
-            done(sendung);
+            //log.debug("close",sendung._id,"-",sendung.titel);
+            openReqCounter.emit('close');
         });
 
     }
@@ -93,13 +98,6 @@ function SenderWeb(db){
      */
     function parseXmlStream(xmlstream){
         
-        // callback func used in for loop
-        function addSendeterminDone(sendung){
-            //log.debug("close",sendung._id,"-",sendung.titel);
-            openReqCounter.emit('close');
-        }        
-
-
         /**
          * passElementFn is passed to the xml parser
          * it receives a xml video/bracket element and stores it to its corresponding 
@@ -121,7 +119,7 @@ function SenderWeb(db){
                 case "5":
                 case "6":
                     openReqCounter.emit("open");
-                    addSendetermin(video, addSendeterminDone);
+                    addSendetermin(video);
                     break;
                 default:
             }
@@ -136,13 +134,13 @@ function SenderWeb(db){
 
     //xml download
     /**
-     * @param {string} url download xml  
+     * @param {string} url download xml
+     * @param {function} callback to require('async') to continue with next url
+     * passes xml stream to parseXmlStream
      */
     function getXmlStream(url, callback){
-        
-        //url = "http://wmaiz-v-sofa02.dbc.zdf.de:7788/2014-02-06.xml";
-        
-        log.info("Download:",url);
+       
+        log.debug("Download:",url);
 
         const get_options = require('url').parse(url);
         get_options.headers = {
@@ -161,8 +159,9 @@ function SenderWeb(db){
             } else {
                 //send to xml stream reader
                 parseXmlStream(responeStream);
+                callback(null);
             }
-            callback(null);
+
         }).on('error', (e) => {
             log.error(`Got error: ${e.message}`);
             setTimeout(()=>{ throw new Error(`Got error: ${e.message}`); });
@@ -173,7 +172,7 @@ function SenderWeb(db){
 
     /**
      * Genrate URLs based on DateTime.now() from Today-1 to Today+30 
-     * 
+     * @param {function} callback to call after all downloads have finished
      */
     this.update = function update(done){
 
@@ -193,7 +192,7 @@ function SenderWeb(db){
             delta = moment().diff(moment( process.env.npm_package_config_ecms_startdate ), "days") ;
             log.debug("ECMS delta:",delta);
         } else {
-            log.info("ECMS delta disabled");
+            log.debug("ECMS delta disabled");
         }
 
         // create ECMS URLs based on Event Data

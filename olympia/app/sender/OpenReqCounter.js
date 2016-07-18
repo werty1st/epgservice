@@ -1,3 +1,6 @@
+// @flow
+/* global process log */
+
 (function (){
 'use strict';
 

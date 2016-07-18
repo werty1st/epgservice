@@ -1,3 +1,6 @@
+// @flow
+/* global process log */
+
 (function (){
 'use strict';
 
@@ -22,9 +25,9 @@
                          * source = web/zdf
                          * called from main after sender.update()
                          */
-                        this.on("ready", (source) =>{
+                        this.on("finished", (source) =>{
                                 open--;
-                                //log.error("ready event",this.open.size);
+                                //log.error("finished event",this.open.size);
                                 if (open === 0){
                                         
                                         // trigger db sync

@@ -1,4 +1,6 @@
+// @flow
 /* global process log */
+
 (function (){
 'use strict';
 
@@ -22,27 +24,37 @@ const moment = require("moment");
 
 // create new SenderGruppe
 const senderGruppe = new SenderGruppe(db);
-
 const websender    = senderGruppe.web;
 const zdfsender    = senderGruppe.zdf;
 
-// senderGruppe.on("completed", ()=>{
-//     log.info("finished all");
-// });
+
 
 log.info("Database:",process.env.DB);
 
 zdfsender.update(()=>{
-    // done
+    // done loading data from p12
     log.info("zdfsender finished");
-    senderGruppe.emit("ready","zdf");
+    // ready to sync
+    senderGruppe.emit("finished","zdf");
 });
 
 websender.update(()=>{
-    // done
+    // done loading data from ecms
     log.info("websender finished");
-    senderGruppe.emit("ready","web");
+    // ready to sync
+    senderGruppe.emit("finished","web");
 });
+
+// debug timeout
+setTimeout(()=>{
+    // if script takes longer than 3min kill it
+
+    console.log("open req web", websender.openreq());
+    console.log("open req zdf", zdfsender.openreq());
+    console.log("force quit");
+    process.exit(-1);
+
+},180000);
 
 
 function end(code){   

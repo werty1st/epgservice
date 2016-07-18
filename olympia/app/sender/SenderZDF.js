@@ -1,3 +1,6 @@
+// @flow
+/* global process log */
+
 (function (){
 'use strict';
 
@@ -14,12 +17,15 @@ function SenderZDF(db){
     const openReqCounter = new OpenReqCounter("zdf");
     const request = (process.env.npm_package_config_p12_proto === "https")? require("https") : require("http");
 
+    this.openreq = function (){
+        return openReqCounter.opened;
+    };
+
      /**
      * addVideo creates a new Sendung Object and assigns data from xml object
      * after that it collects the Sendungs Preview Image
-     * the done callback is passed from main.js@readXMLstream and gets passed to 
      */
-    function addSendetermin (sendung, done){
+    function addSendetermin (sendung){
         
         sendung._id             = sendung.id;                        
         //sendung.ecmsId          = "0";
@@ -42,7 +48,8 @@ function SenderZDF(db){
                 log.error("Error saving Sendung: ", err);
             }                
             // save to db complete
-            done();
+            //log.debug("close",sendung.start,"-",sendung.titel);
+            openReqCounter.emit('close');
             log.debug(`id ${sendung._id} saved.`);                
         });
         
@@ -50,10 +57,7 @@ function SenderZDF(db){
 
 
     // get Sendungs Details from Beitrag
-    function getSendungsDetails(sendung, callback){
-    
-
-        //log.debug("sendung.beitragReference",sendung.beitragReference);
+    function getSendungsDetails(sendung){
 
         //get url
         const get_options = require('url').parse(sendung.beitragReference);
@@ -62,23 +66,24 @@ function SenderZDF(db){
         get_options.followRedirect = true;
         get_options.maxRedirects = 10;
 
+        // default empty url
+        sendung.externalImageUrl = "";
+
         request.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                log.error(`getImageUrl: Got invalid statusCode`);
-                sendung.externalImageUrl = "";
-                callback();
+                log.warn(`getSendungsDetails: Got invalid statusCode: ${responeStream.statusCode} from ${url}`);
+                // alternativ break execution
+                //setTimeout(()=>{ throw new Error(`getSendungsDetails: Got invalid statusCode: ${responeStream.statusCode} from ${url}`); });
+                // add sendung without details
+                addSendetermin(sendung);
             } else {
 
                 let xml = flow(responeStream, {strict:true});
-                
                 xml.on('tag:image', (elm) => {
-                        if (sendung.externalImageUrl !== ""){
-                            if( elm.Link.search("layout=946x532") >-1 ){
-                                //console.log("img found");
-                                sendung.externalImageUrl = elm.Link;
-                            }
-                        }
+                    if( elm.Link.search("layout=946x532") >-1 ){
+                        sendung.externalImageUrl = elm.Link;
+                    }
                 }); 
 
                 xml.on('tag:CrewDetail', (elm) => {
@@ -90,7 +95,7 @@ function SenderZDF(db){
                 }); 
 
                 xml.on("end",()=>{
-                    addSendetermin(sendung, callback);
+                    addSendetermin(sendung);
                 });
 
             }
@@ -109,15 +114,6 @@ function SenderZDF(db){
         
         let lastPage = false;
         let xml = flow(stream, {strict:true});
-
-        // callback func used in for loop completes after getDetails
-        function addSendeterminDone(sendung){
-            
-            return function(){
-                log.debug("close",sendung.start,"-",sendung.titel);
-                openReqCounter.emit('close');
-            };
-        }
         
         // get Navigation Links
         xml.on('tag:nextPageLink', (elm) => {
@@ -128,16 +124,10 @@ function SenderZDF(db){
                 }
         });         
 
+        // get sendung
         xml.on('tag:Sendetermin', (sendetermin) => {
-
             let titel = sendetermin.titel.toLowerCase();
-            /*if ((titel.search("uefa") > -1) ||
-                (titel.search("fifa") > -1) ||
-                (titel.search("sport") > -1) ||
-                (titel.search("heute") > -1) ||
-                (titel.search("fußball") > -1) ||
-                (titel.search("leichtathletik") > -1) ||
-                (titel.search("olympia") > -1)) */{
+            if ( titel.match(/(^|\s)olympia(\s|$)/gi) != null ) {
                     
                     let sendung = {};
                     
@@ -149,13 +139,14 @@ function SenderZDF(db){
                     sendung.start = sendetermin.beginnDatum;
                     sendung.end = sendetermin.endeDatum;
                     sendung.beitragReference = sendetermin.epgBeitrag.ref;
-                    
+
+                    // get preview image link and moderator
                     openReqCounter.emit("open");
-                    //console.log("open request: details, lastPage:",openReqCounter.lastPage);
-                    getSendungsDetails(sendung, addSendeterminDone(sendung));
+                    getSendungsDetails(sendung);
                 }
         });        
 
+        // page end reached
         xml.on('end', () => {
                if (lastPage) openReqCounter.lastPage = true;
         });  
@@ -165,13 +156,15 @@ function SenderZDF(db){
     //xml download
     /**
      * @param {string} url download xml  
+     * @param {function} callback to require('async') to continue with next url
      * passes xml stream to parseXmlStream
      */
     function getXmlStream(url, callback){
 
-        log.info("Download:",url);
+        log.debug("Download:",url);
         
-        // set dummy for following requests
+        // set dummy for requests from parseXmlStream
+        // to download subsequent pages
         if (!callback) callback=function(){};
 
         const get_options = require('url').parse(url);
@@ -186,24 +179,23 @@ function SenderZDF(db){
         request.get(get_options, (responeStream) => {
 
             if (responeStream.statusCode != 200){
-                //callback(`Got invalid response: ${responeStream.statusCode} from ${url}`);
                 log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
                 setTimeout(()=>{ throw new Error(`Got invalid response: ${responeStream.statusCode} from ${url}`); });
             } else {
                 //send to xml stream reader                   
                 parseXmlStream(responeStream);
-                callback(null);                
+                callback(null);                                
             }
+
         }).on('error', (e) => {
-            //callback(`Got error: ${e.message}`);
             log.error(`Got error: ${e.message}`);
             setTimeout(()=>{ throw new Error(`Got error: ${e.message}`); });
         });
     }
 
     /**
-     * Genrate URLs based on DateTime.now() from Today-1 to Today+30 
-     * 
+     * Genrate URLs and init download 
+     * @param {function} callback to call after all downloads have finished
      */
     this.update = function update(done){
 
@@ -221,9 +213,9 @@ function SenderZDF(db){
          */
         if (process.env.npm_package_config_p12_delta === "true"){
             delta = moment( process.env.npm_package_config_ecms_startdate ).diff(moment(), "days")*1 + 1;
-            log.info("P12 delta:",delta);
+            log.debug("P12 delta:",delta);
         } else {
-            log.info("P12 delta disabled");
+            log.debug("P12 delta disabled");
         }                
         
         // how many days should i get

@@ -1,3 +1,6 @@
+// @flow
+/* global process log */
+
 (function () {
 "use strict";
 
@@ -63,7 +66,7 @@ class DbWorker {
 
 
                     const timer = setInterval(()=>{
-                        log.info("replicating", repl.state);
+                        log.info("replication", repl.state);
                     },1000);
 
                     const repl = this.local.replicate.from(this.remote);
@@ -238,7 +241,7 @@ class DbWorker {
         // remove old versions elements
         this.remote.bulkDocs(docs2delete)
             .then((result)=>{
-                log.info("docs2delete",result);
+                log.info("docs2delete",result.length);
                 done();
             })
             .catch((err)=>{

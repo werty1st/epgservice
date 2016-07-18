@@ -10,7 +10,7 @@
       "startdate": "2016-08-03",
       "enddate": "2016-08-21",
       "proto": "https",
-      "host": "eventcms.zdf.de",     
+      "host": "eventcms.zdf.de",
       "host1": "sofa.zdf.de",
       "path": "/xml/olympia2016/epg/",
       "path1": "/fakecms/"
@@ -34,7 +34,8 @@
     "push:s2": "cd sofaapp; kanso push ${npm_config_couchdb_sofa2}; cd ..",
     "push:s1": "cd sofaapp; kanso push ${npm_config_couchdb_sofa1}; cd ..",
     "push:watch": "watch 'npm run push' sofaapp/",
-    "push:s2:watch": "watch 'npm run push:s2' sofaapp/"
+    "push:s2:watch": "watch 'npm run push:s2' sofaapp/",
+    "flow": "flow; test $? -eq 0 -o $? -eq 2"
   },
   "main": "./app/main.js",
   "author": "ronny adams",
