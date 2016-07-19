@@ -1,20 +1,20 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "This is the Olympia 2016 ECMS EPG Data server.",
-        "version": "2.0.4",
+        "description": "This is the Olympia 2016 ECMS EPG Data Transformation Server.",
+        "version": "2.1.0",
         "title": "Swagger API Definition",
         "termsOfService": "http://zdf.de/",
         "contact": {
             "name": "adams.r@zdf.de"
         },
         "license": {
-            "name": "Apache 4.0",
+            "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-4.0.html"
         }
     },
-    "host": "sofa.zdf.de",
-    "basePath": "/ecms",
+    "host": "sofa01.zdf.de",
+    "basePath": "/epgservice/olympia",
     "schemes": [
         "https"
     ],
@@ -300,6 +300,37 @@
                 }
             }
         },
+        "/google.csv": {
+            "get": {
+                "tags": [
+                    "google csv endpoint"
+                ],
+                "summary": "a list of all events",
+                "description": "Returns csv file with all broadcasts from today. Can be limited with an optional range paramater",
+                "operationId": "listsportscsv",
+                "produces": [
+                    "text/csv"
+                ],
+                "parameters": [
+                    {
+                        "name": "range",
+                        "in": "query",
+                        "description": "Range of days to get from now",
+                        "required": false,
+                        "type": "string",
+                        "format": "int10"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Data"
+                    },                    
+                    "200": {                       
+                        "description": "text/csv; charset=utf-8 CSV file; filename=google.csv"
+                    }
+                }
+            }
+        },        
         "/sportarten/": {
             "get": {
                 "tags": [
@@ -321,41 +352,8 @@
                     }
                 }
             }
-        },
-        "/google.csv": {
-            "get": {
-                "tags": [
-                    "google csv endpoint"
-                ],
-                "summary": "a list of all events",
-                "description": "",
-                "operationId": "listsportscsv",
-                "produces": [
-                    "text/csv"
-                ],
-                "parameters": [
-                    {
-                        "name": "range",
-                        "in": "query",
-                        "description": "Range of days to get from now",
-                        "required": false,
-                        "type": "string",
-                        "format": "int10"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "$ref": "#/definitions/csv"
-                        }
-                    },
-                    "204": {
-                        "description": "No Data"
-                    }
-                }
-            }
         }
+
     },
     "definitions": {
         "allStations": {
@@ -371,9 +369,6 @@
         },
         "sportarten": {
             "type": "object"
-        },
-        "csv": {
-            "type": "string"
         },
         "station": {
             "type": "array",

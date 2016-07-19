@@ -76,7 +76,7 @@ exports.list_google = function (head, req) {
 
     // traget array
     var out = [];
-        out.push(["startTime","endTime","channelName","channelId","programName","programDescription","language"]);
+        
 
     while( (row = getRow()) ){	
 
@@ -112,6 +112,16 @@ exports.list_google = function (head, req) {
                 out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);           
             }            
         }
+    }
+
+    if (out.length === 0){
+        //empty return 204
+        header['Content-Type'] = 'text/csv; charset=utf-8';
+        start({code: 204, headers: header});
+        send("");
+        return;
+    } else {
+        out.unshift(["startTime","endTime","channelName","channelId","programName","programDescription","language"]);
     }
     
     // working by defaul
