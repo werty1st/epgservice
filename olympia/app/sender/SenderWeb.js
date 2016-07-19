@@ -12,7 +12,7 @@ const OpenReqCounter = require("./OpenReqCounter");
 
 
 
-function SenderWeb(db){
+function SenderWeb(db, sportfilter){
 
     // protoype
     const openReqCounter = new OpenReqCounter("web");
@@ -35,7 +35,7 @@ function SenderWeb(db){
         
         sendung._id             = xmlElement.$attrs["ecms-id"]; //doc id
         sendung.id              = xmlElement.$attrs["ecms-id"]; //doc id
-        sendung.rscId           = xmlElement["rsc-id"]; //doc id
+        sendung.rscId           = (xmlElement["rsc-id"] === undefined)?"0":xmlElement["rsc-id"]; //doc id
         //sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
         sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
         sendung.channelId        = xmlElement.channel;    
@@ -43,11 +43,11 @@ function SenderWeb(db){
         sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || "0"; //bei ARD immer 0
         sendung.station          = (sendung.vcmsId == "0")?"ard":"olympia" + xmlElement.channel;   
         sendung.sportId          = xmlElement["sport-id"];
-        sendung.sportName        = xmlElement["sport-name"];
+        sendung.sportName        = (xmlElement["sport-name"] === undefined || xmlElement["sport-name"] === "unknown" )?"":xmlElement["sport-name"];
         sendung.version          = process.env.npm_package_config_version;
         
         sendung.titel            = xmlElement.title;
-        sendung.moderator        = xmlElement.moderator;
+        sendung.moderator        = (xmlElement.moderator === undefined)?"":xmlElement.moderator;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
         
@@ -57,6 +57,10 @@ function SenderWeb(db){
             sendung.rscId     = event["rsc-id"];
             sendung.sportId   = event["sport-id"];
             sendung.sportName = event["sport-name"];
+        }
+
+        if ((sendung.station != "ard") && (sendung.rscId != "0")){
+            sportfilter.checkSport(sendung);
         }
         
         // if (sendung.vcmsId == 0){

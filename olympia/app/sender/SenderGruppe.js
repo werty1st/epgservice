@@ -10,7 +10,7 @@
 
         class SenderGruppe extends EventEmitter {
 
-                constructor(db){
+                constructor(db, sportartenFilter){
                         super();
                         
                         const self = this;
@@ -18,7 +18,7 @@
                         let open = 2;
                         
                         this._uuid = new Date().getTime();
-                        this._web  = new SenderWeb(db);
+                        this._web  = new SenderWeb(db, sportartenFilter);
                         this._zdf  = new SenderZDF(db);                
 
                         /**

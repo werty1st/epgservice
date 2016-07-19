@@ -56,7 +56,7 @@ module.exports = [
     {from:"/byId/:vcmsid", to:'_show/show_getByID/:vcmsid' }, 
         
     /* get broadcasts from all stations for current day 05300->0529 for all stations as csv */
-    {from:"/google/",         to:'_list/list_google/view_getAllByDate', query: { station: 'all' }},
+    {from:"/google.csv",         to:'_list/list_google/view_getAllByDate', query: { station: 'all' }},
         
     /* get broadcasts from all stations for current day 05300->0529 for all stations as csv */
     {from:"/sportarten/",         to:'_show/show_getSportarten'}

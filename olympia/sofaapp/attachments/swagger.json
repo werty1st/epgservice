@@ -2,7 +2,7 @@
     "swagger": "2.0",
     "info": {
         "description": "This is the Olympia 2016 ECMS EPG Data server.",
-        "version": "2.0.2",
+        "version": "2.0.4",
         "title": "Swagger API Definition",
         "termsOfService": "http://zdf.de/",
         "contact": {
@@ -13,8 +13,8 @@
             "url": "http://www.apache.org/licenses/LICENSE-4.0.html"
         }
     },
-    "host": "sofa01.zdf.de",
-    "basePath": "/epgservice/olympia",
+    "host": "sofa.zdf.de",
+    "basePath": "/ecms",
     "schemes": [
         "https"
     ],
@@ -321,6 +321,40 @@
                     }
                 }
             }
+        },
+        "/google.csv": {
+            "get": {
+                "tags": [
+                    "google csv endpoint"
+                ],
+                "summary": "a list of all events",
+                "description": "",
+                "operationId": "listsportscsv",
+                "produces": [
+                    "text/csv"
+                ],
+                "parameters": [
+                    {
+                        "name": "range",
+                        "in": "query",
+                        "description": "Range of days to get from now",
+                        "required": false,
+                        "type": "string",
+                        "format": "int10"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "$ref": "#/definitions/csv"
+                        }
+                    },
+                    "204": {
+                        "description": "No Data"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -337,6 +371,9 @@
         },
         "sportarten": {
             "type": "object"
+        },
+        "csv": {
+            "type": "string"
         },
         "station": {
             "type": "array",

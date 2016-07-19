@@ -21,11 +21,12 @@ global.log = new (winston.Logger)({
 
 const db = require('./couchdb/DbWorker');
 const SenderGruppe = require("./sender/SenderGruppe");
+const sportartenFilter = require("./sender/SportartenFilter");
 const moment = require("moment");
 
 
 // create new SenderGruppe
-const senderGruppe = new SenderGruppe(db);
+const senderGruppe = new SenderGruppe(db, sportartenFilter);
 const websender    = senderGruppe.web;
 const zdfsender    = senderGruppe.zdf;
 

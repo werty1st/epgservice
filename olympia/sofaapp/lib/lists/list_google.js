@@ -48,7 +48,7 @@ exports.list_google = function (head, req) {
       
     //var accept  = req.query.accept  || "";
     //var station = req.query.station || "all";
-    var range    = parseInt(req.query.range || 1);
+    var range    = parseInt(req.query.range) || "all";
     //var version = req.query.version || "3";
 
     var header = {};
@@ -84,31 +84,38 @@ exports.list_google = function (head, req) {
         var startTime             = moment(row.value.start);
         var endTime               = moment(row.value.end);
         var channelName           = row.value.station;       
-        var channelId             = row.value.channelId;       
+        var channelId             = row.value.channelId + channelName;       
         var programName           = row.value.titel.substring(0, 40);
         var programDescription    = '"' + row.value.text.substring(0, 44).replace(/"/g, '\\"') + '"';
         var language              = "de";
         
-            //5:35		> 5:30 			 4:00       < 5:30
-        if (( endTime.isAfter(startTag) ) && ( startTime.isBefore(startTag) )){
-            out.push([startTime.format(),endTime.format(),channelName,channelId+channelName,programName,programDescription,language]);
+
+        if (channelName == "zdf"){
+            channelName = "ZDF";
+        } else if (channelName == "ard"){
+            channelName = "ARD";
+        } else {
+            channelName  = capitalizeFirstLetter(channelName);
         }
 
-        //betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
-        if ( startTime.isSameOrAfter(startTag) && ( endTime.isBefore(stopSendungstag) )){
-            out.push([startTime.format(),endTime.format(),channelName,channelId+channelName,programName,programDescription,language]);           
+        if (range == "all"){
+            //output all        
+            out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);           
+        } else {
+            //5:35		> 5:30 			 4:00       < 5:30
+            if (( endTime.isAfter(startTag) ) && ( startTime.isBefore(startTag) )){
+                out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);
+            }
+
+            //betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
+            if ( startTime.isSameOrAfter(startTag) && ( endTime.isBefore(stopSendungstag) )){
+                out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);           
+            }            
         }
     }
     
     // working by defaul
     //registerType("csv", "text/csv");
-    
-    function json(){
-        header['Content-Type'] = 'application/json; charset=utf-8';
-        start({code: 200, headers: header});
-        //TODO Fehlermeldung wenn leer
-        send(JSON.stringify(out));        
-    }
 
     function csv(){
         header['Content-Type'] = 'text/csv; charset=utf-8';
@@ -120,14 +127,15 @@ exports.list_google = function (head, req) {
     provides("csv",function(){
         csv();
     });
-    provides("json",function(){
-        json();
-    });
 
     provides("all",function(){
-        json();
+        csv();
     });
         
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }        
 
 };
 
