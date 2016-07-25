@@ -86,7 +86,7 @@ exports.list_google = function (head, req) {
         var channelName           = row.value.station;       
         var channelId             = row.value.channelId + channelName;       
         var programName           = row.value.titel.substring(0, 40);
-        var programDescription    = '"' + row.value.text.substring(0, 44).replace(/"/g, '\\"') + '"';
+        var programDescription    = '"' + row.value.text.substring(0, 150).replace(/"/g, '\\"') + '"';
         var language              = "de";
         
 
