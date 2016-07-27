@@ -50,13 +50,28 @@ function SenderWeb(db, sportfilter){
         sendung.moderator        = (xmlElement.moderator === undefined)?"":xmlElement.moderator;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
-        
+
+
+        //RSC FIX
+        if (process.env.npm_package_config_ecms_rscFix === "true"){
+            if (xmlElement["info"] !== undefined){
+                sendung.rscId = xmlElement["info"];
+            }
+        }
+
         
         if (xmlElement['$name'] === 'bracket'){
             let event = xmlElement.event[0];
             sendung.rscId     = event["rsc-id"];
             sendung.sportId   = event["sport-id"];
             sendung.sportName = event["sport-name"];
+
+            //RSC FIX
+            if (process.env.npm_package_config_ecms_rscFix === "true"){
+                if (event["info"] !== undefined){
+                    sendung.rscId = event["info"];
+                }
+            }
         }
 
         if ((sendung.station != "ard") && (sendung.rscId != "0")){
@@ -144,7 +159,7 @@ function SenderWeb(db, sportfilter){
      */
     function getXmlStream(url, callback){
        
-        log.debug("Download:",url);
+        log.verb("Download:",url);
 
         const get_options = require('url').parse(url);
         get_options.headers = {
@@ -185,7 +200,10 @@ function SenderWeb(db, sportfilter){
         openReqCounter.on('empty', ()=>{
             done();
         });
-                
+
+        if (process.env.npm_package_config_ecms_rscFix === "true"){
+                log.setting("rscFix enabled");
+        }                
                 
         /**
          * delta berechnen und dann allen datumsanagben draufrechnen
@@ -194,9 +212,9 @@ function SenderWeb(db, sportfilter){
         
         if (process.env.npm_package_config_ecms_delta === "true"){
             delta = moment().diff(moment( process.env.npm_package_config_ecms_startdate ), "days") ;
-            log.debug("ECMS delta:",delta);
+            log.setting("ECMS delta:",delta);
         } else {
-            log.debug("ECMS delta disabled");
+            log.setting("ECMS delta disabled");
         }
 
         // create ECMS URLs based on Event Data

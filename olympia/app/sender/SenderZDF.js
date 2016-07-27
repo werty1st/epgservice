@@ -161,7 +161,7 @@ function SenderZDF(db){
      */
     function getXmlStream(url, callback){
 
-        log.debug("Download:",url);
+        log.verb("Download:",url);
         
         // set dummy for requests from parseXmlStream
         // to download subsequent pages
@@ -213,9 +213,9 @@ function SenderZDF(db){
          */
         if (process.env.npm_package_config_p12_delta === "true"){
             delta = moment( process.env.npm_package_config_ecms_startdate ).diff(moment(), "days")*1 + 1;
-            log.debug("P12 delta:",delta);
+            log.setting("P12 delta:",delta);
         } else {
-            log.debug("P12 delta disabled");
+            log.setting("P12 delta disabled");
         }                
         
         // how many days should i get

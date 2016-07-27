@@ -120,7 +120,7 @@ class DbWorker {
             ).then( (response) => {
                 // item stored or skipped invoke callback now
                 done();
-                log.info("upsert success", item._id, response);
+                log.debug("upsert success", item._id, response);
             }).catch((err) => {
                 log.error(`Ìtem ${item._id} not updated.`);
                 setTimeout(()=>{ throw err; });           
