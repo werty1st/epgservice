@@ -41,6 +41,10 @@ function SenderZDF(db){
         delete sendung.beitragReference;    
         delete sendung.visualFamilyReference;  
         
+
+        // fix text linebreak
+        sendung.text = sendung.text.replace(/\s\s/gm,"\r\n");
+
     
         // save sendung to db
         db.save(sendung, (err)=>{
@@ -113,7 +117,7 @@ function SenderZDF(db){
     function parseXmlStream(stream){
         
         let lastPage = false;
-        let xml = flow(stream, {strict:true});
+        let xml = flow(stream, {strict:true, normalize:false /* keep double spaces */});
         
         // get Navigation Links
         xml.on('tag:nextPageLink', (elm) => {
@@ -130,7 +134,7 @@ function SenderZDF(db){
             if ( titel.match(/(^|\s)olympia(\s|$)/gi) != null ) {
                     
                     let sendung = {};
-                    
+
                     //sendung.externalId = sendetermin.$attrs.externalId;
                     sendung.id = sendetermin.$attrs.externalId;
                     sendung.text = sendetermin.text;
@@ -182,7 +186,7 @@ function SenderZDF(db){
                 log.error(`Got invalid response: ${responeStream.statusCode} from ${url}`);
                 setTimeout(()=>{ throw new Error(`Got invalid response: ${responeStream.statusCode} from ${url}`); });
             } else {
-                //send to xml stream reader                   
+                //send to xml stream reader      
                 parseXmlStream(responeStream);
                 callback(null);                                
             }
