@@ -85,8 +85,10 @@ exports.list_google = function (head, req) {
         var endTime               = moment(row.value.end);
         var channelName           = row.value.station;       
         var channelId             = row.value.channelId + channelName;       
-        var programName           = row.value.titel.substring(0, 40);
-        var programDescription    = '"' + row.value.text.substring(0, 150).replace(/"/g, '\\"') + '"';
+        var programName           = (row.value.sportName === "")
+                                            ?(row.value.titel).substring(0, 40)
+                                            :(row.value.sportName + " - " + row.value.titel).substring(0, 40);
+        var programDescription    = '"' + row.value.text.substring(0, 150).replace(/(?:\r\n|\r|\n)/gm,"  ").replace(/"/g, '\\"') + '"';
         var language              = "de";
         
 
