@@ -62,8 +62,8 @@ module.exports = function (head, req) {
         delete sendung._conflicts;			
         delete sendung._deleted_conflicts;			
         		
-
-            //5:35		> 5:30 			 4:00       < 5:30
+        //sendung überschneidet sendetag. sie muss VOR 5:30 starten und nach 5:30 enden
+        //05.08 05:35	>  05.08 05:30 			 4:00       < 5:30
         if (( endzeitSendung.isAfter(startTag) ) && ( airtimeSendung.isBefore(startTag) )){
             
             if (station == "all"){
@@ -73,8 +73,8 @@ module.exports = function (head, req) {
             }
         }
 
-        //betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
-        if ( airtimeSendung.isSameOrAfter(startTag) && ( endzeitSendung.isBefore(stopSendungstag) )){
+        //betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach oder um 5:30 des folgetages enden
+        if ( airtimeSendung.isSameOrAfter(startTag) && ( endzeitSendung.isSameOrBefore(stopSendungstag) )){        
 
             if (station == "all"){
                 outAll[stationname].push(sendung);                
