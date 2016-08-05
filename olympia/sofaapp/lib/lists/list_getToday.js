@@ -45,11 +45,11 @@ exports.list_getToday = function (head, req) {
     {   // heute
     }
 
-    header['startTag'] = startTag.format();
+/*    header['startTag'] = startTag.format();
     header['stopTag']  = stopTag.format();
 
     header['startSendungstag'] = startSendungstag.format();
-    header['stopSendungstag']  = stopSendungstag.format();
+    header['stopSendungstag']  = stopSendungstag.format();*/
 
     while( (row = getRow()) ){	
 
