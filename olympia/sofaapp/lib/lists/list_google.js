@@ -57,21 +57,20 @@ exports.list_google = function (head, req) {
     var startTag = moment();
     var stopTag  = moment().add(range+1, 'days');
 
+    // Sendungstag von StartTag
+    var startSendungstag = startTag.clone().hour(5).minute(30).second(0).millisecond(0);        //6.8. 05:30
+    // Sendungstag von StopTag
+    var stopSendungstag = stopTag.clone().hour(5).minute(30).second(0).millisecond(0);          //7.8. 05:30
+
     // wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
     if( startTag.isBefore(startSendungstag) ) 
     {
         // gestern
-        startTag.subtract(1, 'days');
-        stopTag.subtract(1, 'days');
+        startSendungstag.subtract(1, 'days');
+        stopSendungstag.subtract(1, 'days');
     } else                
     {   // heute
     }
-
-    // Sendungstag von StartTag
-    var startSendungstag = startTag.hour(5).minute(30).second(0).millisecond(0);
-
-    // Sendungstag von StopTag
-    var stopSendungstag = stopTag.hour(5).minute(30).second(0).millisecond(0);
 
 
     // traget array
@@ -105,12 +104,12 @@ exports.list_google = function (head, req) {
             out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);           
         } else {
             //5:35		> 5:30 			 4:00       < 5:30
-            if (( endTime.isAfter(startTag) ) && ( startTime.isBefore(startTag) )){
+            if (( endTime.isAfter(startSendungstag) ) && ( startTime.isBefore(startSendungstag) )){
                 out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);
             }
 
             //betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach 5:30 enden
-            if ( startTime.isSameOrAfter(startTag) && ( endTime.isBefore(stopSendungstag) )){
+            if ( startTime.isSameOrAfter(startSendungstag) && ( endTime.isSameOrBefore(stopSendungstag) )){
                 out.push([startTime.format(),endTime.format(),channelName,channelId,programName,programDescription,language]);           
             }            
         }
