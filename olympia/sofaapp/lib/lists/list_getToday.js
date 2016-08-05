@@ -17,17 +17,23 @@ exports.list_getToday = function (head, req) {
 
 
 	//detect wrong station
-	if (["olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","ard", "zdfneo", "zdfkultur", "zdfkultur", "phoenix", "arte", "3sat", "all"].indexOf(station) === -1 )
+	if (["olympia1","olympia2","olympia3","olympia4","olympia5","olympia6","zdf","all"].indexOf(station) === -1 )
 	{
 		header['Content-Type'] = 'application/json; charset=utf-8';
 		start({code: 404, headers: header});
 		send(["Document not found."]);
 		return;
 	}
+ 
 
     // jetzt plus X Tage
     var startTag = moment().add(days, 'days');
     var stopTag  = moment().add(days+1, 'days');
+
+    // Sendungstag von StartTag
+    var startSendungstag = startTag.hour(5).minute(30).second(0).millisecond(0);
+    // Sendungstag von StopTag
+    var stopSendungstag = stopTag.hour(5).minute(30).second(0).millisecond(0);
 
     // wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
     if( startTag.isBefore(startSendungstag) ) 
@@ -39,13 +45,11 @@ exports.list_getToday = function (head, req) {
     {   // heute
     }
 
-    // Sendungstag von StartTag
-    var startSendungstag = startTag.hour(5).minute(30).second(0).millisecond(0);
-
-    // Sendungstag von StopTag
-    var stopSendungstag = stopTag.hour(5).minute(30).second(0).millisecond(0);
 
     while( (row = getRow()) ){	
+
+        //drop ard
+        if ( row.value.station == "ard") continue;
 
         // filter station
         if (( station != "all" ) && ( row.value.station != station)) continue;

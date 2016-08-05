@@ -17,10 +17,10 @@ module.exports = [
 
 
     /* get current+next broadcast from all stations */
-    {from:"/all", to:'_list/list_getAll/view_getAllByDate', query: { station: 'all',  startkey: "2016-08-05T05:30:00+02:00", endkey:"2016-08-22T05:30:00+02:00" }},
+    {from:"/all", to:'_list/list_getAll/view_getAllByDate', query: { station: 'all',  startkey: "2016-08-03T05:30:00+02:00", endkey:"2016-08-22T05:30:00+02:00" }},
 
     /* get current+next broadcast from all stations */
-    {from:"/allbydate", to:'_list/list_getAll/view_getAllByDate', query: { station: 'all',  startkey: "2016-08-05T05:30:00+02:00", endkey:"2016-08-22T05:30:00+02:00" }},
+    {from:"/allbydate", to:'_list/list_getAll/view_getAllByDate', query: { station: 'all',  startkey: "2016-08-03T05:30:00+02:00", endkey:"2016-08-22T05:30:00+02:00" }},
 
     /* get current+next broadcast from all stations */
     {from:"/allbydate/:start/:end", to:'_list/list_getAll/view_getAllByDate', query: { station: 'all',  startkey: ":start", endkey:":end" }},

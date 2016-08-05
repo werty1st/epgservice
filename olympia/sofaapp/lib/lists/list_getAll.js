@@ -18,6 +18,11 @@ module.exports = function (head, req) {
     var startTag = moment();
     var stopTag  = moment().add(100, 'days');
 
+    // Sendungstag von StartTag
+    var startSendungstag = startTag.hour(5).minute(30).second(0).millisecond(0);
+    // Sendungstag von StopTag
+    var stopSendungstag = stopTag.hour(5).minute(30).second(0).millisecond(0);
+
     // wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
     if( startTag.isBefore(startSendungstag) ) 
     {
@@ -28,13 +33,10 @@ module.exports = function (head, req) {
     {   // heute
     }
 
-    // Sendungstag von StartTag
-    var startSendungstag = startTag.hour(5).minute(30).second(0).millisecond(0);
-
-    // Sendungstag von StopTag
-    var stopSendungstag = stopTag.hour(5).minute(30).second(0).millisecond(0);
-
     while( (row = getRow()) ){	
+        
+        //drop ard
+        if ( row.value.station == "ard") continue;
 
         // filter station
         if (( station != "all" ) && ( row.value.station != station)) continue;
