@@ -27,24 +27,29 @@ exports.list_getToday = function (head, req) {
  
 
     // jetzt plus X Tage
-    var startTag = moment().add(days, 'days');
-    var stopTag  = moment().add(days+1, 'days');
+    var startTag = moment().add(days, 'days');      //6.8. 00:26
+    var stopTag  = moment().add(days+1, 'days');    //7.8. 00:26
 
     // Sendungstag von StartTag
-    var startSendungstag = startTag.hour(5).minute(30).second(0).millisecond(0);
+    var startSendungstag = startTag.clone().hour(5).minute(30).second(0).millisecond(0);        //6.8. 05:30
     // Sendungstag von StopTag
-    var stopSendungstag = stopTag.hour(5).minute(30).second(0).millisecond(0);
+    var stopSendungstag = stopTag.clone().hour(5).minute(30).second(0).millisecond(0);          //7.8. 05:30
 
     // wir sind zwischen 00:00-05:30 und müssen für die erste sendung des tages einen tag zurück
     if( startTag.isBefore(startSendungstag) ) 
     {
         // gestern
-        startTag.subtract(1, 'days');
-        stopTag.subtract(1, 'days');
+        startSendungstag.subtract(1, 'days');
+        stopSendungstag.subtract(1, 'days');
     } else                
     {   // heute
     }
 
+    header['startTag'] = startTag.format();
+    header['stopTag']  = stopTag.format();
+
+    header['startSendungstag'] = startSendungstag.format();
+    header['stopSendungstag']  = stopSendungstag.format();
 
     while( (row = getRow()) ){	
 
@@ -78,7 +83,7 @@ exports.list_getToday = function (head, req) {
 
         //sendung überschneidet sendetag. sie muss VOR 5:30 starten und nach 5:30 enden
         //05.08 05:35	>  05.08 05:30 			 4:00       < 5:30
-        if (( endzeitSendung.isAfter(startTag) ) && ( airtimeSendung.isBefore(startTag) )){
+        if (( endzeitSendung.isAfter(startSendungstag) ) && ( airtimeSendung.isBefore(startSendungstag) )){
             
             if (station == "all"){
                 outAll[stationname].push(sendung);                 
@@ -88,7 +93,7 @@ exports.list_getToday = function (head, req) {
         }
 
         //betrifft alle die 5:30 oder später starten aber nicht die die vor 5:30 starten und nach oder um 5:30 des folgetages enden
-        if ( airtimeSendung.isSameOrAfter(startTag) && ( endzeitSendung.isSameOrBefore(stopSendungstag) )){
+        if ( airtimeSendung.isSameOrAfter(startSendungstag) && ( endzeitSendung.isSameOrBefore(stopSendungstag) )){
 
             if (station == "all"){
                 outAll[stationname].push(sendung);                
