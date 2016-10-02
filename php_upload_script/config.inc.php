@@ -4,7 +4,7 @@ error_reporting(E_ERROR | E_PARSE);
 
 $senderliste = array ("ZDF"	=> "zdf",
 					  "ZDFneo"	=> "zdfneo",
-					  "ZDF.kultur"=> "zdf.kultur",
+					 // "ZDF.kultur"=> "zdf.kultur",
 					  "ZDFinfo"	=> "zdfinfo",
 					  "3sat"	=> "3sat",
 					  "KI.KA"	=> "ki.ka",
