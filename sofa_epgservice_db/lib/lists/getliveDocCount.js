@@ -47,10 +47,10 @@ exports.getliveDocCount = function (head, req) {
 	}
 
 	if (debug) out.sendungen = 10;
-	if (out.sendungen < 260 || out.sendungen > 300) {
-		out.statuscode = "Fehler: Es sind zu wenig oder zuviel Programmdaten online.";
-		//code = 503; 
-	}
+	// if (out.sendungen < 260 || out.sendungen > 300) {
+	// 	out.statuscode = "Fehler: Es sind zu wenig oder zuviel Programmdaten online.";
+	// 	//code = 503; 
+	// }
 
 	if (format == "json") {
 		provides_json(wrapper, header, code);
