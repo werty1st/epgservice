@@ -1,21 +1,38 @@
 // @flow
-/* global process log */
+/* global process */
 
 (function (){
 'use strict';
 
 const flow  = require("xml-flow");
 const moment  = require("moment");
-const async = require("async");
+const async = require('async');
+const log = require('../log.js'); 
+
+const request = require("https");
+
+const zdfapi = require("./api.zdf.de/api")({ client: process.env.apiclient, secret: process.env.apisecret, apiint: process.env.apiint}); 
+
+
+
 
 const OpenReqCounter = require("./OpenReqCounter");
 
 
 function SenderZDF(db){
 
-    const agent = process.env.npm_package_config_useragent;
+    const agent = process.env.npm_package_config_useragent;    
     const openReqCounter = new OpenReqCounter("zdf");
-    const request = (process.env.npm_package_config_p12_proto === "https")? require("https") : require("http");
+    
+
+    // const apiRequest = request.defaults({
+    //     headers: {
+    //         'User-Agent': process.env.npm_package_config_useragent,
+    //         'Api-Auth': `bearer ${zdfapi.token}`,
+    //         'Accept': "application/vnd.de.zdf.v1.0+json;charset=utf-8"
+    //     }
+    // });
+        
 
     this.openreq = function (){
         return openReqCounter.opened;
@@ -229,8 +246,8 @@ function SenderZDF(db){
         const stopd  = moment().add(delta + range, 'days').format("YYYY-MM-DD");
       
         const urls = [
-            `http://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`
-          /*`http://www.zdf.de/api/v2/epg?station=zdfinfo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
+        /*  `https://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`
+            `http://www.zdf.de/api/v2/epg?station=zdfinfo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
             `http://www.zdf.de/api/v2/epg?station=zdfneo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
             `http://www.zdf.de/api/v2/epg?station=arte&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
             `http://www.zdf.de/api/v2/epg?station=3sat&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
@@ -241,7 +258,7 @@ function SenderZDF(db){
         // zdf zdfinfo zdfneo arte 3sat zdf.kultur phoenix ki.ka
         
         const threads = 2;
-        require('async').eachLimit(urls, threads, function(url, next){
+        async.eachLimit(urls, threads, function(url, next){
             getXmlStream(url, next);
         }, function(){
             log.info('SenderZDF','finished xml download');

@@ -26,7 +26,9 @@
   "scripts": {
     "production:run": "DB=${npm_config_couchdb} logLevel=error node ./app/main.js",
     "production:install": "npm install; cd sofaapp; npm install -g kanso; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
-    "debug": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js",
+    
+    "debug": "DB=${npm_config_DB} logLevel=${npm_package_config_logLevel} apiint=true apiclient=${npm_config_client} apisecret=${npm_config_secret} node ./app/main.js",
+
     "inspect": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node --debug-brk=5858 ./app/main.js",
     "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js' app/",
     "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
@@ -37,6 +39,7 @@
     "push:watch": "watch 'npm run push' sofaapp/",
     "push:s2:watch": "watch 'npm run push:s2' sofaapp/",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
+
   },
   "main": "./app/main.js",
   "author": "ronny adams",
@@ -47,14 +50,14 @@
     "url": "https://github.com/werty1st/epgservice.git#apiv2"
   },
   "dependencies": {
-    "deep-diff": "^0.3.4",
+    "deep-diff": "^0.3.8",
     "memdown": "^1.1.2",
     "moment": "^2.11.0",
     "pouchdb": "^5.3.2",
     "pouchdb-upsert": "^2.0.0",
     "request": "^2.69.0",
     "stream": "0.0.2",
-    "winston": "^2.2.0",
+    "winston": "^2.3.1",
     "xml-flow": "^0.4.0"
   },
   "devDependencies": {

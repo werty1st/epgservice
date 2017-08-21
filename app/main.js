@@ -6,39 +6,14 @@
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
-const winston = require('winston');
-
-
-global.log = new (winston.Logger)({
-    exitOnError: false,
-    levels:{
-        verb: 4,
-        debug: 3,
-        info: 2,
-        setting: 1,
-        warn: 1,
-        error: 0
-    },
-    colors:{
-        verb: "magenta",
-        debug: "blue",
-        info: "green",
-        setting: "cyan",
-        warn: "yellow",
-        error: "red"
-    },
-    transports: [
-      new (winston.transports.Console)({colorize: true, level: process.env.logLevel })
-    ]
-  });
-
+const log = require('./log.js'); 
   
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
 const db = require('./couchdb/DbWorker');
 const SenderGruppe = require("./sender/SenderGruppe");
 const sportartenFilter = require("./sender/SportartenFilter");
-const moment = require("moment");
+//const moment = require("moment");
 
 
 // create new SenderGruppe

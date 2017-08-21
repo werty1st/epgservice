@@ -1,5 +1,5 @@
 // @flow
-/* global process log */
+/* global process  */
 
 (function (){
 'use strict';
@@ -7,6 +7,8 @@
 const moment = require("moment");
 const https = require("https");
 const flow  = require("xml-flow");
+
+const log = require('../log.js'); 
 
 const OpenReqCounter = require("./OpenReqCounter");
 

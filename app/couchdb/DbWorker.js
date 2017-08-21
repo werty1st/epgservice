@@ -1,10 +1,11 @@
 // @flow
-/* global process log */
+/* global process */
 
 (function () {
 "use strict";
 
-const moment = require("moment");
+//const moment = require("moment");
+const log = require('winston');
 const diff = require('deep-diff').diff;
 const PouchDB = require('pouchdb');
       PouchDB.plugin(require('pouchdb-upsert'));
@@ -16,7 +17,8 @@ const PouchDB = require('pouchdb');
 
 class DbWorker {
         
-    constructor (){     
+    constructor (){
+        const log = require('winston');
         log.info("db init");
         
         // redirect save requests to this array as long as the constructor is not ready
