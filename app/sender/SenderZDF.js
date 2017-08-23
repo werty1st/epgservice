@@ -9,12 +9,14 @@ const moment  = require("moment");
 const async = require('async');
 const log = require('../log.js'); 
 
-const request = require("https");
+const request = require("request");
 
-const zdfapi = require("./api.zdf.de/api")({ client: process.env.apiclient, secret: process.env.apisecret, apiint: process.env.apiint}); 
-
-
-
+const zdfapi = require("./api.zdf.de/api")(
+    { 
+        client: process.env.apiclient,
+        secret: process.env.apisecret,
+        apiint: process.env.apiint
+    }); 
 
 const OpenReqCounter = require("./OpenReqCounter");
 
@@ -24,19 +26,30 @@ function SenderZDF(db){
     const agent = process.env.npm_package_config_useragent;    
     const openReqCounter = new OpenReqCounter("zdf");
     
+    var apiready = false;
+    var apiRequest = false;
 
-    // const apiRequest = request.defaults({
-    //     headers: {
-    //         'User-Agent': process.env.npm_package_config_useragent,
-    //         'Api-Auth': `bearer ${zdfapi.token}`,
-    //         'Accept': "application/vnd.de.zdf.v1.0+json;charset=utf-8"
-    //     }
-    // });
+
+    zdfapi.once("token-ready", tokenReady);
+
+
+    function tokenReady(){
+        debug.info("apiready");
+        
+        apiready = true;
+        apiRequest = request.defaults({
+            headers: {
+                'User-Agent': process.env.npm_package_config_useragent,
+                'Api-Auth': `bearer ${zdfapi.token}`,
+                'Accept': "application/vnd.de.zdf.v1.0+json;charset=utf-8"
+            }
+        });
+    }
         
 
-    this.openreq = function (){
-        return openReqCounter.opened;
-    };
+    // function openreq (){
+    //     return openReqCounter.opened;
+    // };
 
      /**
      * addVideo creates a new Sendung Object and assigns data from xml object
@@ -214,11 +227,23 @@ function SenderZDF(db){
         });
     }
 
+
+
     /**
      * Genrate URLs and init download 
      * @param {function} callback to call after all downloads have finished
      */
     this.update = function update(done){
+
+        //upgrade
+        if (!apiready){
+            zdfapi.once("token-ready",()=>{
+                this.update(done);
+            });
+            return;
+        }
+
+        return "test";
 
         let delta = 0;
 
@@ -232,30 +257,48 @@ function SenderZDF(db){
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
          */
-        if (process.env.npm_package_config_p12_delta === "true"){
-            delta = moment( process.env.npm_package_config_ecms_startdate ).diff(moment(), "days")*1 + 1;
-            log.setting("P12 delta:",delta);
+        if (process.env.npm_package_config_api_delta === "true"){
+            delta = moment( process.env.npm_package_config_api_startdate ).diff(moment(), "days")*1 + 1;
+            log.setting("api delta:",delta);
         } else {
-            log.setting("P12 delta disabled");
+            log.setting("api delta disabled");
         }                
         
         // how many days should i get
-        const range = process.env.npm_package_config_p12_range*1;
+        const range = process.env.npm_package_config_api_range*1;
 
-        const startd = moment().add(delta - 1, 'days').format("YYYY-MM-DD");
-        const stopd  = moment().add(delta + range, 'days').format("YYYY-MM-DD");
-      
-        const urls = [
-        /*  `https://www.zdf.de/api/v2/epg?station=zdf&startDate=${startd}&endDate=${stopd}&maxHits=2000`
-            `http://www.zdf.de/api/v2/epg?station=zdfinfo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
-            `http://www.zdf.de/api/v2/epg?station=zdfneo&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
-            `http://www.zdf.de/api/v2/epg?station=arte&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
-            `http://www.zdf.de/api/v2/epg?station=3sat&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
-            `http://www.zdf.de/api/v2/epg?station=zdf.kultur&startDate=${startd}&endDate=${stopd}&maxHits=2000`,
-            `http://www.zdf.de/api/v2/epg?station=phoenix&startDate=${startd}&endDate=${stopd}&maxHits=2000`*/
-        ];
+        /*
+        https://api.zdf.de/cmdm/epg/broadcasts?
+            from= T18:48:39+01:00
+            to=2017-08-01T18:48:39+01:00
+            brands=554e767c-004d-36a6-9be7-ceec661f1b5a
+            tvServices=ZDF
+            limit=60
+            page=1
+            order=asc
+            onlyCompleteBroadcasts=false
+            profile=teaser
+        */
 
-        // zdf zdfinfo zdfneo arte 3sat zdf.kultur phoenix ki.ka
+
+        //prepare brands
+        let brands = process.env.npm_package_config_api_brands;
+        if (Array.isArray(brands)){
+            const brandlist = brands.map((brand)=>{
+                return brand.brandid;
+            }).join(",");
+        }
+
+        //generate urls
+        const urls = [];
+        for (let i=0;i<range;i++){
+            let startd = moment().add(delta - 1 + i, 'days').format("YYYY-MM-DD");
+            let stopd  = moment().add(delta + i, 'days').format("YYYY-MM-DD");
+
+            let url = `https://api.zdf.de/cmdm/epg/broadcasts?from=${startd}&to=${stopd}&brands=${brandlist}&tvServices=ZDF&limit=60&page=1&order=asc&onlyCompleteBroadcasts=false&profile=default`;
+            urls.push(url);
+        }
+
         
         const threads = 2;
         async.eachLimit(urls, threads, function(url, next){

@@ -5,7 +5,7 @@
 "use strict";
 
 //const moment = require("moment");
-const log = require('winston');
+const log = require('../log.js'); 
 const diff = require('deep-diff').diff;
 const PouchDB = require('pouchdb');
       PouchDB.plugin(require('pouchdb-upsert'));

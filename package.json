@@ -4,7 +4,7 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
     "logLevel": "debug",
-    "version": "13",
+    "version": "1",
     "ecms": {
       "delta": "false",
       "rscFix": "true",
@@ -16,9 +16,19 @@
       "path": "/xml/olympia2016/epg/",
       "path1": "/fakecms/"
     },
-    "p12": {
+    "api": {
+      "startdate": "2017-08-01",
+      "brands": [
+        {
+          "brandname": "das aktuelle sportstudio",
+          "brandid" :  "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
+        },
+        {
+          "brandname": "heute",
+          "brandid" :  "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
+        }
+      ],
       "delta": "true",
-      "proto": "http",
       "range": 19
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
@@ -27,7 +37,7 @@
     "production:run": "DB=${npm_config_couchdb} logLevel=error node ./app/main.js",
     "production:install": "npm install; cd sofaapp; npm install -g kanso; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
     
-    "debug": "DB=${npm_config_DB} logLevel=${npm_package_config_logLevel} apiint=true apiclient=${npm_config_client} apisecret=${npm_config_secret} node ./app/main.js",
+    "debug": "DB=${npm_config_DB} logLevel=${npm_package_config_logLevel} apiint=true apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} node --nolazy --debug-brk=5858 ./app/main.js",
 
     "inspect": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node --debug-brk=5858 ./app/main.js",
     "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js' app/",

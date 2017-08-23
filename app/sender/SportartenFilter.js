@@ -1,8 +1,10 @@
 // @flow
-/* global process log */
+/* global process */
 
 (function () {
 "use strict";
+
+const log = require('../log.js'); 
 
 class Sportfilter {
 
