@@ -5,46 +5,27 @@
 'use strict';
 
 const flow  = require("xml-flow");
-const moment  = require("moment");
+const moment = require('moment-timezone');
+
 const async = require('async');
 const log = require('../log.js'); 
 
-const request = require("request");
-
-const zdfapi = require("./api.zdf.de/api")(
-    { 
-        client: process.env.apiclient,
-        secret: process.env.apisecret,
-        apiint: process.env.apiint
-    }); 
-
+const request = require("request-promise-native");
 const OpenReqCounter = require("./OpenReqCounter");
 
+const API_HOST = process.env.apihost;
+const brands = require('./../../package.json').config.api.brands;
 
-function SenderZDF(db){
+
+function SenderZDF(db, zdfapi){
 
     const agent = process.env.npm_package_config_useragent;    
     const openReqCounter = new OpenReqCounter("zdf");
     
-    var apiready = false;
-    var apiRequest = false;
+   
 
 
-    zdfapi.once("token-ready", tokenReady);
-
-
-    function tokenReady(){
-        debug.info("apiready");
-        
-        apiready = true;
-        apiRequest = request.defaults({
-            headers: {
-                'User-Agent': process.env.npm_package_config_useragent,
-                'Api-Auth': `bearer ${zdfapi.token}`,
-                'Accept': "application/vnd.de.zdf.v1.0+json;charset=utf-8"
-            }
-        });
-    }
+    
         
 
     // function openreq (){
@@ -186,7 +167,34 @@ function SenderZDF(db){
         });  
 
     }
+
     
+    async function getEPG(url,callback){
+        
+        const token = await zdfapi.token;
+
+        console.log("url",url);
+        
+        let result = await request({
+            url: url,
+            method: 'GET',
+            headers: {
+                'User-Agent': process.env.npm_package_config_useragent,
+                'Api-Auth': `bearer ${token.access_token}`,
+                'Accept': "application/vnd.de.zdf.v1.0+json;charset=utf-8"
+            }
+        });
+    
+        let response = false;
+        try {
+            response = JSON.parse(result);
+        } catch (error) {
+            //todo send mail
+        }
+        callback();
+        return response["http://zdf.de/rels/search/results"];
+    }
+
     //xml download
     /**
      * @param {string} url download xml  
@@ -235,16 +243,6 @@ function SenderZDF(db){
      */
     this.update = function update(done){
 
-        //upgrade
-        if (!apiready){
-            zdfapi.once("token-ready",()=>{
-                this.update(done);
-            });
-            return;
-        }
-
-        return "test";
-
         let delta = 0;
 
         log.info("zdf start");
@@ -282,27 +280,28 @@ function SenderZDF(db){
 
 
         //prepare brands
-        let brands = process.env.npm_package_config_api_brands;
-        if (Array.isArray(brands)){
-            const brandlist = brands.map((brand)=>{
-                return brand.brandid;
-            }).join(",");
-        }
+        const brandlist = brands.map((brand)=>{
+            return brand.brandid;
+        }).join(",");
+        
 
         //generate urls
         const urls = [];
         for (let i=0;i<range;i++){
-            let startd = moment().add(delta - 1 + i, 'days').format("YYYY-MM-DD");
-            let stopd  = moment().add(delta + i, 'days').format("YYYY-MM-DD");
+            let startd = moment().add(delta - 1 + i, 'days').tz("Europe/Berlin").format();
+            let stopd  = moment().add(delta + i, 'days').tz("Europe/Berlin").format();
 
-            let url = `https://api.zdf.de/cmdm/epg/broadcasts?from=${startd}&to=${stopd}&brands=${brandlist}&tvServices=ZDF&limit=60&page=1&order=asc&onlyCompleteBroadcasts=false&profile=default`;
+            startd = encodeURIComponent(startd);
+            stopd  = encodeURIComponent(stopd);
+
+            let url = `https://${API_HOST}/cmdm/epg/broadcasts?from=${startd}&to=${stopd}&brands=${brandlist}&tvServices=ZDF&limit=6&page=1&order=asc&onlyCompleteBroadcasts=false&profile=default`;
             urls.push(url);
         }
 
         
         const threads = 2;
         async.eachLimit(urls, threads, function(url, next){
-            getXmlStream(url, next);
+            getEPG(url, next);
         }, function(){
             log.info('SenderZDF','finished xml download');
         });

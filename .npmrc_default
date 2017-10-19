@@ -10,6 +10,8 @@
 
 #couchdb     = http://localhost:5984/ecms
 
-#api.zdf.de
-#client=API TOKEN
-#secret=API SECRET
+#confl https://jira.foo.de/
+#api https://developer.bar.de/
+apiclient=XXXX
+apisecret=YYYYYYY
+apihost=api.foobar.de

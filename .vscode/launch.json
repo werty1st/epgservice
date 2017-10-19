@@ -5,27 +5,15 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch via NPM",
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceRoot}/test.js"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program via NPM",
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceFolder}",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
-                "run-script", "debug"
+                "run-script", "vscdebug"
             ],
-            "protocol": "legacy",
-            "port": 5858 /*,
-
-            "envFile": "${workspaceRoot}/.npmrc",
-            "env": {
-                "logLevel": "debug"
-             } */
+            "port": 9229
         }
     ]
 }

@@ -21,11 +21,11 @@
       "brands": [
         {
           "brandname": "das aktuelle sportstudio",
-          "brandid" :  "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
+          "brandid": "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
         },
         {
           "brandname": "heute",
-          "brandid" :  "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
+          "brandid": "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
         }
       ],
       "delta": "true",
@@ -34,11 +34,11 @@
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
   },
   "scripts": {
+    "vscdebug": "logLevel=debug apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} apihost=${npm_config_apihost} DB=${npm_config_couchdb} node --nolazy --inspect-brk=9229 ./app/main.js",
+    "debug": "logLevel=debug apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} apihost=${npm_config_apihost} DB=${npm_config_couchdb} node --nolazy ./app/main.js",
     "production:run": "DB=${npm_config_couchdb} logLevel=error node ./app/main.js",
     "production:install": "npm install; cd sofaapp; npm install -g kanso; kanso install; kanso push --minify ${npm_config_couchdb}; cd ..",
-    
-    "debug": "DB=${npm_config_DB} logLevel=${npm_package_config_logLevel} apiint=true apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} node --nolazy --debug-brk=5858 ./app/main.js",
-
+    "debug_old": "DB=${npm_config_DB} logLevel=${npm_package_config_logLevel} apiint=true apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} node --nolazy --debug-brk=5858 ./app/main.js",
     "inspect": "DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node --debug-brk=5858 ./app/main.js",
     "debug:watch": "watch 'DB=${npm_config_couchdb} logLevel=${npm_package_config_logLevel} node ./app/main.js' app/",
     "debug:s1": "DB=${npm_config_couchdb_sofa1} node ./app/main.js",
@@ -49,7 +49,6 @@
     "push:watch": "watch 'npm run push' sofaapp/",
     "push:s2:watch": "watch 'npm run push:s2' sofaapp/",
     "flow": "flow; test $? -eq 0 -o $? -eq 2"
-
   },
   "main": "./app/main.js",
   "author": "ronny adams",
@@ -63,9 +62,10 @@
     "deep-diff": "^0.3.8",
     "memdown": "^1.1.2",
     "moment": "^2.11.0",
+    "moment-timezone": "^0.5.13",
     "pouchdb": "^5.3.2",
     "pouchdb-upsert": "^2.0.0",
-    "request": "^2.69.0",
+    "request-promise-native": "^1.0.5",
     "stream": "0.0.2",
     "winston": "^2.3.1",
     "xml-flow": "^0.4.0"
