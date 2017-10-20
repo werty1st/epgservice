@@ -13,6 +13,9 @@ const API_CLIENT = process.env.apiclient;
 const API_SECRET = process.env.apisecret;
 const API_HOST   = process.env.apihost;
 const zdfapi = new ZDFApi(API_CLIENT, API_SECRET, API_HOST);
+//stop refresh task
+zdfapi.once("token-ready",zdfapi.stopTokenRefreshTask);
+
 
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
@@ -55,8 +58,6 @@ senderGruppe.on("sync+removeOutdated completed",()=>{
 const fallbackstop = setTimeout(()=>{
     // if script takes longer than 3min kill it
 
-    console.log("open req web", websender.openreq());
-    console.log("open req zdf", zdfsender.openreq());
     console.log("force quit");
     process.exit(-1);
 

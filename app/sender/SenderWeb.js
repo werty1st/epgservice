@@ -196,6 +196,12 @@ function SenderWeb(db, sportfilter){
      * @param {function} callback to call after all downloads have finished
      */
     this.update = function update(done){
+      
+
+        done();
+        log.error("remove me sender web update()");
+        return;
+        
 
         log.info("web start");
         openReqCounter.lastPage = true; //no need to track pagination here

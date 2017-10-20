@@ -30,7 +30,7 @@ ADD db_files /usr/local/var/lib/couchdb
 # docker run -d --name ecmsdb --restart=always -P -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=$COUCHPASS -e VIRTUAL_HOST=wmaiz-v-sofa-prod-03.dbc.zdf.de -e VIRTUAL_PATH=ecms -e VIRTUAL_PATH_TARGET=ecms/_design/app/_rewrite couchdb/ecms:1.0
 
 # run static port
-# docker run -d --name ecmsdb --restart=always -p 4006:5984 -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=$COUCHPASS couchdb/ecms:1.0
+# docker run -d --name ecmsdb --restart=always -p 4012:5984 -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=$COUCHPASS couchdb/ecms:1.0
 
 
 # portainer setup

@@ -6,7 +6,7 @@
     "logLevel": "debug",
     "version": "1",
     "ecms": {
-      "delta": "false",
+      "delta": "true",
       "rscFix": "true",
       "startdate": "2016-08-03",
       "enddate": "2016-08-21",
@@ -22,10 +22,6 @@
         {
           "brandname": "das aktuelle sportstudio",
           "brandid": "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
-        },
-        {
-          "brandname": "heute",
-          "brandid": "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
         }
       ],
       "delta": "true",

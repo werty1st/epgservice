@@ -15,17 +15,24 @@ const OpenReqCounter = require("./OpenReqCounter");
 
 const API_HOST = process.env.apihost;
 const brands = require('./../../package.json').config.api.brands;
+// event dauer in tagen
+const range = 7;//process.env.npm_package_config_api_range*1;
 
+
+const concatArraysUniqueWithSort = function (thisArray, otherArray) {
+    let newArray = thisArray.concat(otherArray).sort(function (a, b) {
+        return a > b ? 1 : a < b ? -1 : 0;
+    });
+
+    return newArray.filter(function (item, index) {
+        return newArray.indexOf(item) === index;
+    });
+};
 
 function SenderZDF(db, zdfapi){
 
     const agent = process.env.npm_package_config_useragent;    
     const openReqCounter = new OpenReqCounter("zdf");
-    
-   
-
-
-    
         
 
     // function openreq (){
@@ -168,12 +175,64 @@ function SenderZDF(db, zdfapi){
 
     }
 
-    
-    async function getEPG(url,callback){
+
+    /**
+     * GET /cmdm/epg/broadcasts/{posId}
+    {
+        "_id": "2813",
+        "_rev": "5-afc076579c67ab1779ba3884caf95c83",
+        "id": "2813",
+        "rscId": "WRM297501",
+        "vcmsChannelId": "2686294",
+        "channelId": "1",
+        "text": "Im Freistilringen der Männer werden im Leichtgewicht und im Schwergewicht die Medaillen vergeben. Beim Freistil gilt der gesamte Körper von Kopf bis Fuß als Angriffsfläche.",
+        "vcmsId": "2818522",
+        "station": "olympia1",
+        "sportId": "16268_MALE",
+        "sportName": "Ringen",
+        "version": "1",
+        "titel": "(M) Ringen Freistil Qualifikation",
+        "moderator": "",
+        "start": "2016-08-21T15:05:00+02:00",
+        "end": "2016-08-21T16:20:00+02:00",
+        "externalImageUrl": "http://www.zdf.de/ZDFmediathek/contentblob/2686294/timg946x532blob"
+    }
+     * 
+     */
+
+    async function downloadDetails(posId){
+        
+            const token = await zdfapi.token;
+        
+            //let url = `https://${API_HOST}/cmdm/epg/broadcasts/${posId}?profile=default`;
+            let url = `https://${API_HOST}/cmdm/epg/programme-items/POS_${posId}?profile=default`;
+             
+            log.debug("url",url);
+            
+            let result = await request({
+                url: url,
+                method: 'GET',
+                headers: {
+                    'User-Agent': process.env.npm_package_config_useragent,
+                    'Api-Auth': `bearer ${token.access_token}`,
+                    'Accept': "application/vnd.de.zdf.v1.0+json;charset=utf-8"
+                },
+                json: true
+            });
+        
+            console.log(result);    
+        
+            return result;
+    }    
+
+
+    //get all sport event ids
+    async function getEPG(url){
         
         const token = await zdfapi.token;
+        let response = false;
 
-        console.log("url",url);
+        //console.log("url",url);
         
         let result = await request({
             url: url,
@@ -185,14 +244,14 @@ function SenderZDF(db, zdfapi){
             }
         });
     
-        let response = false;
+        
         try {
             response = JSON.parse(result);
         } catch (error) {
             //todo send mail
         }
-        callback();
-        return response["http://zdf.de/rels/search/results"];
+        
+        return response["http://zdf.de/rels/cmdm/broadcasts"].map(item=>item.posId);        
     }
 
     //xml download
@@ -236,21 +295,10 @@ function SenderZDF(db, zdfapi){
     }
 
 
-
-    /**
-     * Genrate URLs and init download 
-     * @param {function} callback to call after all downloads have finished
-     */
-    this.update = function update(done){
+    function generateURLs(){
 
         let delta = 0;
-
-        log.info("zdf start");
-        openReqCounter.on('empty', ()=>{
-            done();
-        });
-                
-
+        
         /**
          * delta berechnen und dann allen datumsanagben draufrechnen
          * heute - 2014-02-12 = x days
@@ -262,28 +310,8 @@ function SenderZDF(db, zdfapi){
             log.setting("api delta disabled");
         }                
         
-        // how many days should i get
-        const range = process.env.npm_package_config_api_range*1;
-
-        /*
-        https://api.zdf.de/cmdm/epg/broadcasts?
-            from= T18:48:39+01:00
-            to=2017-08-01T18:48:39+01:00
-            brands=554e767c-004d-36a6-9be7-ceec661f1b5a
-            tvServices=ZDF
-            limit=60
-            page=1
-            order=asc
-            onlyCompleteBroadcasts=false
-            profile=teaser
-        */
-
-
         //prepare brands
-        const brandlist = brands.map((brand)=>{
-            return brand.brandid;
-        }).join(",");
-        
+        const brandlist = brands.map((brand)=>brand.brandid).join(",");        
 
         //generate urls
         const urls = [];
@@ -294,17 +322,55 @@ function SenderZDF(db, zdfapi){
             startd = encodeURIComponent(startd);
             stopd  = encodeURIComponent(stopd);
 
-            let url = `https://${API_HOST}/cmdm/epg/broadcasts?from=${startd}&to=${stopd}&brands=${brandlist}&tvServices=ZDF&limit=6&page=1&order=asc&onlyCompleteBroadcasts=false&profile=default`;
+            let url = `https://${API_HOST}/cmdm/epg/broadcasts?from=${startd}&to=${stopd}&brands=${brandlist}&tvServices=ZDF&limit=6&page=1&order=asc&onlyCompleteBroadcasts=false&profile=teaser`;
             urls.push(url);
-        }
+        }        
 
-        
-        const threads = 2;
-        async.eachLimit(urls, threads, function(url, next){
-            getEPG(url, next);
-        }, function(){
-            log.info('SenderZDF','finished xml download');
+        return urls;
+    }
+
+
+    async function getPOSitemList(urls){
+        return new Promise( (resolve, reject)=>{
+
+            const threads = 2;
+            let allPosIDs = [];            
+
+            async.eachLimit(urls, threads, async (url, next) => {
+                
+                let items = await getEPG(url);
+                allPosIDs = concatArraysUniqueWithSort(allPosIDs, items);
+                next();
+    
+            }, function(){
+                log.info('SenderZDF','finished xml download');
+                resolve(allPosIDs);
+            });
+
         });
+    }
+
+    /**
+     * Genrate URLs and init download 
+     * @param {function} callback to call after all downloads have finished
+     */
+    this.update = async function update(done){
+
+
+        log.info("zdf start");
+        openReqCounter.on('empty', ()=>{
+            done();
+        });
+                
+
+        const urls = generateURLs();
+        const allPosIDs = await getPOSitemList(urls);
+
+        let result = await downloadDetails(allPosIDs[0]);
+        console.log(result);
+
+
+        done();
 
     };
         
