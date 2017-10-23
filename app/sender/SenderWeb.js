@@ -205,6 +205,7 @@ function SenderWeb(db, sportfilter){
      */
     this.update = function update(done){
       
+        //done();return;
         
 
         log.info("web start");

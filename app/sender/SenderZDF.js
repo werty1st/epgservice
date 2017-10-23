@@ -41,11 +41,11 @@ function SenderZDF(db, zdfapi){
                     if (err){
                         reject(err);
                     }                
-                    resolve();              
+                    resolve(true);              
                 });
             });
         });
-        return Promise.all(results);
+        return await Promise.all(results);
 
     }
    
@@ -61,14 +61,16 @@ function SenderZDF(db, zdfapi){
             const threads = 4;
             let results = [];            
 
-            async.eachLimit(POSitems, threads, async (POSitem, next) => {
+            async.eachLimit(POSitems, threads, (POSitem, next) => {
                 
-                let epgdoc = await downloadDetails(POSitem);
-                results.push(epgdoc);
-                next();
+                downloadDetails(POSitem).then( epgdoc =>{
+                    results.push(epgdoc);
+                    next();
+                });
+                
     
-            }, ()=>{
-                resolve(results);
+            }, (err)=>{
+                (err)?reject(err) : resolve(results);
             });
         });
     }
