@@ -34,35 +34,42 @@ const zdfsender    = senderGruppe.zdf;
 
 log.setting("Database:",process.env.DB);
 
-zdfsender.update(()=>{
-    // done loading data from p12
-    log.info("zdfsender finished");
-    // ready to sync
-    senderGruppe.emit("finished","zdf");
-});
+function main(){
 
-websender.update(()=>{
-    // done loading data from ecms
-    log.info("websender finished");
-    // ready to sync
-    senderGruppe.emit("finished","web");
-});
+    console.log(new Date().toString());
 
-senderGruppe.on("sync+removeOutdated completed",()=>{
-    log.info("sync+removeOutdated completed");
-    clearTimeout(fallbackstop);
-    //process.exit(0);
-});
+    zdfsender.update(()=>{
+        // done loading data from p12
+        log.info("zdfsender finished");
+        // ready to sync
+        senderGruppe.emit("finished","zdf");
+    });
 
-// debug timeout
-const fallbackstop = setTimeout(()=>{
-    // if script takes longer than 3min kill it
+    websender.update(()=>{
+        // done loading data from ecms
+        log.info("websender finished");
+        // ready to sync
+        senderGruppe.emit("finished","web");
+    });
 
-    console.log("force quit");
-    process.exit(-1);
+    senderGruppe.once("sync+removeOutdated completed",()=>{
+        log.info("sync+removeOutdated completed");
+        clearTimeout(fallbackstop);
+    });
 
-},180000);
+    // debug timeout
+    const fallbackstop = setTimeout(()=>{
+        // if script takes longer than 3min kill it
+        console.log("force quit");
+        process.exit(-1);
+    },180000);
+}
 
+//run on start
+main();
+//run every 10 minutes
+setInterval(main,1000*60*10)
+//setInterval(main,1000*10)
 
 function end(code){   
     log.debug('cleanup');        

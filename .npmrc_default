@@ -10,10 +10,17 @@ logLevel=error
 
 useragent=axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)
 
+#dev
 DB=http://localhost:5984/ecms
+#docker
+#DB=http://ecmsdb:5984/ecms
+
 
 #confl https://jira.zdf.de/confluence/display/WEBMASTER/ECMS+und+P12+EGP+Olympia+2016
 #api https://developer.zdf.de/admin/applications/1409616277004?service_id=2555417733134
 apiclient=XXX
 apisecret=YYY
 apihost=api.zdf.de
+
+COUCHDB_USER=YYY
+COUCHDB_PASSWORD=xxxxx
