@@ -111,7 +111,7 @@ class DbWorker {
      */
     _save (item, done){
         //send to db
-        log.debug("upsert item",item._id);
+        //log.debug("upsert item",item._id);
         
         // remove item from outdatedDocs Map
         this.outdatedDocs.delete(item._id);
@@ -122,7 +122,7 @@ class DbWorker {
             ).then( (response) => {
                 // item stored or skipped invoke callback now
                 done();
-                log.debug("upsert success", item._id, response);
+                log.debug("upsert success", response);
             }).catch((err) => {
                 log.error(`Ìtem ${item._id} not updated.`);
                 setTimeout(()=>{ throw err; });           

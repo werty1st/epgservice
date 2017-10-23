@@ -9,10 +9,18 @@ const https = require("https");
 const flow  = require("xml-flow");
 
 const log = require('../log.js'); 
-
 const OpenReqCounter = require("./OpenReqCounter");
 
 
+const AGENT = process.env.npm_package_config_useragent;        
+const VERSION = process.env.npm_package_config_version;
+const RSCFIX = process.env.npm_package_config_ecms_rscFix;
+const DELTA = process.env.npm_package_config_ecms_delta;
+const STARTDATE = process.env.npm_package_config_ecms_startdate;
+const ENDDATE = process.env.npm_package_config_ecms_enddate;
+const PROTO = process.env.npm_package_config_ecms_proto;
+const HOST = process.env.npm_package_config_ecms_host;
+const PATH = process.env.npm_package_config_ecms_path;
 
 function SenderWeb(db, sportfilter){
 
@@ -20,7 +28,7 @@ function SenderWeb(db, sportfilter){
     const openReqCounter = new OpenReqCounter("web");
 
     let delta = 0;
-    const agent = process.env.npm_package_config_useragent;        
+    
 
     this.openreq = function (){
         return openReqCounter.opened;
@@ -46,7 +54,7 @@ function SenderWeb(db, sportfilter){
         sendung.station          = (sendung.vcmsId == "0")?"ard":"olympia" + xmlElement.channel;   
         sendung.sportId          = xmlElement["sport-id"];
         sendung.sportName        = (xmlElement["sport-name"] === undefined || xmlElement["sport-name"] === "unknown" )?"":xmlElement["sport-name"];
-        sendung.version          = process.env.npm_package_config_version;
+        sendung.version          = VERSION;
         
         sendung.titel            = xmlElement.title;
         sendung.moderator        = (xmlElement.moderator === undefined)?"":xmlElement.moderator;
@@ -55,7 +63,7 @@ function SenderWeb(db, sportfilter){
 
 
         //RSC FIX
-        if (process.env.npm_package_config_ecms_rscFix === "true"){
+        if (RSCFIX === "true"){
             if (xmlElement["info"] !== undefined){
                 sendung.rscId = xmlElement["info"];
             }
@@ -69,7 +77,7 @@ function SenderWeb(db, sportfilter){
             sendung.sportName = event["sport-name"];
 
             //RSC FIX
-            if (process.env.npm_package_config_ecms_rscFix === "true"){
+            if (RSCFIX === "true"){
                 if (event["info"] !== undefined){
                     sendung.rscId = event["info"];
                 }
@@ -92,7 +100,7 @@ function SenderWeb(db, sportfilter){
         /**
          * add delta to get current sendungen
          */        
-        if (process.env.npm_package_config_ecms_delta === "true"){
+        if (DELTA === "true"){
             sendung.start = moment(sendung.start).add(delta, 'days').format(); 
             sendung.end   = moment(sendung.end  ).add(delta, 'days').format();
         }
@@ -165,7 +173,7 @@ function SenderWeb(db, sportfilter){
 
         const get_options = require('url').parse(url);
         get_options.headers = {
-                'User-Agent': agent,
+                'User-Agent': AGENT,
                 'Cache-Control': 'no-cache'
             };
         get_options.timeout = 2000;
@@ -197,10 +205,6 @@ function SenderWeb(db, sportfilter){
      */
     this.update = function update(done){
       
-
-        done();
-        log.error("remove me sender web update()");
-        return;
         
 
         log.info("web start");
@@ -209,7 +213,7 @@ function SenderWeb(db, sportfilter){
             done();
         });
 
-        if (process.env.npm_package_config_ecms_rscFix === "true"){
+        if (RSCFIX === "true"){
                 log.setting("rscFix enabled");
         }                
                 
@@ -218,19 +222,19 @@ function SenderWeb(db, sportfilter){
          * heute - 2014-02-12 = x days
          */
         
-        if (process.env.npm_package_config_ecms_delta === "true"){
-            delta = moment().diff(moment( process.env.npm_package_config_ecms_startdate ), "days") ;
+        if (DELTA === "true"){
+            delta = moment().diff(moment( STARTDATE ), "days") ;
             log.setting("ECMS delta:",delta);
         } else {
             log.setting("ECMS delta disabled");
         }
 
         // create ECMS URLs based on Event Data
-        const ecms_urls = urlgen({ startdate: process.env.npm_package_config_ecms_startdate,
-                                            enddate: process.env.npm_package_config_ecms_enddate,
-                                            options: { proto: process.env.npm_package_config_ecms_proto,
-                                                        host : process.env.npm_package_config_ecms_host,
-                                                        path : process.env.npm_package_config_ecms_path }
+        const ecms_urls = urlgen({ startdate: STARTDATE,
+                                            enddate: ENDDATE,
+                                            options: { proto: PROTO,
+                                                        host : HOST,
+                                                        path : PATH }
         });
 
         const threads = 3;

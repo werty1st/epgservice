@@ -6,12 +6,14 @@
 #in js: process.env.npm_config_port
 #in json: ${npm_config_demo}
 
-#loglevel=silent
+logLevel=error
 
-#couchdb     = http://localhost:5984/ecms
+useragent=axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)
 
-#confl https://jira.foo.de/
-#api https://developer.bar.de/
-apiclient=XXXX
-apisecret=YYYYYYY
-apihost=api.foobar.de
+DB=http://localhost:5984/ecms
+
+#confl https://jira.zdf.de/confluence/display/WEBMASTER/ECMS+und+P12+EGP+Olympia+2016
+#api https://developer.zdf.de/admin/applications/1409616277004?service_id=2555417733134
+apiclient=XXX
+apisecret=YYY
+apihost=api.zdf.de

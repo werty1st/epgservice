@@ -1,0 +1,10 @@
+.vscode
+fakecms
+sofaapp
+.git*
+.npmrc*
+*.token.json
+jsconfig.json
+readme.md
+stest.js
+node_modules
