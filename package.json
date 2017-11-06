@@ -4,7 +4,7 @@
   "description": "setup: npm install -g tsd; tsd install mocha should --save; install jshint plugin in vscode;",
   "config": {
     "logLevel": "debug",
-    "version": "1",
+    "version": "2",
     "ecms": {
       "delta": "true",
       "rscFix": "true",
@@ -24,8 +24,8 @@
           "brandid": "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
         },
         {
-          "brandname": "heute",
-          "brandid": "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
+          "brandname": "ZDF SPORTextra",
+          "brandid": "145f6a3a-10b7-3a31-99dd-c3396369b148"
         }
       ],
       "delta": "true",

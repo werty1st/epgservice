@@ -11,7 +11,7 @@ ADD db_files /usr/local/var/lib/couchdb
 # stop SHELL1
 
 # Set PW
-#COUCHPASS=$(date +%s | sha256sum | base64 | head -c 32)
+# COUCHPASS=$(date +%s | sha256sum | base64 | head -c 32)
 
 # create Image
 # docker rmi -f couchdb/ecms:1.0 && docker build -t couchdb/ecms:1.0 .

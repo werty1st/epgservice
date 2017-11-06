@@ -47,10 +47,10 @@ function SenderWeb(db, sportfilter){
         sendung.id              = xmlElement.$attrs["ecms-id"]; //doc id
         sendung.rscId           = (xmlElement["rsc-id"] === undefined)?"0":xmlElement["rsc-id"]; //doc id
         //sendung.ecmsId           = xmlElement.$attrs["ecms-id"];
-        sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
+        //sendung.vcmsChannelId    = xmlElement.$attrs["vcms-channel-id"];
         sendung.channelId        = xmlElement.channel;    
         sendung.text             = (xmlElement.copy === undefined)?"":xmlElement.copy;
-        sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || "0"; //bei ARD immer 0
+        //sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || "0"; //bei ARD immer 0
         sendung.station          = (sendung.vcmsId == "0")?"ard":"olympia" + xmlElement.channel;   
         sendung.sportId          = xmlElement["sport-id"];
         sendung.sportName        = (xmlElement["sport-name"] === undefined || xmlElement["sport-name"] === "unknown" )?"":xmlElement["sport-name"];
@@ -60,6 +60,7 @@ function SenderWeb(db, sportfilter){
         sendung.moderator        = (xmlElement.moderator === undefined)?"":xmlElement.moderator;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
+        sendung.layouts          = "undefined";
 
 
         //RSC FIX
@@ -94,7 +95,7 @@ function SenderWeb(db, sportfilter){
         //     //ZDF kommt hier nie vor
         // } else {
         // }
-        sendung.externalImageUrl = (sendung.vcmsId == "0")?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsChannelId}/timg946x532blob`;
+        //sendung.externalImageUrl = (sendung.vcmsId == "0")?"":`http://www.zdf.de/ZDFmediathek/contentblob/${sendung.vcmsChannelId}/timg946x532blob`;
 
 
         /**

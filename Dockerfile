@@ -25,8 +25,8 @@ RUN npm install --production && cd api; npm install --production
 # docker save olympia2017:1.0 | gzip -c > /tmp/olympia2017.tar.gz
 
 # import image
-# gunzip -c olympia2017.tar.gz | docker load
+# docker load < olympia2017.tar.gz
 
 
 # console setup static port
-# docker run -d --restart=on-failure -m 128M --link=ecmsdb --name=olympia2017 --env-file .npmrc olympia2017:1.0 npm run docker
+# docker run -d --restart=unless-stopped -m 128M --link=ecmsdb --name=olympia2017 --env-file .npmrc olympia2017:1.0 npm run docker

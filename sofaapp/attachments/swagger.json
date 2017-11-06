@@ -13,8 +13,8 @@
             "url": "http://www.apache.org/licenses/LICENSE-4.0.html"
         }
     },
-    "host": "sofa01.zdf.de",
-    "basePath": "/epgservice/olympia",
+    "host": "sofa.zdf.de",
+    "basePath": "/olympia",
     "schemes": [
         "https"
     ],

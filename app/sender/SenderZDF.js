@@ -64,7 +64,7 @@ function SenderZDF(db, zdfapi){
             async.eachLimit(POSitems, threads, (POSitem, next) => {
                 
                 downloadDetails(POSitem).then( epgdoc =>{
-                    results.push(epgdoc);
+                    if (epgdoc != null )results.push(epgdoc);
                     next();
                 });
                 
@@ -79,8 +79,14 @@ function SenderZDF(db, zdfapi){
      * download details of POS item and return new Object based on the details
      */
     async function downloadDetails( posItem ) {
+
+        //Detect multipart items
+        if (posItem.partId != 1) return null; //drop item
+
+        //change multipart items EndDate
     
         let url = `https://${API_HOST}/cmdm/epg/programme-items/POS_${posItem.posId}?profile=default`;
+        //let url = `https://${API_HOST}/cmdm/epg/broadcasts/${posItem.posId}?profile=default`;
             
         log.debug("url",url);
         
@@ -89,14 +95,26 @@ function SenderZDF(db, zdfapi){
         let moderator = jp.query(result, '$.crewDetails.crewDetail[*]')
                             .filter( (item)=>(item.function == "moderation")).pop();
 
-        let image = jp.query(result, '$.images.image[*]').pop();
+        //let image = jp.query(result, '$.images.image[*]').pop();
                             //.filter( (item)=>(item.function == "moderation")).pop();
+
+        // "layouts": {
+        //     "2400x1350": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=2400x1350",
+        //     "640x720": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=640x720",
+        //     "1920x1080": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=1920x1080",
+        //     "1152x1296": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=1152x1296",
+        //     "276x155": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=276x155",
+        //     "1280x720": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=1280x720",
+        //     "768x432": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=768x432",
+        //     "240x270": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=240x270",
+        //     "384x216": "https://epg-image.zdf.de/fotobase-webdelivery/images/aa103053-9961-435a-8f0a-9ed2ce111736?layout=384x216"
+        //   }
                                     
         let epgItem = {};
-        //epgItem.id        = posItem.posId;
-        epgItem._id        = posItem.posId;
+        epgItem.id        = posItem.posId;
+        epgItem._id       = posItem.posId;
         epgItem.rscId     = "undefined";
-        epgItem.channelId = 1;
+        epgItem.channelId = 10; //0=ard 10=zdf
         epgItem.text      = (result.text)?result.text:""; //with html tags
         epgItem.station   = "ZDF";
         epgItem.sportId   = "undefined";
@@ -104,9 +122,9 @@ function SenderZDF(db, zdfapi){
         epgItem.version   = VERSION;
         epgItem.titel     = result.title;
         epgItem.moderator = (moderator && moderator.name)?moderator.name:"";
-        epgItem.start     = posItem.airtimeBegin;
-        epgItem.end       = posItem.airtimeEnd;
-        epgItem.imageId   = image && image.id;
+        epgItem.start     = posItem.effectiveAirtimeBegin || posItem.airtimeBegin;
+        epgItem.end       = posItem.effectiveAirtimeEnd   || posItem.airtimeEnd;
+        epgItem.layouts   = result["http://zdf.de/rels/image"].layouts;
 
 
         /**
