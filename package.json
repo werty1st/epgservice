@@ -18,7 +18,8 @@
     },
     "api": {
       "startdate": "2017-11-01",
-      "brands": [
+      "brands": [],
+      "brands2": [
         {
           "brandname": "das aktuelle sportstudio",
           "brandid": "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
