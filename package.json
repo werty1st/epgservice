@@ -26,6 +26,10 @@
         {
           "brandname": "ZDF SPORTextra",
           "brandid": "145f6a3a-10b7-3a31-99dd-c3396369b148"
+        },
+        {
+          "brandname": "heute nachrichten",
+          "brandid": "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
         }
       ],
       "delta": "true",
@@ -38,7 +42,7 @@
     "debug": "logLevel=debug apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} apihost=${npm_config_apihost} DB=${npm_config_DB} node --nolazy ./app/main.js",
     "docker": "NODE_ENV=production node ./app/main.js",
     "docker:debug": "NODE_ENV=production logLevel=debug node ./app/main.js",
-    
+
     "production:run": "DB=${npm_config_DB} logLevel=error node ./app/main.js",
     "production:install": "npm install; cd sofaapp; npm install -g kanso; kanso install; kanso push --minify ${npm_config_DB}; cd ..",
     "debug_old": "DB=${npm_config_DB} logLevel=${npm_package_config_logLevel} apiint=true apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} node --nolazy --debug-brk=5858 ./app/main.js",
