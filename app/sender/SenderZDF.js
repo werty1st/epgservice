@@ -84,9 +84,8 @@ function SenderZDF(db, zdfapi){
         if (posItem.partId != 1) return null; //drop item
 
         //change multipart items EndDate
-    
-        let url = `https://${API_HOST}/cmdm/epg/programme-items/POS_${posItem.posId}?profile=default`;
-        //let url = `https://${API_HOST}/cmdm/epg/broadcasts/${posItem.posId}?profile=default`;
+        let programmeItem = posItem["http://zdf.de/rels/cmdm/programme-item"];
+        let url = `https://${API_HOST}${programmeItem}?profile=default`;
             
         log.debug("url",url);
         
@@ -124,7 +123,7 @@ function SenderZDF(db, zdfapi){
         epgItem.moderator = (moderator && moderator.name)?moderator.name:"";
         epgItem.start     = posItem.effectiveAirtimeBegin || posItem.airtimeBegin;
         epgItem.end       = posItem.effectiveAirtimeEnd   || posItem.airtimeEnd;
-        epgItem.layouts   = result["http://zdf.de/rels/image"].layouts;
+        epgItem.layouts   = result["http://zdf.de/rels/image"] && result["http://zdf.de/rels/image"].layouts;
 
 
         /**
@@ -180,6 +179,7 @@ function SenderZDF(db, zdfapi){
      */
     async function downloadSearchResult(url){
         
+        log.info("downloadSearchResult");
         let page = await downloadUrl(url);
         if (page["next-archive"]){
             return (await downloadSearchResult("https://"+API_HOST+page["next-archive"])).concat(page);

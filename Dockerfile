@@ -32,4 +32,4 @@ RUN npm install --production && cd api; npm install --production
 # docker run -d --restart=unless-stopped -m 128M --link=ecmsdb --name=olympia2017 --env-file .npmrc olympia2017:1.0 npm run docker
 
 # console setup static port external source
-# docker run -d --restart=unless-stopped -m 128M --link=ecmsdb --name=olympia2017 --env-file .npmrc -v /home/AdamsR/olympia/epgservice:/usr/src/app/  node:8-alpine npm run docker
+# docker run -d --restart=unless-stopped -m 128M --link=ecmsdb --name=olympia2017 --env-file /opt/olympia2017/.npmrc -v /opt/olympia2017/:/usr/src/app/  node:8-alpine npm run docker
