@@ -17,7 +17,7 @@
       "path1": "/fakecms/"
     },
     "api": {
-      "startdate": "2017-08-01",
+      "startdate": "2017-11-01",
       "brands": [
         {
           "brandname": "das aktuelle sportstudio",
@@ -37,6 +37,8 @@
     "vscdebug": "logLevel=debug apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} apihost=${npm_config_apihost} DB=${npm_config_DB} node --nolazy --inspect-brk=9229 ./app/main.js",
     "debug": "logLevel=debug apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} apihost=${npm_config_apihost} DB=${npm_config_DB} node --nolazy ./app/main.js",
     "docker": "NODE_ENV=production node ./app/main.js",
+    "docker:debug": "NODE_ENV=production logLevel=debug node ./app/main.js",
+    
     "production:run": "DB=${npm_config_DB} logLevel=error node ./app/main.js",
     "production:install": "npm install; cd sofaapp; npm install -g kanso; kanso install; kanso push --minify ${npm_config_DB}; cd ..",
     "debug_old": "DB=${npm_config_DB} logLevel=${npm_package_config_logLevel} apiint=true apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} node --nolazy --debug-brk=5858 ./app/main.js",
