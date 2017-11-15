@@ -142,15 +142,16 @@ function SenderWeb(db, sportfilter){
             //drop channel <> 0-6 //0= ard 1-6 = websender 10=zdf=>drop
             switch (channel) {
                 case "0":
+                    break;
                 case "1":
                 case "2":
                 case "3":
-                case "4":
-                case "5":
-                case "6":
                     openReqCounter.emit("open");
                     addSendetermin(video);
-                    break;
+                    break;                
+                case "4":
+                case "5":
+                case "6":                    
                 default:
             }
         }

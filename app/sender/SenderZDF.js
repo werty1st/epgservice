@@ -113,7 +113,7 @@ function SenderZDF(db, zdfapi){
         epgItem.id        = posItem.posId;
         epgItem._id       = posItem.posId;
         epgItem.rscId     = "undefined";
-        epgItem.channelId = 10; //0=ard 10=zdf
+        epgItem.channelId = "10"; //0=ard 10=zdf
         epgItem.text      = (result.text)?result.text:""; //with html tags
         epgItem.station   = "ZDF";
         epgItem.sportId   = "undefined";
