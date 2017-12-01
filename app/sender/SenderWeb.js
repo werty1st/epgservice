@@ -60,7 +60,11 @@ function SenderWeb(db, sportfilter){
         sendung.moderator        = (xmlElement.moderator === undefined)?"":xmlElement.moderator;
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
-        sendung.layouts          = "undefined";
+        sendung.layouts          = {
+            "1920x1080": "http://module.zdf.de/olympia2018/epg-typicals/"+sendung.sportName+".jpg"
+        }
+        
+        
 
 
         //RSC FIX
