@@ -53,7 +53,7 @@ function SenderWeb(db, sportfilter){
         //sendung.vcmsId           = xmlElement.$attrs["vcms-id"] || "0"; //bei ARD immer 0
         sendung.station          = (sendung.vcmsId == "0")?"ard":"olympia" + xmlElement.channel;   
         sendung.sportId          = xmlElement["sport-id"];
-        sendung.sportName        = (xmlElement["sport-name"] === undefined || xmlElement["sport-name"] === "unknown" )?"":xmlElement["sport-name"];
+        sendung.sportName        = (xmlElement["sport-name"] === undefined || xmlElement["sport-name"] === "unknown" )?"unknown":xmlElement["sport-name"];
         sendung.version          = VERSION;
         
         sendung.titel            = xmlElement.title;
@@ -61,12 +61,9 @@ function SenderWeb(db, sportfilter){
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
 
-        if (sendung.sportName == "" ){
-            sendung.layouts = "unknown";            
-        } else {
-            sendung.layouts = {
-                "1920x1080": "https://module.zdf.de/olympia2018/epg-typicals/"+sendung.sportName+".jpg"
-            }
+
+        sendung.layouts = {
+            "1920x1080": "https://module.zdf.de/olympia2018/epg-typicals/"+sendung.sportName+".jpg"
         }
         
 
