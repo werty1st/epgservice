@@ -61,10 +61,8 @@ function SenderWeb(db, sportfilter){
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
 
-        if (sendung.sportName == "unknown" ){
-            sendung.layouts = {
-                "1920x1080": "https://module.zdf.de/olympia2018/epg-typicals/fallback.jpg"
-            }            
+        if (sendung.sportName == "" ){
+            sendung.layouts = undefined;            
         } else {
             sendung.layouts = {
                 "1920x1080": "https://module.zdf.de/olympia2018/epg-typicals/"+sendung.sportName+".jpg"
