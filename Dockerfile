@@ -33,3 +33,11 @@ RUN npm install --production && cd api; npm install --production
 
 # console setup static port external source
 # docker run -d --restart=unless-stopped -m 128M --link=ecmsdb --name=olympia2017 --env-file /opt/olympia2017/.npmrc -v /opt/olympia2017/:/usr/src/app/  node:8-alpine npm run docker
+
+
+#install without custom image
+# git checkout
+# git submodule update --init --recursive
+# docker run -it --rm -w="/workdir/" -v $(pwd):/workdir/ -e http_proxy=$http_proxy -e https_proxy=$http_proxy node:8-alpine npm install
+# docker run -it --rm -w="/workdir/" -v $(pwd)/api:/workdir/ -e http_proxy=$http_proxy -e https_proxy=$http_proxy node:8-alpine npm install
+# docker run -d --restart=unless-stopped -m 128M --link=ecmsdb --name=olympia2017 --env-file /opt/olympia2017/.npmrc -w="/usr/src/app/" -v /opt/olympia2017/:/usr/src/app/  node:8-alpine npm run docker
