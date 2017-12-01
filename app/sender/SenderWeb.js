@@ -62,7 +62,7 @@ function SenderWeb(db, sportfilter){
         sendung.end              = xmlElement.end;
 
         if (sendung.sportName == "" ){
-            sendung.layouts = undefined;            
+            sendung.layouts = "unknown";            
         } else {
             sendung.layouts = {
                 "1920x1080": "https://module.zdf.de/olympia2018/epg-typicals/"+sendung.sportName+".jpg"
