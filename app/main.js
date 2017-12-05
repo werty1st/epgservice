@@ -39,12 +39,12 @@ function main(){
     console.log(new Date().toString());
                     
 
-    const p1 = new Promise( (resovle, reject) => {
+    const p1 = new Promise( (resolve, reject) => {
         zdfsender.update(resolve);
         // ready to sync
     });
 
-    const p2 = new Promise( (resovle, reject) => {
+    const p2 = new Promise( (resolve, reject) => {
         websender.update(resolve);
         // ready to sync
     });
