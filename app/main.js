@@ -57,6 +57,8 @@ function main(){
         db.sync();
         db.removeOutdated(()=>{
             log.info("sync+removeOutdated completed");
+            clearTimeout(fallbackstop);
+            log.info("timeout cleared");
         });
     })
 
