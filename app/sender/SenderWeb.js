@@ -226,6 +226,7 @@ function SenderWeb(db, sportfilter){
         log.info("web start");
         openReqCounter.lastPage = true; //no need to track pagination here
         openReqCounter.on('empty', ()=>{
+            log.info("websender finished");
             done();
         });
 

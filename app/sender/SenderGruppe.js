@@ -21,24 +21,6 @@
                         this._web  = new SenderWeb(db, sportartenFilter);
                         this._zdf  = new SenderZDF(db, zdfapi);                
 
-                        /**
-                         * source = web/zdf
-                         * called from main after sender.update()
-                         */
-                        this.on("finished", (source) =>{
-                                open--;
-                                //log.error("finished event",this.open.size);
-                                if (open === 0){
-                                        
-                                        // trigger db sync
-                                        // remove outdated docs
-                                        //console.log("outdatedDocs",db.outdatedDocs);
-                                        db.sync();
-                                        db.removeOutdated(()=>{
-                                                self.emit("sync+removeOutdated completed");
-                                        });
-                                }
-                        } );
                 }
                 
                 

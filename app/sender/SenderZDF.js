@@ -235,6 +235,7 @@ function SenderZDF(db, zdfapi){
         
         let savedItems = await saveSendungen(sendungen);
         
+        log.info("zdfsender finished");
         done();
         //savedItems.forEach(x=>log.debug(x));
 

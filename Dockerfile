@@ -41,3 +41,6 @@ RUN npm install --production && cd api; npm install --production
 # docker run -it --rm -w="/workdir/" -v $(pwd):/workdir/ -e http_proxy=$http_proxy -e https_proxy=$http_proxy node:8-alpine npm install
 # docker run -it --rm -w="/workdir/" -v $(pwd)/api:/workdir/ -e http_proxy=$http_proxy -e https_proxy=$http_proxy node:8-alpine npm install
 # docker run -d --restart=unless-stopped -m 128M --link=ecmsdb --name=olympia2017 --env-file /opt/olympia2017/.npmrc -w="/usr/src/app/" -v /opt/olympia2017/:/usr/src/app/  node:8-alpine npm run docker
+
+#test run docker debug
+#docker run -it --rm --link=ecmsdb --name=olympia2017_test --env-file /opt/olympia2017/.npmrc -w="/usr/src/app/" -v /opt/olympia2017/:/usr/src/app/  node:8-alpine npm run debug

@@ -1,3 +1,5 @@
+import { resolve } from 'path';
+
 // @flow
 /* global process log */
 
@@ -37,32 +39,35 @@ log.setting("Database:",process.env.DB);
 function main(){
 
     console.log(new Date().toString());
+                    
 
-    zdfsender.update(()=>{
-        // done loading data from p12
-        log.info("zdfsender finished");
+    const p1 = new Promise( (resovle, reject) => {
+        zdfsender.update(resolve);
         // ready to sync
-        senderGruppe.emit("finished","zdf");
     });
 
-    websender.update(()=>{
-        // done loading data from ecms
-        log.info("websender finished");
+    const p2 = new Promise( (resovle, reject) => {
+        websender.update(resolve);
         // ready to sync
-        senderGruppe.emit("finished","web");
     });
 
-    senderGruppe.once("sync+removeOutdated completed",()=>{
-        log.info("sync+removeOutdated completed");
-        clearTimeout(fallbackstop);
-    });
+
+    Promise.all([p1,p2]).then(values=>{
+        // trigger db sync
+        // remove outdated docs
+        //console.log("outdatedDocs",db.outdatedDocs);
+        db.sync();
+        db.removeOutdated(()=>{
+            log.info("sync+removeOutdated completed");
+        });
+    })
 
     // debug timeout
     const fallbackstop = setTimeout(()=>{
         // if script takes longer than 3min kill it
         console.log("force quit");
         process.exit(-1);
-    },180000);
+    },1000*60*3);
 }
 
 //run on start
