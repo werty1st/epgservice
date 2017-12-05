@@ -1,5 +1,3 @@
-import { resolve } from 'path';
-
 // @flow
 /* global process log */
 
