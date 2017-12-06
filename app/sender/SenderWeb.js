@@ -63,15 +63,11 @@ function SenderWeb(db, sportfilter){
 
 
         sendung.layouts = {
-            "2400x1350": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-2400x1350.jpg`,
-            "640x720": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-640x720.jpg`,
+            
             "1920x1080": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-1920x1080.jpg`,
-            "1152x1296": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-1152x1296.jpg`,
-            "276x155": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-276x155.jpg`,
             "1280x720": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-1280x720.jpg`,
             "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-768x432.jpg`,
-            "240x270": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-240x270.jpg`,
-            "384x216": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-384x216.jpg`
+            "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-440x248.jpg`
         }
         
 

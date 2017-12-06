@@ -20,32 +20,33 @@ const zdfapi = new ZDFApi(API_CLIENT, API_SECRET, API_HOST);
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
 const db = require('./couchdb/DbWorker');
-const SenderGruppe = require("./sender/SenderGruppe");
 const sportartenFilter = require("./sender/SportartenFilter");
 //const moment = require("moment");
 
 
-// create new SenderGruppe
-const senderGruppe = new SenderGruppe(db, sportartenFilter, zdfapi);
-const websender    = senderGruppe.web;
-const zdfsender    = senderGruppe.zdf;
+// create Sender
+const SenderWeb = require("./sender/SenderWeb");
+const SenderZDF = require("./sender/SenderZDF");     
+
+const websender    = new SenderWeb(db, sportartenFilter);
+const zdfsender    = new SenderZDF(db, zdfapi);
 
 
-
-log.setting("Database:",process.env.DB);
 
 function main(){
 
-    console.log(new Date().toString());
-                    
+    log.info("start update:",new Date().toString());
+    log.setting("Database:",process.env.DB);                    
 
     const p1 = new Promise( (resolve, reject) => {
         zdfsender.update(resolve);
+        log.info("zdfsender.update(resolve)");
         // ready to sync
     });
 
     const p2 = new Promise( (resolve, reject) => {
         websender.update(resolve);
+        log.info("websender.update(resolve)");
         // ready to sync
     });
 
@@ -53,7 +54,7 @@ function main(){
     Promise.all([p1,p2]).then(values=>{
         // trigger db sync
         // remove outdated docs
-        //console.log("outdatedDocs",db.outdatedDocs);
+        log.info("Promise.all");
         db.sync();
         db.removeOutdated(()=>{
             log.info("sync+removeOutdated completed");
