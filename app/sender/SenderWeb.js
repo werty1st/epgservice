@@ -61,13 +61,14 @@ function SenderWeb(db, sportfilter){
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
 
+        let urlencodedname = encodeURI(sendung.sportName);
 
         sendung.layouts = {
             
-            "1920x1080": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-1920x1080.jpg`,
-            "1280x720": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-1280x720.jpg`,
-            "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-768x432.jpg`,
-            "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-440x248.jpg`
+            "1920x1080": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-1920x1080.jpg`,
+            "1280x720": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-1280x720.jpg`,
+            "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-768x432.jpg`,
+            "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-440x248.jpg`
         }
         if ( sendung.sportName == "unknown"){
             sendung.layouts = null;
