@@ -69,7 +69,7 @@ function SenderWeb(db, sportfilter){
             "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-768x432.jpg`,
             "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${sendung.sportName}/${sendung.sportName}-440x248.jpg`
         }
-        if ( sendung.layouts == "unknown"){
+        if ( sendung.sportName == "unknown"){
             sendung.layouts = null;
         }
         
