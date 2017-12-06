@@ -61,21 +61,6 @@ function SenderWeb(db, sportfilter){
         sendung.start            = xmlElement.start;
         sendung.end              = xmlElement.end;
 
-        let urlencodedname = encodeURI(sendung.sportName);
-
-        sendung.layouts = {
-            
-            "1920x1080": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-1920x1080.jpg`,
-            "1280x720": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-1280x720.jpg`,
-            "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-768x432.jpg`,
-            "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-440x248.jpg`
-        }
-        if ( sendung.sportName == "unknown"){
-            sendung.layouts = null;
-        }
-        
-
-
         //RSC FIX
         if (RSCFIX === "true"){
             if (xmlElement["info"] !== undefined){
@@ -101,6 +86,19 @@ function SenderWeb(db, sportfilter){
         if ((sendung.station != "ard") && (sendung.rscId != "0")){
             sportfilter.checkSport(sendung);
         }
+
+
+        let urlencodedname = encodeURI(sendung.sportName);        
+        sendung.layouts = {            
+            "1920x1080": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-1920x1080.jpg`,
+            "1280x720": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-1280x720.jpg`,
+            "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-768x432.jpg`,
+            "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-440x248.jpg`
+        }        
+        if ( sendung.sportName == "unknown"){
+            sendung.layouts = null;
+        }
+                
         
         // if (sendung.vcmsId == 0){
         //     //ARD wird nur für google benötigt und hat kein bild
