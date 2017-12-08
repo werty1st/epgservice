@@ -167,7 +167,7 @@ function SenderZDF(db, zdfapi){
         startd = encodeURIComponent(startd);
         stopd  = encodeURIComponent(stopd);
 
-        let url = `https://${API_HOST}/cmdm/epg/broadcasts?from=${startd}&to=${stopd}&brands=${brandlist}&tvServices=ZDF&limit=2&page=1&order=asc&onlyCompleteBroadcasts=false&profile=teaser`;
+        let url = `https://${API_HOST}/cmdm/epg/broadcasts?from=${startd}&to=${stopd}&brands=${brandlist}&tvServices=ZDF&limit=25&page=1&order=asc&onlyCompleteBroadcasts=false&profile=teaser`;
 
         return url;
     }
