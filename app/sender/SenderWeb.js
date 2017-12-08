@@ -94,7 +94,7 @@ function SenderWeb(db, sportfilter){
             "1280x720": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-1280x720.jpg`,
             "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-768x432.jpg`,
             "768x432": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-768x432.jpg`,
-            "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-440x248.jpg`
+            "440x248": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-440x248.jpg`,
             "384x216": `https://module.zdf.de/olympia2018/epg-typicals/${urlencodedname}/${urlencodedname}-384x216.jpg`
         }        
         if ( sendung.sportName == "unknown"){
