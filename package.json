@@ -8,16 +8,19 @@
     "ecms": {
       "delta": "true",
       "rscFix": "true",
-      "startdate": "2016-08-03",
-      "enddate": "2016-08-21",
+      "startdate": "2018-02-09",
+      "enddate": "2016-02-25",
+      "startdate2": "2016-08-03",
+      "enddate2": "2016-08-21",
       "proto": "https",
       "host": "eventcms.zdf.de",
       "host1": "sofa.zdf.de",
-      "path": "/xml/olympia2016/epg/",
+      "path": "/xml/olympia2018/epg/",
+      "path2": "/xml/olympia2016/epg/",
       "path1": "/fakecms/"
     },
     "api": {
-      "startdate": "2017-11-01",
+      "startdate": "2017-12-08",
       "brands": [],
       "brands2": [
         {
