@@ -7,7 +7,7 @@
     "version": "2",
     "ecms": {
       "delta": "true",
-      "rscFix": "true",
+      "rscFix": "false",
       "startdate": "2018-02-09",
       "enddate": "2018-02-11",
       "startdate2": "2016-08-03",
