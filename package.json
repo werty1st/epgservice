@@ -6,10 +6,10 @@
     "logLevel": "debug",
     "version": "2",
     "ecms": {
-      "delta": "true",
+      "delta": "false",
       "rscFix": "false",
-      "startdate": "2018-02-10",
-      "enddate": "2018-02-11",
+      "startdate": "2017-12-11",
+      "enddate": "2018-01-10",
       "startdate2": "2016-08-03",
       "enddate2": "2016-08-21",
       "proto": "https",
@@ -21,7 +21,7 @@
       "path1": "/fakecms/"
     },
     "api": {
-      "startdate": "2017-12-08",
+      "startdate": "2017-12-11",
       "brands": [],
       "brands2": [
         {
@@ -37,7 +37,7 @@
           "brandid": "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
         }
       ],
-      "delta": "true",
+      "delta": "false",
       "range": 2
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
