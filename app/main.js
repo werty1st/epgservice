@@ -19,9 +19,11 @@ const zdfapi = new ZDFApi(API_CLIENT, API_SECRET, API_HOST);
 
 /*{ error: 0, warn: 1, info: 2, verbose: 3, debug: 4, silly: 5 }*/
 
-const db = require('./couchdb/DbWorker');
+
 const sportartenFilter = require("./sender/SportartenFilter");
 //const moment = require("moment");
+
+const DbWorker = require('./couchdb/DbWorker');
 
 
 // create Sender
@@ -30,6 +32,7 @@ const SenderZDF = require("./sender/SenderZDF");
 
 
 async function main(){
+    const db           = new DbWorker();
     const websender    = new SenderWeb(db, sportartenFilter);
     const zdfsender    = new SenderZDF(db, zdfapi);
 
@@ -54,12 +57,11 @@ async function main(){
         // remove outdated docs
         log.info("Promise.all");        
         db.removeOutdated(()=>{
-            log.info("sync+removeOutdated completed");
             clearTimeout(fallbackstop);
             log.info("timeout cleared");
             db.sync();
+            log.info("sync+removeOutdated completed");
         });
-        //db.sync();
     })
 
     // debug timeout
@@ -73,8 +75,11 @@ async function main(){
 //run on start
 main();
 //run every 10 minutes
+
 setInterval(main,1000*60*10)
-//setInterval(main,1000*10)
+
+//debug fast
+//setInterval(main,1000*1)
 
 
 

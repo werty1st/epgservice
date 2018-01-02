@@ -243,8 +243,8 @@ class DbWorker {
         // remove old versions elements
         this.remote.bulkDocs(docs2delete)
             .then((result)=>{
-                log.debug("docs2delete", docs2delete );
-                log.info("docs2delete",result.length);
+                //log.debug("docs2delete", docs2delete );
+                log.info("docs2delete count:",result.length);
                 done();
             })
             .catch((err)=>{
@@ -272,6 +272,6 @@ class DbWorker {
 
 }
 
-module.exports = new DbWorker();
+module.exports = DbWorker;
 
 }());

@@ -5,12 +5,13 @@
 'use strict';
 
 const moment = require("moment");
-const https = require("https");
 const flow  = require("xml-flow");
-
 const log = require('../log.js'); 
 const OpenReqCounter = require("./OpenReqCounter");
 
+//switch proto
+const PROTO = process.env.npm_package_config_ecms_proto; //http OR https
+const https = require(PROTO);
 
 const AGENT = process.env.npm_package_config_useragent;        
 const VERSION = process.env.npm_package_config_version;
@@ -18,7 +19,6 @@ const RSCFIX = process.env.npm_package_config_ecms_rscFix;
 const DELTA = process.env.npm_package_config_ecms_delta;
 const STARTDATE = process.env.npm_package_config_ecms_startdate;
 const ENDDATE = process.env.npm_package_config_ecms_enddate;
-const PROTO = process.env.npm_package_config_ecms_proto;
 const HOST = process.env.npm_package_config_ecms_host;
 const PATH = process.env.npm_package_config_ecms_path;
 

@@ -26,6 +26,9 @@ ADD db_files /usr/local/var/lib/couchdb
 # test
 # docker run -it --rm -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=$COUCHPASS -P --name ecmsdb couchdb/ecms:1.0
 
+# fakecms
+# docker run -it --rm --net=host --name ecmsdb couchdb/ecms:1.0
+
 # run
 # docker run -d --name ecmsdb --restart=always -P -e COUCHDB_USER=admin -e COUCHDB_PASSWORD=$COUCHPASS -e VIRTUAL_HOST=wmaiz-v-sofa-prod-03.dbc.zdf.de -e VIRTUAL_PATH=ecms -e VIRTUAL_PATH_TARGET=ecms/_design/app/_rewrite couchdb/ecms:1.0
 
