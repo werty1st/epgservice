@@ -24,7 +24,7 @@ const sportartenFilter = require("./sender/SportartenFilter");
 //const moment = require("moment");
 
 const DbWorker = require('./couchdb/DbWorker');
-
+const db           = new DbWorker();
 
 // create Sender
 const SenderWeb = require("./sender/SenderWeb");
@@ -32,7 +32,7 @@ const SenderZDF = require("./sender/SenderZDF");
 
 
 async function main(){
-    const db           = new DbWorker();
+    
     const websender    = new SenderWeb(db, sportartenFilter);
     const zdfsender    = new SenderZDF(db, zdfapi);
 
@@ -56,10 +56,9 @@ async function main(){
         // trigger db sync
         // remove outdated docs
         log.info("Promise.all");        
-        db.removeOutdated(()=>{
+        db.removeExpired(()=>{
             clearTimeout(fallbackstop);
             log.info("timeout cleared");
-            db.sync();
             log.info("sync+removeOutdated completed");
         });
     })
@@ -75,11 +74,10 @@ async function main(){
 //run on start
 main();
 //run every 10 minutes
-
 setInterval(main,1000*60*10)
 
 //debug fast
-//setInterval(main,1000*1)
+//setInterval(main,1000*1*10)
 
 
 

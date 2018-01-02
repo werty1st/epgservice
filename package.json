@@ -5,7 +5,7 @@
   "config": {
     "logLevel": "debug",
     "version": "2",
-    "ecms": {
+    "//ecms": {
       "delta": "false",
       "rscFix": "false",
       "startdate": "2017-12-11",
@@ -18,7 +18,7 @@
       "//host": "eventcms.zdf.de",
       "//path": "/xml/olympia2016/epg/"
     },
-    "//ecms": {
+    "ecms": {
       "delta": "false",
       "rscFix": "false",
       "startdate": "2018-01-02",
@@ -52,6 +52,11 @@
   "scripts": {
     "vscdebug": "logLevel=debug apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} apihost=${npm_config_apihost} DB=${npm_config_DB} node --nolazy --inspect-brk=9229 ./app/main.js",
     "debug": "logLevel=debug apiclient=${npm_config_apiclient} apisecret=${npm_config_apisecret} apihost=${npm_config_apihost} DB=${npm_config_DB} node --nolazy ./app/main.js",
+    "debug:int": "logLevel=debug apiclient=${npm_config_intapiclient} apisecret=${npm_config_intapisecret} apihost=${npm_config_intapihost} DB=${npm_config_DB} node --nolazy ./app/main.js",
+
+    "debug:s3": "logLevel=debug apiclient=${npm_config_intapiclient} apisecret=${npm_config_intapisecret} apihost=${npm_config_intapihost} DB=${npm_config_DBS3} node --nolazy ./app/main.js",
+    "debug:s3:vsc": "logLevel=debug apiclient=${npm_config_intapiclient} apisecret=${npm_config_intapisecret} apihost=${npm_config_intapihost} DB=${npm_config_DBS3} node --nolazy --inspect-brk=9229 ./app/main.js",
+
     "docker": "NODE_ENV=production node ./app/main.js",
     "docker:debug": "NODE_ENV=production logLevel=debug node ./app/main.js",
 

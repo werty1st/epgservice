@@ -14,6 +14,17 @@
                 "run-script", "vscdebug"
             ],
             "port": 9229
-        }
+        },
+        {
+            "name": "debug S3",
+            "type": "node",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+                "run-script", "debug:s3:vsc"
+            ],           
+            "port": 9229
+        }        
     ]
 }
