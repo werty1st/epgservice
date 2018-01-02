@@ -243,6 +243,7 @@ class DbWorker {
         // remove old versions elements
         this.remote.bulkDocs(docs2delete)
             .then((result)=>{
+                log.debug("docs2delete", docs2delete );
                 log.info("docs2delete",result.length);
                 done();
             })
