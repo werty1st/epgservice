@@ -5,7 +5,7 @@
   "config": {
     "logLevel": "debug",
     "version": "2",
-    "//ecms": {
+    "ecms": {
       "delta": "false",
       "rscFix": "false",
       "startdate": "2017-12-11",
@@ -18,7 +18,7 @@
       "//host": "eventcms.zdf.de",
       "//path": "/xml/olympia2016/epg/"
     },
-    "ecms": {
+    "//ecms": {
       "delta": "false",
       "rscFix": "false",
       "startdate": "2018-01-02",

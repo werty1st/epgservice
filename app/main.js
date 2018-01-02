@@ -37,7 +37,6 @@ async function main(){
     const zdfsender    = new SenderZDF(db, zdfapi);
 
     log.info("start update:",new Date().toString());
-    log.setting("Database:",process.env.DB);                    
 
     const p1 = new Promise( (resolve, reject) => {
         zdfsender.update(resolve);
