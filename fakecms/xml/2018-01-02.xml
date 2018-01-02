@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<export xmlns="http://ecms.zdf.de/export/olympia2018" last-modified="2018-01-02T09:36:34.861+01:00">
+    <video ecms-id="179">
+        <sport-id>46</sport-id>
+        <sport-name>Langlauf</sport-name>
+        <rsc-id>---</rsc-id>
+        <title>Männer, 30km Skiathlon (M), Entscheidung</title>
+        <event-start>2018-01-02T07:15:00+01:00</event-start>
+        <event-end>2018-01-02T08:15:00+01:00</event-end>
+        <channel>1</channel>
+        <start>2018-01-02T07:15:00+01:00</start>
+        <end>2018-01-02T08:15:00+01:00</end>
+    </video>
+    <video ecms-id="180">
+        <sport-id>247</sport-id>
+        <sport-name>Ski Freestyle</sport-name>
+        <rsc-id>---</rsc-id>
+        <title>Frauen, Buckelpiste (F), Entscheidung</title>
+        <event-start>2018-01-02T13:05:00+01:00</event-start>
+        <event-end>2018-01-02T14:05:00+01:00</event-end>
+        <channel>2</channel>
+        <start>2018-01-02T13:05:00+01:00</start>
+        <end>2018-01-02T14:05:00+01:00</end>
+    </video>
+    <video ecms-id="182">
+        <sport-id>51</sport-id>
+        <sport-name>Rodeln</sport-name>
+        <rsc-id>---</rsc-id>
+        <title>Männer, Einsitzer (M), Gesamtwertung</title>
+        <event-start>2018-01-02T15:10:00+01:00</event-start>
+        <event-end>2018-01-02T16:10:00+01:00</event-end>
+        <channel>1</channel>
+        <start>2018-01-02T15:10:00+01:00</start>
+        <end>2018-01-02T16:10:00+01:00</end>
+    </video>
+</export>
