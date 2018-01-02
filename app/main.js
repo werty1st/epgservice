@@ -52,13 +52,14 @@ async function main(){
     Promise.all([p1,p2]).then(values=>{
         // trigger db sync
         // remove outdated docs
-        log.info("Promise.all");
-        db.sync();
+        log.info("Promise.all");        
         db.removeOutdated(()=>{
             log.info("sync+removeOutdated completed");
             clearTimeout(fallbackstop);
             log.info("timeout cleared");
+            db.sync();
         });
+        //db.sync();
     })
 
     // debug timeout
