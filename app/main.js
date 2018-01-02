@@ -28,12 +28,10 @@ const sportartenFilter = require("./sender/SportartenFilter");
 const SenderWeb = require("./sender/SenderWeb");
 const SenderZDF = require("./sender/SenderZDF");     
 
-const websender    = new SenderWeb(db, sportartenFilter);
-const zdfsender    = new SenderZDF(db, zdfapi);
 
-
-
-function main(){
+async function main(){
+    const websender    = new SenderWeb(db, sportartenFilter);
+    const zdfsender    = new SenderZDF(db, zdfapi);
 
     log.info("start update:",new Date().toString());
     log.setting("Database:",process.env.DB);                    
