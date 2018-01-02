@@ -155,6 +155,8 @@ class DbWorker {
                 
                 if( moment().isAfter(moment(item.key)) ) //item ist veraltet
                 {
+                    log.debug("remove expired item");
+                    log.debug(item);
                     outdatedDocs.set(item.id,item.value);
                 }
             });
