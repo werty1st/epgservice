@@ -24,7 +24,7 @@ const sportartenFilter = require("./sender/SportartenFilter");
 //const moment = require("moment");
 
 const DbWorker = require('./couchdb/DbWorker');
-
+const db           = new DbWorker();
 
 // create Sender
 const SenderWeb = require("./sender/SenderWeb");
@@ -32,12 +32,11 @@ const SenderZDF = require("./sender/SenderZDF");
 
 
 async function main(){
-    const db           = new DbWorker();
+    
     const websender    = new SenderWeb(db, sportartenFilter);
     const zdfsender    = new SenderZDF(db, zdfapi);
 
     log.info("start update:",new Date().toString());
-    log.setting("Database:",process.env.DB);                    
 
     const p1 = new Promise( (resolve, reject) => {
         zdfsender.update(resolve);
@@ -81,7 +80,7 @@ setInterval( ()=>{
 },1000*60*10)
 
 //debug fast
-//setInterval(main,1000*1)
+//setInterval(main,1000*1*10)
 
 
 
