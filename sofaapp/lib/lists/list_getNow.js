@@ -40,7 +40,6 @@ exports.list_getNow = function (head, req) {
 		delete sendung._rev;
 		delete sendung._id;
 		delete sendung.version;	
-		delete sendung.expires;	
 		delete sendung._conflicts;	
 		delete sendung._deleted_conflicts;	
 				

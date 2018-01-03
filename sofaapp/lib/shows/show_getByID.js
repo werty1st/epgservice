@@ -14,7 +14,6 @@ exports.show_getByID = function(doc, req) {
 		delete doc._rev;
 		delete doc._id;
         delete doc.version; 
-        delete doc.expires; 
 		delete doc._conflicts;	
 		delete doc._deleted_conflicts;	
                 
