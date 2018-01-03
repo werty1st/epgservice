@@ -50,12 +50,12 @@ async function main(){
     });
 
 
-    Promise.all([p1,p2]).then(values=>{
+    Promise.all([p1,p2]).then( async values => {
         // trigger db sync
         // remove outdated docs
-        log.info("Promise.all");        
-        db.removeOutdated(()=>{ 
-            db.sync();
+        log.info("Promise.all");
+        await db.sync();
+        db.removeOutdated(()=>{             
             log.info("timeout cleared");
             log.info("sync+removeOutdated completed");
         });
@@ -68,7 +68,8 @@ main();
 
 //wait 10 minutes then exit
 setInterval(()=>{
-    process.exit(0);
+    //process.exit(0);
+    main();
 },1000*60*10)
 
 //debug fast

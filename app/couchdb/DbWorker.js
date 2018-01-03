@@ -214,12 +214,19 @@
          * sync local to remote
          * TODO test live replication just after this.remote.query('olympia/view_getAllProgrammData')
          */
-        sync(){
-            this.local.replicate.to(this.remote).then( (result) => {
-                // handle 'completed' result
-                log.info("sync to remote completed");
-            });          
-        }    
+        async sync(){
+            return new Promise( (resolve,reject)=>{
+                
+                this.local.replicate.to(this.remote)
+                .then( (result) => {
+                    // handle 'completed' result
+                    log.info("sync to remote completed");
+                    resolve();
+                }).catch(()=>{
+                    reject();
+                });
+            });
+        }
     
         /**
          * remove outdated items
