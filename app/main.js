@@ -58,16 +58,16 @@ async function main(){
         db.removeOutdated(()=>{             
             log.info("timeout cleared");
             log.info("sync+removeOutdated completed");
-            clearTimeout(fallbackstop);
+            //clearTimeout(fallbackstop);
         });
     })
 
     // debug timeout 
-    const fallbackstop = setTimeout(()=>{ 
-        // if script takes longer than 13min kill it 
-        console.log("force quit"); 
-        process.exit(-1); 
-    },1000*60*13);     
+    // const fallbackstop = setTimeout(()=>{ 
+    //     // if script takes longer than 13min kill it 
+    //     console.log("force quit"); 
+    //     process.exit(-1); 
+    // },1000*60*13);     
 }
 
 //run on start
@@ -75,8 +75,8 @@ main();
 
 //wait 10 minutes then exit
 setInterval(()=>{
-    //process.exit(0);
-    main();
+    process.exit(0);
+    //main();
 },1000*60*10)
 
 //debug fast
