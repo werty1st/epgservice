@@ -57,9 +57,9 @@ async function main(){
         // remove outdated docs
         log.info("Promise.all");        
         db.removeOutdated(()=>{
-            clearTimeout(fallbackstop);
             log.info("timeout cleared");
             db.sync();
+            clearTimeout(fallbackstop);
             log.info("sync+removeOutdated completed");
         });
     })
@@ -76,7 +76,9 @@ async function main(){
 main();
 //run every 10 minutes
 
-setInterval(main,1000*60*10)
+setInterval( ()=>{
+    process.exit(0);
+},1000*60*10)
 
 //debug fast
 //setInterval(main,1000*1)
