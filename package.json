@@ -11,7 +11,8 @@
       "startdate": "2018-02-07",
       "enddate": "2018-02-25",
       "proto": "https",
-      "host": "eventcms.zdf.de",
+      "host": "int-ecms.zdf.de",
+      "host-live": "eventcms.zdf.de",
       "path": "/xml/olympia2018/epg/"
     },
     "//ecms": {
