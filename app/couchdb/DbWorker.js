@@ -279,6 +279,7 @@
         test1 (){
             this.local.query("olympia/view_getAllByStation").then( (res) => {
                 console.log("view_getAllByStation", res);
+                //error.stack
             });
         }
     

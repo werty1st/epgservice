@@ -39,13 +39,13 @@ async function main(){
 
     const p1 = new Promise( (resolve, reject) => {
         zdfsender.update(resolve);
-        log.info("zdfsender.update(resolve)");
+        log.info("zdfsender update started");
         // ready to sync
     });
 
     const p2 = new Promise( (resolve, reject) => {
         websender.update(resolve);
-        log.info("websender.update(resolve)");
+        log.info("websender update started");
         // ready to sync
     });
 
@@ -82,7 +82,6 @@ setInterval(()=>{
 
 //debug fast
 //setInterval(main,1000*1*10)
-
 
 
 }());

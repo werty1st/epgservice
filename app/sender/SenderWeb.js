@@ -220,9 +220,7 @@ function SenderWeb(db, sportfilter){
      */
     this.update = function update(done){
       
-        //done();return;
-        
-
+        //done();return;    
         log.info("web start");
         openReqCounter.lastPage = true; //no need to track pagination here
         openReqCounter.on('empty', ()=>{
@@ -258,7 +256,9 @@ function SenderWeb(db, sportfilter){
         require('async').eachLimit(ecms_urls, threads, function(url, next){
             getXmlStream(url, next);
         }, function(){
+            openReqCounter.emit('open');
             log.info('SenderWeb','finished xml download');
+            openReqCounter.emit('close');
         });                                                          
 
 

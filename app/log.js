@@ -5,7 +5,6 @@ const logger = new (winston.Logger)({
     exitOnError: false,
     levels:{
         verb: 4,
-        verbose: 4,
         debug: 3,
         info: 2,
         setting: 1,
