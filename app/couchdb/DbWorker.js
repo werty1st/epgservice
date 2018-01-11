@@ -221,11 +221,17 @@
                 .then( (result) => {
                     // handle 'completed' result
                     log.info("sync to remote completed");
+
                     resolve();
                 }).catch(()=>{
                     reject();
                 });
             });
+        }
+
+        async close(){
+            log.info("database closed");
+            return Promise.all( [this.local.close(),this.remote.close()] )
         }
     
         /**

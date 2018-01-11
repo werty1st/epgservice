@@ -8,15 +8,11 @@
     "ecms": {
       "delta": "false",
       "rscFix": "false",
-      "startdate": "2017-12-11",
-      "enddate": "2018-01-10",
-      "startdate2": "2016-08-03",
-      "enddate2": "2016-08-21",
+      "startdate": "2018-02-07",
+      "enddate": "2018-02-25",
       "proto": "https",
-      "host": "int-ecms.zdf.de",
-      "path": "/xml/olympia2018/epg/",
-      "//host": "eventcms.zdf.de",
-      "//path": "/xml/olympia2016/epg/"
+      "host": "eventcms.zdf.de",
+      "path": "/xml/olympia2018/epg/"
     },
     "//ecms": {
       "delta": "false",
@@ -28,9 +24,8 @@
       "path": "/"
     },    
     "api": {
-      "startdate": "2017-12-11",
-      "brands": [],
-      "brands2": [
+      "startdate": "2018-02-07",
+      "brands": [
         {
           "brandname": "das aktuelle sportstudio",
           "brandid": "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
@@ -38,14 +33,10 @@
         {
           "brandname": "ZDF SPORTextra",
           "brandid": "145f6a3a-10b7-3a31-99dd-c3396369b148"
-        },
-        {
-          "brandname": "heute nachrichten",
-          "brandid": "c78223ab-14bd-3950-adeb-e5b0c7b0f049"
         }
       ],
       "delta": "false",
-      "range": 2
+      "range": 18
     },
     "useragent": "axios (nodejs) - Olympia/ECMS (HRNM - Webmaster)"
   },
