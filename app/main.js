@@ -74,11 +74,11 @@ async function main(){
 //run on start
 main();
 
-//wait 10 minutes then exit
+//wait 2 minutes then exit
 setInterval(()=>{
     process.exit(0);
     //main();
-},1000*60*10)
+},1000*60*2)
 
 //debug fast
 //setInterval(main,1000*1*10)
