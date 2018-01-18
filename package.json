@@ -28,12 +28,8 @@
       "startdate": "2018-02-07",
       "brands": [
         {
-          "brandname": "das aktuelle sportstudio",
-          "brandid": "72e8070c-99c7-3573-bd1d-0c44ef6942b2"
-        },
-        {
-          "brandname": "ZDF SPORTextra",
-          "brandid": "145f6a3a-10b7-3a31-99dd-c3396369b148"
+          "brandname": "olympia",
+          "brandid": "fa307f89-0a25-4d59-a96a-fa7a17093455"
         }
       ],
       "delta": "false",
