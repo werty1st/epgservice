@@ -59,7 +59,7 @@ async function main(){
             log.info("timeout cleared");
             log.info("sync+removeOutdated completed");
             //clearTimeout(fallbackstop);
-            db.close();
+            //db.close();
         });
     })
 
