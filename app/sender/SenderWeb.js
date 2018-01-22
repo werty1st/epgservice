@@ -155,16 +155,22 @@ function SenderWeb(db, sportfilter){
             //drop channel <> 0-6 //0= ard 1-6 = websender 10=zdf=>drop
             switch (channel) {
                 case "0":
+                    log.debug("drop:","sportschau")
                     break;
                 case "1":
                 case "2":
                 case "3":
+                    log.debug("found event:",video);
                     openReqCounter.emit("open");
                     addSendetermin(video);
                     break;                
                 case "4":
                 case "5":
-                case "6":                    
+                case "6":
+                    break;
+                case "10":
+                    log.debug("drop:","hauptrogram")
+                    break;                    
                 default:
             }
         }
@@ -254,6 +260,7 @@ function SenderWeb(db, sportfilter){
 
         const threads = 3;
         require('async').eachLimit(ecms_urls, threads, function(url, next){
+            log.debug("url:",url);
             getXmlStream(url, next);
         }, function(){
             openReqCounter.emit('open');

@@ -161,8 +161,8 @@ function SenderZDF(db, zdfapi){
         const brandlist = brands.map((brand)=>brand.brandid).join(",");        
 
         //generate url
-        let startd = moment().add(delta - 1, 'days').tz("Europe/Berlin").format();
-        let stopd  = moment().add(delta + RANGE, 'days').tz("Europe/Berlin").format();
+        let startd = moment(STARTDATE).add(delta - 1, 'days').tz("Europe/Berlin").format();
+        let stopd  = moment(STARTDATE).add(delta + RANGE, 'days').tz("Europe/Berlin").format();
 
         startd = encodeURIComponent(startd);
         stopd  = encodeURIComponent(stopd);

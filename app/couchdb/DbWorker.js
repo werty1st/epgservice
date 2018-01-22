@@ -204,7 +204,7 @@
                         });
                 })
                 .catch( (err) => {
-                    log.err(err);
+                    log.error(err);
                     setTimeout(()=>{ throw err; }); 
                 });         
     
